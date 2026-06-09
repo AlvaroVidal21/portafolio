@@ -10,25 +10,25 @@ const featuredProjects = proyectos.slice(0, 3);
 ---
 
 <Layout>
-  <div class="max-w-5xl mx-auto space-y-5 md:h-[calc(100vh-10rem)] md:flex md:flex-col md:overflow-hidden">
-    <div class="flex flex-col md:flex-row gap-6 md:flex-1 md:min-h-0 md:items-stretch">
+  <div class="max-w-6xl mx-auto space-y-4 md:h-[calc(100svh-14rem)] md:flex md:flex-col md:overflow-hidden">
+    <div class="flex flex-col md:flex-row gap-5 md:flex-1 md:min-h-0 md:items-stretch">
       <aside class="md:w-[30%] min-w-0 md:min-h-0">
         <div class="relative border-2 border-neutral-900 overflow-hidden bg-white md:h-full md:flex md:flex-col">
-          <div class="px-4 pt-4 pb-2 border-b-2 border-neutral-900">
+          <div class="px-4 pt-4 pb-2 border-b-2 border-neutral-900 text-center">
             <h1 class="text-xl font-extrabold tracking-tight text-neutral-900">
               Alva Vidal
             </h1>
-            <p class="text-neutral-500 text-xs mt-1 tracking-wide">
+            <p class="mt-1 text-neutral-500 text-xs tracking-wide">
               — 思ったこと、感じたこと —
             </p>
           </div>
           <img
             src={perfil.src}
             alt="Foto de perfil"
-            class="relative w-full h-auto max-h-[28vh] md:flex-1 md:min-h-0 md:max-h-[26vh] object-contain"
+            class="relative w-full h-auto max-h-[22vh] md:flex-1 md:min-h-0 md:max-h-none object-contain"
           />
 
-          <div class="flex flex-wrap gap-2 border-t-2 border-neutral-900 px-4 py-2.5">
+          <div class="flex flex-wrap justify-center gap-2 border-t-2 border-neutral-900 px-4 py-2">
             <span class="inline-block -rotate-2 border-2 border-neutral-900 bg-amber-300 px-3 py-1 text-xs font-extrabold tracking-wide text-amber-950 shadow-[3px_3px_0_#111827]">
               Desarrollador
             </span>
@@ -37,14 +37,14 @@ const featuredProjects = proyectos.slice(0, 3);
             </span>
           </div>
           <div class="border-t-2 border-neutral-900 px-4 py-2.5">
-            <p class="text-neutral-600 text-xs leading-relaxed line-clamp-3">
+            <p class="text-neutral-600 text-sm leading-relaxed">
               Interesado en datos, automatización, inteligencia artificial y sistemas de apoyo a decisiones.
             </p>
           </div>
         </div>
       </aside>
 
-      <main class="md:w-[70%] min-w-0 space-y-3 md:flex md:flex-col md:min-h-0">
+      <main class="md:w-[70%] min-w-0 space-y-2.5 md:flex md:flex-col md:min-h-0">
         <div class="flex items-center justify-between gap-4 border-b-2 border-neutral-900 pb-1.5">
           <h2 class="text-lg font-extrabold tracking-tight text-neutral-900">
             Blogs recientes
@@ -57,28 +57,29 @@ const featuredProjects = proyectos.slice(0, 3);
           </a>
         </div>
 
-        <div class="space-y-2 md:flex-1 md:min-h-0">
+        <div class="space-y-1.5 md:flex md:flex-1 md:min-h-0 md:flex-col">
           {
             recentPosts.map((post) => {
               const { id, data } = post;
               const { title, author, description } = data;
 
               return (
-                <article class="relative border-2 border-neutral-900 bg-[#fffaf0] p-2.5 shadow-[4px_4px_0_#111827]">
+                <article class="relative border-2 border-neutral-900 bg-white p-2.5 shadow-[4px_4px_0_#111827] md:flex-1">
                   <div class="absolute -top-2.5 -left-2.5 w-4 h-4 bg-neutral-900" />
                   <div class="absolute -top-2.5 -right-2.5 w-4 h-4 bg-neutral-900" />
+                  <div class="pointer-events-none absolute inset-1 border border-black/10" />
                   <div class="space-y-1">
-                    <p class="text-[9px] font-extrabold uppercase tracking-[0.25em] text-neutral-500">
-                      Wanted Note
-                    </p>
+                    <div class="flex items-center gap-2">
+                      <span class="h-px w-5 bg-amber-700/70"></span>
+                    </div>
                     <h3
-                      class="text-sm font-extrabold tracking-tight text-neutral-950"
+                      class="text-sm font-extrabold tracking-tight text-neutral-950 leading-tight"
                       transition:name={`post-title-${id}`}
                     >
                       {title}
                     </h3>
-                    <p class="text-neutral-500 text-[10px]">
-                      <em class="text-blue-900">Por {author}</em>
+                    <p class="text-[10px] font-medium italic text-neutral-500">
+                      Por <span class="text-blue-900">{author}</span>
                     </p>
                     <p class="text-neutral-700 text-xs leading-relaxed line-clamp-2">
                       {description}
@@ -87,7 +88,7 @@ const featuredProjects = proyectos.slice(0, 3);
                   <div class="mt-1.5">
                     <a
                       href={`/blog/${id}`}
-                      class="relative z-10 inline-block px-3 py-1 border-2 border-neutral-900 text-[10px] font-bold tracking-wide text-neutral-900 transition-all duration-200 hover:-translate-y-0.5 hover:bg-amber-300 hover:text-neutral-950 hover:shadow-[2px_2px_0_#111827]"
+                      class="relative z-10 inline-block px-3 py-1 border-2 border-neutral-900 text-[10px] font-bold tracking-wide text-neutral-900 transition-all duration-200 hover:-translate-y-0.5 hover:bg-neutral-900 hover:text-neutral-50 hover:shadow-[2px_2px_0_#111827]"
                     >
                       Ver mas
                     </a>
@@ -100,7 +101,7 @@ const featuredProjects = proyectos.slice(0, 3);
       </main>
     </div>
 
-    <section class="space-y-2 md:flex-none">
+    <section class="space-y-1.5 md:flex-none">
       <div class="flex items-center justify-between gap-4 border-b-2 border-neutral-900 pb-1.5">
         <h2 class="text-lg font-extrabold tracking-tight text-neutral-900">
           Proyectos destacados
@@ -116,24 +117,28 @@ const featuredProjects = proyectos.slice(0, 3);
       <div class="grid gap-2 md:grid-cols-3">
         {
           featuredProjects.map((project) => (
-            <article class="relative border-2 border-neutral-900 bg-[#fffaf0] p-3 min-h-24 shadow-[4px_4px_0_#111827]">
-              <div class="absolute -top-2.5 -left-2.5 w-4 h-4 bg-neutral-900" />
-              <div class="absolute -top-2.5 -right-2.5 w-4 h-4 bg-neutral-900" />
-              <div class="flex h-full flex-col justify-between gap-2">
-                <div class="space-y-1">
-                  <p class="text-[9px] font-extrabold uppercase tracking-[0.25em] text-neutral-500">
-                    Wanted Project
-                  </p>
-                  <h3 class="text-sm font-extrabold tracking-tight text-neutral-950">
-                    {project.data.title}
-                  </h3>
-                  <p class="text-xs leading-relaxed text-neutral-600 line-clamp-2">
-                    {project.data.description}
-                  </p>
+            <article class="relative border-2 border-neutral-900 bg-white p-3 min-h-24 shadow-[4px_4px_0_#111827]">
+                  <div class="absolute -top-2.5 -left-2.5 w-4 h-4 bg-neutral-900" />
+                  <div class="absolute -top-2.5 -right-2.5 w-4 h-4 bg-neutral-900" />
+                  <div class="pointer-events-none absolute inset-1 border border-black/10" />
+                  <div class="flex h-full flex-col justify-between gap-2">
+                    <div class="space-y-1">
+                      <div class="flex items-center gap-2">
+                        <span class="h-px w-5 bg-amber-700/70"></span>
+                      </div>
+                      <h3 class="text-sm font-extrabold tracking-tight text-neutral-950 leading-tight">
+                        {project.data.title}
+                      </h3>
+                      <p class="text-[10px] font-medium italic text-neutral-500">
+                        Por <span class="text-blue-900">{project.data.author}</span>
+                      </p>
+                      <p class="text-xs leading-relaxed text-neutral-600 line-clamp-2">
+                        {project.data.description}
+                      </p>
                 </div>
                 <a
                   href={`/proyecto/${project.id}`}
-                  class="relative z-10 inline-block w-fit border-2 border-neutral-900 px-3 py-1 text-[10px] font-bold tracking-wide text-neutral-900 transition-all duration-200 hover:-translate-y-0.5 hover:bg-amber-300 hover:text-neutral-950 hover:shadow-[2px_2px_0_#111827]"
+                  class="relative z-10 inline-block w-fit border-2 border-neutral-900 px-3 py-1 text-[10px] font-bold tracking-wide text-neutral-900 transition-all duration-200 hover:-translate-y-0.5 hover:bg-neutral-900 hover:text-neutral-50 hover:shadow-[2px_2px_0_#111827]"
                 >
                   Ver mas
                 </a>
