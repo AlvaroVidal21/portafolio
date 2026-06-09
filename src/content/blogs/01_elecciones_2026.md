@@ -19,3 +19,5 @@ Pero, para esos temas sociales de alta complejidad de las decisiones personales 
 ## [2] Contenido Principal
 
 Como decía Porky, Rafel Lopez Aliaga, hasta un panetón le ganaría a Keiko. Y a diferencias de tantas cosas, esta vez no estaba equivocada. 
+
+
