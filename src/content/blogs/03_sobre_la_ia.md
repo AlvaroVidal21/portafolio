@@ -1,6 +1,6 @@
 ---
 title: Los peligros de la IA
-author: Alva Velasque 
+author: Alva Vidal 
 description: Una reflexión sobre "músculo que no se usa, se atrofia"
 ---
 

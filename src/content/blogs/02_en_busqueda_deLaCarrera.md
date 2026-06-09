@@ -1,6 +1,6 @@
 ---
 title: En búsqueda de ser alguien a los 31
-author: Alva Velasque 
+author: Alva Vidal 
 description: Una reflexión sobre el naufragio espiritual, académico y profesional.
 ---
 

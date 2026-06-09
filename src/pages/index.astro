@@ -4,75 +4,142 @@ import Layout from "../layouts/Layout.astro";
 import perfil from "../assets/perfil01.jpg";
 
 const posts = await getCollection("blogs");
+const projects = await getCollection("proyects");
+const recentPosts = posts.slice(0, 3);
+const featuredProjects = projects.slice(0, 3);
 ---
 
 <Layout>
-  <div class="max-w-5xl mx-auto flex flex-col md:flex-row gap-12">
-    <aside class="md:w-[30%] min-w-0 md:sticky md:top-8 md:self-start">
-      <div class="relative border-2 border-neutral-900 overflow-hidden">
-        <div class="px-6 pt-6 pb-3 border-b-2 border-neutral-900">
-          <h1 class="text-2xl font-extrabold tracking-tight text-neutral-900">
-            Alva Vidal
-          </h1>
-          <p class="text-neutral-500 text-xs mt-1 tracking-wide">
-            — 思ったこと、感じたこと —
-          </p>
-        </div>
-        <img
-          src={perfil.src}
-          alt="Foto de perfil"
-          class="relative w-full h-auto max-h-[50vh] md:max-h-none object-contain"
-        />
+  <div class="max-w-5xl mx-auto space-y-8 md:h-[calc(100vh-10rem)] md:flex md:flex-col md:space-y-5 md:overflow-hidden">
+    <div class="flex flex-col md:flex-row gap-8 md:flex-1 md:min-h-0 md:items-stretch">
+      <aside class="md:w-[30%] min-w-0 md:min-h-0">
+        <div class="relative border-2 border-neutral-900 overflow-hidden bg-white md:h-full md:flex md:flex-col">
+          <div class="px-5 pt-5 pb-3 border-b-2 border-neutral-900">
+            <h1 class="text-2xl font-extrabold tracking-tight text-neutral-900">
+              Alva Vidal
+            </h1>
+            <p class="text-neutral-500 text-xs mt-1 tracking-wide">
+              — 思ったこと、感じたこと —
+            </p>
+          </div>
+          <img
+            src={perfil.src}
+            alt="Foto de perfil"
+            class="relative w-full h-auto max-h-[42vh] md:flex-1 md:min-h-0 md:max-h-[34vh] object-contain"
+          />
 
-        <div class="flex flex-wrap gap-3 border-t-2 border-neutral-900 px-6 py-4">
-          <span class="px-4 py-1.5 border-2 border-amber-600 bg-amber-200 text-amber-900 text-xs font-bold tracking-wide -rotate-1">
-            Desarrollador
-          </span>
-          <span class="px-4 py-1.5 border-2 border-amber-600 bg-amber-200 text-amber-900 text-xs font-bold tracking-wide rotate-1">
-            Politólogo
-          </span>
+          <div class="flex flex-wrap gap-3 border-t-2 border-neutral-900 px-5 py-3">
+            <span class="inline-block -rotate-2 border-2 border-neutral-900 bg-amber-300 px-4 py-1.5 text-xs font-extrabold tracking-wide text-amber-950 shadow-[3px_3px_0_#111827]">
+              Desarrollador
+            </span>
+            <span class="inline-block rotate-1 border-2 border-neutral-900 bg-amber-300 px-4 py-1.5 text-xs font-extrabold tracking-wide text-amber-950 shadow-[3px_3px_0_#111827]">
+              Politólogo
+            </span>
+          </div>
+          <div class="border-t-2 border-neutral-900 px-5 py-3">
+            <p class="text-neutral-600 text-sm leading-relaxed line-clamp-4">
+              Interesado en datos, automatización, inteligencia artificial y sistemas de apoyo a decisiones.
+            </p>
+          </div>
         </div>
-        <div class="border-t-2 border-neutral-900 px-6 py-4">
-          <p class="text-neutral-600 text-sm leading-relaxed">
-            Interesado en datos, automatización, inteligencia artificial y sistemas de apoyo a decisiones.
-          </p>
+      </aside>
+
+      <main class="md:w-[70%] min-w-0 space-y-4 md:flex md:flex-col md:min-h-0">
+        <div class="flex items-center justify-between gap-4 border-b-2 border-neutral-900 pb-2">
+          <h2 class="text-xl font-extrabold tracking-tight text-neutral-900">
+            Blogs recientes
+          </h2>
+          <a
+            href="/blog"
+            class="inline-block -rotate-1 border-2 border-neutral-900 bg-amber-300 px-3 py-1 text-xs font-extrabold tracking-wide text-amber-950 shadow-[3px_3px_0_#111827] transition-transform hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none"
+          >
+            Ver todos
+          </a>
         </div>
+
+        <div class="space-y-3 md:flex-1 md:min-h-0">
+          {
+            recentPosts.map((post) => {
+              const { id, data } = post;
+              const { title, author, description } = data;
+
+              return (
+                <article class="border-2 border-neutral-900 p-3 relative bg-white">
+                  <div class="absolute -top-2.5 -left-2.5 w-4 h-4 bg-neutral-900" />
+                  <div class="absolute -top-2.5 -right-2.5 w-4 h-4 bg-neutral-900" />
+                  <div class="absolute -bottom-2.5 -left-2.5 w-4 h-4 bg-neutral-900" />
+                  <div class="absolute -bottom-2.5 -right-2.5 w-4 h-4 bg-neutral-900" />
+                  <div class="space-y-1.5">
+                    <h3
+                      class="text-base font-bold tracking-tight text-neutral-900"
+                      transition:name={`post-title-${id}`}
+                    >
+                      {title}
+                    </h3>
+                    <p class="text-neutral-500 text-xs">
+                      <em class="text-blue-900">Por {author}</em>
+                    </p>
+                    <p class="text-neutral-700 text-sm leading-relaxed line-clamp-2">
+                      {description}
+                    </p>
+                  </div>
+                  <div class="mt-2">
+                    <a
+                      href={`/blog/${id}`}
+                      class="inline-block px-4 py-1.5 border-2 border-neutral-900 text-xs font-bold tracking-wide text-neutral-900 hover:bg-neutral-900 hover:text-neutral-50 transition-colors duration-200"
+                    >
+                      Ver mas
+                    </a>
+                  </div>
+                </article>
+              );
+            })
+          }
+        </div>
+      </main>
+    </div>
+
+    <section class="space-y-4 md:flex-none">
+      <div class="flex items-center justify-between gap-4 border-b-2 border-neutral-900 pb-2">
+        <h2 class="text-xl font-extrabold tracking-tight text-neutral-900">
+          Proyectos destacados
+        </h2>
+        <a
+          href="/proyectos"
+          class="inline-block rotate-1 border-2 border-neutral-900 bg-amber-300 px-3 py-1 text-xs font-extrabold tracking-wide text-amber-950 shadow-[3px_3px_0_#111827] transition-transform hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none"
+        >
+          Ver todos
+        </a>
       </div>
-    </aside>
 
-    <main class="md:w-[70%] min-w-0 space-y-10">
-      
-
-      {
-        posts.map((post) => {
-          const { id, data } = post;
-          const { title, author, description } = data;
-
-          return (
-            <article class="border-2 border-neutral-900 p-6 relative">
-              <div class="absolute -top-2.5 -left-2.5 w-5 h-5 bg-neutral-900" />
-              <div class="absolute -top-2.5 -right-2.5 w-5 h-5 bg-neutral-900" />
-              <div class="absolute -bottom-2.5 -left-2.5 w-5 h-5 bg-neutral-900" />
-              <div class="absolute -bottom-2.5 -right-2.5 w-5 h-5 bg-neutral-900" />
-              <h2 class="text-2xl font-bold tracking-tight mb-1" transition:name={`post-title-${id}`}>{title}</h2>
-              <p class="text-neutral-500 text-xs mb-3">
-                <em class="text-blue-900">Por {author}</em>
-              </p>
-              <p class="text-neutral-700 text-sm leading-relaxed">
-                {description}
-              </p>
-              <div class="mt-4">
+      <div class="grid gap-3 md:grid-cols-3">
+        {
+          featuredProjects.map((project) => (
+            <article class="border-2 border-neutral-900 p-4 relative bg-white min-h-32">
+              <div class="absolute -top-2.5 -left-2.5 w-4 h-4 bg-neutral-900" />
+              <div class="absolute -top-2.5 -right-2.5 w-4 h-4 bg-neutral-900" />
+              <div class="absolute -bottom-2.5 -left-2.5 w-4 h-4 bg-neutral-900" />
+              <div class="absolute -bottom-2.5 -right-2.5 w-4 h-4 bg-neutral-900" />
+              <div class="flex h-full flex-col justify-between gap-3">
+                <div class="space-y-1.5">
+                  <h3 class="text-base font-bold tracking-tight text-neutral-900">
+                    {project.data.title}
+                  </h3>
+                  <p class="text-sm leading-relaxed text-neutral-600 line-clamp-3">
+                    {project.data.description}
+                  </p>
+                </div>
                 <a
-                  href={`/blog/${id}`}
-                  class="inline-block px-5 py-2 border-2 border-neutral-900 text-sm font-bold tracking-wide text-neutral-900 hover:bg-neutral-900 hover:text-neutral-50 transition-colors duration-200"
+                  href={`/proyectos/${project.id}`}
+                  class="inline-block w-fit border-2 border-neutral-900 px-4 py-1.5 text-xs font-bold tracking-wide text-neutral-900 transition-colors duration-200 hover:bg-neutral-900 hover:text-neutral-50"
                 >
-                  Ver mas...
+                  Ver mas
                 </a>
               </div>
             </article>
-          );
-        })
-      }
-    </main>
+          ))
+        }
+      </div>
+    </section>
   </div>
 </Layout>

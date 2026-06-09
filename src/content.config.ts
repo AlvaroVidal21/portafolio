@@ -20,6 +20,18 @@ const blogs = defineCollection({
     }),
 });
 
+const proyects = defineCollection({
+    loader: glob({
+        pattern: '**/[^_]*.md',
+        base: "./src/content/proyects"
+    }),
+    schema: z.object({
+        title: z.string(),
+        author: z.string(),
+        description: z.string()
+    }),
+});
+
 
 // Se registra la colección en astro
-export const collections  = { blogs };
+export const collections  = { blogs, proyects };

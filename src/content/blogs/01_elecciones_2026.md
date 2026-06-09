@@ -1,6 +1,6 @@
 ---
 title: Qué nos dice las elecciones del 2026?
-author: Alva Velasque 
+author: Alva Vidal 
 description: Una columna de opinión sobre la coyuntura electoral y política que atraviesa el Perú
 ---
 
