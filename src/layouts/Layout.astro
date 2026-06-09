@@ -1,0 +1,45 @@
+---
+import "../styles/global.css";
+import { ClientRouter } from "astro:transitions";
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Alva Blogs</title>
+    <ClientRouter />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+JP:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    class="bg-neutral-50 text-neutral-900 font-['Inter','Noto_Sans_JP',sans-serif] antialiased leading-relaxed min-h-screen"
+  >
+    <header class="border-b-2 border-neutral-900 mb-10">
+      <div class="max-w-2xl mx-auto px-5 py-4 flex items-center justify-between">
+        <a href="/" class="text-lg font-extrabold tracking-tight">Alva</a>
+        <nav class="flex gap-6 text-sm font-semibold uppercase tracking-widest">
+          <a href="/" class="hover:text-neutral-500 transition-colors">Blog</a>
+          <a href="/about" class="hover:text-neutral-500 transition-colors">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="px-5 pb-16">
+      <slot />
+    </main>
+
+    <footer class="border-t-2 border-neutral-900">
+      <div class="max-w-2xl mx-auto px-5 py-4 text-center text-xs text-neutral-500 tracking-wider">
+        &copy; 2026 Alva
+      </div>
+    </footer>
+  </body>
+</html>
