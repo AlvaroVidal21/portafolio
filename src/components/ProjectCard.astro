@@ -1,0 +1,65 @@
+---
+import TechBadge from "./TechBadge.astro";
+
+export interface Props {
+  id: string;
+  title: string;
+  author: string;
+  description: string;
+  technologies?: string[] | undefined;
+  status?: string | undefined;
+}
+
+const { id, title, author, description, technologies, status } = Astro.props;
+---
+
+<article class="relative border-2 border-neutral-900 bg-white p-4 shadow-[5px_5px_0_#111827]">
+  <div class="absolute -top-3 -left-3 w-5 h-5 bg-neutral-900" />
+  <div class="absolute -top-3 -right-3 w-5 h-5 bg-neutral-900" />
+  <div class="pointer-events-none absolute inset-1 border border-black/10" />
+
+  <div class="flex h-full flex-col justify-between gap-3">
+    <div class="space-y-2">
+      <div class="flex items-center justify-between gap-2">
+        <div class="flex items-center gap-2">
+          <span class="h-px w-6 bg-amber-700/70"></span>
+        </div>
+        {status && (
+          <span class="inline-block border border-neutral-900 bg-neutral-100 px-2 py-0.5 text-[10px] font-bold tracking-wider text-neutral-700">
+            {status}
+          </span>
+        )}
+      </div>
+
+      <h3
+        class="text-lg font-extrabold tracking-tight text-neutral-950 leading-tight"
+        transition:name={`post-title-${id}`}
+      >
+        {title}
+      </h3>
+
+      <p class="text-xs font-medium italic text-neutral-500">
+        Por <span class="text-blue-900">{author}</span>
+      </p>
+
+      <p class="text-sm leading-relaxed text-neutral-600 line-clamp-3">
+        {description}
+      </p>
+
+      {technologies && technologies.length > 0 && (
+        <div class="flex flex-wrap justify-end gap-1.5 pt-1">
+          {technologies.map((tech) => (
+            <TechBadge tech={tech} />
+          ))}
+        </div>
+      )}
+    </div>
+
+    <a
+      href={`/proyecto/${id}`}
+      class="relative z-10 inline-block w-fit border-2 border-neutral-900 px-4 py-1.5 text-xs font-bold tracking-wide text-neutral-900 transition-all duration-200 hover:-translate-y-0.5 hover:bg-neutral-900 hover:text-neutral-50 hover:shadow-[2px_2px_0_#111827]"
+    >
+      Ver mas
+    </a>
+  </div>
+</article>

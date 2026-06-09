@@ -1,0 +1,68 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import BlogCard from "../../components/BlogCard.astro";
+
+const PER_PAGE = 3;
+const blogs = await getCollection("blogs");
+const totalPages = Math.ceil(blogs.length / PER_PAGE);
+const currentPage = 1;
+const pagePosts = blogs.slice(0, PER_PAGE);
+---
+
+<Layout>
+  <div class="max-w-4xl mx-auto space-y-4">
+    <!-- ╔══════════════════════════════════════════════╗
+         ║   H E A D E R                             ║
+         ╚══════════════════════════════════════════════╝ -->
+    <div class="flex items-center justify-between gap-4 border-b-2 border-neutral-900 pb-2">
+      <h1 class="text-xl font-extrabold tracking-tight text-neutral-900">
+        Blog
+      </h1>
+      <span class="text-xs text-neutral-500 font-medium">
+        {blogs.length} artículos
+      </span>
+    </div>
+
+    <!-- ── lista de posts ── -->
+    <div class="space-y-2.5">
+      {
+        pagePosts.map((post) => {
+          const { id, data } = post;
+          const { title, author, description } = data;
+          return (
+            <BlogCard id={id} title={title} author={author} description={description} />
+          );
+        })
+      }
+    </div>
+
+    <!-- ── paginación ── -->
+    {
+      totalPages > 1 && (
+        <nav class="flex justify-center gap-1.5 pt-3 border-t-2 border-neutral-900" aria-label="Paginación">
+          {
+            Array.from({ length: totalPages }, (_, i) => {
+              const page = i + 1;
+              const isCurrent = page === currentPage;
+              const href = page === 1 ? "/blog" : `/blog/page/${page}`;
+
+              return isCurrent ? (
+                <span class="inline-block border-2 border-neutral-900 bg-neutral-900 px-3 py-1 text-xs font-bold tracking-wide text-neutral-50">
+                  {page}
+                </span>
+              ) : (
+                <a
+                  href={href}
+                  class="inline-block border-2 border-neutral-900 bg-white px-3 py-1 text-xs font-bold tracking-wide text-neutral-900 transition-all duration-200 hover:bg-neutral-900 hover:text-neutral-50"
+                >
+                  {page}
+                </a>
+              );
+            })
+          }
+        </nav>
+      )
+    }
+  </div>
+</Layout>

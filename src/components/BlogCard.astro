@@ -1,0 +1,41 @@
+---
+export interface Props {
+  id: string;
+  title: string;
+  author: string;
+  description: string;
+}
+
+const { id, title, author, description } = Astro.props;
+---
+
+<article class="relative border-2 border-neutral-900 bg-white p-2.5 shadow-[4px_4px_0_#111827]">
+  <div class="absolute -top-2.5 -left-2.5 w-4 h-4 bg-neutral-900" />
+  <div class="absolute -top-2.5 -right-2.5 w-4 h-4 bg-neutral-900" />
+  <div class="pointer-events-none absolute inset-1 border border-black/10" />
+  <div class="space-y-1">
+    <div class="flex items-center gap-2">
+      <span class="h-px w-5 bg-amber-700/70"></span>
+    </div>
+    <h3
+      class="text-base font-extrabold tracking-tight text-neutral-950 leading-tight"
+      transition:name={`post-title-${id}`}
+    >
+      {title}
+    </h3>
+    <p class="text-xs font-medium italic text-neutral-500">
+      Por <span class="text-blue-900">{author}</span>
+    </p>
+    <p class="text-neutral-700 text-sm leading-relaxed line-clamp-2">
+      {description}
+    </p>
+  </div>
+  <div class="mt-2">
+    <a
+      href={`/blog/${id}`}
+      class="relative z-10 inline-block px-4 py-1.5 border-2 border-neutral-900 text-xs font-bold tracking-wide text-neutral-900 transition-all duration-200 hover:-translate-y-0.5 hover:bg-neutral-900 hover:text-neutral-50 hover:shadow-[2px_2px_0_#111827]"
+    >
+      Ver mas
+    </a>
+  </div>
+</article>

@@ -1,0 +1,70 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+
+const PER_PAGE = 4;
+const proyectos = await getCollection("proyectos");
+const totalPages = Math.ceil(proyectos.length / PER_PAGE);
+const currentPage = 1;
+const pageProjects = proyectos.slice(0, PER_PAGE);
+---
+
+<Layout>
+  <div class="max-w-4xl mx-auto space-y-4">
+    <div class="flex items-center justify-between gap-4 border-b-2 border-neutral-900 pb-2">
+      <h1 class="text-xl font-extrabold tracking-tight text-neutral-900">
+        Proyectos
+      </h1>
+      <span class="text-xs text-neutral-500 font-medium">
+        {proyectos.length} proyectos
+      </span>
+    </div>
+
+    <div class="grid gap-4 md:grid-cols-2">
+      {
+        pageProjects.map((project) => {
+          const { id, data } = project;
+          const { title, author, description, technologies, status } = data;
+          return (
+            <ProjectCard
+              id={id}
+              title={title}
+              author={author}
+              description={description}
+              technologies={technologies}
+              status={status}
+            />
+          );
+        })
+      }
+    </div>
+
+    {
+      totalPages > 1 && (
+        <nav class="flex justify-center gap-1.5 pt-3 border-t-2 border-neutral-900" aria-label="Paginación">
+          {
+            Array.from({ length: totalPages }, (_, i) => {
+              const page = i + 1;
+              const isCurrent = page === currentPage;
+              const href = page === 1 ? "/proyecto" : `/proyecto/page/${page}`;
+
+              return isCurrent ? (
+                <span class="inline-block border-2 border-neutral-900 bg-neutral-900 px-3 py-1 text-xs font-bold tracking-wide text-neutral-50">
+                  {page}
+                </span>
+              ) : (
+                <a
+                  href={href}
+                  class="inline-block border-2 border-neutral-900 bg-white px-3 py-1 text-xs font-bold tracking-wide text-neutral-900 transition-all duration-200 hover:bg-neutral-900 hover:text-neutral-50"
+                >
+                  {page}
+                </a>
+              );
+            })
+          }
+        </nav>
+      )
+    }
+  </div>
+</Layout>

@@ -1,0 +1,38 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import TechBadge from "../../components/TechBadge.astro";
+
+export async function getStaticPaths() {
+  const proyectos = await getCollection("proyectos");
+  return proyectos.map((project) => ({
+    params: { id: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { title, author, description, technologies } = project.data;
+const { Content } = await render(project);
+---
+
+<Layout>
+  <article class="max-w-2xl mx-auto">
+    <h1 class="text-4xl font-extrabold tracking-tight border-b-2 border-neutral-900 pb-3 mb-2" transition:name={`post-title-${project.id}`}>
+      {title}
+    </h1>
+    <p class="text-neutral-500 text-xs mb-4">
+      <em class="text-blue-900">Por {author}</em>
+    </p>
+    {technologies && (
+      <div class="flex flex-wrap justify-end gap-2 mb-6">
+        {technologies.map((tech) => (
+          <TechBadge tech={tech} />
+        ))}
+      </div>
+    )}
+    <div class="prose prose-neutral max-w-none text-justify">
+      <Content />
+    </div>
+  </article>
+</Layout>
