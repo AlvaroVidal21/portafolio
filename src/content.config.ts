@@ -29,7 +29,10 @@ const proyectos = defineCollection({
         title: z.string(),
         author: z.string(),
         description: z.string(),
-        technologies: z.array(z.string()).optional()
+        technologies: z.array(z.string()).optional(),
+        github: z.string().optional(),
+        video: z.string().optional(),
+        status: z.enum(['En progreso', 'completado', 'pausado']).optional()
     }),
 });
 

@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import perfil from "../assets/perfil01.jpg";
 import TechBadge from "../components/TechBadge.astro";
+import BlogCard from "../components/BlogCard.astro";
 
 const posts = await getCollection("blogs");
 const proyectos = await getCollection("proyectos");
@@ -10,11 +11,22 @@ const recentPosts = posts.slice(0, 3);
 const featuredProjects = proyectos.slice(0, 3);
 ---
 
+<!-- ╔══════════════════════════════════════════════════╗
+     ║   L A Y O U T   P R I N C I P A L             ║
+     ╚══════════════════════════════════════════════════╝ -->
 <Layout>
-  <div class="max-w-6xl mx-auto space-y-4 md:h-[calc(100svh-14rem)] md:flex md:flex-col md:overflow-hidden">
+  <div class="max-w-4xl mx-auto space-y-4 md:h-[calc(100svh-14rem)] md:flex md:flex-col md:overflow-hidden">
+
+    <!-- ╔══════════════════════════════════════════════╗
+         ║   F I L A   S U P E R I O R               ║
+         ║   aside (30%)  +  main (70%)              ║
+         ╚══════════════════════════════════════════════╝ -->
     <div class="flex flex-col md:flex-row gap-5 md:flex-1 md:min-h-0 md:items-stretch">
+
+      <!-- ───[ A S I D E   —   P E R F I L ]────────── -->
       <aside class="md:w-[30%] min-w-0 md:min-h-0">
         <div class="relative border-2 border-neutral-900 overflow-hidden bg-white md:h-full md:flex md:flex-col">
+          <!-- ── header ── -->
           <div class="px-4 pt-4 pb-2 border-b-2 border-neutral-900 text-center">
             <h1 class="text-xl font-extrabold tracking-tight text-neutral-900">
               Alva Vidal
@@ -23,12 +35,13 @@ const featuredProjects = proyectos.slice(0, 3);
               — 思ったこと、感じたこと —
             </p>
           </div>
+          <!-- ── foto ── -->
           <img
             src={perfil.src}
             alt="Foto de perfil"
             class="relative w-full h-auto max-h-[22vh] md:flex-1 md:min-h-0 md:max-h-none object-contain"
           />
-
+          <!-- ── tags (sticker) ── -->
           <div class="flex flex-wrap justify-center gap-2 border-t-2 border-neutral-900 px-4 py-2">
             <span class="inline-block -rotate-2 border-2 border-neutral-900 bg-amber-300 px-3 py-1 text-xs font-extrabold tracking-wide text-amber-950 shadow-[3px_3px_0_#111827]">
               Desarrollador
@@ -37,6 +50,7 @@ const featuredProjects = proyectos.slice(0, 3);
               Politólogo
             </span>
           </div>
+          <!-- ── descripción ── -->
           <div class="border-t-2 border-neutral-900 px-4 py-2.5">
             <p class="text-neutral-600 text-sm leading-relaxed">
               Estudiante de 4to Ciclo de la carrera de Desarrollo de Sistemas en Idat. Bachiller en Ciencia Política (UNMSM). Especializado en Derecho Internacional (Unisimón - Colombia).
@@ -45,7 +59,9 @@ const featuredProjects = proyectos.slice(0, 3);
         </div>
       </aside>
 
+      <!-- ───[ M A I N   —   B L O G S   R E C I E N T E S ]── -->
       <main class="md:w-[70%] min-w-0 space-y-2.5 md:flex md:flex-col md:min-h-0">
+        <!-- ── header de sección ── -->
         <div class="flex items-center justify-between gap-4 border-b-2 border-neutral-900 pb-1.5">
           <h2 class="text-lg font-extrabold tracking-tight text-neutral-900">
             Blogs recientes
@@ -58,6 +74,7 @@ const featuredProjects = proyectos.slice(0, 3);
           </a>
         </div>
 
+        <!-- ── tarjetas de posts ── -->
         <div class="space-y-1.5 md:flex md:flex-1 md:min-h-0 md:flex-col">
           {
             recentPosts.map((post) => {
@@ -65,36 +82,7 @@ const featuredProjects = proyectos.slice(0, 3);
               const { title, author, description } = data;
 
               return (
-                <article class="relative border-2 border-neutral-900 bg-white p-2.5 shadow-[4px_4px_0_#111827] md:flex-1">
-                  <div class="absolute -top-2.5 -left-2.5 w-4 h-4 bg-neutral-900" />
-                  <div class="absolute -top-2.5 -right-2.5 w-4 h-4 bg-neutral-900" />
-                  <div class="pointer-events-none absolute inset-1 border border-black/10" />
-                  <div class="space-y-1">
-                    <div class="flex items-center gap-2">
-                      <span class="h-px w-5 bg-amber-700/70"></span>
-                    </div>
-                    <h3
-                      class="text-sm font-extrabold tracking-tight text-neutral-950 leading-tight"
-                      transition:name={`post-title-${id}`}
-                    >
-                      {title}
-                    </h3>
-                    <p class="text-[10px] font-medium italic text-neutral-500">
-                      Por <span class="text-blue-900">{author}</span>
-                    </p>
-                    <p class="text-neutral-700 text-xs leading-relaxed line-clamp-2">
-                      {description}
-                    </p>
-                  </div>
-                  <div class="mt-1.5">
-                    <a
-                      href={`/blog/${id}`}
-                      class="relative z-10 inline-block px-3 py-1 border-2 border-neutral-900 text-[10px] font-bold tracking-wide text-neutral-900 transition-all duration-200 hover:-translate-y-0.5 hover:bg-neutral-900 hover:text-neutral-50 hover:shadow-[2px_2px_0_#111827]"
-                    >
-                      Ver mas
-                    </a>
-                  </div>
-                </article>
+                <BlogCard id={id} title={title} author={author} description={description} />
               );
             })
           }
@@ -102,31 +90,41 @@ const featuredProjects = proyectos.slice(0, 3);
       </main>
     </div>
 
+    <!-- ╔══════════════════════════════════════════════╗
+         ║   S E C C I Ó N   I N F E R I O R          ║
+         ║   Proyectos destacados (grid 3 col)        ║
+         ╚══════════════════════════════════════════════╝ -->
     <section class="space-y-1.5 md:flex-none">
+      <!-- ── header de sección ── -->
       <div class="flex items-center justify-between gap-4 border-b-2 border-neutral-900 pb-1.5">
         <h2 class="text-lg font-extrabold tracking-tight text-neutral-900">
           Proyectos destacados
         </h2>
         <a
-          href="#"
+          href="/proyecto"
           class="inline-block rotate-1 border-2 border-neutral-900 bg-amber-300 px-2.5 py-0.5 text-xs font-extrabold tracking-wide text-amber-950 shadow-[3px_3px_0_#111827] transition-transform hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none"
         >
           Ver todos
         </a>
       </div>
 
+      <!-- ── grid de tarjetas ── -->
       <div class="grid gap-2 md:grid-cols-3">
         {
           featuredProjects.map((project) => (
             <article class="relative border-2 border-neutral-900 bg-white p-3 min-h-24 shadow-[4px_4px_0_#111827]">
+                  <!-- esquinas superiores -->
                   <div class="absolute -top-2.5 -left-2.5 w-4 h-4 bg-neutral-900" />
                   <div class="absolute -top-2.5 -right-2.5 w-4 h-4 bg-neutral-900" />
+                  <!-- borde interno -->
                   <div class="pointer-events-none absolute inset-1 border border-black/10" />
                   <div class="flex h-full flex-col justify-between gap-2">
                     <div class="space-y-1">
+                      <!-- línea decorativa -->
                       <div class="flex items-center gap-2">
                         <span class="h-px w-5 bg-amber-700/70"></span>
                       </div>
+                      <!-- título con transición -->
                       <h3 class="text-sm font-extrabold tracking-tight text-neutral-950 leading-tight" transition:name={`post-title-${project.id}`}>
                         {project.data.title}
                       </h3>
@@ -136,6 +134,7 @@ const featuredProjects = proyectos.slice(0, 3);
                       <p class="text-xs leading-relaxed text-neutral-600 line-clamp-2">
                         {project.data.description}
                       </p>
+                      <!-- badges de tecnologías -->
                       {project.data.technologies && (
                         <div class="flex flex-wrap justify-end gap-1.5 pt-1">
                           {project.data.technologies.map((tech) => (
@@ -144,6 +143,7 @@ const featuredProjects = proyectos.slice(0, 3);
                         </div>
                       )}
                 </div>
+                <!-- botón "Ver mas" -->
                 <a
                   href={`/proyecto/${project.id}`}
                   class="relative z-10 inline-block w-fit border-2 border-neutral-900 px-3 py-1 text-[10px] font-bold tracking-wide text-neutral-900 transition-all duration-200 hover:-translate-y-0.5 hover:bg-neutral-900 hover:text-neutral-50 hover:shadow-[2px_2px_0_#111827]"
