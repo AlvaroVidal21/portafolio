@@ -28,7 +28,8 @@ const proyectos = defineCollection({
     schema: z.object({
         title: z.string(),
         author: z.string(),
-        description: z.string()
+        description: z.string(),
+        technologies: z.array(z.string()).optional()
     }),
 });
 
