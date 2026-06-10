@@ -7,6 +7,20 @@ interface Props {
 }
 
 const { lockViewport = false } = Astro.props;
+
+const pathname = Astro.url.pathname;
+
+const navItems = [
+  { href: "/", label: "Inicio" },
+  { href: "/proyecto", label: "Proyectos" },
+  { href: "/blog", label: "Blog" },
+  { href: "/about", label: "Sobre mí" },
+];
+
+const currentPage =
+  navItems.find((item) =>
+    item.href === "/" ? pathname === "/" : pathname.startsWith(item.href),
+  ) || navItems[0];
 ---
 <!doctype html>
 <html lang="en">
@@ -31,31 +45,126 @@ const { lockViewport = false } = Astro.props;
       lockViewport ? "min-h-screen md:h-dvh md:max-h-dvh md:overflow-hidden" : "min-h-screen",
     ]}
   >
-    <header class="border-b-2 border-neutral-900">
-      <div class="max-w-4xl mx-auto px-5 py-4 flex items-center justify-between">
+    <header class="relative border-b-2 border-neutral-900">
+      <div class="mx-auto flex max-w-4xl items-center justify-between px-5 py-4">
         <a href="/" class="text-lg font-extrabold tracking-tight">Alva</a>
-        <nav class="flex gap-6 text-sm font-semibold uppercase tracking-widest">
-          <a href="/" class="hover:text-neutral-500 transition-colors">Inicio</a>
-          <a href="/proyecto" class="hover:text-neutral-500 transition-colors">Proyectos</a>
-          <a href="/blog" class="hover:text-neutral-500 transition-colors">Blog</a>
-          <a href="/about" class="hover:text-neutral-500 transition-colors">Sobre mí</a>
+
+        <!-- Desktop nav -->
+        <nav class="hidden items-center gap-4 text-sm font-semibold uppercase tracking-widest md:flex">
+          {
+            navItems.map((item) => {
+              const isActive =
+                item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+              return (
+                <a
+                  href={item.href}
+                  class:list={[
+                    "transition-all",
+                    isActive
+                      ? "-rotate-1 border-2 border-neutral-900 bg-amber-300 px-2.5 py-0.5 shadow-[2px_2px_0_#111827]"
+                      : "hover:text-neutral-500",
+                  ]}
+                >
+                  {item.label}
+                </a>
+              );
+            })
+          }
+        </nav>
+
+        <!-- Mobile: current page sticker + hamburger -->
+        <div class="flex items-center gap-2 md:hidden">
+          <span
+            class="-rotate-1 border-2 border-neutral-900 bg-amber-300 px-2.5 py-0.5 text-xs font-extrabold uppercase tracking-widest shadow-[2px_2px_0_#111827]"
+          >
+            {currentPage.label}
+          </span>
+          <button
+            id="menu-toggle"
+            class="flex size-8 items-center justify-center border-2 border-neutral-900"
+            aria-label="Abrir menú"
+          >
+            <span id="menu-icon" class="text-lg font-bold leading-none">☰</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile dropdown menu -->
+      <div
+        id="mobile-menu"
+        class="hidden border-t-2 border-neutral-900 bg-white md:hidden"
+      >
+        <nav class="flex flex-col px-5 py-3 text-sm font-semibold uppercase tracking-widest">
+          {
+            navItems.map((item) => {
+              const isActive =
+                item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+              return (
+                <a
+                  href={item.href}
+                  class:list={[
+                    "border-b border-neutral-200 py-3 last:border-none transition-all",
+                    isActive
+                      ? "-rotate-1 border-2 border-neutral-900 bg-amber-300 px-3 shadow-[2px_2px_0_#111827]"
+                      : "hover:text-neutral-500",
+                  ]}
+                >
+                  {item.label}
+                </a>
+              );
+            })
+          }
         </nav>
       </div>
     </header>
 
     <main
       class:list={[
-        "px-5 flex-1 pt-8",
-        lockViewport && "md:min-h-0 md:overflow-hidden md:flex md:flex-col",
+        "flex-1 px-5 pt-8",
+        lockViewport && "md:flex md:min-h-0 md:flex-col md:overflow-hidden",
       ]}
     >
       <slot />
     </main>
 
     <footer class="border-t-2 border-neutral-900">
-      <div class="max-w-4xl mx-auto px-5 py-4 text-center text-xs text-neutral-500 tracking-wider">
+      <div class="mx-auto max-w-4xl px-5 py-4 text-center text-xs tracking-wider text-neutral-500">
         &copy; 2026 Alva
       </div>
     </footer>
+
+    <script>
+      function setupMobileMenu() {
+        const toggle = document.getElementById("menu-toggle");
+        const menu = document.getElementById("mobile-menu");
+        const icon = document.getElementById("menu-icon");
+        if (!toggle || !menu || !icon) return;
+
+        menu.classList.add("hidden");
+        menu.classList.remove("flex");
+        icon.textContent = "☰";
+
+        const newToggle = toggle.cloneNode(true);
+        toggle.replaceWith(newToggle);
+
+        newToggle.addEventListener("click", () => {
+          const isHidden = menu.classList.contains("hidden");
+          menu.classList.toggle("hidden");
+          menu.classList.toggle("flex");
+          icon.textContent = isHidden ? "✕" : "☰";
+        });
+
+        menu.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            menu.classList.add("hidden");
+            menu.classList.remove("flex");
+            icon.textContent = "☰";
+          });
+        });
+      }
+
+      setupMobileMenu();
+      document.addEventListener("astro:page-load", setupMobileMenu);
+    </script>
   </body>
 </html>
