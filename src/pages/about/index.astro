@@ -1,8 +1,118 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import fotoPerfil from '../../assets/yoLinkedin.jpeg';
 ---
 
 <Layout>
-    <h1>About Us</h1>
-    <p>This is the about page.</p>
+    <!-- Cabecera -->
+    <header>
+        <figure>
+            <img src={fotoPerfil.src} alt="Alva Vidal">
+            <figcaption>Alva Vidal</figcaption>
+        </figure>
+
+        <h1>Alva Vidal</h1>
+
+        <p>Estudiante de la carrera técnico-profesional de Desarrollo de Sistemas Frontend y Backend en IDAT</p>
+        <p>Bachiller en Ciencia Política (UNMSM)</p>
+        <p>Especializado en Derecho Internacional (Unisimón - Colombia)</p>
+
+        <div>
+            <span>Lima, Perú</span>
+            <span>912 720 449</span>
+            <span>alvaro.vidal1403@gmail.com | alvavidal.1403@proton.me</span>
+        </div>
+    </header>
+
+    <main>
+        <!-- Perfil profesional -->
+        <section>
+            <h2>PERFIL PROFESIONAL</h2>
+            <div>
+                <p>Estudiante de 4to Ciclo de la carrera de Desarrollo de Sistemas Frontend y Backend en IDAT. Bachiller en Ciencia Política (UNMSM) y cuento con una especialización en Derecho Internacional (Unisimón - Colombia). Estoy certificado por la OECE (Organismo Especializado para las Contrataciones Públicas Eficientes)</p>
+                <p>Trabajo con datos operativos, conciliación de información, trazabilidad y automatización de reportes</p>
+                <p>Actualmente estoy buscando oportunidades para crecer y portalecer mi perfil profesional en el área de datos y/o desarrollo de software.</p>
+            </div>
+        </section>
+
+        <!-- Experiencia laboral -->
+        <section>
+            <h2>EXPERIENCIA LABORAL</h2>
+
+            <div>
+                <h4>Analista de información</h4>
+                <p>Inversiones e Innovaciones Cristhi E.I.R.L | Ene. 2026 - May. 2026</p>
+                <ul>
+                    <li>Desarrollé un proceso de extracción y análisis de información presupuestal mediante la API del SIAF, automatizando la revisión de miles de órdenes de servicio y facilitando la identificación de saldos, compromisos y devengados para la toma de decisiones operativas.</li>
+                    <li>Implementé base de datos en base a registros de Excels, corregí y actualicé fórmulas en Excel para mejorar la precisión y eficiencia de la conciliación de información.</li>
+                    <li>Validé la información en base a revisión documentaria</li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Analista Administrativo en Presupuesto — Oficina de Planeamiento y Presupuesto</h4>
+                <p>Red de Salud de Huarochirí (Gobierno Regional de Lima) | Oct. 2025 - Dic. 2025</p>
+                <ul>
+                    <li><strong>Identifiqué saldos de más de S/ 3 millones en certificados presupuestales sin compromiso presupuestal</strong></li>
+                    <li>Implementé automatización de reportes en Excel y Power Bi mediante macros VBA y Pandas en Python</li>
+                    <li>Realicé validación y control de información presupuestal</li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Analista administrativo — Gerencia de Logística</h4>
+                <p>EMAPE | Ene. 2025 - Ago. 2025</p>
+                <ul>
+                    <li><strong>Recuperé más de S/ 80,000 en certificados sin rebajar (solo comprometidos y sin devengar)</strong></li>
+                    <li>Asistí en la ejecución de más de 600 órdenes de servicios mensuales</li>
+                    <li>Implementé reportes para mejorar la trazabilidad de los datos logísticos</li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Analista Administrativo — Subgerencia de Concesiones y Eventos</h4>
+                <p>SERPAR | Jun. 2024 - Oct. 2024</p>
+                <ul>
+                    <li>
+                        <strong>Administré concesiones y arrendamientos en parques metropolitanos, desarrollando análisis históricos y modelos de valoración para la determinación de tarifas comerciales, seguimiento contractual y gestión de ingresos.</strong>
+                        <ul>
+                            <p>Los parques que administravan era:</p>
+                            <li>Club Metropolitano Huáscar (Villa El Salvador)</li>
+                            <li>Cub Metropolitano Huayna Cápac (San Juan de Miraflores)</li>
+                            <li>Parque de La Muralla (Cercado de Lima)</li>
+                            <li>Parque Alameda Las Malvinas (Cercado de Lima)</li>
+                            <li>Parque Universitario (Cercado de Lima)</li>
+                            <li>Parque Metropolitano "Coronoel Miguel Baquero" (Cercado de Lima)</li>
+                            <li>Parque de los Anillos (Ate)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Analista de Adquisiciones y Gestión Administrativa</h4>
+                <p>V&V Soluciones | May. 2023 - Jun. 2024</p>
+                <ul>
+                    <li><strong>Validación y control de información en contratos, órdenes de servicio y registros administrativos</strong></li>
+                    <li>Organización documental para mejorar la trazabilidad y seguimiento de procesos</li>
+                    <li>Soporte a cobranza mediante verificación de estados de pago</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Educación -->
+        <section>
+            <h2>Educación</h2>
+            <dl>
+                <dt>Desarrollo de Sistemas Frontend y Backend</dt>
+                <dd>Instituto Idat | 2025 (En Curso)  4to Ciclo</dd>
+
+                <dt>Bachiller en Ciencia Política</dt>
+                <dd>Universidad Nacional Mayor de San Marcos | 2016 - 2021</dd>
+
+                <dt>Especialización en Derecho Internacional</dt>
+                <dd>Universidad Simón Bolívar (Colombia) | 2021</dd>
+            </dl>
+        </section>
+    </main>
 </Layout>
