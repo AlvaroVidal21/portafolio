@@ -15,17 +15,17 @@ const featuredProjects = proyectos.slice(0, 3);
      ║   L A Y O U T   P R I N C I P A L             ║
      ╚══════════════════════════════════════════════════╝ -->
 <Layout lockViewport>
-  <div class="mx-auto flex w-full max-w-6xl flex-col gap-4 md:h-full md:min-h-0 md:gap-3 md:overflow-hidden">
+  <div class="mx-auto flex w-full max-w-6xl flex-col gap-4 md:gap-3 lg:h-full lg:min-h-0 lg:overflow-hidden">
 
     <!-- ╔══════════════════════════════════════════════╗
          ║   F I L A   S U P E R I O R               ║
          ║   aside (30%)  +  main (70%)              ║
          ╚══════════════════════════════════════════════╝ -->
-    <div class="flex flex-col gap-4 md:min-h-0 md:flex-[3] md:flex-row md:gap-5 md:overflow-hidden">
+    <div class="flex flex-col gap-4 md:min-h-0 md:flex-row md:gap-5 lg:flex-[3] lg:overflow-hidden">
 
       <!-- ───[ A S I D E   —   P E R F I L ]────────── -->
       <aside class="min-w-0 md:min-h-0 md:w-[30%]">
-        <div class="relative flex flex-col overflow-hidden border-2 border-neutral-900 bg-white md:h-full md:min-h-0">
+        <div class="relative flex flex-col overflow-hidden border-2 border-neutral-900 bg-white lg:h-full md:min-h-0">
           <!-- ── header ── -->
           <div class="shrink-0 border-b-2 border-neutral-900 px-4 pb-2 pt-3 text-center">
             <h1 class="text-lg font-extrabold tracking-tight text-neutral-900 md:text-xl">
@@ -60,7 +60,7 @@ const featuredProjects = proyectos.slice(0, 3);
       </aside>
 
       <!-- ───[ M A I N   —   B L O G S   R E C I E N T E S ]── -->
-      <main class="flex min-w-0 flex-col gap-1.5 md:min-h-0 md:w-[70%] md:gap-2 md:overflow-hidden">
+      <main class="flex min-w-0 flex-col gap-1.5 md:min-h-0 md:w-[70%] md:gap-2 lg:overflow-hidden">
         <!-- ── header de sección ── -->
         <div class="flex shrink-0 items-center justify-between gap-4 border-b-2 border-neutral-900 pb-1">
           <h2 class="text-base font-extrabold tracking-tight text-neutral-900 md:text-lg">
@@ -75,7 +75,7 @@ const featuredProjects = proyectos.slice(0, 3);
         </div>
 
         <!-- ── tarjetas de posts ── -->
-        <div class="flex flex-col gap-1.5 md:min-h-0 md:flex-1 md:overflow-hidden">
+        <div class="flex flex-col gap-1.5 md:min-h-0 md:flex-1 lg:overflow-hidden">
           {
             recentPosts.map((post) => {
               const { id, data } = post;
@@ -100,7 +100,7 @@ const featuredProjects = proyectos.slice(0, 3);
          ║   S E C C I Ó N   I N F E R I O R          ║
          ║   Proyectos destacados (grid 3 col)        ║
          ╚══════════════════════════════════════════════╝ -->
-    <section class="flex flex-col gap-1.5 md:min-h-0 md:flex-[1.7] md:gap-2 md:overflow-hidden md:pb-2">
+    <section class="flex flex-col gap-1.5 md:min-h-0 md:gap-2 md:pb-2 lg:flex-[1.7] lg:overflow-hidden">
       <!-- ── header de sección ── -->
       <div class="flex shrink-0 items-center justify-between gap-4 border-b-2 border-neutral-900 pb-1">
         <h2 class="text-base font-extrabold tracking-tight text-neutral-900 md:text-lg">
@@ -115,7 +115,7 @@ const featuredProjects = proyectos.slice(0, 3);
       </div>
 
       <!-- ── grid de tarjetas ── -->
-      <div class="grid grid-cols-1 gap-2 md:min-h-0 md:flex-1 md:grid-cols-3 md:items-stretch md:overflow-hidden md:max-h-[15rem]">
+      <div class="grid grid-cols-1 gap-2 md:min-h-0 md:grid-cols-2 md:items-stretch lg:flex-1 lg:grid-cols-3 lg:overflow-hidden lg:max-h-[15rem]">
         {
           featuredProjects.map((project) => {
             const { id, data } = project;

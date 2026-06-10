@@ -27,8 +27,7 @@ const currentPage =
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/vendetta.ico" />
     <meta name="generator" content={Astro.generator} />
     <title>Alva Blogs</title>
     <ClientRouter />
@@ -42,7 +41,7 @@ const currentPage =
   <body
     class:list={[
       "bg-neutral-50 text-neutral-900 font-['Inter','Noto_Sans_JP',sans-serif] antialiased leading-relaxed flex flex-col",
-      lockViewport ? "min-h-screen md:h-dvh md:max-h-dvh md:overflow-hidden" : "min-h-screen",
+      lockViewport ? "min-h-screen lg:h-dvh lg:max-h-dvh lg:overflow-hidden" : "min-h-screen",
     ]}
   >
     <header class="relative border-b-2 border-neutral-900">
@@ -121,7 +120,7 @@ const currentPage =
     <main
       class:list={[
         "flex-1 px-5 pt-8",
-        lockViewport && "md:flex md:min-h-0 md:flex-col md:overflow-hidden",
+        lockViewport && "lg:flex lg:min-h-0 lg:flex-col lg:overflow-hidden",
       ]}
     >
       <slot />
