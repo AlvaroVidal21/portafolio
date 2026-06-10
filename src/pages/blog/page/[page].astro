@@ -9,7 +9,7 @@ const totalPages = Math.ceil(blogs.length / PER_PAGE);
 
 export async function getStaticPaths() {
   const allBlogs = await getCollection("blogs");
-  const total = Math.ceil(allBlogs.length / 5);
+  const total = Math.ceil(allBlogs.length / 3);
 
   return Array.from({ length: Math.max(0, total - 1) }, (_, i) => ({
     params: { page: String(i + 2) },

@@ -2,8 +2,8 @@
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import perfil from "../assets/perfil01.jpg";
-import TechBadge from "../components/TechBadge.astro";
 import BlogCard from "../components/BlogCard.astro";
+import ProjectCard from "../components/ProjectCard.astro";
 
 const posts = await getCollection("blogs");
 const proyectos = await getCollection("proyectos");
@@ -14,24 +14,24 @@ const featuredProjects = proyectos.slice(0, 3);
 <!-- ╔══════════════════════════════════════════════════╗
      ║   L A Y O U T   P R I N C I P A L             ║
      ╚══════════════════════════════════════════════════╝ -->
-<Layout>
-  <div class="max-w-5xl mx-auto space-y-4 md:h-[calc(100svh-14rem)] md:flex md:flex-col md:overflow-hidden">
+<Layout lockViewport>
+  <div class="mx-auto flex w-full max-w-6xl flex-col gap-4 md:h-full md:min-h-0 md:gap-3 md:overflow-hidden">
 
     <!-- ╔══════════════════════════════════════════════╗
          ║   F I L A   S U P E R I O R               ║
          ║   aside (30%)  +  main (70%)              ║
          ╚══════════════════════════════════════════════╝ -->
-    <div class="flex flex-col md:flex-row gap-5 md:flex-1 md:min-h-0 md:items-stretch">
+    <div class="flex flex-col gap-4 md:min-h-0 md:flex-[3] md:flex-row md:gap-5 md:overflow-hidden">
 
       <!-- ───[ A S I D E   —   P E R F I L ]────────── -->
-      <aside class="md:w-[30%] min-w-0 md:min-h-0">
-        <div class="relative border-2 border-neutral-900 overflow-hidden bg-white md:h-full md:flex md:flex-col">
+      <aside class="min-w-0 md:min-h-0 md:w-[30%]">
+        <div class="relative flex flex-col overflow-hidden border-2 border-neutral-900 bg-white md:h-full md:min-h-0">
           <!-- ── header ── -->
-          <div class="px-4 pt-4 pb-2 border-b-2 border-neutral-900 text-center">
-            <h1 class="text-xl font-extrabold tracking-tight text-neutral-900">
+          <div class="shrink-0 border-b-2 border-neutral-900 px-4 pb-2 pt-3 text-center">
+            <h1 class="text-lg font-extrabold tracking-tight text-neutral-900 md:text-xl">
               Alva Vidal
             </h1>
-            <p class="mt-1 text-neutral-500 text-xs tracking-wide">
+            <p class="mt-0.5 text-xs tracking-wide text-neutral-500">
               — 思ったこと、感じたこと —
             </p>
           </div>
@@ -39,20 +39,20 @@ const featuredProjects = proyectos.slice(0, 3);
           <img
             src={perfil.src}
             alt="Foto de perfil"
-            class="relative w-full h-auto max-h-[22vh] md:flex-1 md:min-h-0 md:max-h-none object-contain"
+            class="relative min-h-0 w-full flex-1 object-contain"
           />
           <!-- ── tags (sticker) ── -->
-          <div class="flex flex-wrap justify-center gap-2 border-t-2 border-neutral-900 px-4 py-2">
-            <span class="inline-block -rotate-2 border-2 border-neutral-900 bg-amber-300 px-3 py-1 text-xs font-extrabold tracking-wide text-amber-950 shadow-[3px_3px_0_#111827]">
+          <div class="flex shrink-0 flex-wrap justify-center gap-1.5 border-t-2 border-neutral-900 px-3 py-1.5">
+            <span class="inline-block -rotate-2 border-2 border-neutral-900 bg-amber-300 px-2.5 py-0.5 text-[10px] font-extrabold tracking-wide text-amber-950 shadow-[3px_3px_0_#111827] md:px-3 md:py-1 md:text-xs">
               Desarrollador
             </span>
-            <span class="inline-block rotate-1 border-2 border-neutral-900 bg-amber-300 px-3 py-1 text-xs font-extrabold tracking-wide text-amber-950 shadow-[3px_3px_0_#111827]">
+            <span class="inline-block rotate-1 border-2 border-neutral-900 bg-amber-300 px-2.5 py-0.5 text-[10px] font-extrabold tracking-wide text-amber-950 shadow-[3px_3px_0_#111827] md:px-3 md:py-1 md:text-xs">
               Politólogo
             </span>
           </div>
           <!-- ── descripción ── -->
-          <div class="border-t-2 border-neutral-900 px-4 py-2.5">
-            <p class="text-neutral-600 text-sm leading-relaxed">
+          <div class="shrink-0 border-t-2 border-neutral-900 px-3 py-2">
+            <p class="line-clamp-3 text-xs leading-relaxed text-neutral-600 md:text-sm">
               Estudiante de 4to Ciclo de la carrera de Desarrollo de Sistemas en Idat. Bachiller en Ciencia Política (UNMSM). Especializado en Derecho Internacional (Unisimón - Colombia).
             </p>
           </div>
@@ -60,10 +60,10 @@ const featuredProjects = proyectos.slice(0, 3);
       </aside>
 
       <!-- ───[ M A I N   —   B L O G S   R E C I E N T E S ]── -->
-      <main class="md:w-[70%] min-w-0 space-y-2.5 md:flex md:flex-col md:min-h-0">
+      <main class="flex min-w-0 flex-col gap-1.5 md:min-h-0 md:w-[70%] md:gap-2 md:overflow-hidden">
         <!-- ── header de sección ── -->
-        <div class="flex items-center justify-between gap-4 border-b-2 border-neutral-900 pb-1.5">
-          <h2 class="text-lg font-extrabold tracking-tight text-neutral-900">
+        <div class="flex shrink-0 items-center justify-between gap-4 border-b-2 border-neutral-900 pb-1">
+          <h2 class="text-base font-extrabold tracking-tight text-neutral-900 md:text-lg">
             Blogs recientes
           </h2>
           <a
@@ -75,14 +75,20 @@ const featuredProjects = proyectos.slice(0, 3);
         </div>
 
         <!-- ── tarjetas de posts ── -->
-        <div class="space-y-1.5 md:flex md:flex-1 md:min-h-0 md:flex-col">
+        <div class="flex flex-col gap-1.5 md:min-h-0 md:flex-1 md:overflow-hidden">
           {
             recentPosts.map((post) => {
               const { id, data } = post;
               const { title, author, description } = data;
 
               return (
-                <BlogCard id={id} title={title} author={author} description={description} />
+                <BlogCard
+                  compact
+                  id={id}
+                  title={title}
+                  author={author}
+                  description={description}
+                />
               );
             })
           }
@@ -94,10 +100,10 @@ const featuredProjects = proyectos.slice(0, 3);
          ║   S E C C I Ó N   I N F E R I O R          ║
          ║   Proyectos destacados (grid 3 col)        ║
          ╚══════════════════════════════════════════════╝ -->
-    <section class="space-y-1.5 md:flex-none">
+    <section class="flex flex-col gap-1.5 md:min-h-0 md:flex-[1.7] md:gap-2 md:overflow-hidden md:pb-2">
       <!-- ── header de sección ── -->
-      <div class="flex items-center justify-between gap-4 border-b-2 border-neutral-900 pb-1.5">
-        <h2 class="text-lg font-extrabold tracking-tight text-neutral-900">
+      <div class="flex shrink-0 items-center justify-between gap-4 border-b-2 border-neutral-900 pb-1">
+        <h2 class="text-base font-extrabold tracking-tight text-neutral-900 md:text-lg">
           Proyectos destacados
         </h2>
         <a
@@ -109,50 +115,24 @@ const featuredProjects = proyectos.slice(0, 3);
       </div>
 
       <!-- ── grid de tarjetas ── -->
-      <div class="grid gap-2 md:grid-cols-3">
+      <div class="grid grid-cols-1 gap-2 md:min-h-0 md:flex-1 md:grid-cols-3 md:items-stretch md:overflow-hidden md:max-h-[15rem]">
         {
-          featuredProjects.map((project) => (
-            <article class="relative border-2 border-neutral-900 bg-white p-3 min-h-24 shadow-[4px_4px_0_#111827]">
-                  <!-- esquinas superiores -->
-                  <div class="absolute -top-2.5 -left-2.5 w-4 h-4 bg-neutral-900" />
-                  <div class="absolute -top-2.5 -right-2.5 w-4 h-4 bg-neutral-900" />
-                  <!-- borde interno -->
-                  <div class="pointer-events-none absolute inset-1 border border-black/10" />
-                  <div class="flex h-full flex-col justify-between gap-2">
-                    <div class="space-y-1">
-                      <!-- línea decorativa -->
-                      <div class="flex items-center gap-2">
-                        <span class="h-px w-5 bg-amber-700/70"></span>
-                      </div>
-                      <!-- título con transición -->
-                      <h3 class="text-sm font-extrabold tracking-tight text-neutral-950 leading-tight" transition:name={`post-title-${project.id}`}>
-                        {project.data.title}
-                      </h3>
-                      <p class="text-[10px] font-medium italic text-neutral-500">
-                        Por <span class="text-blue-900">{project.data.author}</span>
-                      </p>
-                      <p class="text-xs leading-relaxed text-neutral-600 line-clamp-2">
-                        {project.data.description}
-                      </p>
-                      <!-- badges de tecnologías -->
-                      {project.data.technologies && (
-                        <div class="flex flex-wrap justify-end gap-1.5 pt-1">
-                          {project.data.technologies.map((tech) => (
-                            <TechBadge tech={tech} />
-                          ))}
-                        </div>
-                      )}
-                </div>
-                <!-- botón "Ver mas" -->
-                <a
-                  href={`/proyecto/${project.id}`}
-                  class="relative z-10 inline-block w-fit border-2 border-neutral-900 px-3 py-1 text-[10px] font-bold tracking-wide text-neutral-900 transition-all duration-200 hover:-translate-y-0.5 hover:bg-neutral-900 hover:text-neutral-50 hover:shadow-[2px_2px_0_#111827]"
-                >
-                  Ver mas
-                </a>
-              </div>
-            </article>
-          ))
+          featuredProjects.map((project) => {
+            const { id, data } = project;
+            const { title, author, description, technologies, status } = data;
+
+            return (
+              <ProjectCard
+                compact
+                id={id}
+                title={title}
+                author={author}
+                description={description}
+                technologies={technologies}
+                status={status}
+              />
+            );
+          })
         }
       </div>
     </section>

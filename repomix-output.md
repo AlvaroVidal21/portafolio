@@ -28,7 +28,7 @@ The content is organized as follows:
 ## Notes
 - Some files may have been excluded based on .gitignore rules and Repomix's configuration
 - Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
-- Only files matching these patterns are included: src/**/*
+- Only files matching these patterns are included: src/**/*, package.json
 - Files matching patterns in .gitignore are excluded
 - Files matching default ignore patterns are excluded
 - Files are sorted by Git change count (files with more changes are at the bottom)
@@ -40,7 +40,10 @@ src/
     astro.svg
     background.svg
     perfil01.jpg
+    yoLinkedin.jpeg
   components/
+    BlogCard.astro
+    ProjectCard.astro
     TechBadge.astro
     Welcome.astro
   constants/
@@ -57,197 +60,26 @@ src/
   layouts/
     Layout.astro
   pages/
+    about/
+      index.astro
     blog/
+      page/
+        [page].astro
       [id].astro
+      index.astro
     proyecto/
+      page/
+        [page].astro
       [id].astro
+      index.astro
     index.astro
   styles/
     global.css
   content.config.ts
+package.json
 ```
 
 # Files
-
-## File: src/components/TechBadge.astro
-```astro
----
-import { TECNOLOGIAS } from "../constants/technologies";
-
-interface Props {
-  tech: string;
-}
-
-const { tech } = Astro.props;
-const config = TECNOLOGIAS[tech];
----
-
-<span class:list={[
-  "inline-block px-2.5 py-0.5 border-2 text-[9px] font-bold tracking-wide shadow-[inset_0_-2px_0_rgba(0,0,0,0.15)]",
-  config?.bg ?? "bg-neutral-200 border-neutral-950",
-  config?.text ?? "text-neutral-950"
-]}>
-  {config?.icon && <span class="mr-0.5">{config.icon}</span>}{config?.label ?? tech}
-</span>
-```
-
-## File: src/constants/technologies.ts
-```typescript
-// src/constants/technologies.ts
-
-export interface TechnologyConfig {
-  bg: string;
-  text: string;
-  label: string;
-  icon?: string;
-}
-
-export const TECNOLOGIAS: Record<string, TechnologyConfig> = {
-  springboot: {
-    bg: "bg-emerald-200 border-emerald-950",
-    text: "text-emerald-950",
-    label: "Spring Boot",
-    icon: "🍃"
-  },
-  angular: {
-    bg: "bg-red-200 border-red-950",
-    text: "text-red-950",
-    label: "Angular",
-    icon: "🅰"
-  },
-  postgres: {
-    bg: "bg-sky-200 border-sky-950",
-    text: "text-sky-950",
-    label: "PostgreSQL",
-    icon: "🐘"
-  },
-  python: {
-    bg: "bg-amber-200 border-amber-950",
-    text: "text-amber-950",
-    label: "Python",
-    icon: "🐍"
-  },
-  pandas: {
-    bg: "bg-indigo-200 border-indigo-950",
-    text: "text-indigo-950",
-    label: "Pandas",
-    icon: "🐼"
-  },
-  sqlite: {
-    bg: "bg-blue-200 border-blue-950",
-    text: "text-blue-950",
-    label: "SQLite",
-    icon: "🗄️"
-  },
-  flask: {
-    bg: "bg-stone-200 border-stone-950",
-    text: "text-stone-950",
-    label: "Flask",
-    icon: "🧪"
-  },
-  fastapi: {
-    bg: "bg-teal-200 border-teal-950",
-    text: "text-teal-950",
-    label: "FastAPI",
-    icon: "⚡"
-  },
-  php: {
-    bg: "bg-violet-200 border-violet-950",
-    text: "text-violet-950",
-    label: "PHP",
-    icon: "🐘"
-  },
-  bootstrap: {
-    bg: "bg-fuchsia-200 border-fuchsia-950",
-    text: "text-fuchsia-950",
-    label: "Bootstrap",
-    icon: "🅱"
-  },
-  // Aquí puedes seguir agregando más a futuro (ej: react, tailwind, etc.)
-};
-```
-
-## File: src/content/proyectos/01_fiados.md
-```markdown
----
-title: Fiados
-author: Alva Vidal 
-description: Una solución de software pensando en el usuario que se pide fiados en bodegas y necesita tener una trazabilidad de dichas deudas.
-technologies: ["springboot", "angular", "postgres"]
-github: "https://github.com/..."
-video: "https://www.youtube.com/embed/..."
-status: "En progreso"
----
-
-
-# Sobre el proyecto
-
-Este proyecto se sumerge en el análisis detallado de la ejecución presupuestal, transformando datos complejos en insights claros y accionables. Nuestro objetivo es optimizar la toma de decisiones y mejorar la eficiencia en la gestión de recursos.
-```
-
-## File: src/content/proyectos/02_analisis_presupuesto.md
-```markdown
----
-title: Análisis presupuestal
-author: Alva Vidal 
-description: Análisis de datos sobre la ejecución presupuestal de una entidad.
-technologies: ["python", "pandas", "sqlite"]
----
-
-## Sobre el proyecto
-```
-
-## File: src/content/proyectos/03_job_tracker.md
-```markdown
----
-title: Gestor de postulaciones
-author: Alva Vidal 
-description: Screaper y CRM de trabajos
-technologies: ["php", "pandas", "sqlite", "bootstrap"]
----
-```
-
-## File: src/pages/proyecto/[id].astro
-```astro
----
-import { getCollection, render } from "astro:content";
-import Layout from "../../layouts/Layout.astro";
-import TechBadge from "../../components/TechBadge.astro";
-
-export async function getStaticPaths() {
-  const proyectos = await getCollection("proyectos");
-  return proyectos.map((project) => ({
-    params: { id: project.id },
-    props: { project },
-  }));
-}
-
-const { project } = Astro.props;
-const { title, author, description, technologies } = project.data;
-const { Content } = await render(project);
----
-
-<Layout>
-  <article class="max-w-2xl mx-auto">
-    <h1 class="text-4xl font-extrabold tracking-tight border-b-2 border-neutral-900 pb-3 mb-2" transition:name={`post-title-${project.id}`}>
-      {title}
-    </h1>
-    <p class="text-neutral-500 text-xs mb-4">
-      <em class="text-blue-900">Por {author}</em>
-    </p>
-    {technologies && (
-      <div class="flex flex-wrap justify-end gap-2 mb-6">
-        {technologies.map((tech) => (
-          <TechBadge tech={tech} />
-        ))}
-      </div>
-    )}
-    <div class="prose prose-neutral max-w-none text-justify">
-      <Content />
-    </div>
-  </article>
-</Layout>
-```
 
 ## File: src/assets/astro.svg
 ```xml
@@ -257,6 +89,120 @@ const { Content } = await render(project);
 ## File: src/assets/background.svg
 ```xml
 <svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1024" fill="none"><path fill="url(#a)" fill-rule="evenodd" d="M-217.58 475.75c91.82-72.02 225.52-29.38 341.2-44.74C240 415.56 372.33 315.14 466.77 384.9c102.9 76.02 44.74 246.76 90.31 366.31 29.83 78.24 90.48 136.14 129.48 210.23 57.92 109.99 169.67 208.23 155.9 331.77-13.52 121.26-103.42 264.33-224.23 281.37-141.96 20.03-232.72-220.96-374.06-196.99-151.7 25.73-172.68 330.24-325.85 315.72-128.6-12.2-110.9-230.73-128.15-358.76-12.16-90.14 65.87-176.25 44.1-264.57-26.42-107.2-167.12-163.46-176.72-273.45-10.15-116.29 33.01-248.75 124.87-320.79Z" clip-rule="evenodd" style="opacity:.154"/><path fill="url(#b)" fill-rule="evenodd" d="M1103.43 115.43c146.42-19.45 275.33-155.84 413.5-103.59 188.09 71.13 409 212.64 407.06 413.88-1.94 201.25-259.28 278.6-414.96 405.96-130 106.35-240.24 294.39-405.6 265.3-163.7-28.8-161.93-274.12-284.34-386.66-134.95-124.06-436-101.46-445.82-284.6-9.68-180.38 247.41-246.3 413.54-316.9 101.01-42.93 207.83 21.06 316.62 6.61Z" clip-rule="evenodd" style="opacity:.154"/><defs><linearGradient id="b" x1="373" x2="1995.44" y1="1100" y2="118.03" gradientUnits="userSpaceOnUse"><stop stop-color="#D83333"/><stop offset="1" stop-color="#F041FF"/></linearGradient><linearGradient id="a" x1="107.37" x2="1130.66" y1="1993.35" y2="1026.31" gradientUnits="userSpaceOnUse"><stop stop-color="#3245FF"/><stop offset="1" stop-color="#BC52EE"/></linearGradient></defs></svg>
+```
+
+## File: src/components/BlogCard.astro
+```astro
+---
+export interface Props {
+  id: string;
+  title: string;
+  author: string;
+  description: string;
+}
+
+const { id, title, author, description } = Astro.props;
+---
+
+<article class="relative border-2 border-neutral-900 bg-white p-2.5 shadow-[4px_4px_0_#111827]">
+  <div class="absolute -top-2.5 -left-2.5 w-4 h-4 bg-neutral-900" />
+  <div class="absolute -top-2.5 -right-2.5 w-4 h-4 bg-neutral-900" />
+  <div class="pointer-events-none absolute inset-1 border border-black/10" />
+  <div class="space-y-1">
+    <div class="flex items-center gap-2">
+      <span class="h-px w-5 bg-amber-700/70"></span>
+    </div>
+    <h3
+      class="text-base font-extrabold tracking-tight text-neutral-950 leading-tight"
+      transition:name={`post-title-${id}`}
+    >
+      {title}
+    </h3>
+    <p class="text-xs font-medium italic text-neutral-500">
+      Por <span class="text-blue-900">{author}</span>
+    </p>
+    <p class="text-neutral-700 text-sm leading-relaxed line-clamp-2">
+      {description}
+    </p>
+  </div>
+  <div class="mt-2">
+    <a
+      href={`/blog/${id}`}
+      class="relative z-10 inline-block px-4 py-1.5 border-2 border-neutral-900 text-xs font-bold tracking-wide text-neutral-900 transition-all duration-200 hover:-translate-y-0.5 hover:bg-neutral-900 hover:text-neutral-50 hover:shadow-[2px_2px_0_#111827]"
+    >
+      Ver mas
+    </a>
+  </div>
+</article>
+```
+
+## File: src/components/ProjectCard.astro
+```astro
+---
+import TechBadge from "./TechBadge.astro";
+
+export interface Props {
+  id: string;
+  title: string;
+  author: string;
+  description: string;
+  technologies?: string[] | undefined;
+  status?: string | undefined;
+}
+
+const { id, title, author, description, technologies, status } = Astro.props;
+---
+
+<article class="relative border-2 border-neutral-900 bg-white p-4 shadow-[5px_5px_0_#111827]">
+  <div class="absolute -top-3 -left-3 w-5 h-5 bg-neutral-900" />
+  <div class="absolute -top-3 -right-3 w-5 h-5 bg-neutral-900" />
+  <div class="pointer-events-none absolute inset-1 border border-black/10" />
+
+  <div class="flex h-full flex-col justify-between gap-3">
+    <div class="space-y-2">
+      <div class="flex items-center justify-between gap-2">
+        <div class="flex items-center gap-2">
+          <span class="h-px w-6 bg-amber-700/70"></span>
+        </div>
+        {status && (
+          <span class="inline-block border border-neutral-900 bg-neutral-100 px-2 py-0.5 text-[10px] font-bold tracking-wider text-neutral-700">
+            {status}
+          </span>
+        )}
+      </div>
+
+      <h3
+        class="text-lg font-extrabold tracking-tight text-neutral-950 leading-tight"
+        transition:name={`post-title-${id}`}
+      >
+        {title}
+      </h3>
+
+      <p class="text-xs font-medium italic text-neutral-500">
+        Por <span class="text-blue-900">{author}</span>
+      </p>
+
+      <p class="text-sm leading-relaxed text-neutral-600 line-clamp-3">
+        {description}
+      </p>
+
+      {technologies && technologies.length > 0 && (
+        <div class="flex flex-wrap justify-end gap-1.5 pt-1">
+          {technologies.map((tech) => (
+            <TechBadge tech={tech} />
+          ))}
+        </div>
+      )}
+    </div>
+
+    <a
+      href={`/proyecto/${id}`}
+      class="relative z-10 inline-block w-fit border-2 border-neutral-900 px-4 py-1.5 text-xs font-bold tracking-wide text-neutral-900 transition-all duration-200 hover:-translate-y-0.5 hover:bg-neutral-900 hover:text-neutral-50 hover:shadow-[2px_2px_0_#111827]"
+    >
+      Ver mas
+    </a>
+  </div>
+</article>
 ```
 
 ## File: src/components/Welcome.astro
@@ -473,53 +419,64 @@ import background from '../assets/background.svg';
 </style>
 ```
 
-## File: src/layouts/Layout.astro
+## File: src/content/proyectos/01_fiados.md
+```markdown
+---
+title: Fiados
+author: Alva Vidal 
+description: Una solución de software pensando en el usuario que se pide fiados en bodegas y necesita tener una trazabilidad de dichas deudas.
+technologies: ["springboot", "angular", "postgres"]
+github: "https://github.com/..."
+video: "https://www.youtube.com/embed/..."
+status: "En progreso"
+---
+
+
+# Sobre el proyecto
+
+Este proyecto se sumerge en el análisis detallado de la ejecución presupuestal, transformando datos complejos en insights claros y accionables. Nuestro objetivo es optimizar la toma de decisiones y mejorar la eficiencia en la gestión de recursos.
+```
+
+## File: src/pages/proyecto/[id].astro
 ```astro
 ---
-import "../styles/global.css";
-import { ClientRouter } from "astro:transitions";
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import TechBadge from "../../components/TechBadge.astro";
+
+export async function getStaticPaths() {
+  const proyectos = await getCollection("proyectos");
+  return proyectos.map((project) => ({
+    params: { id: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { title, author, description, technologies } = project.data;
+const { Content } = await render(project);
 ---
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Alva Blogs</title>
-    <ClientRouter />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+JP:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body
-    class="bg-neutral-50 text-neutral-900 font-['Inter','Noto_Sans_JP',sans-serif] antialiased leading-relaxed min-h-screen"
-  >
-    <header class="border-b-2 border-neutral-900 mb-10">
-      <div class="max-w-2xl mx-auto px-5 py-4 flex items-center justify-between">
-        <a href="/" class="text-lg font-extrabold tracking-tight">Alva</a>
-        <nav class="flex gap-6 text-sm font-semibold uppercase tracking-widest">
-          <a href="/" class="hover:text-neutral-500 transition-colors">Blog</a>
-          <a href="/about" class="hover:text-neutral-500 transition-colors">About</a>
-        </nav>
-      </div>
-    </header>
 
-    <main class="px-5 pb-16">
-      <slot />
-    </main>
-
-    <footer class="border-t-2 border-neutral-900">
-      <div class="max-w-2xl mx-auto px-5 py-4 text-center text-xs text-neutral-500 tracking-wider">
-        &copy; 2026 Alva
+<Layout>
+  <article class="max-w-2xl mx-auto">
+    <h1 class="text-4xl font-extrabold tracking-tight border-b-2 border-neutral-900 pb-3 mb-2" transition:name={`post-title-${project.id}`}>
+      {title}
+    </h1>
+    <p class="text-neutral-500 text-xs mb-4">
+      <em class="text-blue-900">Por {author}</em>
+    </p>
+    {technologies && (
+      <div class="flex flex-wrap justify-end gap-2 mb-6">
+        {technologies.map((tech) => (
+          <TechBadge tech={tech} />
+        ))}
       </div>
-    </footer>
-  </body>
-</html>
+    )}
+    <div class="prose prose-neutral max-w-none text-justify">
+      <Content />
+    </div>
+  </article>
+</Layout>
 ```
 
 ## File: src/styles/global.css
@@ -528,29 +485,156 @@ import { ClientRouter } from "astro:transitions";
 @plugin "@tailwindcss/typography";
 ```
 
-## File: src/content/blogs/01_elecciones_2026.md
-```markdown
+## File: package.json
+```json
+{
+  "name": "portafolio",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.3.0",
+    "astro": "^6.4.4",
+    "tailwindcss": "^4.3.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.20"
+  }
+}
+```
+
+## File: src/components/TechBadge.astro
+```astro
 ---
-title: Qué nos dice las elecciones del 2026?
-author: Alva Vidal 
-description: Una columna de opinión sobre la coyuntura electoral y política que atraviesa el Perú
+import { TECNOLOGIAS } from "../constants/technologies";
+
+interface Props {
+  tech: string;
+}
+
+const { tech } = Astro.props;
+const config = TECNOLOGIAS[tech];
 ---
 
+<span class:list={[
+  "inline-flex items-center gap-1 px-3 py-1 border-2 text-xs font-bold tracking-wide shadow-[inset_0_-2px_0_rgba(0,0,0,0.15)]",
+  config?.bg ?? "bg-neutral-200 border-neutral-950",
+  config?.text ?? "text-neutral-950"
+]}>
+  {config?.svgPath
+    ? <img src={config.svgPath} alt="" class="w-4 h-4" />
+    : config?.icon && <span class="mr-0.5">{config.icon}</span>
+  }
+  {config?.label ?? tech}
+</span>
+```
 
-## [1] Introducción
+## File: src/constants/technologies.ts
+```typescript
+// src/constants/technologies.ts
 
-Un dejavu es una sensación donde creemos que algo ya lo hemos vivido, y estas elecciones el 2026 es claramente uno. Cuál es patrón que siempre se repite?, obviamente la respuesta es **Keiko Fujimori, ella es la fuente de la inestabilidad**, pero a la par, es el único partido político consolidado en el Perú, vaya contradicción, si el fujimorismo gobernara para las mayorías, posiblemente Keiko hubiese sido presidenta a lo mucho, en el segundo o tercer intento. 
+export interface TechnologyConfig {
+  bg: string;
+  text: string;
+  label: string;
+  icon?: string;
+  svgPath?: string;
+}
 
-
-Pero el fujimorismo, solo le importó hacer clientelismo y populismo barato, aprovecharse que la gente dejó de exigir al Estado, esto gracias a las ideas y libros de automotivación, donde uno cree falsamente que la vida depende de uno mismo, que uno es arquitecto de su destino y tonterías así, donde los pitucos creen que "el pobre es pobre porque quiere", cuando en muchas ocasiones podríamos decir que uno es pobre porque sus padres no era ricos. 
-
-
-Pero, para esos temas sociales de alta complejidad de las decisiones personales donde tenemos más control (no el total, aunque muchos creean lo contrario), lo social (donde tenemos muy poca influencia, no decidimos dónde nacemos, quiénes son nuestros padres, ni tampoco por más buena gente que seamos agradaremos a todos) y donde menos poder tenemos en el azar y la entropía. 
-
-
-## [2] Contenido Principal
-
-Como decía Porky, Rafel Lopez Aliaga, hasta un panetón le ganaría a Keiko. Y a diferencias de tantas cosas, esta vez no estaba equivocada.
+export const TECNOLOGIAS: Record<string, TechnologyConfig> = {
+  springboot: {
+    bg: "bg-emerald-200 border-emerald-950",
+    text: "text-emerald-950",
+    label: "Spring Boot",
+    icon: "🍃"
+  },
+  angular: {
+    bg: "bg-red-200 border-red-950",
+    text: "text-red-950",
+    label: "Angular",
+    icon: "🅰"
+  },
+  postgres: {
+    bg: "bg-sky-200 border-sky-950",
+    text: "text-sky-950",
+    label: "PostgreSQL",
+    icon: "🐘",
+    svgPath: "/IconsTec/PostgresSQL.svg"
+  },
+  python: {
+    bg: "bg-amber-200 border-amber-950",
+    text: "text-amber-950",
+    label: "Python",
+    icon: "🐍",
+    svgPath: "/IconsTec/Python.svg"
+  },
+  pandas: {
+    bg: "bg-indigo-200 border-indigo-950",
+    text: "text-indigo-950",
+    label: "Pandas",
+    icon: "🐼",
+    svgPath: "/IconsTec/Pandas.svg"
+  },
+  sqlite: {
+    bg: "bg-blue-200 border-blue-950",
+    text: "text-blue-950",
+    label: "SQLite",
+    icon: "🗄️",
+    svgPath: "/IconsTec/SQLite.svg"
+  },
+  flask: {
+    bg: "bg-stone-200 border-stone-950",
+    text: "text-stone-950",
+    label: "Flask",
+    icon: "🧪",
+    svgPath: "/IconsTec/Flask.svg"
+  },
+  fastapi: {
+    bg: "bg-teal-200 border-teal-950",
+    text: "text-teal-950",
+    label: "FastAPI",
+    icon: "⚡",
+    svgPath: "/IconsTec/FastAPI.svg"
+  },
+  php: {
+    bg: "bg-violet-200 border-violet-950",
+    text: "text-violet-950",
+    label: "PHP",
+    icon: "🐘"
+  },
+  bootstrap: {
+    bg: "bg-fuchsia-200 border-fuchsia-950",
+    text: "text-fuchsia-950",
+    label: "Bootstrap",
+    icon: "🅱"
+  },
+  linux: {
+    bg: "bg-yellow-200 border-yellow-950",
+    text: "text-yellow-950",
+    label: "Linux",
+    svgPath: "/IconsTec/Linux.svg"
+  },
+  fedora: {
+    bg: "bg-sky-200 border-sky-950",
+    text: "text-sky-950",
+    label: "Fedora",
+    svgPath: "/IconsTec/Fedora.svg"
+  },
+  streamlit: {
+    bg: "bg-red-200 border-red-950",
+    text: "text-red-950",
+    label: "Streamlit",
+    svgPath: "/IconsTec/Streamlit.svg"
+  },
+};
 ```
 
 ## File: src/content/blogs/02_en_busqueda_deLaCarrera.md
@@ -603,6 +687,105 @@ Pero, para esos temas sociales de alta complejidad de las decisiones personales 
 Como decía Porky, Rafel Lopez Aliaga, hasta un panetón le ganaría a Keiko. Y a diferencias de tantas cosas, esta vez no estaba equivocada.
 ```
 
+## File: src/content/proyectos/02_analisis_presupuesto.md
+```markdown
+---
+title: Análisis presupuestal
+author: Alva Vidal 
+description: Análisis de datos sobre la ejecución presupuestal de una entidad.
+technologies: ["python", "pandas", "sqlite"]
+status: "En progreso"
+---
+
+## Sobre el proyecto
+```
+
+## File: src/content/proyectos/03_job_tracker.md
+```markdown
+---
+title: Gestor de postulaciones
+author: Alva Vidal 
+description: Screaper y CRM de trabajos
+technologies: ["php", "pandas", "sqlite", "bootstrap"]
+status: "En progreso"
+---
+```
+
+## File: src/pages/blog/page/[page].astro
+```astro
+---
+import { getCollection } from "astro:content";
+import Layout from "../../../layouts/Layout.astro";
+import BlogCard from "../../../components/BlogCard.astro";
+
+const PER_PAGE = 3;
+const blogs = await getCollection("blogs");
+const totalPages = Math.ceil(blogs.length / PER_PAGE);
+
+export async function getStaticPaths() {
+  const allBlogs = await getCollection("blogs");
+  const total = Math.ceil(allBlogs.length / 5);
+
+  return Array.from({ length: Math.max(0, total - 1) }, (_, i) => ({
+    params: { page: String(i + 2) },
+  }));
+}
+
+const { page } = Astro.params;
+const currentPage = Number(page);
+const start = (currentPage - 1) * PER_PAGE;
+const pagePosts = blogs.slice(start, start + PER_PAGE);
+---
+
+<Layout>
+  <div class="max-w-5xl mx-auto space-y-4">
+    <div class="flex items-center justify-between gap-4 border-b-2 border-neutral-900 pb-2">
+      <h1 class="text-xl font-extrabold tracking-tight text-neutral-900">
+        Blog — Página {currentPage}
+      </h1>
+      <span class="text-xs text-neutral-500 font-medium">
+        {blogs.length} artículos
+      </span>
+    </div>
+
+    <div class="space-y-2.5">
+      {
+        pagePosts.map((post) => {
+          const { id, data } = post;
+          const { title, author, description } = data;
+          return (
+            <BlogCard id={id} title={title} author={author} description={description} />
+          );
+        })
+      }
+    </div>
+
+    <nav class="flex justify-center gap-1.5 pt-3 border-t-2 border-neutral-900" aria-label="Paginación">
+      {
+        Array.from({ length: totalPages }, (_, i) => {
+          const p = i + 1;
+          const isCurrent = p === currentPage;
+          const href = p === 1 ? "/blog" : `/blog/page/${p}`;
+
+          return isCurrent ? (
+            <span class="inline-block border-2 border-neutral-900 bg-neutral-900 px-3 py-1 text-xs font-bold tracking-wide text-neutral-50">
+              {p}
+            </span>
+          ) : (
+            <a
+              href={href}
+              class="inline-block border-2 border-neutral-900 bg-white px-3 py-1 text-xs font-bold tracking-wide text-neutral-900 transition-all duration-200 hover:bg-neutral-900 hover:text-neutral-50"
+            >
+              {p}
+            </a>
+          );
+        })
+      }
+    </nav>
+  </div>
+</Layout>
+```
+
 ## File: src/pages/blog/[id].astro
 ```astro
 ---
@@ -636,6 +819,310 @@ const { Content } = await render(blog);
     </div>
   </article>
 </Layout>
+```
+
+## File: src/pages/blog/index.astro
+```astro
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import BlogCard from "../../components/BlogCard.astro";
+
+const PER_PAGE = 3;
+const blogs = await getCollection("blogs");
+const totalPages = Math.ceil(blogs.length / PER_PAGE);
+const currentPage = 1;
+const pagePosts = blogs.slice(0, PER_PAGE);
+---
+
+<Layout>
+  <div class="max-w-5xl mx-auto space-y-4">
+    <!-- ╔══════════════════════════════════════════════╗
+         ║   H E A D E R                             ║
+         ╚══════════════════════════════════════════════╝ -->
+    <div class="flex items-center justify-between gap-4 border-b-2 border-neutral-900 pb-2">
+      <h1 class="text-xl font-extrabold tracking-tight text-neutral-900">
+        Blog
+      </h1>
+      <span class="text-xs text-neutral-500 font-medium">
+        {blogs.length} artículos
+      </span>
+    </div>
+
+    <!-- ── lista de posts ── -->
+    <div class="space-y-2.5">
+      {
+        pagePosts.map((post) => {
+          const { id, data } = post;
+          const { title, author, description } = data;
+          return (
+            <BlogCard id={id} title={title} author={author} description={description} />
+          );
+        })
+      }
+    </div>
+
+    <!-- ── paginación ── -->
+    {
+      totalPages > 1 && (
+        <nav class="flex justify-center gap-1.5 pt-3 border-t-2 border-neutral-900" aria-label="Paginación">
+          {
+            Array.from({ length: totalPages }, (_, i) => {
+              const page = i + 1;
+              const isCurrent = page === currentPage;
+              const href = page === 1 ? "/blog" : `/blog/page/${page}`;
+
+              return isCurrent ? (
+                <span class="inline-block border-2 border-neutral-900 bg-neutral-900 px-3 py-1 text-xs font-bold tracking-wide text-neutral-50">
+                  {page}
+                </span>
+              ) : (
+                <a
+                  href={href}
+                  class="inline-block border-2 border-neutral-900 bg-white px-3 py-1 text-xs font-bold tracking-wide text-neutral-900 transition-all duration-200 hover:bg-neutral-900 hover:text-neutral-50"
+                >
+                  {page}
+                </a>
+              );
+            })
+          }
+        </nav>
+      )
+    }
+  </div>
+</Layout>
+```
+
+## File: src/pages/proyecto/page/[page].astro
+```astro
+---
+import { getCollection } from "astro:content";
+import Layout from "../../../layouts/Layout.astro";
+import ProjectCard from "../../../components/ProjectCard.astro";
+
+const PER_PAGE = 4;
+const proyectos = await getCollection("proyectos");
+const totalPages = Math.ceil(proyectos.length / PER_PAGE);
+
+export async function getStaticPaths() {
+  const all = await getCollection("proyectos");
+  const total = Math.ceil(all.length / 4);
+
+  return Array.from({ length: Math.max(0, total - 1) }, (_, i) => ({
+    params: { page: String(i + 2) },
+  }));
+}
+
+const { page } = Astro.params;
+const currentPage = Number(page);
+const start = (currentPage - 1) * PER_PAGE;
+const pageProjects = proyectos.slice(start, start + PER_PAGE);
+---
+
+<Layout>
+  <div class="max-w-5xl mx-auto space-y-4">
+    <div class="flex items-center justify-between gap-4 border-b-2 border-neutral-900 pb-2">
+      <h1 class="text-xl font-extrabold tracking-tight text-neutral-900">
+        Proyectos — Página {currentPage}
+      </h1>
+      <span class="text-xs text-neutral-500 font-medium">
+        {proyectos.length} proyectos
+      </span>
+    </div>
+
+    <div class="grid gap-4 md:grid-cols-2">
+      {
+        pageProjects.map((project) => {
+          const { id, data } = project;
+          const { title, author, description, technologies, status } = data;
+          return (
+            <ProjectCard
+              id={id}
+              title={title}
+              author={author}
+              description={description}
+              technologies={technologies}
+              status={status}
+            />
+          );
+        })
+      }
+    </div>
+
+    <nav class="flex justify-center gap-1.5 pt-3 border-t-2 border-neutral-900" aria-label="Paginación">
+      {
+        Array.from({ length: totalPages }, (_, i) => {
+          const p = i + 1;
+          const isCurrent = p === currentPage;
+          const href = p === 1 ? "/proyecto" : `/proyecto/page/${p}`;
+
+          return isCurrent ? (
+            <span class="inline-block border-2 border-neutral-900 bg-neutral-900 px-3 py-1 text-xs font-bold tracking-wide text-neutral-50">
+              {p}
+            </span>
+          ) : (
+            <a
+              href={href}
+              class="inline-block border-2 border-neutral-900 bg-white px-3 py-1 text-xs font-bold tracking-wide text-neutral-900 transition-all duration-200 hover:bg-neutral-900 hover:text-neutral-50"
+            >
+              {p}
+            </a>
+          );
+        })
+      }
+    </nav>
+  </div>
+</Layout>
+```
+
+## File: src/pages/proyecto/index.astro
+```astro
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+
+const PER_PAGE = 4;
+const proyectos = await getCollection("proyectos");
+const totalPages = Math.ceil(proyectos.length / PER_PAGE);
+const currentPage = 1;
+const pageProjects = proyectos.slice(0, PER_PAGE);
+---
+
+<Layout>
+  <div class="max-w-5xl mx-auto space-y-4">
+    <div class="flex items-center justify-between gap-4 border-b-2 border-neutral-900 pb-2">
+      <h1 class="text-xl font-extrabold tracking-tight text-neutral-900">
+        Proyectos
+      </h1>
+      <span class="text-xs text-neutral-500 font-medium">
+        {proyectos.length} proyectos
+      </span>
+    </div>
+
+    <div class="grid gap-4 md:grid-cols-2">
+      {
+        pageProjects.map((project) => {
+          const { id, data } = project;
+          const { title, author, description, technologies, status } = data;
+          return (
+            <ProjectCard
+              id={id}
+              title={title}
+              author={author}
+              description={description}
+              technologies={technologies}
+              status={status}
+            />
+          );
+        })
+      }
+    </div>
+
+    {
+      totalPages > 1 && (
+        <nav class="flex justify-center gap-1.5 pt-3 border-t-2 border-neutral-900" aria-label="Paginación">
+          {
+            Array.from({ length: totalPages }, (_, i) => {
+              const page = i + 1;
+              const isCurrent = page === currentPage;
+              const href = page === 1 ? "/proyecto" : `/proyecto/page/${page}`;
+
+              return isCurrent ? (
+                <span class="inline-block border-2 border-neutral-900 bg-neutral-900 px-3 py-1 text-xs font-bold tracking-wide text-neutral-50">
+                  {page}
+                </span>
+              ) : (
+                <a
+                  href={href}
+                  class="inline-block border-2 border-neutral-900 bg-white px-3 py-1 text-xs font-bold tracking-wide text-neutral-900 transition-all duration-200 hover:bg-neutral-900 hover:text-neutral-50"
+                >
+                  {page}
+                </a>
+              );
+            })
+          }
+        </nav>
+      )
+    }
+  </div>
+</Layout>
+```
+
+## File: src/content/blogs/01_elecciones_2026.md
+```markdown
+---
+title: Qué nos dice las elecciones del 2026?
+author: Alva Vidal 
+description: Una columna de opinión sobre la coyuntura electoral y política que atraviesa el Perú
+---
+
+
+## [1] Introducción
+
+Un dejavu es una sensación donde creemos que algo ya lo hemos vivido, y estas elecciones el 2026 es claramente uno. Cuál es patrón que siempre se repite?, obviamente la respuesta es **Keiko Fujimori, ella es la fuente de la inestabilidad**, pero a la par, es el único partido político consolidado en el Perú, vaya contradicción, si el fujimorismo gobernara para las mayorías, posiblemente Keiko hubiese sido presidenta a lo mucho, en el segundo o tercer intento. 
+
+
+Pero el fujimorismo, solo le importó hacer clientelismo y populismo barato, aprovecharse que la gente dejó de exigir al Estado, esto gracias a las ideas y libros de automotivación, donde uno cree falsamente que la vida depende de uno mismo, que uno es arquitecto de su destino y tonterías así, donde los pitucos creen que "el pobre es pobre porque quiere", cuando en muchas ocasiones podríamos decir que uno es pobre porque sus padres no era ricos. 
+
+
+Pero, para esos temas sociales de alta complejidad de las decisiones personales donde tenemos más control (no el total, aunque muchos creean lo contrario), lo social (donde tenemos muy poca influencia, no decidimos dónde nacemos, quiénes son nuestros padres, ni tampoco por más buena gente que seamos agradaremos a todos) y donde menos poder tenemos en el azar y la entropía. 
+
+
+## [2] Contenido Principal
+
+Como decía Porky, Rafel Lopez Aliaga, hasta un panetón le ganaría a Keiko. Y a diferencias de tantas cosas, esta vez no estaba equivocada.
+```
+
+## File: src/layouts/Layout.astro
+```astro
+---
+import "../styles/global.css";
+import { ClientRouter } from "astro:transitions";
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Alva Blogs</title>
+    <ClientRouter />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+JP:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    class="bg-neutral-50 text-neutral-900 font-['Inter','Noto_Sans_JP',sans-serif] antialiased leading-relaxed min-h-screen flex flex-col"
+  >
+    <header class="border-b-2 border-neutral-900">
+      <div class="max-w-4xl mx-auto px-5 py-4 flex items-center justify-between">
+        <a href="/" class="text-lg font-extrabold tracking-tight">Alva</a>
+        <nav class="flex gap-6 text-sm font-semibold uppercase tracking-widest">
+          <a href="/" class="hover:text-neutral-500 transition-colors">Inicio</a>
+          <a href="/proyecto" class="hover:text-neutral-500 transition-colors">Proyectos</a>
+          <a href="/blog" class="hover:text-neutral-500 transition-colors">Blog</a>
+          <a href="/about" class="hover:text-neutral-500 transition-colors">Sobre mí</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="px-5 flex-1 pt-8">
+      <slot />
+    </main>
+
+    <footer class="border-t-2 border-neutral-900">
+      <div class="max-w-4xl mx-auto px-5 py-4 text-center text-xs text-neutral-500 tracking-wider">
+        &copy; 2026 Alva
+      </div>
+    </footer>
+  </body>
+</html>
 ```
 
 ## File: src/content.config.ts
@@ -682,6 +1169,336 @@ const proyectos = defineCollection({
 export const collections  = { blogs, proyectos };
 ```
 
+## File: src/pages/about/index.astro
+```astro
+---
+import Layout from '../../layouts/Layout.astro';
+import fotoPerfil from '../../assets/yoLinkedin.jpeg';
+import TechBadge from '../../components/TechBadge.astro';
+---
+
+<Layout>
+  <div class="max-w-5xl mx-auto pb-12">
+    <div class="flex flex-col md:flex-row gap-5 md:items-start">
+
+      <!-- ───[ S I D E B A R   —   D A T O S ]────────── -->
+      <aside class="md:w-[30%] min-w-0 md:sticky md:top-8">
+        <div class="relative border-2 border-neutral-900 bg-white shadow-[5px_5px_0_#111827]">
+
+          <!-- ── foto en marco vertical ── -->
+          <div class="relative border-b-2 border-neutral-900 overflow-hidden max-w-xs mx-auto md:max-w-none md:mx-0">
+            <div class="absolute -top-2.5 -left-2.5 w-4 h-4 bg-neutral-900 z-10" />
+            <div class="absolute -top-2.5 -right-2.5 w-4 h-4 bg-neutral-900 z-10" />
+            <div class="pointer-events-none absolute inset-1 border border-neutral-900/10 z-10" />
+            <div class="aspect-[3/4] w-full bg-white overflow-hidden">
+              <img
+                src={fotoPerfil.src}
+                alt="Alva Vidal"
+                class="w-full h-full object-contain"
+              />
+            </div>
+          </div>
+
+          <!-- ── nombre ── -->
+          <div class="px-4 pt-3 pb-2 text-center border-b-2 border-neutral-900">
+            <h1 class="text-xl font-extrabold tracking-tight text-blue-900">
+              Alva Vidal
+            </h1>
+            <p class="mt-0.5 text-neutral-500 text-xs tracking-wide">
+              — Desarrollador & Analista —
+            </p>
+          </div>
+
+          <!-- ── tecnologías (más prominente) ── -->
+          <div class="border-b-2 border-neutral-900 px-4 py-3">
+            <h3 class="text-sm font-extrabold tracking-wider text-blue-900 mb-3 uppercase">
+              Tecnologías
+            </h3>
+            <div class="grid grid-cols-2 gap-1.5">
+              <TechBadge tech="python" />
+              <TechBadge tech="pandas" />
+              <TechBadge tech="postgres" />
+              <TechBadge tech="sqlite" />
+              <TechBadge tech="flask" />
+              <TechBadge tech="fastapi" />
+              <TechBadge tech="linux" />
+              <TechBadge tech="fedora" />
+            </div>
+          </div>
+
+          <!-- ── contacto ── -->
+          <div class="px-4 py-3 space-y-1.5">
+            <div class="flex items-center gap-2 text-sm text-neutral-600">
+              <span>📍</span>
+              <span>Lima, Perú</span>
+            </div>
+            <div class="flex items-center gap-2 text-sm text-neutral-600">
+              <span>📞</span>
+              <span>912 720 449</span>
+            </div>
+            <div class="flex items-start gap-2 text-sm text-neutral-600">
+              <span>✉️</span>
+              <span class="break-all">alvaro.vidal1403@gmail.com</span>
+          </div>
+          <div class="flex items-start gap-2 text-sm text-neutral-600">
+            <span>✉️</span>
+            <span class="break-all">alvavidal.1403@proton.me</span>
+        </div>
+
+
+        </div>
+      </aside>
+
+      <!-- ───[ M A I N   —   C V ]──────────────────── -->
+      <main class="md:w-[70%] min-w-0 space-y-5">
+
+        <!-- ── PERFIL PROFESIONAL ── -->
+        <section>
+          <div class="flex items-center gap-2 border-b-2 border-neutral-900 pb-1.5 mb-3">
+            <span class="h-px w-5 bg-blue-700/70"></span>
+            <h2 class="text-base font-extrabold tracking-wider text-blue-900 uppercase">
+              Perfil Profesional
+            </h2>
+          </div>
+          <div class="relative border-2 border-neutral-900 bg-white p-4 shadow-[4px_4px_0_#111827]">
+            <div class="absolute -top-2.5 -left-2.5 w-4 h-4 bg-neutral-900" />
+            <div class="absolute -top-2.5 -right-2.5 w-4 h-4 bg-neutral-900" />
+            <div class="pointer-events-none absolute inset-1 border border-neutral-900/10" />
+            <div class="space-y-3">
+              <div class="flex items-center gap-2 mb-0.5">
+                <span class="h-px w-5 bg-blue-700/70 shrink-0"></span>
+              </div>
+              <div>
+                <p class="text-sm text-neutral-700 leading-relaxed">
+                  Estudiante de 4to Ciclo de la carrera de <span class="underline decoration-[5px] decoration-yellow-500 underline-offset-4">Desarrollo de Sistemas Frontend y Backend</span> en IDAT. <span class="underline decoration-[5px] decoration-yellow-500 underline-offset-4">Bachiller en Ciencia Política</span> (UNMSM) y cuento con una especialización en <span class="underline decoration-[5px] decoration-yellow-500 underline-offset-4">Derecho Internacional</span> (Unisimón - Colombia). Estoy <span class="underline decoration-[5px] decoration-yellow-500 underline-offset-4">certificado por la OECE</span> (Organismo Especializado para las Contrataciones Públicas Eficientes).
+                </p>
+              </div>
+              <div>
+                <p class="text-sm text-neutral-700 leading-relaxed">
+                  Trabajo con datos operativos, conciliación de información, trazabilidad y automatización de reportes.
+                </p>
+              </div>
+              <div class="border-l-2 border-blue-900 pl-3">
+                <p class="text-sm font-semibold text-neutral-800 leading-relaxed">
+                  Actualmente estoy buscando oportunidades para crecer y fortalecer mi perfil profesional en el área de datos y/o desarrollo de software.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── EXPERIENCIA LABORAL ── -->
+        <section>
+          <div class="flex items-center gap-2 border-b-2 border-neutral-900 pb-1.5 mb-3">
+            <span class="h-px w-5 bg-blue-700/70"></span>
+            <h2 class="text-base font-extrabold tracking-wider text-blue-900 uppercase">
+              Experiencia Laboral
+            </h2>
+          </div>
+
+          <div class="relative border-2 border-neutral-900 bg-white p-5 shadow-[5px_5px_0_#111827]">
+            <div class="absolute -top-3 -left-3 w-5 h-5 bg-neutral-900" />
+            <div class="absolute -top-3 -right-3 w-5 h-5 bg-neutral-900" />
+            <div class="pointer-events-none absolute inset-1 border border-neutral-900/10" />
+
+            <div class="space-y-6">
+
+              <!-- Job 1 -->
+              <article class="space-y-1.5">
+                <div class="flex items-center gap-2 mb-0.5">
+                  <span class="h-px w-5 bg-blue-700/70 shrink-0"></span>
+                </div>
+                <h4 class="text-base font-extrabold text-blue-900 leading-tight">Analista de información</h4>
+                <p class="text-sm text-neutral-500">
+                  🏢 Inversiones e Innovaciones Cristhi E.I.R.L · 📍 Lima, Perú · Ene. 2026 - May. 2026
+                </p>
+                <ul class="space-y-1">
+                  <li class="text-sm font-bold text-neutral-700 leading-relaxed flex gap-1.5">
+                    <span class="mt-1 shrink-0 text-neutral-400">–</span>
+                    <span>Desarrollé proceso de extracción y análisis presupuestal vía API del SIAF, automatizando revisión de miles de órdenes de servicio.</span>
+                  </li>
+                  <li class="text-sm text-neutral-600 leading-relaxed flex gap-1.5">
+                    <span class="mt-1 shrink-0 text-neutral-400">–</span>
+                    <span>Implementé base de datos en base a registros de Excels, corregí y actualicé fórmulas para mejorar la conciliación.</span>
+                  </li>
+                  <li class="text-sm text-neutral-600 leading-relaxed flex gap-1.5">
+                    <span class="mt-1 shrink-0 text-neutral-400">–</span>
+                    <span>Validé la información en base a revisión documentaria.</span>
+                  </li>
+                </ul>
+              </article>
+
+              <hr class="border-t border-neutral-200/60" />
+
+              <!-- Job 2 -->
+              <article class="space-y-1.5">
+                <div class="flex items-center gap-2 mb-0.5">
+                  <span class="h-px w-5 bg-blue-700/70 shrink-0"></span>
+                </div>
+                <h4 class="text-base font-extrabold text-blue-900 leading-tight">Analista Administrativo en Presupuesto — Oficina de Planeamiento y Presupuesto</h4>
+                <p class="text-sm text-neutral-500">
+                  🏢 Red de Salud de Huarochirí · 📍 Lima, Perú · Oct. 2025 - Dic. 2025
+                </p>
+                <ul class="space-y-1">
+                  <li class="text-sm font-bold text-neutral-700 leading-relaxed flex gap-1.5">
+                    <span class="mt-1 shrink-0 text-neutral-400">–</span>
+                    <span>Identifiqué saldos de más de S/ 3 millones en certificados presupuestales sin compromiso.</span>
+                  </li>
+                  <li class="text-sm text-neutral-600 leading-relaxed flex gap-1.5">
+                    <span class="mt-1 shrink-0 text-neutral-400">–</span>
+                    <span>Implementé automatización de reportes en Excel y Power BI mediante macros VBA y Pandas en Python.</span>
+                  </li>
+                  <li class="text-sm text-neutral-600 leading-relaxed flex gap-1.5">
+                    <span class="mt-1 shrink-0 text-neutral-400">–</span>
+                    <span>Realicé validación y control de información presupuestal.</span>
+                  </li>
+                </ul>
+              </article>
+
+              <hr class="border-t border-neutral-200/60" />
+
+              <!-- Job 3 -->
+              <article class="space-y-1.5">
+                <div class="flex items-center gap-2 mb-0.5">
+                  <span class="h-px w-5 bg-blue-700/70 shrink-0"></span>
+                </div>
+                <h4 class="text-base font-extrabold text-blue-900 leading-tight">Analista administrativo — Gerencia de Logística</h4>
+                <p class="text-sm text-neutral-500">
+                  🏢 EMAPE · 📍 Lima, Perú · Ene. 2025 - Ago. 2025
+                </p>
+                <ul class="space-y-1">
+                  <li class="text-sm font-bold text-neutral-700 leading-relaxed flex gap-1.5">
+                    <span class="mt-1 shrink-0 text-neutral-400">–</span>
+                    <span>Recuperé más de S/ 80,000 en certificados sin rebajar (solo comprometidos y sin devengar).</span>
+                  </li>
+                  <li class="text-sm text-neutral-600 leading-relaxed flex gap-1.5">
+                    <span class="mt-1 shrink-0 text-neutral-400">–</span>
+                    <span>Asistí en la ejecución de más de 600 órdenes de servicios mensuales.</span>
+                  </li>
+                  <li class="text-sm text-neutral-600 leading-relaxed flex gap-1.5">
+                    <span class="mt-1 shrink-0 text-neutral-400">–</span>
+                    <span>Implementé reportes para mejorar la trazabilidad de los datos logísticos.</span>
+                  </li>
+                </ul>
+              </article>
+
+              <hr class="border-t border-neutral-200/60" />
+
+              <!-- Job 4 -->
+              <article class="space-y-1.5">
+                <div class="flex items-center gap-2 mb-0.5">
+                  <span class="h-px w-5 bg-blue-700/70 shrink-0"></span>
+                </div>
+                <h4 class="text-base font-extrabold text-blue-900 leading-tight">Analista Administrativo — Subgerencia de Concesiones y Eventos</h4>
+                <p class="text-sm text-neutral-500">
+                  🏢 SERPAR · 📍 Lima, Perú · Jun. 2024 - Oct. 2024
+                </p>
+                <ul class="space-y-1">
+                  <li class="text-sm font-bold text-neutral-700 leading-relaxed flex gap-1.5">
+                    <span class="mt-1 shrink-0 text-neutral-400">–</span>
+                    <span>Administré concesiones y arrendamientos en parques metropolitanos, desarrollando análisis históricos y modelos de valoración para tarifas comerciales.</span>
+                  </li>
+                  <li class="text-sm text-neutral-600 leading-relaxed flex gap-1.5">
+                    <span class="mt-1 shrink-0 text-neutral-400">–</span>
+                    <span>Realice el seguimiento y trazabilidad de los cobros de los concesionarios en los parques bajo mi administración.</span>
+                  </li>
+                </ul>
+                <div class="mt-2 pl-2 space-y-0.5">
+                  <p class="text-xs font-bold text-blue-900 mb-1">Parques administrados:</p>
+                  <ul class="space-y-0.5">
+                    <li class="text-sm text-neutral-600">– Club Metropolitano Huáscar (Villa El Salvador)</li>
+                    <li class="text-sm text-neutral-600">– Club Metropolitano Huayna Cápac (San Juan de Miraflores)</li>
+                    <li class="text-sm text-neutral-600">– Parque de La Muralla (Cercado de Lima)</li>
+                    <li class="text-sm text-neutral-600">– Parque Alameda Las Malvinas (Cercado de Lima)</li>
+                    <li class="text-sm text-neutral-600">– Parque Universitario (Cercado de Lima)</li>
+                    <li class="text-sm text-neutral-600">– Parque Metropolitano "Coronel Miguel Baquero" (Cercado de Lima)</li>
+                    <li class="text-sm text-neutral-600">– Parque de los Anillos (Ate)</li>
+                  </ul>
+                </div>
+              </article>
+
+              <hr class="border-t border-neutral-200/60" />
+
+              <!-- Job 5 -->
+              <article class="space-y-1.5">
+                <div class="flex items-center gap-2 mb-0.5">
+                  <span class="h-px w-5 bg-blue-700/70 shrink-0"></span>
+                </div>
+                <h4 class="text-base font-extrabold text-blue-900 leading-tight">Analista de Adquisiciones y Gestión Administrativa</h4>
+                <p class="text-sm text-neutral-500">
+                  🏢 V&V Soluciones · 📍 Lima, Perú · May. 2023 - Jun. 2024
+                </p>
+                <ul class="space-y-1">
+                  <li class="text-sm font-bold text-neutral-700 leading-relaxed flex gap-1.5">
+                    <span class="mt-1 shrink-0 text-neutral-400">–</span>
+                    <span>Validé y controlé información en contratos, órdenes de servicio y registros administrativos.</span>
+                  </li>
+                  <li class="text-sm text-neutral-600 leading-relaxed flex gap-1.5">
+                    <span class="mt-1 shrink-0 text-neutral-400">–</span>
+                    <span>Organicé de manera efectiva documentos para mejorar la trazabilidad y seguimiento de procesos.</span>
+                  </li>
+                  <li class="text-sm text-neutral-600 leading-relaxed flex gap-1.5">
+                    <span class="mt-1 shrink-0 text-neutral-400">–</span>
+                    <span>Di soporte a cobranza mediante verificación de estados de pago.</span>
+                  </li>
+                </ul>
+              </article>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- ── EDUCACIÓN ── -->
+        <section>
+          <div class="flex items-center gap-2 border-b-2 border-neutral-900 pb-1.5 mb-3">
+            <span class="h-px w-5 bg-blue-700/70"></span>
+            <h2 class="text-base font-extrabold tracking-wider text-blue-900 uppercase">
+              Educación
+            </h2>
+          </div>
+
+          <div class="space-y-3">
+            <article class="relative border-2 border-neutral-900 bg-white p-3 shadow-[4px_4px_0_#111827]">
+              <div class="absolute -top-2.5 -left-2.5 w-4 h-4 bg-neutral-900" />
+              <div class="absolute -top-2.5 -right-2.5 w-4 h-4 bg-neutral-900" />
+              <div class="pointer-events-none absolute inset-1 border border-neutral-900/10" />
+              <div class="flex items-center gap-2 mb-1">
+                <span class="h-px w-5 bg-blue-700/70 shrink-0"></span>
+              </div>
+              <h4 class="text-sm font-extrabold text-blue-900">Desarrollo de Sistemas Frontend y Backend</h4>
+              <p class="text-sm text-neutral-500">🇵🇪 Instituto Idat | 2025 — En curso (4to Ciclo)</p>
+            </article>
+
+            <article class="relative border-2 border-neutral-900 bg-white p-3 shadow-[4px_4px_0_#111827]">
+              <div class="absolute -top-2.5 -left-2.5 w-4 h-4 bg-neutral-900" />
+              <div class="absolute -top-2.5 -right-2.5 w-4 h-4 bg-neutral-900" />
+              <div class="pointer-events-none absolute inset-1 border border-neutral-900/10" />
+              <div class="flex items-center gap-2 mb-1">
+                <span class="h-px w-5 bg-blue-700/70 shrink-0"></span>
+              </div>
+              <h4 class="text-sm font-extrabold text-blue-900">Bachiller en Ciencia Política</h4>
+              <p class="text-sm text-neutral-500">🇵🇪 Universidad Nacional Mayor de San Marcos | 2016 - 2021</p>
+            </article>
+
+            <article class="relative border-2 border-neutral-900 bg-white p-3 shadow-[4px_4px_0_#111827]">
+              <div class="absolute -top-2.5 -left-2.5 w-4 h-4 bg-neutral-900" />
+              <div class="absolute -top-2.5 -right-2.5 w-4 h-4 bg-neutral-900" />
+              <div class="pointer-events-none absolute inset-1 border border-neutral-900/10" />
+              <div class="flex items-center gap-2 mb-1">
+                <span class="h-px w-5 bg-blue-700/70 shrink-0"></span>
+              </div>
+              <h4 class="text-sm font-extrabold text-blue-900">Especialización en Derecho Internacional</h4>
+              <p class="text-sm text-neutral-500">🇨🇴 Universidad Simón Bolívar (Colombia) | 2021</p>
+            </article>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+</Layout>
+```
+
 ## File: src/pages/index.astro
 ```astro
 ---
@@ -689,6 +1506,7 @@ import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import perfil from "../assets/perfil01.jpg";
 import TechBadge from "../components/TechBadge.astro";
+import BlogCard from "../components/BlogCard.astro";
 
 const posts = await getCollection("blogs");
 const proyectos = await getCollection("proyectos");
@@ -696,11 +1514,22 @@ const recentPosts = posts.slice(0, 3);
 const featuredProjects = proyectos.slice(0, 3);
 ---
 
+<!-- ╔══════════════════════════════════════════════════╗
+     ║   L A Y O U T   P R I N C I P A L             ║
+     ╚══════════════════════════════════════════════════╝ -->
 <Layout>
-  <div class="max-w-6xl mx-auto space-y-4 md:h-[calc(100svh-14rem)] md:flex md:flex-col md:overflow-hidden">
+  <div class="max-w-5xl mx-auto space-y-4 md:h-[calc(100svh-14rem)] md:flex md:flex-col md:overflow-hidden">
+
+    <!-- ╔══════════════════════════════════════════════╗
+         ║   F I L A   S U P E R I O R               ║
+         ║   aside (30%)  +  main (70%)              ║
+         ╚══════════════════════════════════════════════╝ -->
     <div class="flex flex-col md:flex-row gap-5 md:flex-1 md:min-h-0 md:items-stretch">
+
+      <!-- ───[ A S I D E   —   P E R F I L ]────────── -->
       <aside class="md:w-[30%] min-w-0 md:min-h-0">
         <div class="relative border-2 border-neutral-900 overflow-hidden bg-white md:h-full md:flex md:flex-col">
+          <!-- ── header ── -->
           <div class="px-4 pt-4 pb-2 border-b-2 border-neutral-900 text-center">
             <h1 class="text-xl font-extrabold tracking-tight text-neutral-900">
               Alva Vidal
@@ -709,12 +1538,13 @@ const featuredProjects = proyectos.slice(0, 3);
               — 思ったこと、感じたこと —
             </p>
           </div>
+          <!-- ── foto ── -->
           <img
             src={perfil.src}
             alt="Foto de perfil"
             class="relative w-full h-auto max-h-[22vh] md:flex-1 md:min-h-0 md:max-h-none object-contain"
           />
-
+          <!-- ── tags (sticker) ── -->
           <div class="flex flex-wrap justify-center gap-2 border-t-2 border-neutral-900 px-4 py-2">
             <span class="inline-block -rotate-2 border-2 border-neutral-900 bg-amber-300 px-3 py-1 text-xs font-extrabold tracking-wide text-amber-950 shadow-[3px_3px_0_#111827]">
               Desarrollador
@@ -723,6 +1553,7 @@ const featuredProjects = proyectos.slice(0, 3);
               Politólogo
             </span>
           </div>
+          <!-- ── descripción ── -->
           <div class="border-t-2 border-neutral-900 px-4 py-2.5">
             <p class="text-neutral-600 text-sm leading-relaxed">
               Estudiante de 4to Ciclo de la carrera de Desarrollo de Sistemas en Idat. Bachiller en Ciencia Política (UNMSM). Especializado en Derecho Internacional (Unisimón - Colombia).
@@ -731,7 +1562,9 @@ const featuredProjects = proyectos.slice(0, 3);
         </div>
       </aside>
 
+      <!-- ───[ M A I N   —   B L O G S   R E C I E N T E S ]── -->
       <main class="md:w-[70%] min-w-0 space-y-2.5 md:flex md:flex-col md:min-h-0">
+        <!-- ── header de sección ── -->
         <div class="flex items-center justify-between gap-4 border-b-2 border-neutral-900 pb-1.5">
           <h2 class="text-lg font-extrabold tracking-tight text-neutral-900">
             Blogs recientes
@@ -744,6 +1577,7 @@ const featuredProjects = proyectos.slice(0, 3);
           </a>
         </div>
 
+        <!-- ── tarjetas de posts ── -->
         <div class="space-y-1.5 md:flex md:flex-1 md:min-h-0 md:flex-col">
           {
             recentPosts.map((post) => {
@@ -751,36 +1585,7 @@ const featuredProjects = proyectos.slice(0, 3);
               const { title, author, description } = data;
 
               return (
-                <article class="relative border-2 border-neutral-900 bg-white p-2.5 shadow-[4px_4px_0_#111827] md:flex-1">
-                  <div class="absolute -top-2.5 -left-2.5 w-4 h-4 bg-neutral-900" />
-                  <div class="absolute -top-2.5 -right-2.5 w-4 h-4 bg-neutral-900" />
-                  <div class="pointer-events-none absolute inset-1 border border-black/10" />
-                  <div class="space-y-1">
-                    <div class="flex items-center gap-2">
-                      <span class="h-px w-5 bg-amber-700/70"></span>
-                    </div>
-                    <h3
-                      class="text-sm font-extrabold tracking-tight text-neutral-950 leading-tight"
-                      transition:name={`post-title-${id}`}
-                    >
-                      {title}
-                    </h3>
-                    <p class="text-[10px] font-medium italic text-neutral-500">
-                      Por <span class="text-blue-900">{author}</span>
-                    </p>
-                    <p class="text-neutral-700 text-xs leading-relaxed line-clamp-2">
-                      {description}
-                    </p>
-                  </div>
-                  <div class="mt-1.5">
-                    <a
-                      href={`/blog/${id}`}
-                      class="relative z-10 inline-block px-3 py-1 border-2 border-neutral-900 text-[10px] font-bold tracking-wide text-neutral-900 transition-all duration-200 hover:-translate-y-0.5 hover:bg-neutral-900 hover:text-neutral-50 hover:shadow-[2px_2px_0_#111827]"
-                    >
-                      Ver mas
-                    </a>
-                  </div>
-                </article>
+                <BlogCard id={id} title={title} author={author} description={description} />
               );
             })
           }
@@ -788,31 +1593,41 @@ const featuredProjects = proyectos.slice(0, 3);
       </main>
     </div>
 
+    <!-- ╔══════════════════════════════════════════════╗
+         ║   S E C C I Ó N   I N F E R I O R          ║
+         ║   Proyectos destacados (grid 3 col)        ║
+         ╚══════════════════════════════════════════════╝ -->
     <section class="space-y-1.5 md:flex-none">
+      <!-- ── header de sección ── -->
       <div class="flex items-center justify-between gap-4 border-b-2 border-neutral-900 pb-1.5">
         <h2 class="text-lg font-extrabold tracking-tight text-neutral-900">
           Proyectos destacados
         </h2>
         <a
-          href="#"
+          href="/proyecto"
           class="inline-block rotate-1 border-2 border-neutral-900 bg-amber-300 px-2.5 py-0.5 text-xs font-extrabold tracking-wide text-amber-950 shadow-[3px_3px_0_#111827] transition-transform hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none"
         >
           Ver todos
         </a>
       </div>
 
+      <!-- ── grid de tarjetas ── -->
       <div class="grid gap-2 md:grid-cols-3">
         {
           featuredProjects.map((project) => (
             <article class="relative border-2 border-neutral-900 bg-white p-3 min-h-24 shadow-[4px_4px_0_#111827]">
+                  <!-- esquinas superiores -->
                   <div class="absolute -top-2.5 -left-2.5 w-4 h-4 bg-neutral-900" />
                   <div class="absolute -top-2.5 -right-2.5 w-4 h-4 bg-neutral-900" />
+                  <!-- borde interno -->
                   <div class="pointer-events-none absolute inset-1 border border-black/10" />
                   <div class="flex h-full flex-col justify-between gap-2">
                     <div class="space-y-1">
+                      <!-- línea decorativa -->
                       <div class="flex items-center gap-2">
                         <span class="h-px w-5 bg-amber-700/70"></span>
                       </div>
+                      <!-- título con transición -->
                       <h3 class="text-sm font-extrabold tracking-tight text-neutral-950 leading-tight" transition:name={`post-title-${project.id}`}>
                         {project.data.title}
                       </h3>
@@ -822,6 +1637,7 @@ const featuredProjects = proyectos.slice(0, 3);
                       <p class="text-xs leading-relaxed text-neutral-600 line-clamp-2">
                         {project.data.description}
                       </p>
+                      <!-- badges de tecnologías -->
                       {project.data.technologies && (
                         <div class="flex flex-wrap justify-end gap-1.5 pt-1">
                           {project.data.technologies.map((tech) => (
@@ -830,6 +1646,7 @@ const featuredProjects = proyectos.slice(0, 3);
                         </div>
                       )}
                 </div>
+                <!-- botón "Ver mas" -->
                 <a
                   href={`/proyecto/${project.id}`}
                   class="relative z-10 inline-block w-fit border-2 border-neutral-900 px-3 py-1 text-[10px] font-bold tracking-wide text-neutral-900 transition-all duration-200 hover:-translate-y-0.5 hover:bg-neutral-900 hover:text-neutral-50 hover:shadow-[2px_2px_0_#111827]"

@@ -8,23 +8,37 @@ export interface Props {
   description: string;
   technologies?: string[] | undefined;
   status?: string | undefined;
+  compact?: boolean | undefined;
 }
 
-const { id, title, author, description, technologies, status } = Astro.props;
+const { id, title, author, description, technologies, status, compact = false } = Astro.props;
 ---
 
-<article class="relative border-2 border-neutral-900 bg-white p-4 shadow-[5px_5px_0_#111827]">
-  <div class="absolute -top-3 -left-3 w-5 h-5 bg-neutral-900" />
-  <div class="absolute -top-3 -right-3 w-5 h-5 bg-neutral-900" />
+<article
+  class:list={[
+    "relative min-h-0 border-2 border-neutral-900 bg-white",
+    compact
+      ? "flex flex-col p-2 shadow-[4px_4px_0_#111827]"
+      : "p-4 shadow-[5px_5px_0_#111827]",
+  ]}
+>
+  <div class:list={["absolute bg-neutral-900", compact ? "-top-2.5 -left-2.5 w-4 h-4" : "-top-3 -left-3 w-5 h-5"]} />
+  <div class:list={["absolute bg-neutral-900", compact ? "-top-2.5 -right-2.5 w-4 h-4" : "-top-3 -right-3 w-5 h-5"]} />
   <div class="pointer-events-none absolute inset-1 border border-black/10" />
 
-  <div class="flex h-full flex-col justify-between gap-3">
-    <div class="space-y-2">
+  <div class:list={[
+    "flex min-h-0 flex-col",
+    compact ? "h-full gap-1 justify-between" : "gap-3",
+  ]}>
+    <div class:list={[
+      "min-h-0",
+      compact ? "flex-1 space-y-0.5" : "space-y-2",
+    ]}>
       <div class="flex items-center justify-between gap-2">
         <div class="flex items-center gap-2">
-          <span class="h-px w-6 bg-amber-700/70"></span>
+          <span class:list={["h-px bg-amber-700/70", compact ? "w-5" : "w-6"]}></span>
         </div>
-        {status && (
+        {status && !compact && (
           <span class="inline-block border border-neutral-900 bg-neutral-100 px-2 py-0.5 text-[10px] font-bold tracking-wider text-neutral-700">
             {status}
           </span>
@@ -32,24 +46,32 @@ const { id, title, author, description, technologies, status } = Astro.props;
       </div>
 
       <h3
-        class="text-lg font-extrabold tracking-tight text-neutral-950 leading-tight"
+        class:list={[
+          "font-extrabold tracking-tight text-neutral-950 leading-tight",
+          compact ? "text-sm line-clamp-2" : "text-lg",
+        ]}
         transition:name={`post-title-${id}`}
       >
         {title}
       </h3>
 
-      <p class="text-xs font-medium italic text-neutral-500">
+      <p class:list={["font-medium italic text-neutral-500", compact ? "text-xs" : "text-xs"]}>
         Por <span class="text-blue-900">{author}</span>
       </p>
 
-      <p class="text-sm leading-relaxed text-neutral-600 line-clamp-3">
+      <p
+        class:list={[
+          "leading-relaxed text-neutral-600",
+          compact ? "text-sm line-clamp-2" : "text-sm line-clamp-3",
+        ]}
+      >
         {description}
       </p>
 
       {technologies && technologies.length > 0 && (
-        <div class="flex flex-wrap justify-end gap-1.5 pt-1">
+        <div class:list={["flex pt-0.5", compact ? "flex-wrap gap-1" : "flex-wrap justify-end gap-1.5 pt-1"]}>
           {technologies.map((tech) => (
-            <TechBadge tech={tech} />
+            <TechBadge tech={tech} compact={compact} />
           ))}
         </div>
       )}
@@ -57,7 +79,10 @@ const { id, title, author, description, technologies, status } = Astro.props;
 
     <a
       href={`/proyecto/${id}`}
-      class="relative z-10 inline-block w-fit border-2 border-neutral-900 px-4 py-1.5 text-xs font-bold tracking-wide text-neutral-900 transition-all duration-200 hover:-translate-y-0.5 hover:bg-neutral-900 hover:text-neutral-50 hover:shadow-[2px_2px_0_#111827]"
+      class:list={[
+        "relative z-10 inline-block w-fit shrink-0 border-2 border-neutral-900 font-bold tracking-wide text-neutral-900 transition-all duration-200 hover:-translate-y-0.5 hover:bg-neutral-900 hover:text-neutral-50 hover:shadow-[2px_2px_0_#111827]",
+        compact ? "self-start px-3 py-1 text-xs" : "px-4 py-1.5 text-xs",
+      ]}
     >
       Ver mas
     </a>
