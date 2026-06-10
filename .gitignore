@@ -22,3 +22,14 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# generated output
+repomix-output.md
+
+# agent / tooling dirs
+.agents/
+.kiro/
+
+# local env overrides
+.env.local
+.env.*.local
