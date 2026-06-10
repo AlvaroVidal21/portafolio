@@ -10,9 +10,13 @@ const config = TECNOLOGIAS[tech];
 ---
 
 <span class:list={[
-  "inline-block px-2.5 py-0.5 border-2 text-[9px] font-bold tracking-wide shadow-[inset_0_-2px_0_rgba(0,0,0,0.15)]",
+  "inline-flex items-center gap-1 px-3 py-1 border-2 text-xs font-bold tracking-wide shadow-[inset_0_-2px_0_rgba(0,0,0,0.15)]",
   config?.bg ?? "bg-neutral-200 border-neutral-950",
   config?.text ?? "text-neutral-950"
 ]}>
-  {config?.icon && <span class="mr-0.5">{config.icon}</span>}{config?.label ?? tech}
+  {config?.svgPath
+    ? <img src={config.svgPath} alt="" class="w-4 h-4" />
+    : config?.icon && <span class="mr-0.5">{config.icon}</span>
+  }
+  {config?.label ?? tech}
 </span>
