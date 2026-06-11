@@ -4,11 +4,18 @@ import { ClientRouter } from "astro:transitions";
 
 interface Props {
   lockViewport?: boolean;
+  seoTitle?: string;
+  seoDescription?: string;
 }
 
-const { lockViewport = false } = Astro.props;
+const DEFAULT_TITLE = "Alvaro Vidal | Politólogo, Analista de Datos & Est. Desarrollo de Sistemas";
+const DEFAULT_DESC = "Portafolio de Alvaro Vidal Velasque, estudiante de Desarrollo de Sistemas en IDAT, politólogo y analista de datos en Lima, Perú. Especialista en presupuesto público, logística pública, ciencia política y derecho internacional.";
+
+const { lockViewport = false, seoTitle = DEFAULT_TITLE, seoDescription = DEFAULT_DESC } = Astro.props;
 
 const pathname = Astro.url.pathname;
+const siteUrl = "https://alvavidal.dev";
+const canonicalUrl = `${siteUrl}${pathname}`;
 
 const navItems = [
   { href: "/", label: "Inicio" },
@@ -29,7 +36,37 @@ const currentPage =
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" href="/vendetta.ico" />
     <meta name="generator" content={Astro.generator} />
-    <title>Alva Vidal</title>
+    <title>{seoTitle}</title>
+    <meta name="description" content={seoDescription} />
+    <meta name="keywords" content="alvaro vidal velasque, alvaro daniel vidal velasque, politólogo, analista de datos, idat, desarrollo de sistemas, presupuesto público, logística pública, lima, perú, siaf, ciencia política" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={seoTitle} />
+    <meta property="og:description" content={seoDescription} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_PE" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={seoTitle} />
+    <meta name="twitter:description" content={seoDescription} />
+
+    <!-- JSON-LD Person -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Alvaro Daniel Vidal Velasque",
+      "alternateName": "Alvaro Vidal",
+      "jobTitle": ["Politólogo", "Analista de Datos", "Desarrollador de Sistemas"],
+      "address": { "@type": "PostalAddress", "addressLocality": "Lima, Perú" },
+      "url": siteUrl,
+      "knowsAbout": ["Presupuesto Público", "Logística Pública", "Ciencia Política", "Derecho Internacional", "Desarrollo de Sistemas", "Análisis de Datos", "SIAF"],
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "IDAT" }
+    })} />
+
     <ClientRouter />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

@@ -13,7 +13,7 @@ status: "Completado"
 
 Sistema inteligente que automatiza la extracción de registros financieros desde la API protegida del SIAF (MEF - Perú) y, mediante algoritmos heurísticos de scoring, deduce el estado operativo y presupuestal de cada orden de servicio.
 
-En su primera ejecución, el sistema identificó más de **S/ 200,000** en órdenes de servicio con saldo comprometido pero no devengado — un hallazgo que pasó desapercibido en auditorías manuales. [Ver el resultado →](#resultado)
+En su primera ejecución, el sistema identificó más de **S/ 200,000** en órdenes de servicio con saldo comprometido pero no devengado — un hallazgo que pasó desapercibido en auditorías manuales. [Ver el resultado →](#resultado-s-20076107-en-saldos-detectados)
 
 ---
 

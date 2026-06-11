@@ -11,12 +11,12 @@ export async function getStaticPaths(){
 }
 
 const { blog } = Astro.props;
-const { title, author } = blog.data;
+const { title, author, description } = blog.data;
 const { Content } = await render(blog);
 
 ---
 
-<Layout>
+<Layout seoTitle={`${title} | Alvaro Vidal`} seoDescription={description}>
   <article class="max-w-2xl mx-auto">
     <h1 class="text-4xl font-extrabold tracking-tight border-b-2 border-neutral-900 pb-3 mb-2" transition:name={`post-title-${blog.id}`}>
       {title}

@@ -22,7 +22,9 @@ const start = (currentPage - 1) * PER_PAGE;
 const pagePosts = blogs.slice(start, start + PER_PAGE);
 ---
 
-<Layout>
+<Layout
+  seoTitle="Blog | Alvaro Vidal – Artículos"
+  seoDescription="Artículos de Alvaro Vidal sobre presupuesto público, política, tecnología, ciencia de datos y desarrollo de sistemas.">
   <div class="max-w-5xl mx-auto space-y-4">
     <div class="flex items-center justify-between gap-4 border-b-2 border-neutral-900 pb-2">
       <h1 class="text-xl font-extrabold tracking-tight text-neutral-900">
