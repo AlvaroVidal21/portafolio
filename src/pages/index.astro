@@ -102,7 +102,7 @@ const featuredProjects = proyectos.slice(0, 3);
          ║   S E C C I Ó N   I N F E R I O R          ║
          ║   Proyectos destacados (grid 3 col)        ║
          ╚══════════════════════════════════════════════╝ -->
-    <section class="flex flex-col gap-1.5 md:min-h-0 md:gap-2 md:pb-2 lg:flex-[1.7] lg:overflow-hidden">
+    <section class="flex flex-col gap-1.5 md:min-h-0 md:gap-2 md:pb-2 lg:flex-[1.4] lg:overflow-hidden">
       <!-- ── header de sección ── -->
       <div class="flex shrink-0 items-center justify-between gap-4 border-b-2 border-neutral-900 pb-1">
         <h2 class="text-base font-extrabold tracking-tight text-neutral-900 md:text-lg">
@@ -117,11 +117,11 @@ const featuredProjects = proyectos.slice(0, 3);
       </div>
 
       <!-- ── grid de tarjetas ── -->
-      <div class="grid grid-cols-1 gap-2 md:min-h-0 md:grid-cols-2 md:items-stretch lg:flex-1 lg:grid-cols-3 lg:overflow-hidden lg:max-h-[15rem]">
+<div class="grid grid-cols-1 gap-3 md:min-h-0 md:grid-cols-2 md:items-stretch lg:flex-1 lg:grid-cols-3 lg:overflow-hidden lg:max-h-60">
         {
           featuredProjects.map((project) => {
             const { id, data } = project;
-            const { title, author, description, technologies, status } = data;
+            const { title, author, description, technologies, status, github } = data;
 
             return (
               <ProjectCard
@@ -132,6 +132,7 @@ const featuredProjects = proyectos.slice(0, 3);
                 description={description}
                 technologies={technologies}
                 status={status}
+                github={github}
               />
             );
           })

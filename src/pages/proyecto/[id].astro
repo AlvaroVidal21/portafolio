@@ -12,7 +12,7 @@ export async function getStaticPaths() {
 }
 
 const { project } = Astro.props;
-const { title, author, description, technologies } = project.data;
+const { title, author, description, technologies, github } = project.data;
 const { Content } = await render(project);
 ---
 
@@ -24,6 +24,12 @@ const { Content } = await render(project);
     <p class="text-neutral-500 text-xs mb-4">
       <em class="text-blue-900">Por {author}</em>
     </p>
+    {github && (
+      <a href={github} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 border-2 border-neutral-900 px-2.5 py-1 text-xs font-bold tracking-wide text-neutral-900 transition-all hover:bg-neutral-900 hover:text-neutral-50 mb-4">
+        <img src="/IconsTec/GitHub.svg" alt="" class="w-4 h-4" />
+        Ver en GitHub
+      </a>
+    )}
     {technologies && (
       <div class="flex flex-wrap justify-end gap-2 mb-6">
         {technologies.map((tech) => (

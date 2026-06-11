@@ -39,7 +39,7 @@ const pageProjects = proyectos.slice(start, start + PER_PAGE);
       {
         pageProjects.map((project) => {
           const { id, data } = project;
-          const { title, author, description, technologies, status } = data;
+          const { title, author, description, technologies, status, github } = data;
           return (
             <ProjectCard
               id={id}
@@ -48,6 +48,7 @@ const pageProjects = proyectos.slice(start, start + PER_PAGE);
               description={description}
               technologies={technologies}
               status={status}
+              github={github}
             />
           );
         })

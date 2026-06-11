@@ -8,10 +8,11 @@ export interface Props {
   description: string;
   technologies?: string[] | undefined;
   status?: string | undefined;
+  github?: string | undefined;
   compact?: boolean | undefined;
 }
 
-const { id, title, author, description, technologies, status, compact = false } = Astro.props;
+const { id, title, author, description, technologies, status, github, compact = false } = Astro.props;
 
 const statusStyles: Record<string, string> = {
   "En progreso": "border border-neutral-900 bg-neutral-100 text-neutral-700",
@@ -34,24 +35,32 @@ const statusStyles: Record<string, string> = {
 
   <div class:list={[
     "flex min-h-0 flex-col",
-    compact ? "h-full gap-1 justify-between" : "gap-3",
+    compact ? "h-full gap-1" : "gap-3",
   ]}>
     <div class:list={[
       "min-h-0",
-      compact ? "flex-1 space-y-0.5" : "space-y-2",
+      compact ? "space-y-0.5" : "space-y-2",
     ]}>
       <div class="flex items-center justify-between gap-2">
         <div class="flex items-center gap-2">
           <span class:list={["h-px bg-amber-700/70", compact ? "w-5" : "w-6"]}></span>
         </div>
-        {status && !compact && (
-          <span class:list={[
-            "inline-block px-2 py-0.5 text-[10px] font-bold tracking-wider",
-            statusStyles[status] ?? "border border-neutral-900 bg-neutral-100 text-neutral-700",
-          ]}>
-            {status}
-          </span>
-        )}
+        <div class="flex items-center gap-2">
+          {github && !compact && (
+            <a href={github} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 border-2 border-neutral-900 px-2 py-0.5 text-[10px] font-bold tracking-wide text-neutral-900 transition-all hover:bg-neutral-900 hover:text-neutral-50">
+              <img src="/IconsTec/GitHub.svg" alt="" class="w-4 h-4" />
+              GitHub
+            </a>
+          )}
+          {status && !compact && (
+            <span class:list={[
+              "inline-block px-2 py-0.5 text-[10px] font-bold tracking-wider",
+              statusStyles[status] ?? "border border-neutral-900 bg-neutral-100 text-neutral-700",
+            ]}>
+              {status}
+            </span>
+          )}
+        </div>
       </div>
 
       <h3
@@ -78,7 +87,7 @@ const statusStyles: Record<string, string> = {
       </p>
 
       {technologies && technologies.length > 0 && (
-        <div class:list={["flex pt-0.5", compact ? "flex-wrap gap-1" : "flex-wrap justify-end gap-1.5 pt-1"]}>
+        <div class:list={["flex", compact ? "flex-wrap gap-1 pt-1" : "flex-wrap justify-end gap-1.5 pt-2"]}>
           {technologies.map((tech) => (
             <TechBadge tech={tech} compact={compact} />
           ))}
@@ -86,14 +95,22 @@ const statusStyles: Record<string, string> = {
       )}
     </div>
 
-    <a
-      href={`/proyecto/${id}`}
-      class:list={[
-        "relative z-10 inline-block w-fit shrink-0 border-2 border-neutral-900 font-bold tracking-wide text-neutral-900 transition-all duration-200 hover:-translate-y-0.5 hover:bg-neutral-900 hover:text-neutral-50 hover:shadow-[2px_2px_0_#111827]",
-        compact ? "self-start px-3 py-1 text-xs" : "px-4 py-1.5 text-xs",
-      ]}
-    >
-      Ver mas
-    </a>
+    <div class:list={["flex items-center gap-2", compact ? "justify-between mt-auto" : ""]}>
+      {github && compact && (
+        <a href={github} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 border-2 border-neutral-900 px-2 py-0.5 text-[10px] font-bold tracking-wide text-neutral-900 transition-all hover:bg-neutral-900 hover:text-neutral-50">
+          <img src="/IconsTec/GitHub.svg" alt="" class="w-3.5 h-3.5" />
+          GitHub
+        </a>
+      )}
+      <a
+        href={`/proyecto/${id}`}
+        class:list={[
+          "relative z-10 inline-block w-fit shrink-0 border-2 border-neutral-900 font-bold tracking-wide text-neutral-900 transition-all duration-200 hover:-translate-y-0.5 hover:bg-neutral-900 hover:text-neutral-50 hover:shadow-[2px_2px_0_#111827]",
+          compact ? "self-start px-3 py-1 text-xs" : "px-4 py-1.5 text-xs",
+        ]}
+      >
+        Ver mas
+      </a>
+    </div>
   </div>
 </article>

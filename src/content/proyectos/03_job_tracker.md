@@ -6,7 +6,7 @@ technologies: ["php", "pandas", "sqlite", "bootstrap", "python"]
 status: "Completado"
 ---
 
-Un dashboard web que permite registrar y dar seguimiento a postulaciones laborales, acompañado de un script de Python que genera analíticas visuales directo en la terminal. 
+Un dashboard web que permite registrar y dar seguimiento a postulaciones laborales, acompañado de un script de Python que genera analíticas visuales directo en la terminal. 1
 
 ## Por qué lo hice?
 
