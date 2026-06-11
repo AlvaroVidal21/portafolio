@@ -7,7 +7,7 @@ description: Una columna de opinión sobre la coyuntura electoral y política qu
 
 ## [1] Introducción
 
-Un dejavu es una sensación donde creemos que algo ya lo hemos vivido, y estas elecciones el 2026 es claramente uno. Cuál es patrón que siempre se repite?, obviamente la respuesta es **Keiko Fujimori, ella es la fuente de la inestabilidad**, pero a la par, es el único partido político consolidado en el Perú, vaya contradicción, si el fujimorismo gobernara para las mayorías, posiblemente Keiko hubiese sido presidenta a lo mucho, en el segundo o tercer intento. 
+Un déjà vu es esa sensación de haber vivido algo antes. Y en el Perú electoral de 2026, esa sensación vuelve con fuerza: fragmentación, desconfianza, liderazgos reciclados y una derecha que sigue orbitando alrededor de Keiko Fujimori, la figura más persistente del escenario político. El problema no es solo Keiko. El problema es un sistema político que ha convertido la crisis en rutina y la representación en un mercado de lealtades, miedo y desencanto.
 
 
 Pero el fujimorismo, solo le importó hacer clientelismo y populismo barato, aprovecharse que la gente dejó de exigir al Estado, esto gracias a las ideas y libros de automotivación, donde uno cree falsamente que la vida depende de uno mismo, que uno es arquitecto de su destino y tonterías así, donde los pitucos creen que "el pobre es pobre porque quiere", cuando en muchas ocasiones podríamos decir que uno es pobre porque sus padres no era ricos. 

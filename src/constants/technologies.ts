@@ -13,13 +13,15 @@ export const TECNOLOGIAS: Record<string, TechnologyConfig> = {
     bg: "bg-emerald-200 border-emerald-950",
     text: "text-emerald-950",
     label: "Spring Boot",
-    icon: "🍃"
+    icon: "🍃",
+    svgPath: "/IconsTec/SpringBoot.svg"
   },
   angular: {
     bg: "bg-red-200 border-red-950",
     text: "text-red-950",
     label: "Angular",
-    icon: "🅰"
+    icon: "🅰",
+    svgPath: "/IconsTec/Angular.svg"
   },
   postgres: {
     bg: "bg-sky-200 border-sky-950",
@@ -67,13 +69,15 @@ export const TECNOLOGIAS: Record<string, TechnologyConfig> = {
     bg: "bg-violet-200 border-violet-950",
     text: "text-violet-950",
     label: "PHP",
-    icon: "🐘"
+    icon: "🐘",
+    svgPath: "/IconsTec/PHP.svg"
   },
   bootstrap: {
     bg: "bg-fuchsia-200 border-fuchsia-950",
     text: "text-fuchsia-950",
     label: "Bootstrap",
-    icon: "🅱"
+    icon: "🅱",
+    svgPath: "/IconsTec/Bootstrap.svg"
   },
   linux: {
     bg: "bg-yellow-200 border-yellow-950",
@@ -92,5 +96,12 @@ export const TECNOLOGIAS: Record<string, TechnologyConfig> = {
     text: "text-red-950",
     label: "Streamlit",
     svgPath: "/IconsTec/Streamlit.svg"
+  },
+  rust: {
+    bg: "bg-orange-200 border-orange-950",
+    text: "text-orange-950",
+    label: "Rust",
+    icon: "🦀",
+    svgPath: "/IconsTec/Rust.svg"
   },
 };

@@ -12,6 +12,12 @@ export interface Props {
 }
 
 const { id, title, author, description, technologies, status, compact = false } = Astro.props;
+
+const statusStyles: Record<string, string> = {
+  "En progreso": "border border-neutral-900 bg-neutral-100 text-neutral-700",
+  "Completado": "border border-green-900 bg-green-100 text-green-700",
+  "Pausado": "border border-red-900 bg-red-100 text-red-700",
+};
 ---
 
 <article
@@ -39,7 +45,10 @@ const { id, title, author, description, technologies, status, compact = false } 
           <span class:list={["h-px bg-amber-700/70", compact ? "w-5" : "w-6"]}></span>
         </div>
         {status && !compact && (
-          <span class="inline-block border border-neutral-900 bg-neutral-100 px-2 py-0.5 text-[10px] font-bold tracking-wider text-neutral-700">
+          <span class:list={[
+            "inline-block px-2 py-0.5 text-[10px] font-bold tracking-wider",
+            statusStyles[status] ?? "border border-neutral-900 bg-neutral-100 text-neutral-700",
+          ]}>
             {status}
           </span>
         )}

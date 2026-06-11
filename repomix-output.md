@@ -91,120 +91,6 @@ package.json
 <svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1024" fill="none"><path fill="url(#a)" fill-rule="evenodd" d="M-217.58 475.75c91.82-72.02 225.52-29.38 341.2-44.74C240 415.56 372.33 315.14 466.77 384.9c102.9 76.02 44.74 246.76 90.31 366.31 29.83 78.24 90.48 136.14 129.48 210.23 57.92 109.99 169.67 208.23 155.9 331.77-13.52 121.26-103.42 264.33-224.23 281.37-141.96 20.03-232.72-220.96-374.06-196.99-151.7 25.73-172.68 330.24-325.85 315.72-128.6-12.2-110.9-230.73-128.15-358.76-12.16-90.14 65.87-176.25 44.1-264.57-26.42-107.2-167.12-163.46-176.72-273.45-10.15-116.29 33.01-248.75 124.87-320.79Z" clip-rule="evenodd" style="opacity:.154"/><path fill="url(#b)" fill-rule="evenodd" d="M1103.43 115.43c146.42-19.45 275.33-155.84 413.5-103.59 188.09 71.13 409 212.64 407.06 413.88-1.94 201.25-259.28 278.6-414.96 405.96-130 106.35-240.24 294.39-405.6 265.3-163.7-28.8-161.93-274.12-284.34-386.66-134.95-124.06-436-101.46-445.82-284.6-9.68-180.38 247.41-246.3 413.54-316.9 101.01-42.93 207.83 21.06 316.62 6.61Z" clip-rule="evenodd" style="opacity:.154"/><defs><linearGradient id="b" x1="373" x2="1995.44" y1="1100" y2="118.03" gradientUnits="userSpaceOnUse"><stop stop-color="#D83333"/><stop offset="1" stop-color="#F041FF"/></linearGradient><linearGradient id="a" x1="107.37" x2="1130.66" y1="1993.35" y2="1026.31" gradientUnits="userSpaceOnUse"><stop stop-color="#3245FF"/><stop offset="1" stop-color="#BC52EE"/></linearGradient></defs></svg>
 ```
 
-## File: src/components/BlogCard.astro
-```astro
----
-export interface Props {
-  id: string;
-  title: string;
-  author: string;
-  description: string;
-}
-
-const { id, title, author, description } = Astro.props;
----
-
-<article class="relative border-2 border-neutral-900 bg-white p-2.5 shadow-[4px_4px_0_#111827]">
-  <div class="absolute -top-2.5 -left-2.5 w-4 h-4 bg-neutral-900" />
-  <div class="absolute -top-2.5 -right-2.5 w-4 h-4 bg-neutral-900" />
-  <div class="pointer-events-none absolute inset-1 border border-black/10" />
-  <div class="space-y-1">
-    <div class="flex items-center gap-2">
-      <span class="h-px w-5 bg-amber-700/70"></span>
-    </div>
-    <h3
-      class="text-base font-extrabold tracking-tight text-neutral-950 leading-tight"
-      transition:name={`post-title-${id}`}
-    >
-      {title}
-    </h3>
-    <p class="text-xs font-medium italic text-neutral-500">
-      Por <span class="text-blue-900">{author}</span>
-    </p>
-    <p class="text-neutral-700 text-sm leading-relaxed line-clamp-2">
-      {description}
-    </p>
-  </div>
-  <div class="mt-2">
-    <a
-      href={`/blog/${id}`}
-      class="relative z-10 inline-block px-4 py-1.5 border-2 border-neutral-900 text-xs font-bold tracking-wide text-neutral-900 transition-all duration-200 hover:-translate-y-0.5 hover:bg-neutral-900 hover:text-neutral-50 hover:shadow-[2px_2px_0_#111827]"
-    >
-      Ver mas
-    </a>
-  </div>
-</article>
-```
-
-## File: src/components/ProjectCard.astro
-```astro
----
-import TechBadge from "./TechBadge.astro";
-
-export interface Props {
-  id: string;
-  title: string;
-  author: string;
-  description: string;
-  technologies?: string[] | undefined;
-  status?: string | undefined;
-}
-
-const { id, title, author, description, technologies, status } = Astro.props;
----
-
-<article class="relative border-2 border-neutral-900 bg-white p-4 shadow-[5px_5px_0_#111827]">
-  <div class="absolute -top-3 -left-3 w-5 h-5 bg-neutral-900" />
-  <div class="absolute -top-3 -right-3 w-5 h-5 bg-neutral-900" />
-  <div class="pointer-events-none absolute inset-1 border border-black/10" />
-
-  <div class="flex h-full flex-col justify-between gap-3">
-    <div class="space-y-2">
-      <div class="flex items-center justify-between gap-2">
-        <div class="flex items-center gap-2">
-          <span class="h-px w-6 bg-amber-700/70"></span>
-        </div>
-        {status && (
-          <span class="inline-block border border-neutral-900 bg-neutral-100 px-2 py-0.5 text-[10px] font-bold tracking-wider text-neutral-700">
-            {status}
-          </span>
-        )}
-      </div>
-
-      <h3
-        class="text-lg font-extrabold tracking-tight text-neutral-950 leading-tight"
-        transition:name={`post-title-${id}`}
-      >
-        {title}
-      </h3>
-
-      <p class="text-xs font-medium italic text-neutral-500">
-        Por <span class="text-blue-900">{author}</span>
-      </p>
-
-      <p class="text-sm leading-relaxed text-neutral-600 line-clamp-3">
-        {description}
-      </p>
-
-      {technologies && technologies.length > 0 && (
-        <div class="flex flex-wrap justify-end gap-1.5 pt-1">
-          {technologies.map((tech) => (
-            <TechBadge tech={tech} />
-          ))}
-        </div>
-      )}
-    </div>
-
-    <a
-      href={`/proyecto/${id}`}
-      class="relative z-10 inline-block w-fit border-2 border-neutral-900 px-4 py-1.5 text-xs font-bold tracking-wide text-neutral-900 transition-all duration-200 hover:-translate-y-0.5 hover:bg-neutral-900 hover:text-neutral-50 hover:shadow-[2px_2px_0_#111827]"
-    >
-      Ver mas
-    </a>
-  </div>
-</article>
-```
-
 ## File: src/components/Welcome.astro
 ```astro
 ---
@@ -511,30 +397,162 @@ const { Content } = await render(project);
 }
 ```
 
-## File: src/components/TechBadge.astro
+## File: src/components/BlogCard.astro
 ```astro
 ---
-import { TECNOLOGIAS } from "../constants/technologies";
-
-interface Props {
-  tech: string;
+export interface Props {
+  id: string;
+  title: string;
+  author: string;
+  description: string;
+  compact?: boolean;
 }
 
-const { tech } = Astro.props;
-const config = TECNOLOGIAS[tech];
+const { id, title, author, description, compact = false } = Astro.props;
 ---
 
-<span class:list={[
-  "inline-flex items-center gap-1 px-3 py-1 border-2 text-xs font-bold tracking-wide shadow-[inset_0_-2px_0_rgba(0,0,0,0.15)]",
-  config?.bg ?? "bg-neutral-200 border-neutral-950",
-  config?.text ?? "text-neutral-950"
-]}>
-  {config?.svgPath
-    ? <img src={config.svgPath} alt="" class="w-4 h-4" />
-    : config?.icon && <span class="mr-0.5">{config.icon}</span>
-  }
-  {config?.label ?? tech}
-</span>
+<article
+  class:list={[
+    "relative border-2 border-neutral-900 bg-white shadow-[4px_4px_0_#111827]",
+    compact
+      ? "flex min-h-0 flex-1 flex-col overflow-hidden p-2"
+      : "p-2.5",
+  ]}
+>
+  <div class="absolute -top-2.5 -left-2.5 w-4 h-4 bg-neutral-900" />
+  <div class="absolute -top-2.5 -right-2.5 w-4 h-4 bg-neutral-900" />
+  <div class="pointer-events-none absolute inset-1 border border-black/10" />
+  <div class:list={[compact ? "min-h-0 flex-1 space-y-0.5 overflow-hidden" : "space-y-1"]}>
+    <div class="flex items-center gap-2">
+      <span class="h-px w-5 bg-amber-700/70"></span>
+    </div>
+    <h3
+      class:list={[
+        "font-extrabold tracking-tight text-neutral-950 leading-tight",
+        compact ? "text-sm line-clamp-1" : "text-base",
+      ]}
+      transition:name={`post-title-${id}`}
+    >
+      {title}
+    </h3>
+    <p class:list={["font-medium italic text-neutral-500", compact ? "text-[10px]" : "text-xs"]}>
+      Por <span class="text-blue-900">{author}</span>
+    </p>
+    <p
+      class:list={[
+        "leading-relaxed text-neutral-700",
+        compact ? "text-xs line-clamp-2" : "text-sm line-clamp-2",
+      ]}
+    >
+      {description}
+    </p>
+  </div>
+  <div class:list={[compact ? "mt-1 shrink-0" : "mt-2"]}>
+    <a
+      href={`/blog/${id}`}
+      class:list={[
+        "relative z-10 inline-block border-2 border-neutral-900 font-bold tracking-wide text-neutral-900 transition-all duration-200 hover:-translate-y-0.5 hover:bg-neutral-900 hover:text-neutral-50 hover:shadow-[2px_2px_0_#111827]",
+        compact ? "px-3 py-1 text-[10px]" : "px-4 py-1.5 text-xs",
+      ]}
+    >
+      Ver más
+    </a>
+  </div>
+</article>
+```
+
+## File: src/components/ProjectCard.astro
+```astro
+---
+import TechBadge from "./TechBadge.astro";
+
+export interface Props {
+  id: string;
+  title: string;
+  author: string;
+  description: string;
+  technologies?: string[] | undefined;
+  status?: string | undefined;
+  compact?: boolean | undefined;
+}
+
+const { id, title, author, description, technologies, status, compact = false } = Astro.props;
+---
+
+<article
+  class:list={[
+    "relative min-h-0 border-2 border-neutral-900 bg-white",
+    compact
+      ? "flex flex-col p-2 shadow-[4px_4px_0_#111827]"
+      : "p-4 shadow-[5px_5px_0_#111827]",
+  ]}
+>
+  <div class:list={["absolute bg-neutral-900", compact ? "-top-2.5 -left-2.5 w-4 h-4" : "-top-3 -left-3 w-5 h-5"]} />
+  <div class:list={["absolute bg-neutral-900", compact ? "-top-2.5 -right-2.5 w-4 h-4" : "-top-3 -right-3 w-5 h-5"]} />
+  <div class="pointer-events-none absolute inset-1 border border-black/10" />
+
+  <div class:list={[
+    "flex min-h-0 flex-col",
+    compact ? "h-full gap-1 justify-between" : "gap-3",
+  ]}>
+    <div class:list={[
+      "min-h-0",
+      compact ? "flex-1 space-y-0.5" : "space-y-2",
+    ]}>
+      <div class="flex items-center justify-between gap-2">
+        <div class="flex items-center gap-2">
+          <span class:list={["h-px bg-amber-700/70", compact ? "w-5" : "w-6"]}></span>
+        </div>
+        {status && !compact && (
+          <span class="inline-block border border-neutral-900 bg-neutral-100 px-2 py-0.5 text-[10px] font-bold tracking-wider text-neutral-700">
+            {status}
+          </span>
+        )}
+      </div>
+
+      <h3
+        class:list={[
+          "font-extrabold tracking-tight text-neutral-950 leading-tight",
+          compact ? "text-sm line-clamp-2" : "text-lg",
+        ]}
+        transition:name={`post-title-${id}`}
+      >
+        {title}
+      </h3>
+
+      <p class:list={["font-medium italic text-neutral-500", compact ? "text-xs" : "text-xs"]}>
+        Por <span class="text-blue-900">{author}</span>
+      </p>
+
+      <p
+        class:list={[
+          "leading-relaxed text-neutral-600",
+          compact ? "text-sm line-clamp-2" : "text-sm line-clamp-3",
+        ]}
+      >
+        {description}
+      </p>
+
+      {technologies && technologies.length > 0 && (
+        <div class:list={["flex pt-0.5", compact ? "flex-wrap gap-1" : "flex-wrap justify-end gap-1.5 pt-1"]}>
+          {technologies.map((tech) => (
+            <TechBadge tech={tech} compact={compact} />
+          ))}
+        </div>
+      )}
+    </div>
+
+    <a
+      href={`/proyecto/${id}`}
+      class:list={[
+        "relative z-10 inline-block w-fit shrink-0 border-2 border-neutral-900 font-bold tracking-wide text-neutral-900 transition-all duration-200 hover:-translate-y-0.5 hover:bg-neutral-900 hover:text-neutral-50 hover:shadow-[2px_2px_0_#111827]",
+        compact ? "self-start px-3 py-1 text-xs" : "px-4 py-1.5 text-xs",
+      ]}
+    >
+      Ver mas
+    </a>
+  </div>
+</article>
 ```
 
 ## File: src/constants/technologies.ts
@@ -711,81 +729,6 @@ status: "En progreso"
 ---
 ```
 
-## File: src/pages/blog/page/[page].astro
-```astro
----
-import { getCollection } from "astro:content";
-import Layout from "../../../layouts/Layout.astro";
-import BlogCard from "../../../components/BlogCard.astro";
-
-const PER_PAGE = 3;
-const blogs = await getCollection("blogs");
-const totalPages = Math.ceil(blogs.length / PER_PAGE);
-
-export async function getStaticPaths() {
-  const allBlogs = await getCollection("blogs");
-  const total = Math.ceil(allBlogs.length / 5);
-
-  return Array.from({ length: Math.max(0, total - 1) }, (_, i) => ({
-    params: { page: String(i + 2) },
-  }));
-}
-
-const { page } = Astro.params;
-const currentPage = Number(page);
-const start = (currentPage - 1) * PER_PAGE;
-const pagePosts = blogs.slice(start, start + PER_PAGE);
----
-
-<Layout>
-  <div class="max-w-5xl mx-auto space-y-4">
-    <div class="flex items-center justify-between gap-4 border-b-2 border-neutral-900 pb-2">
-      <h1 class="text-xl font-extrabold tracking-tight text-neutral-900">
-        Blog — Página {currentPage}
-      </h1>
-      <span class="text-xs text-neutral-500 font-medium">
-        {blogs.length} artículos
-      </span>
-    </div>
-
-    <div class="space-y-2.5">
-      {
-        pagePosts.map((post) => {
-          const { id, data } = post;
-          const { title, author, description } = data;
-          return (
-            <BlogCard id={id} title={title} author={author} description={description} />
-          );
-        })
-      }
-    </div>
-
-    <nav class="flex justify-center gap-1.5 pt-3 border-t-2 border-neutral-900" aria-label="Paginación">
-      {
-        Array.from({ length: totalPages }, (_, i) => {
-          const p = i + 1;
-          const isCurrent = p === currentPage;
-          const href = p === 1 ? "/blog" : `/blog/page/${p}`;
-
-          return isCurrent ? (
-            <span class="inline-block border-2 border-neutral-900 bg-neutral-900 px-3 py-1 text-xs font-bold tracking-wide text-neutral-50">
-              {p}
-            </span>
-          ) : (
-            <a
-              href={href}
-              class="inline-block border-2 border-neutral-900 bg-white px-3 py-1 text-xs font-bold tracking-wide text-neutral-900 transition-all duration-200 hover:bg-neutral-900 hover:text-neutral-50"
-            >
-              {p}
-            </a>
-          );
-        })
-      }
-    </nav>
-  </div>
-</Layout>
-```
-
 ## File: src/pages/blog/[id].astro
 ```astro
 ---
@@ -818,78 +761,6 @@ const { Content } = await render(blog);
       <Content />
     </div>
   </article>
-</Layout>
-```
-
-## File: src/pages/blog/index.astro
-```astro
----
-import { getCollection } from "astro:content";
-import Layout from "../../layouts/Layout.astro";
-import BlogCard from "../../components/BlogCard.astro";
-
-const PER_PAGE = 3;
-const blogs = await getCollection("blogs");
-const totalPages = Math.ceil(blogs.length / PER_PAGE);
-const currentPage = 1;
-const pagePosts = blogs.slice(0, PER_PAGE);
----
-
-<Layout>
-  <div class="max-w-5xl mx-auto space-y-4">
-    <!-- ╔══════════════════════════════════════════════╗
-         ║   H E A D E R                             ║
-         ╚══════════════════════════════════════════════╝ -->
-    <div class="flex items-center justify-between gap-4 border-b-2 border-neutral-900 pb-2">
-      <h1 class="text-xl font-extrabold tracking-tight text-neutral-900">
-        Blog
-      </h1>
-      <span class="text-xs text-neutral-500 font-medium">
-        {blogs.length} artículos
-      </span>
-    </div>
-
-    <!-- ── lista de posts ── -->
-    <div class="space-y-2.5">
-      {
-        pagePosts.map((post) => {
-          const { id, data } = post;
-          const { title, author, description } = data;
-          return (
-            <BlogCard id={id} title={title} author={author} description={description} />
-          );
-        })
-      }
-    </div>
-
-    <!-- ── paginación ── -->
-    {
-      totalPages > 1 && (
-        <nav class="flex justify-center gap-1.5 pt-3 border-t-2 border-neutral-900" aria-label="Paginación">
-          {
-            Array.from({ length: totalPages }, (_, i) => {
-              const page = i + 1;
-              const isCurrent = page === currentPage;
-              const href = page === 1 ? "/blog" : `/blog/page/${page}`;
-
-              return isCurrent ? (
-                <span class="inline-block border-2 border-neutral-900 bg-neutral-900 px-3 py-1 text-xs font-bold tracking-wide text-neutral-50">
-                  {page}
-                </span>
-              ) : (
-                <a
-                  href={href}
-                  class="inline-block border-2 border-neutral-900 bg-white px-3 py-1 text-xs font-bold tracking-wide text-neutral-900 transition-all duration-200 hover:bg-neutral-900 hover:text-neutral-50"
-                >
-                  {page}
-                </a>
-              );
-            })
-          }
-        </nav>
-      )
-    }
-  </div>
 </Layout>
 ```
 
@@ -975,6 +846,206 @@ const pageProjects = proyectos.slice(start, start + PER_PAGE);
 </Layout>
 ```
 
+## File: src/components/TechBadge.astro
+```astro
+---
+import { TECNOLOGIAS } from "../constants/technologies";
+
+interface Props {
+  tech: string;
+  compact?: boolean;
+}
+
+const { tech, compact = false } = Astro.props;
+const config = TECNOLOGIAS[tech];
+---
+
+<span class:list={[
+  "inline-flex shrink-0 items-center border-2 font-bold tracking-wide shadow-[inset_0_-2px_0_rgba(0,0,0,0.15)]",
+  compact ? "gap-1 px-2 py-0.5 text-[10px]" : "gap-1 px-3 py-1 text-xs",
+  config?.bg ?? "bg-neutral-200 border-neutral-950",
+  config?.text ?? "text-neutral-950"
+]}>
+  {config?.svgPath
+    ? <img src={config.svgPath} alt="" class:list={[compact ? "w-3.5 h-3.5" : "w-4 h-4"]} />
+    : config?.icon && <span class="mr-0.5">{config.icon}</span>
+  }
+  {config?.label ?? tech}
+</span>
+```
+
+## File: src/content/blogs/01_elecciones_2026.md
+```markdown
+---
+title: Qué nos dice las elecciones del 2026?
+author: Alva Vidal 
+description: Una columna de opinión sobre la coyuntura electoral y política que atraviesa el Perú
+---
+
+
+## [1] Introducción
+
+Un dejavu es una sensación donde creemos que algo ya lo hemos vivido, y estas elecciones el 2026 es claramente uno. Cuál es patrón que siempre se repite?, obviamente la respuesta es **Keiko Fujimori, ella es la fuente de la inestabilidad**, pero a la par, es el único partido político consolidado en el Perú, vaya contradicción, si el fujimorismo gobernara para las mayorías, posiblemente Keiko hubiese sido presidenta a lo mucho, en el segundo o tercer intento. 
+
+
+Pero el fujimorismo, solo le importó hacer clientelismo y populismo barato, aprovecharse que la gente dejó de exigir al Estado, esto gracias a las ideas y libros de automotivación, donde uno cree falsamente que la vida depende de uno mismo, que uno es arquitecto de su destino y tonterías así, donde los pitucos creen que "el pobre es pobre porque quiere", cuando en muchas ocasiones podríamos decir que uno es pobre porque sus padres no era ricos. 
+
+
+Pero, para esos temas sociales de alta complejidad de las decisiones personales donde tenemos más control (no el total, aunque muchos creean lo contrario), lo social (donde tenemos muy poca influencia, no decidimos dónde nacemos, quiénes son nuestros padres, ni tampoco por más buena gente que seamos agradaremos a todos) y donde menos poder tenemos en el azar y la entropía. 
+
+
+## [2] Contenido Principal
+
+Como decía Porky, Rafel Lopez Aliaga, hasta un panetón le ganaría a Keiko. Y a diferencias de tantas cosas, esta vez no estaba equivocada.
+```
+
+## File: src/pages/blog/page/[page].astro
+```astro
+---
+import { getCollection } from "astro:content";
+import Layout from "../../../layouts/Layout.astro";
+import BlogCard from "../../../components/BlogCard.astro";
+
+const PER_PAGE = 3;
+const blogs = await getCollection("blogs");
+const totalPages = Math.ceil(blogs.length / PER_PAGE);
+
+export async function getStaticPaths() {
+  const allBlogs = await getCollection("blogs");
+  const total = Math.ceil(allBlogs.length / 3);
+
+  return Array.from({ length: Math.max(0, total - 1) }, (_, i) => ({
+    params: { page: String(i + 2) },
+  }));
+}
+
+const { page } = Astro.params;
+const currentPage = Number(page);
+const start = (currentPage - 1) * PER_PAGE;
+const pagePosts = blogs.slice(start, start + PER_PAGE);
+---
+
+<Layout>
+  <div class="max-w-5xl mx-auto space-y-4">
+    <div class="flex items-center justify-between gap-4 border-b-2 border-neutral-900 pb-2">
+      <h1 class="text-xl font-extrabold tracking-tight text-neutral-900">
+        Blog — Página {currentPage}
+      </h1>
+      <span class="text-xs text-neutral-500 font-medium">
+        {blogs.length} artículos
+      </span>
+    </div>
+
+    <div class="space-y-2.5">
+      {
+        pagePosts.map((post) => {
+          const { id, data } = post;
+          const { title, author, description } = data;
+          return (
+            <BlogCard id={id} title={title} author={author} description={description} />
+          );
+        })
+      }
+    </div>
+
+    <nav class="flex justify-center gap-1.5 pt-3 border-t-2 border-neutral-900" aria-label="Paginación">
+      {
+        Array.from({ length: totalPages }, (_, i) => {
+          const p = i + 1;
+          const isCurrent = p === currentPage;
+          const href = p === 1 ? "/blog" : `/blog/page/${p}`;
+
+          return isCurrent ? (
+            <span class="inline-block border-2 border-neutral-900 bg-neutral-900 px-3 py-1 text-xs font-bold tracking-wide text-neutral-50">
+              {p}
+            </span>
+          ) : (
+            <a
+              href={href}
+              class="inline-block border-2 border-neutral-900 bg-white px-3 py-1 text-xs font-bold tracking-wide text-neutral-900 transition-all duration-200 hover:bg-neutral-900 hover:text-neutral-50"
+            >
+              {p}
+            </a>
+          );
+        })
+      }
+    </nav>
+  </div>
+</Layout>
+```
+
+## File: src/pages/blog/index.astro
+```astro
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import BlogCard from "../../components/BlogCard.astro";
+
+const PER_PAGE = 3;
+const blogs = await getCollection("blogs");
+const totalPages = Math.ceil(blogs.length / PER_PAGE);
+const currentPage = 1;
+const pagePosts = blogs.slice(0, PER_PAGE);
+---
+
+<Layout>
+  <div class="max-w-5xl mx-auto space-y-4">
+    <!-- ╔══════════════════════════════════════════════╗
+         ║   H E A D E R                             ║
+         ╚══════════════════════════════════════════════╝ -->
+    <div class="flex items-center justify-between gap-4 border-b-2 border-neutral-900 pb-2">
+      <h1 class="text-xl font-extrabold tracking-tight text-neutral-900">
+        Blogs Recientes
+      </h1>
+      <span class="text-xs text-neutral-500 font-medium">
+        {blogs.length} artículos
+      </span>
+    </div>
+
+    <!-- ── lista de posts ── -->
+    <div class="space-y-2.5">
+      {
+        pagePosts.map((post) => {
+          const { id, data } = post;
+          const { title, author, description } = data;
+          return (
+            <BlogCard id={id} title={title} author={author} description={description} />
+          );
+        })
+      }
+    </div>
+
+    <!-- ── paginación ── -->
+    {
+      totalPages > 1 && (
+        <nav class="flex justify-center gap-1.5 pt-3 border-t-2 border-neutral-900" aria-label="Paginación">
+          {
+            Array.from({ length: totalPages }, (_, i) => {
+              const page = i + 1;
+              const isCurrent = page === currentPage;
+              const href = page === 1 ? "/blog" : `/blog/page/${page}`;
+
+              return isCurrent ? (
+                <span class="inline-block border-2 border-neutral-900 bg-neutral-900 px-3 py-1 text-xs font-bold tracking-wide text-neutral-50">
+                  {page}
+                </span>
+              ) : (
+                <a
+                  href={href}
+                  class="inline-block border-2 border-neutral-900 bg-white px-3 py-1 text-xs font-bold tracking-wide text-neutral-900 transition-all duration-200 hover:bg-neutral-900 hover:text-neutral-50"
+                >
+                  {page}
+                </a>
+              );
+            })
+          }
+        </nav>
+      )
+    }
+  </div>
+</Layout>
+```
+
 ## File: src/pages/proyecto/index.astro
 ```astro
 ---
@@ -993,7 +1064,7 @@ const pageProjects = proyectos.slice(0, PER_PAGE);
   <div class="max-w-5xl mx-auto space-y-4">
     <div class="flex items-center justify-between gap-4 border-b-2 border-neutral-900 pb-2">
       <h1 class="text-xl font-extrabold tracking-tight text-neutral-900">
-        Proyectos
+        Proyectos recientes
       </h1>
       <span class="text-xs text-neutral-500 font-medium">
         {proyectos.length} proyectos
@@ -1049,82 +1120,6 @@ const pageProjects = proyectos.slice(0, PER_PAGE);
 </Layout>
 ```
 
-## File: src/content/blogs/01_elecciones_2026.md
-```markdown
----
-title: Qué nos dice las elecciones del 2026?
-author: Alva Vidal 
-description: Una columna de opinión sobre la coyuntura electoral y política que atraviesa el Perú
----
-
-
-## [1] Introducción
-
-Un dejavu es una sensación donde creemos que algo ya lo hemos vivido, y estas elecciones el 2026 es claramente uno. Cuál es patrón que siempre se repite?, obviamente la respuesta es **Keiko Fujimori, ella es la fuente de la inestabilidad**, pero a la par, es el único partido político consolidado en el Perú, vaya contradicción, si el fujimorismo gobernara para las mayorías, posiblemente Keiko hubiese sido presidenta a lo mucho, en el segundo o tercer intento. 
-
-
-Pero el fujimorismo, solo le importó hacer clientelismo y populismo barato, aprovecharse que la gente dejó de exigir al Estado, esto gracias a las ideas y libros de automotivación, donde uno cree falsamente que la vida depende de uno mismo, que uno es arquitecto de su destino y tonterías así, donde los pitucos creen que "el pobre es pobre porque quiere", cuando en muchas ocasiones podríamos decir que uno es pobre porque sus padres no era ricos. 
-
-
-Pero, para esos temas sociales de alta complejidad de las decisiones personales donde tenemos más control (no el total, aunque muchos creean lo contrario), lo social (donde tenemos muy poca influencia, no decidimos dónde nacemos, quiénes son nuestros padres, ni tampoco por más buena gente que seamos agradaremos a todos) y donde menos poder tenemos en el azar y la entropía. 
-
-
-## [2] Contenido Principal
-
-Como decía Porky, Rafel Lopez Aliaga, hasta un panetón le ganaría a Keiko. Y a diferencias de tantas cosas, esta vez no estaba equivocada.
-```
-
-## File: src/layouts/Layout.astro
-```astro
----
-import "../styles/global.css";
-import { ClientRouter } from "astro:transitions";
----
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Alva Blogs</title>
-    <ClientRouter />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+JP:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body
-    class="bg-neutral-50 text-neutral-900 font-['Inter','Noto_Sans_JP',sans-serif] antialiased leading-relaxed min-h-screen flex flex-col"
-  >
-    <header class="border-b-2 border-neutral-900">
-      <div class="max-w-4xl mx-auto px-5 py-4 flex items-center justify-between">
-        <a href="/" class="text-lg font-extrabold tracking-tight">Alva</a>
-        <nav class="flex gap-6 text-sm font-semibold uppercase tracking-widest">
-          <a href="/" class="hover:text-neutral-500 transition-colors">Inicio</a>
-          <a href="/proyecto" class="hover:text-neutral-500 transition-colors">Proyectos</a>
-          <a href="/blog" class="hover:text-neutral-500 transition-colors">Blog</a>
-          <a href="/about" class="hover:text-neutral-500 transition-colors">Sobre mí</a>
-        </nav>
-      </div>
-    </header>
-
-    <main class="px-5 flex-1 pt-8">
-      <slot />
-    </main>
-
-    <footer class="border-t-2 border-neutral-900">
-      <div class="max-w-4xl mx-auto px-5 py-4 text-center text-xs text-neutral-500 tracking-wider">
-        &copy; 2026 Alva
-      </div>
-    </footer>
-  </body>
-</html>
-```
-
 ## File: src/content.config.ts
 ```typescript
 import { defineCollection } from "astro:content";
@@ -1167,6 +1162,179 @@ const proyectos = defineCollection({
 
 // Se registra la colección en astro
 export const collections  = { blogs, proyectos };
+```
+
+## File: src/layouts/Layout.astro
+```astro
+---
+import "../styles/global.css";
+import { ClientRouter } from "astro:transitions";
+
+interface Props {
+  lockViewport?: boolean;
+}
+
+const { lockViewport = false } = Astro.props;
+
+const pathname = Astro.url.pathname;
+
+const navItems = [
+  { href: "/", label: "Inicio" },
+  { href: "/proyecto", label: "Proyectos" },
+  { href: "/blog", label: "Blog" },
+  { href: "/about", label: "Sobre mí" },
+];
+
+const currentPage =
+  navItems.find((item) =>
+    item.href === "/" ? pathname === "/" : pathname.startsWith(item.href),
+  ) || navItems[0];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="/vendetta.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Alva Blogs</title>
+    <ClientRouter />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+JP:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    class:list={[
+      "bg-neutral-50 text-neutral-900 font-['Inter','Noto_Sans_JP',sans-serif] antialiased leading-relaxed flex flex-col",
+      lockViewport ? "min-h-screen lg:h-dvh lg:max-h-dvh lg:overflow-hidden" : "min-h-screen",
+    ]}
+  >
+    <header class="relative border-b-2 border-neutral-900">
+      <div class="mx-auto flex max-w-4xl items-center justify-between px-5 py-4">
+        <a href="/" class="text-lg font-extrabold tracking-tight">Alva</a>
+
+        <!-- Desktop nav -->
+        <nav class="hidden items-center gap-4 text-sm font-semibold uppercase tracking-widest md:flex">
+          {
+            navItems.map((item) => {
+              const isActive =
+                item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+              return (
+                <a
+                  href={item.href}
+                  class:list={[
+                    "transition-all",
+                    isActive
+                      ? "-rotate-1 border-2 border-neutral-900 bg-amber-300 px-2.5 py-0.5 shadow-[2px_2px_0_#111827]"
+                      : "hover:text-neutral-500",
+                  ]}
+                >
+                  {item.label}
+                </a>
+              );
+            })
+          }
+        </nav>
+
+        <!-- Mobile: current page sticker + hamburger -->
+        <div class="flex items-center gap-2 md:hidden">
+          <span
+            class="-rotate-1 border-2 border-neutral-900 bg-amber-300 px-2.5 py-0.5 text-xs font-extrabold uppercase tracking-widest shadow-[2px_2px_0_#111827]"
+          >
+            {currentPage.label}
+          </span>
+          <button
+            id="menu-toggle"
+            class="flex size-8 items-center justify-center border-2 border-neutral-900"
+            aria-label="Abrir menú"
+          >
+            <span id="menu-icon" class="text-lg font-bold leading-none">☰</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile dropdown menu -->
+      <div
+        id="mobile-menu"
+        class="hidden border-t-2 border-neutral-900 bg-white md:hidden"
+      >
+        <nav class="flex flex-col px-5 py-3 text-sm font-semibold uppercase tracking-widest">
+          {
+            navItems.map((item) => {
+              const isActive =
+                item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+              return (
+                <a
+                  href={item.href}
+                  class:list={[
+                    "border-b border-neutral-200 py-3 last:border-none transition-all",
+                    isActive
+                      ? "-rotate-1 border-2 border-neutral-900 bg-amber-300 px-3 shadow-[2px_2px_0_#111827]"
+                      : "hover:text-neutral-500",
+                  ]}
+                >
+                  {item.label}
+                </a>
+              );
+            })
+          }
+        </nav>
+      </div>
+    </header>
+
+    <main
+      class:list={[
+        "flex-1 px-5 pt-8",
+        lockViewport && "lg:flex lg:min-h-0 lg:flex-col lg:overflow-hidden",
+      ]}
+    >
+      <slot />
+    </main>
+
+    <footer class="border-t-2 border-neutral-900">
+      <div class="mx-auto max-w-4xl px-5 py-4 text-center text-xs tracking-wider text-neutral-500">
+        &copy; 2026 Alva
+      </div>
+    </footer>
+
+    <script>
+      function setupMobileMenu() {
+        const toggle = document.getElementById("menu-toggle");
+        const menu = document.getElementById("mobile-menu");
+        const icon = document.getElementById("menu-icon");
+        if (!toggle || !menu || !icon) return;
+
+        menu.classList.add("hidden");
+        menu.classList.remove("flex");
+        icon.textContent = "☰";
+
+        const newToggle = toggle.cloneNode(true);
+        toggle.replaceWith(newToggle);
+
+        newToggle.addEventListener("click", () => {
+          const isHidden = menu.classList.contains("hidden");
+          menu.classList.toggle("hidden");
+          menu.classList.toggle("flex");
+          icon.textContent = isHidden ? "✕" : "☰";
+        });
+
+        menu.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            menu.classList.add("hidden");
+            menu.classList.remove("flex");
+            icon.textContent = "☰";
+          });
+        });
+      }
+
+      setupMobileMenu();
+      document.addEventListener("astro:page-load", setupMobileMenu);
+    </script>
+  </body>
+</html>
 ```
 
 ## File: src/pages/about/index.astro
@@ -1505,8 +1673,8 @@ import TechBadge from '../../components/TechBadge.astro';
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import perfil from "../assets/perfil01.jpg";
-import TechBadge from "../components/TechBadge.astro";
 import BlogCard from "../components/BlogCard.astro";
+import ProjectCard from "../components/ProjectCard.astro";
 
 const posts = await getCollection("blogs");
 const proyectos = await getCollection("proyectos");
@@ -1517,24 +1685,24 @@ const featuredProjects = proyectos.slice(0, 3);
 <!-- ╔══════════════════════════════════════════════════╗
      ║   L A Y O U T   P R I N C I P A L             ║
      ╚══════════════════════════════════════════════════╝ -->
-<Layout>
-  <div class="max-w-5xl mx-auto space-y-4 md:h-[calc(100svh-14rem)] md:flex md:flex-col md:overflow-hidden">
+<Layout lockViewport>
+  <div class="mx-auto flex w-full max-w-6xl flex-col gap-4 md:gap-3 lg:h-full lg:min-h-0 lg:overflow-hidden">
 
     <!-- ╔══════════════════════════════════════════════╗
          ║   F I L A   S U P E R I O R               ║
          ║   aside (30%)  +  main (70%)              ║
          ╚══════════════════════════════════════════════╝ -->
-    <div class="flex flex-col md:flex-row gap-5 md:flex-1 md:min-h-0 md:items-stretch">
+    <div class="flex flex-col gap-4 md:min-h-0 md:flex-row md:gap-5 lg:flex-[3] lg:overflow-hidden">
 
       <!-- ───[ A S I D E   —   P E R F I L ]────────── -->
-      <aside class="md:w-[30%] min-w-0 md:min-h-0">
-        <div class="relative border-2 border-neutral-900 overflow-hidden bg-white md:h-full md:flex md:flex-col">
+      <aside class="min-w-0 md:min-h-0 md:w-[30%]">
+        <div class="relative flex flex-col overflow-hidden border-2 border-neutral-900 bg-white lg:h-full md:min-h-0">
           <!-- ── header ── -->
-          <div class="px-4 pt-4 pb-2 border-b-2 border-neutral-900 text-center">
-            <h1 class="text-xl font-extrabold tracking-tight text-neutral-900">
+          <div class="shrink-0 border-b-2 border-neutral-900 px-4 pb-2 pt-3 text-center">
+            <h1 class="text-lg font-extrabold tracking-tight text-neutral-900 md:text-xl">
               Alva Vidal
             </h1>
-            <p class="mt-1 text-neutral-500 text-xs tracking-wide">
+            <p class="mt-0.5 text-xs tracking-wide text-neutral-500">
               — 思ったこと、感じたこと —
             </p>
           </div>
@@ -1542,31 +1710,31 @@ const featuredProjects = proyectos.slice(0, 3);
           <img
             src={perfil.src}
             alt="Foto de perfil"
-            class="relative w-full h-auto max-h-[22vh] md:flex-1 md:min-h-0 md:max-h-none object-contain"
+            class="relative min-h-0 w-full flex-1 object-contain"
           />
           <!-- ── tags (sticker) ── -->
-          <div class="flex flex-wrap justify-center gap-2 border-t-2 border-neutral-900 px-4 py-2">
-            <span class="inline-block -rotate-2 border-2 border-neutral-900 bg-amber-300 px-3 py-1 text-xs font-extrabold tracking-wide text-amber-950 shadow-[3px_3px_0_#111827]">
+          <div class="flex shrink-0 flex-wrap justify-center gap-1.5 border-t-2 border-neutral-900 px-3 py-1.5">
+            <span class="inline-block -rotate-2 border-2 border-neutral-900 bg-amber-300 px-2.5 py-0.5 text-[10px] font-extrabold tracking-wide text-amber-950 shadow-[3px_3px_0_#111827] md:px-3 md:py-1 md:text-xs">
               Desarrollador
             </span>
-            <span class="inline-block rotate-1 border-2 border-neutral-900 bg-amber-300 px-3 py-1 text-xs font-extrabold tracking-wide text-amber-950 shadow-[3px_3px_0_#111827]">
+            <span class="inline-block rotate-1 border-2 border-neutral-900 bg-amber-300 px-2.5 py-0.5 text-[10px] font-extrabold tracking-wide text-amber-950 shadow-[3px_3px_0_#111827] md:px-3 md:py-1 md:text-xs">
               Politólogo
             </span>
           </div>
           <!-- ── descripción ── -->
-          <div class="border-t-2 border-neutral-900 px-4 py-2.5">
-            <p class="text-neutral-600 text-sm leading-relaxed">
-              Estudiante de 4to Ciclo de la carrera de Desarrollo de Sistemas en Idat. Bachiller en Ciencia Política (UNMSM). Especializado en Derecho Internacional (Unisimón - Colombia).
+          <div class="shrink-0 border-t-2 border-neutral-900 px-3 py-2">
+            <p class="leading-relaxed text-neutral-600 text-[10px] md:text-[11px]">
+              4to Ciclo de la carrera de Desarrollo de Sistemas en Idat. Bachiller en Ciencia Política (UNMSM). Especializado en Derecho Internacional (Unisimón - Colombia).
             </p>
           </div>
         </div>
       </aside>
 
       <!-- ───[ M A I N   —   B L O G S   R E C I E N T E S ]── -->
-      <main class="md:w-[70%] min-w-0 space-y-2.5 md:flex md:flex-col md:min-h-0">
+      <main class="flex min-w-0 flex-col gap-1.5 md:min-h-0 md:w-[70%] md:gap-2 lg:overflow-hidden">
         <!-- ── header de sección ── -->
-        <div class="flex items-center justify-between gap-4 border-b-2 border-neutral-900 pb-1.5">
-          <h2 class="text-lg font-extrabold tracking-tight text-neutral-900">
+        <div class="flex shrink-0 items-center justify-between gap-4 border-b-2 border-neutral-900 pb-1">
+          <h2 class="text-base font-extrabold tracking-tight text-neutral-900 md:text-lg">
             Blogs recientes
           </h2>
           <a
@@ -1578,14 +1746,20 @@ const featuredProjects = proyectos.slice(0, 3);
         </div>
 
         <!-- ── tarjetas de posts ── -->
-        <div class="space-y-1.5 md:flex md:flex-1 md:min-h-0 md:flex-col">
+        <div class="flex flex-col gap-1.5 md:min-h-0 md:flex-1 lg:overflow-hidden">
           {
             recentPosts.map((post) => {
               const { id, data } = post;
               const { title, author, description } = data;
 
               return (
-                <BlogCard id={id} title={title} author={author} description={description} />
+                <BlogCard
+                  compact
+                  id={id}
+                  title={title}
+                  author={author}
+                  description={description}
+                />
               );
             })
           }
@@ -1597,10 +1771,10 @@ const featuredProjects = proyectos.slice(0, 3);
          ║   S E C C I Ó N   I N F E R I O R          ║
          ║   Proyectos destacados (grid 3 col)        ║
          ╚══════════════════════════════════════════════╝ -->
-    <section class="space-y-1.5 md:flex-none">
+    <section class="flex flex-col gap-1.5 md:min-h-0 md:gap-2 md:pb-2 lg:flex-[1.7] lg:overflow-hidden">
       <!-- ── header de sección ── -->
-      <div class="flex items-center justify-between gap-4 border-b-2 border-neutral-900 pb-1.5">
-        <h2 class="text-lg font-extrabold tracking-tight text-neutral-900">
+      <div class="flex shrink-0 items-center justify-between gap-4 border-b-2 border-neutral-900 pb-1">
+        <h2 class="text-base font-extrabold tracking-tight text-neutral-900 md:text-lg">
           Proyectos destacados
         </h2>
         <a
@@ -1612,50 +1786,24 @@ const featuredProjects = proyectos.slice(0, 3);
       </div>
 
       <!-- ── grid de tarjetas ── -->
-      <div class="grid gap-2 md:grid-cols-3">
+      <div class="grid grid-cols-1 gap-2 md:min-h-0 md:grid-cols-2 md:items-stretch lg:flex-1 lg:grid-cols-3 lg:overflow-hidden lg:max-h-[15rem]">
         {
-          featuredProjects.map((project) => (
-            <article class="relative border-2 border-neutral-900 bg-white p-3 min-h-24 shadow-[4px_4px_0_#111827]">
-                  <!-- esquinas superiores -->
-                  <div class="absolute -top-2.5 -left-2.5 w-4 h-4 bg-neutral-900" />
-                  <div class="absolute -top-2.5 -right-2.5 w-4 h-4 bg-neutral-900" />
-                  <!-- borde interno -->
-                  <div class="pointer-events-none absolute inset-1 border border-black/10" />
-                  <div class="flex h-full flex-col justify-between gap-2">
-                    <div class="space-y-1">
-                      <!-- línea decorativa -->
-                      <div class="flex items-center gap-2">
-                        <span class="h-px w-5 bg-amber-700/70"></span>
-                      </div>
-                      <!-- título con transición -->
-                      <h3 class="text-sm font-extrabold tracking-tight text-neutral-950 leading-tight" transition:name={`post-title-${project.id}`}>
-                        {project.data.title}
-                      </h3>
-                      <p class="text-[10px] font-medium italic text-neutral-500">
-                        Por <span class="text-blue-900">{project.data.author}</span>
-                      </p>
-                      <p class="text-xs leading-relaxed text-neutral-600 line-clamp-2">
-                        {project.data.description}
-                      </p>
-                      <!-- badges de tecnologías -->
-                      {project.data.technologies && (
-                        <div class="flex flex-wrap justify-end gap-1.5 pt-1">
-                          {project.data.technologies.map((tech) => (
-                            <TechBadge tech={tech} />
-                          ))}
-                        </div>
-                      )}
-                </div>
-                <!-- botón "Ver mas" -->
-                <a
-                  href={`/proyecto/${project.id}`}
-                  class="relative z-10 inline-block w-fit border-2 border-neutral-900 px-3 py-1 text-[10px] font-bold tracking-wide text-neutral-900 transition-all duration-200 hover:-translate-y-0.5 hover:bg-neutral-900 hover:text-neutral-50 hover:shadow-[2px_2px_0_#111827]"
-                >
-                  Ver mas
-                </a>
-              </div>
-            </article>
-          ))
+          featuredProjects.map((project) => {
+            const { id, data } = project;
+            const { title, author, description, technologies, status } = data;
+
+            return (
+              <ProjectCard
+                compact
+                id={id}
+                title={title}
+                author={author}
+                description={description}
+                technologies={technologies}
+                status={status}
+              />
+            );
+          })
         }
       </div>
     </section>
