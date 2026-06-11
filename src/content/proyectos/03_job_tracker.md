@@ -3,6 +3,8 @@ title: Gestor de postulaciones
 author: Alva Vidal 
 description: Un dashboard web que permite registrar y dar seguimiento a postulaciones laborales, acompañado de un script de Python que genera analíticas visuales directo en la terminal. 
 technologies: ["php", "pandas", "sqlite", "bootstrap", "python"]
+github: "https://github.com/AlvaroVidal21/Gestor_posulaciones"
+video: "https://www.youtube.com/embed/..."
 status: "Completado"
 ---
 

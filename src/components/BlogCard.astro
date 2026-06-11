@@ -14,14 +14,14 @@ const { id, title, author, description, compact = false } = Astro.props;
   class:list={[
     "relative border-2 border-neutral-900 bg-white shadow-[4px_4px_0_#111827]",
     compact
-      ? "flex min-h-0 flex-1 flex-col overflow-hidden p-2"
+      ? "flex min-h-0 flex-col overflow-hidden p-2"
       : "p-2.5",
   ]}
 >
   <div class="absolute -top-2.5 -left-2.5 w-4 h-4 bg-neutral-900" />
   <div class="absolute -top-2.5 -right-2.5 w-4 h-4 bg-neutral-900" />
   <div class="pointer-events-none absolute inset-1 border border-black/10" />
-  <div class:list={[compact ? "min-h-0 flex-1 space-y-0.5 overflow-hidden" : "space-y-1"]}>
+  <div class:list={[compact ? "min-h-0 space-y-0.5 overflow-hidden" : "space-y-1"]}>
     <div class="flex items-center gap-2">
       <span class="h-px w-5 bg-amber-700/70"></span>
     </div>
@@ -46,7 +46,7 @@ const { id, title, author, description, compact = false } = Astro.props;
       {description}
     </p>
   </div>
-  <div class:list={[compact ? "mt-1 shrink-0" : "mt-2"]}>
+  <div class:list={[compact ? "shrink-0 mt-auto" : "mt-2"]}>
     <a
       href={`/blog/${id}`}
       class:list={[
