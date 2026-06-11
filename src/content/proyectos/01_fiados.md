@@ -8,6 +8,7 @@ video: "https://www.youtube.com/embed/..."
 status: "En progreso"
 ---
 
+Una solución de software pensando en el usuario que se pide fiados en bodegas y necesita tener una trazabilidad de dichas deudas.
 
 # Sobre el proyecto
 

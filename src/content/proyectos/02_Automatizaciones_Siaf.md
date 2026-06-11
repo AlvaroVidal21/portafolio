@@ -3,11 +3,12 @@ title: Devengados SIAF
 author: Alva Vidal 
 description: Sistema que extrae automáticamente datos financieros del SIAF y usa un scoring inteligente para deducir el estado operativo y presupuestal de cada orden de servicio.
 technologies: ["python", "pandas", "rust"]
-github: "https://github.com/..."
+github: "https://github.com/AlvaroVidal21/Devengados_SIAF"
 video: "https://www.youtube.com/embed/..."
 status: "Completado"
 ---
 
+Sistema que extrae automáticamente datos financieros del SIAF y usa un scoring inteligente para deducir el estado operativo y presupuestal de cada orden de servicio.
 
 # Devengados SIAF — Extracción, Conciliación y Clasificación de Órdenes de Servicio
 
