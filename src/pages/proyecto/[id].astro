@@ -18,15 +18,15 @@ const { Content } = await render(project);
 
 <Layout seoTitle={`${title} | Alvaro Vidal`} seoDescription={description}>
   <article class="max-w-2xl mx-auto">
-    <h1 class="text-4xl font-extrabold tracking-tight border-b-2 border-neutral-900 pb-3 mb-2" transition:name={`post-title-${project.id}`}>
+    <h1 class="text-4xl font-extrabold tracking-tight border-b-2 border-neutral-900 dark:border-neutral-700 pb-3 mb-2 dark:text-neutral-50" transition:name={`post-title-${project.id}`}>
       {title}
     </h1>
-    <p class="text-neutral-500 text-xs mb-4">
-      <em class="text-blue-900">Por {author}</em>
+    <p class="text-neutral-500 dark:text-neutral-400 text-xs mb-4">
+      <em class="text-blue-900 dark:text-[#D6A21E]">Por {author}</em>
     </p>
     {github && (
-      <a href={github} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 border-2 border-neutral-900 px-2.5 py-1 text-xs font-bold tracking-wide text-neutral-900 transition-all hover:bg-neutral-900 hover:text-neutral-50 mb-4">
-        <img src="/IconsTec/GitHub.svg" alt="" class="w-4 h-4" />
+      <a href={github} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 border-2 border-neutral-900 dark:border-neutral-700 px-2.5 py-1 text-xs font-bold tracking-wide text-neutral-900 dark:text-neutral-100 transition-all hover:bg-neutral-900 hover:text-neutral-50 dark:hover:bg-neutral-100 dark:hover:text-neutral-900 mb-4">
+        <img src="/IconsTec/GitHub.svg" alt="" class="w-4 h-4 dark:invert" />
         Ver en GitHub
       </a>
     )}
@@ -37,7 +37,7 @@ const { Content } = await render(project);
         ))}
       </div>
     )}
-    <div class="prose prose-neutral max-w-none text-justify">
+    <div class="prose prose-neutral dark:prose-invert max-w-none text-justify">
       <Content />
     </div>
   </article>

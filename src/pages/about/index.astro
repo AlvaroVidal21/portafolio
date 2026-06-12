@@ -12,14 +12,14 @@ import TechBadge from '../../components/TechBadge.astro';
 
       <!-- ───[ S I D E B A R   —   D A T O S ]────────── -->
       <aside class="md:w-[30%] min-w-0 md:sticky md:top-8">
-        <div class="relative border-2 border-neutral-900 bg-white shadow-[5px_5px_0_#111827]">
+        <div class="relative border border-neutral-800 dark:border-neutral-600 bg-white dark:bg-neutral-900 shadow-[5px_5px_0_#111827] dark:shadow-none">
 
           <!-- ── foto en marco vertical ── -->
-          <div class="relative border-b-2 border-neutral-900 overflow-hidden max-w-xs mx-auto md:max-w-none md:mx-0">
-            <div class="absolute -top-2.5 -left-2.5 w-4 h-4 bg-neutral-900 z-10" />
-            <div class="absolute -top-2.5 -right-2.5 w-4 h-4 bg-neutral-900 z-10" />
-            <div class="pointer-events-none absolute inset-1 border border-neutral-900/10 z-10" />
-            <div class="aspect-[3/4] w-full bg-white overflow-hidden">
+          <div class="relative border-b-2 border-neutral-900 dark:border-neutral-700 overflow-hidden max-w-xs mx-auto md:max-w-none md:mx-0">
+            <div class="absolute -top-2.5 -left-2.5 w-4 h-4 bg-neutral-900 dark:bg-neutral-800 z-10" />
+            <div class="absolute -top-2.5 -right-2.5 w-4 h-4 bg-neutral-900 dark:bg-neutral-800 z-10" />
+            <div class="pointer-events-none absolute inset-1 border border-neutral-900/10 dark:border-white/10 z-10" />
+            <div class="aspect-[3/4] w-full bg-white dark:bg-neutral-900 overflow-hidden">
               <img
                 src={fotoPerfil.src}
                 alt="Alva Vidal"
@@ -29,18 +29,18 @@ import TechBadge from '../../components/TechBadge.astro';
           </div>
 
           <!-- ── nombre ── -->
-          <div class="px-4 pt-3 pb-2 text-center border-b-2 border-neutral-900">
-            <h1 class="text-xl font-extrabold tracking-tight text-blue-900">
+          <div class="px-4 pt-3 pb-2 text-center border-b-2 border-neutral-900 dark:border-neutral-700">
+            <h1 class="text-xl font-extrabold tracking-tight text-blue-900 dark:text-[#D6A21E]">
               Alva Vidal
             </h1>
-            <p class="mt-0.5 text-neutral-500 text-xs tracking-wide">
+            <p class="mt-0.5 text-neutral-500 dark:text-neutral-400 text-xs tracking-wide">
               — Desarrollador & Analista —
             </p>
           </div>
 
           <!-- ── tecnologías (más prominente) ── -->
-          <div class="border-b-2 border-neutral-900 px-4 py-3">
-            <h3 class="text-sm font-extrabold tracking-wider text-blue-900 mb-3 uppercase">
+          <div class="border-b-2 border-neutral-900 dark:border-neutral-700 px-4 py-3">
+            <h3 class="text-sm font-extrabold tracking-wider text-blue-900 dark:text-[#D6A21E] mb-3 uppercase">
               Tecnologías
             </h3>
             <div class="grid grid-cols-2 gap-1.5">
@@ -57,19 +57,19 @@ import TechBadge from '../../components/TechBadge.astro';
 
           <!-- ── contacto ── -->
           <div class="px-4 py-3 space-y-1.5">
-            <div class="flex items-center gap-2 text-sm text-neutral-600">
+            <div class="flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-400">
               <span>📍</span>
               <span>Lima, Perú</span>
             </div>
-            <div class="flex items-center gap-2 text-sm text-neutral-600">
+            <div class="flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-400">
               <span>📞</span>
               <span>912 720 449</span>
             </div>
-            <div class="flex items-start gap-2 text-sm text-neutral-600">
+            <div class="flex items-start gap-2 text-sm text-neutral-600 dark:text-neutral-400">
               <span>✉️</span>
               <span class="break-all">alvaro.vidal1403@gmail.com</span>
           </div>
-          <div class="flex items-start gap-2 text-sm text-neutral-600">
+          <div class="flex items-start gap-2 text-sm text-neutral-600 dark:text-neutral-400">
             <span>✉️</span>
             <span class="break-all">alvavidal.1403@proton.me</span>
         </div>
@@ -83,32 +83,32 @@ import TechBadge from '../../components/TechBadge.astro';
 
         <!-- ── PERFIL PROFESIONAL ── -->
         <section>
-          <div class="flex items-center gap-2 border-b-2 border-neutral-900 pb-1.5 mb-3">
-            <span class="h-px w-5 bg-blue-700/70"></span>
-            <h2 class="text-base font-extrabold tracking-wider text-blue-900 uppercase">
+          <div class="flex items-center gap-2 border-b-2 border-neutral-900 dark:border-neutral-700 pb-1.5 mb-3">
+            <span class="h-px w-5 bg-blue-700/70 dark:bg-[#D6A21E]/40"></span>
+            <h2 class="text-base font-extrabold tracking-wider text-blue-900 dark:text-[#D6A21E] uppercase">
               Perfil Profesional
             </h2>
           </div>
-          <div class="relative border-2 border-neutral-900 bg-white p-4 shadow-[4px_4px_0_#111827]">
-            <div class="absolute -top-2.5 -left-2.5 w-4 h-4 bg-neutral-900" />
-            <div class="absolute -top-2.5 -right-2.5 w-4 h-4 bg-neutral-900" />
-            <div class="pointer-events-none absolute inset-1 border border-neutral-900/10" />
+          <div class="relative border border-neutral-800 dark:border-neutral-600 bg-white dark:bg-neutral-900 p-4 shadow-[4px_4px_0_#111827] dark:shadow-none">
+            <div class="absolute -top-2.5 -left-2.5 w-4 h-4 bg-neutral-900 dark:bg-neutral-800" />
+            <div class="absolute -top-2.5 -right-2.5 w-4 h-4 bg-neutral-900 dark:bg-neutral-800" />
+            <div class="pointer-events-none absolute inset-1 border border-neutral-900/10 dark:border-white/10" />
             <div class="space-y-3">
               <div class="flex items-center gap-2 mb-0.5">
-                <span class="h-px w-5 bg-blue-700/70 shrink-0"></span>
+                <span class="h-px w-5 bg-blue-700/70 dark:bg-[#D6A21E]/40 shrink-0"></span>
               </div>
               <div>
-                <p class="text-sm text-neutral-700 leading-relaxed">
-                  Estudiante de 4to Ciclo de la carrera de <span class="underline decoration-[5px] decoration-yellow-500 underline-offset-4">Desarrollo de Sistemas Frontend y Backend</span> en IDAT. <span class="underline decoration-[5px] decoration-yellow-500 underline-offset-4">Bachiller en Ciencia Política</span> (UNMSM) y cuento con una especialización en <span class="underline decoration-[5px] decoration-yellow-500 underline-offset-4">Derecho Internacional</span> (Unisimón - Colombia). Estoy <span class="underline decoration-[5px] decoration-yellow-500 underline-offset-4">certificado por la OECE</span> (Organismo Especializado para las Contrataciones Públicas Eficientes).
+                <p class="text-sm text-neutral-700 dark:text-neutral-400 leading-relaxed">
+                  Estudiante de 4to Ciclo de la carrera de <span class="underline decoration-[5px] decoration-yellow-500 dark:decoration-[#D6A21E] underline-offset-4">Desarrollo de Sistemas Frontend y Backend</span> en IDAT. <span class="underline decoration-[5px] decoration-yellow-500 dark:decoration-[#D6A21E] underline-offset-4">Bachiller en Ciencia Política</span> (UNMSM) y cuento con una especialización en <span class="underline decoration-[5px] decoration-yellow-500 dark:decoration-[#D6A21E] underline-offset-4">Derecho Internacional</span> (Unisimón - Colombia). Estoy <span class="underline decoration-[5px] decoration-yellow-500 dark:decoration-[#D6A21E] underline-offset-4">certificado por la OECE</span> (Organismo Especializado para las Contrataciones Públicas Eficientes).
                 </p>
               </div>
               <div>
-                <p class="text-sm text-neutral-700 leading-relaxed">
+                <p class="text-sm text-neutral-700 dark:text-neutral-400 leading-relaxed">
                   Trabajo con datos operativos, conciliación de información, trazabilidad y automatización de reportes.
                 </p>
               </div>
-              <div class="border-l-2 border-blue-900 pl-3">
-                <p class="text-sm font-semibold text-neutral-800 leading-relaxed">
+              <div class="border-l-2 border-blue-900 dark:border-[#D6A21E] pl-3">
+                <p class="text-sm font-semibold text-neutral-800 dark:text-neutral-200 leading-relaxed">
                   Actualmente estoy buscando oportunidades para crecer y fortalecer mi perfil profesional en el área de datos y/o desarrollo de software.
                 </p>
               </div>
@@ -118,156 +118,156 @@ import TechBadge from '../../components/TechBadge.astro';
 
         <!-- ── EXPERIENCIA LABORAL ── -->
         <section>
-          <div class="flex items-center gap-2 border-b-2 border-neutral-900 pb-1.5 mb-3">
-            <span class="h-px w-5 bg-blue-700/70"></span>
-            <h2 class="text-base font-extrabold tracking-wider text-blue-900 uppercase">
+          <div class="flex items-center gap-2 border-b-2 border-neutral-900 dark:border-neutral-700 pb-1.5 mb-3">
+            <span class="h-px w-5 bg-blue-700/70 dark:bg-[#D6A21E]/40"></span>
+            <h2 class="text-base font-extrabold tracking-wider text-blue-900 dark:text-[#D6A21E] uppercase">
               Experiencia Laboral
             </h2>
           </div>
 
-          <div class="relative border-2 border-neutral-900 bg-white p-5 shadow-[5px_5px_0_#111827]">
-            <div class="absolute -top-3 -left-3 w-5 h-5 bg-neutral-900" />
-            <div class="absolute -top-3 -right-3 w-5 h-5 bg-neutral-900" />
-            <div class="pointer-events-none absolute inset-1 border border-neutral-900/10" />
+          <div class="relative border border-neutral-800 dark:border-neutral-600 bg-white dark:bg-neutral-900 p-5 shadow-[5px_5px_0_#111827] dark:shadow-none">
+            <div class="absolute -top-3 -left-3 w-5 h-5 bg-neutral-900 dark:bg-neutral-800" />
+            <div class="absolute -top-3 -right-3 w-5 h-5 bg-neutral-900 dark:bg-neutral-800" />
+            <div class="pointer-events-none absolute inset-1 border border-neutral-900/10 dark:border-white/10" />
 
             <div class="space-y-6">
 
               <!-- Job 1 -->
               <article class="space-y-1.5">
                 <div class="flex items-center gap-2 mb-0.5">
-                  <span class="h-px w-5 bg-blue-700/70 shrink-0"></span>
+                  <span class="h-px w-5 bg-blue-700/70 dark:bg-[#D6A21E]/40 shrink-0"></span>
                 </div>
-                <h4 class="text-base font-extrabold text-blue-900 leading-tight">Analista de información</h4>
-                <p class="text-sm text-neutral-500">
+                <h4 class="text-base font-extrabold text-blue-900 dark:text-[#D6A21E] leading-tight">Analista de información</h4>
+                <p class="text-sm text-neutral-500 dark:text-neutral-400">
                   🏢 Inversiones e Innovaciones Cristhi E.I.R.L · 📍 Lima, Perú · Ene. 2026 - May. 2026
                 </p>
                 <ul class="space-y-1">
-                  <li class="text-sm font-bold text-neutral-700 leading-relaxed flex gap-1.5">
-                    <span class="mt-1 shrink-0 text-neutral-400">–</span>
+                  <li class="text-sm font-bold text-neutral-700 dark:text-neutral-400 leading-relaxed flex gap-1.5">
+                    <span class="mt-1 shrink-0 text-neutral-400 dark:text-neutral-500">–</span>
                     <span>Desarrollé proceso de extracción y análisis presupuestal vía API del SIAF, automatizando revisión de miles de órdenes de servicio.</span>
                   </li>
-                  <li class="text-sm text-neutral-600 leading-relaxed flex gap-1.5">
-                    <span class="mt-1 shrink-0 text-neutral-400">–</span>
+                  <li class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed flex gap-1.5">
+                    <span class="mt-1 shrink-0 text-neutral-400 dark:text-neutral-500">–</span>
                     <span>Implementé base de datos en base a registros de Excels, corregí y actualicé fórmulas para mejorar la conciliación.</span>
                   </li>
-                  <li class="text-sm text-neutral-600 leading-relaxed flex gap-1.5">
-                    <span class="mt-1 shrink-0 text-neutral-400">–</span>
+                  <li class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed flex gap-1.5">
+                    <span class="mt-1 shrink-0 text-neutral-400 dark:text-neutral-500">–</span>
                     <span>Validé la información en base a revisión documentaria.</span>
                   </li>
                 </ul>
               </article>
 
-              <hr class="border-t border-neutral-200/60" />
+              <hr class="border-t border-neutral-200/60 dark:border-neutral-700" />
 
               <!-- Job 2 -->
               <article class="space-y-1.5">
                 <div class="flex items-center gap-2 mb-0.5">
-                  <span class="h-px w-5 bg-blue-700/70 shrink-0"></span>
+                  <span class="h-px w-5 bg-blue-700/70 dark:bg-[#D6A21E]/40 shrink-0"></span>
                 </div>
-                <h4 class="text-base font-extrabold text-blue-900 leading-tight">Analista Administrativo en Presupuesto — Oficina de Planeamiento y Presupuesto</h4>
-                <p class="text-sm text-neutral-500">
+                <h4 class="text-base font-extrabold text-blue-900 dark:text-[#D6A21E] leading-tight">Analista Administrativo en Presupuesto — Oficina de Planeamiento y Presupuesto</h4>
+                <p class="text-sm text-neutral-500 dark:text-neutral-400">
                   🏢 Red de Salud de Huarochirí · 📍 Lima, Perú · Oct. 2025 - Dic. 2025
                 </p>
                 <ul class="space-y-1">
-                  <li class="text-sm font-bold text-neutral-700 leading-relaxed flex gap-1.5">
-                    <span class="mt-1 shrink-0 text-neutral-400">–</span>
+                  <li class="text-sm font-bold text-neutral-700 dark:text-neutral-400 leading-relaxed flex gap-1.5">
+                    <span class="mt-1 shrink-0 text-neutral-400 dark:text-neutral-500">–</span>
                     <span>Identifiqué saldos de más de S/ 3 millones en certificados presupuestales sin compromiso.</span>
                   </li>
-                  <li class="text-sm text-neutral-600 leading-relaxed flex gap-1.5">
-                    <span class="mt-1 shrink-0 text-neutral-400">–</span>
+                  <li class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed flex gap-1.5">
+                    <span class="mt-1 shrink-0 text-neutral-400 dark:text-neutral-500">–</span>
                     <span>Implementé automatización de reportes en Excel y Power BI mediante macros VBA y Pandas en Python.</span>
                   </li>
-                  <li class="text-sm text-neutral-600 leading-relaxed flex gap-1.5">
-                    <span class="mt-1 shrink-0 text-neutral-400">–</span>
+                  <li class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed flex gap-1.5">
+                    <span class="mt-1 shrink-0 text-neutral-400 dark:text-neutral-500">–</span>
                     <span>Realicé validación y control de información presupuestal.</span>
                   </li>
                 </ul>
               </article>
 
-              <hr class="border-t border-neutral-200/60" />
+              <hr class="border-t border-neutral-200/60 dark:border-neutral-700" />
 
               <!-- Job 3 -->
               <article class="space-y-1.5">
                 <div class="flex items-center gap-2 mb-0.5">
-                  <span class="h-px w-5 bg-blue-700/70 shrink-0"></span>
+                  <span class="h-px w-5 bg-blue-700/70 dark:bg-[#D6A21E]/40 shrink-0"></span>
                 </div>
-                <h4 class="text-base font-extrabold text-blue-900 leading-tight">Analista administrativo — Gerencia de Logística</h4>
-                <p class="text-sm text-neutral-500">
+                <h4 class="text-base font-extrabold text-blue-900 dark:text-[#D6A21E] leading-tight">Analista administrativo — Gerencia de Logística</h4>
+                <p class="text-sm text-neutral-500 dark:text-neutral-400">
                   🏢 EMAPE · 📍 Lima, Perú · Ene. 2025 - Ago. 2025
                 </p>
                 <ul class="space-y-1">
-                  <li class="text-sm font-bold text-neutral-700 leading-relaxed flex gap-1.5">
-                    <span class="mt-1 shrink-0 text-neutral-400">–</span>
+                  <li class="text-sm font-bold text-neutral-700 dark:text-neutral-400 leading-relaxed flex gap-1.5">
+                    <span class="mt-1 shrink-0 text-neutral-400 dark:text-neutral-500">–</span>
                     <span>Recuperé más de S/ 80,000 en certificados sin rebajar (solo comprometidos y sin devengar).</span>
                   </li>
-                  <li class="text-sm text-neutral-600 leading-relaxed flex gap-1.5">
-                    <span class="mt-1 shrink-0 text-neutral-400">–</span>
+                  <li class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed flex gap-1.5">
+                    <span class="mt-1 shrink-0 text-neutral-400 dark:text-neutral-500">–</span>
                     <span>Asistí en la ejecución de más de 600 órdenes de servicios mensuales.</span>
                   </li>
-                  <li class="text-sm text-neutral-600 leading-relaxed flex gap-1.5">
-                    <span class="mt-1 shrink-0 text-neutral-400">–</span>
+                  <li class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed flex gap-1.5">
+                    <span class="mt-1 shrink-0 text-neutral-400 dark:text-neutral-500">–</span>
                     <span>Implementé reportes para mejorar la trazabilidad de los datos logísticos.</span>
                   </li>
                 </ul>
               </article>
 
-              <hr class="border-t border-neutral-200/60" />
+              <hr class="border-t border-neutral-200/60 dark:border-neutral-700" />
 
               <!-- Job 4 -->
               <article class="space-y-1.5">
                 <div class="flex items-center gap-2 mb-0.5">
-                  <span class="h-px w-5 bg-blue-700/70 shrink-0"></span>
+                  <span class="h-px w-5 bg-blue-700/70 dark:bg-[#D6A21E]/40 shrink-0"></span>
                 </div>
-                <h4 class="text-base font-extrabold text-blue-900 leading-tight">Analista Administrativo — Subgerencia de Concesiones y Eventos</h4>
-                <p class="text-sm text-neutral-500">
+                <h4 class="text-base font-extrabold text-blue-900 dark:text-[#D6A21E] leading-tight">Analista Administrativo — Subgerencia de Concesiones y Eventos</h4>
+                <p class="text-sm text-neutral-500 dark:text-neutral-400">
                   🏢 SERPAR · 📍 Lima, Perú · Jun. 2024 - Oct. 2024
                 </p>
                 <ul class="space-y-1">
-                  <li class="text-sm font-bold text-neutral-700 leading-relaxed flex gap-1.5">
-                    <span class="mt-1 shrink-0 text-neutral-400">–</span>
+                  <li class="text-sm font-bold text-neutral-700 dark:text-neutral-400 leading-relaxed flex gap-1.5">
+                    <span class="mt-1 shrink-0 text-neutral-400 dark:text-neutral-500">–</span>
                     <span>Administré concesiones y arrendamientos en parques metropolitanos, desarrollando análisis históricos y modelos de valoración para tarifas comerciales.</span>
                   </li>
-                  <li class="text-sm text-neutral-600 leading-relaxed flex gap-1.5">
-                    <span class="mt-1 shrink-0 text-neutral-400">–</span>
+                  <li class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed flex gap-1.5">
+                    <span class="mt-1 shrink-0 text-neutral-400 dark:text-neutral-500">–</span>
                     <span>Realice el seguimiento y trazabilidad de los cobros de los concesionarios en los parques bajo mi administración.</span>
                   </li>
                 </ul>
                 <div class="mt-2 pl-2 space-y-0.5">
-                  <p class="text-xs font-bold text-blue-900 mb-1">Parques administrados:</p>
+                  <p class="text-xs font-bold text-blue-900 dark:text-[#D6A21E] mb-1">Parques administrados:</p>
                   <ul class="space-y-0.5">
-                    <li class="text-sm text-neutral-600">– Club Metropolitano Huáscar (Villa El Salvador)</li>
-                    <li class="text-sm text-neutral-600">– Club Metropolitano Huayna Cápac (San Juan de Miraflores)</li>
-                    <li class="text-sm text-neutral-600">– Parque de La Muralla (Cercado de Lima)</li>
-                    <li class="text-sm text-neutral-600">– Parque Alameda Las Malvinas (Cercado de Lima)</li>
-                    <li class="text-sm text-neutral-600">– Parque Universitario (Cercado de Lima)</li>
-                    <li class="text-sm text-neutral-600">– Parque Metropolitano "Coronel Miguel Baquero" (Cercado de Lima)</li>
-                    <li class="text-sm text-neutral-600">– Parque de los Anillos (Ate)</li>
+                    <li class="text-sm text-neutral-600 dark:text-neutral-400">– Club Metropolitano Huáscar (Villa El Salvador)</li>
+                    <li class="text-sm text-neutral-600 dark:text-neutral-400">– Club Metropolitano Huayna Cápac (San Juan de Miraflores)</li>
+                    <li class="text-sm text-neutral-600 dark:text-neutral-400">– Parque de La Muralla (Cercado de Lima)</li>
+                    <li class="text-sm text-neutral-600 dark:text-neutral-400">– Parque Alameda Las Malvinas (Cercado de Lima)</li>
+                    <li class="text-sm text-neutral-600 dark:text-neutral-400">– Parque Universitario (Cercado de Lima)</li>
+                    <li class="text-sm text-neutral-600 dark:text-neutral-400">– Parque Metropolitano "Coronel Miguel Baquero" (Cercado de Lima)</li>
+                    <li class="text-sm text-neutral-600 dark:text-neutral-400">– Parque de los Anillos (Ate)</li>
                   </ul>
                 </div>
               </article>
 
-              <hr class="border-t border-neutral-200/60" />
+              <hr class="border-t border-neutral-200/60 dark:border-neutral-700" />
 
               <!-- Job 5 -->
               <article class="space-y-1.5">
                 <div class="flex items-center gap-2 mb-0.5">
-                  <span class="h-px w-5 bg-blue-700/70 shrink-0"></span>
+                  <span class="h-px w-5 bg-blue-700/70 dark:bg-[#D6A21E]/40 shrink-0"></span>
                 </div>
-                <h4 class="text-base font-extrabold text-blue-900 leading-tight">Analista de Adquisiciones y Gestión Administrativa</h4>
-                <p class="text-sm text-neutral-500">
+                <h4 class="text-base font-extrabold text-blue-900 dark:text-[#D6A21E] leading-tight">Analista de Adquisiciones y Gestión Administrativa</h4>
+                <p class="text-sm text-neutral-500 dark:text-neutral-400">
                   🏢 V&V Soluciones · 📍 Lima, Perú · May. 2023 - Jun. 2024
                 </p>
                 <ul class="space-y-1">
-                  <li class="text-sm font-bold text-neutral-700 leading-relaxed flex gap-1.5">
-                    <span class="mt-1 shrink-0 text-neutral-400">–</span>
+                  <li class="text-sm font-bold text-neutral-700 dark:text-neutral-400 leading-relaxed flex gap-1.5">
+                    <span class="mt-1 shrink-0 text-neutral-400 dark:text-neutral-500">–</span>
                     <span>Validé y controlé información en contratos, órdenes de servicio y registros administrativos.</span>
                   </li>
-                  <li class="text-sm text-neutral-600 leading-relaxed flex gap-1.5">
-                    <span class="mt-1 shrink-0 text-neutral-400">–</span>
+                  <li class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed flex gap-1.5">
+                    <span class="mt-1 shrink-0 text-neutral-400 dark:text-neutral-500">–</span>
                     <span>Organicé de manera efectiva documentos para mejorar la trazabilidad y seguimiento de procesos.</span>
                   </li>
-                  <li class="text-sm text-neutral-600 leading-relaxed flex gap-1.5">
-                    <span class="mt-1 shrink-0 text-neutral-400">–</span>
+                  <li class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed flex gap-1.5">
+                    <span class="mt-1 shrink-0 text-neutral-400 dark:text-neutral-500">–</span>
                     <span>Di soporte a cobranza mediante verificación de estados de pago.</span>
                   </li>
                 </ul>
@@ -279,45 +279,45 @@ import TechBadge from '../../components/TechBadge.astro';
 
         <!-- ── EDUCACIÓN ── -->
         <section>
-          <div class="flex items-center gap-2 border-b-2 border-neutral-900 pb-1.5 mb-3">
-            <span class="h-px w-5 bg-blue-700/70"></span>
-            <h2 class="text-base font-extrabold tracking-wider text-blue-900 uppercase">
+          <div class="flex items-center gap-2 border-b-2 border-neutral-900 dark:border-neutral-700 pb-1.5 mb-3">
+            <span class="h-px w-5 bg-blue-700/70 dark:bg-[#D6A21E]/40"></span>
+            <h2 class="text-base font-extrabold tracking-wider text-blue-900 dark:text-[#D6A21E] uppercase">
               Educación
             </h2>
           </div>
 
           <div class="space-y-3">
-            <article class="relative border-2 border-neutral-900 bg-white p-3 shadow-[4px_4px_0_#111827]">
-              <div class="absolute -top-2.5 -left-2.5 w-4 h-4 bg-neutral-900" />
-              <div class="absolute -top-2.5 -right-2.5 w-4 h-4 bg-neutral-900" />
-              <div class="pointer-events-none absolute inset-1 border border-neutral-900/10" />
+            <article class="relative border border-neutral-800 dark:border-neutral-600 bg-white dark:bg-neutral-900 p-3 shadow-[4px_4px_0_#111827] dark:shadow-none">
+              <div class="absolute -top-2.5 -left-2.5 w-4 h-4 bg-neutral-900 dark:bg-neutral-800" />
+              <div class="absolute -top-2.5 -right-2.5 w-4 h-4 bg-neutral-900 dark:bg-neutral-800" />
+              <div class="pointer-events-none absolute inset-1 border border-neutral-900/10 dark:border-white/10" />
               <div class="flex items-center gap-2 mb-1">
-                <span class="h-px w-5 bg-blue-700/70 shrink-0"></span>
+                <span class="h-px w-5 bg-blue-700/70 dark:bg-[#D6A21E]/40 shrink-0"></span>
               </div>
-              <h4 class="text-sm font-extrabold text-blue-900">Desarrollo de Sistemas Frontend y Backend</h4>
-              <p class="text-sm text-neutral-500">🇵🇪 Instituto Idat | 2025 — En curso (4to Ciclo)</p>
+              <h4 class="text-sm font-extrabold text-blue-900 dark:text-[#D6A21E]">Desarrollo de Sistemas Frontend y Backend</h4>
+              <p class="text-sm text-neutral-500 dark:text-neutral-400">🇵🇪 Instituto Idat | 2025 — En curso (4to Ciclo)</p>
             </article>
 
-            <article class="relative border-2 border-neutral-900 bg-white p-3 shadow-[4px_4px_0_#111827]">
-              <div class="absolute -top-2.5 -left-2.5 w-4 h-4 bg-neutral-900" />
-              <div class="absolute -top-2.5 -right-2.5 w-4 h-4 bg-neutral-900" />
-              <div class="pointer-events-none absolute inset-1 border border-neutral-900/10" />
+            <article class="relative border border-neutral-800 dark:border-neutral-600 bg-white dark:bg-neutral-900 p-3 shadow-[4px_4px_0_#111827] dark:shadow-none">
+              <div class="absolute -top-2.5 -left-2.5 w-4 h-4 bg-neutral-900 dark:bg-neutral-800" />
+              <div class="absolute -top-2.5 -right-2.5 w-4 h-4 bg-neutral-900 dark:bg-neutral-800" />
+              <div class="pointer-events-none absolute inset-1 border border-neutral-900/10 dark:border-white/10" />
               <div class="flex items-center gap-2 mb-1">
-                <span class="h-px w-5 bg-blue-700/70 shrink-0"></span>
+                <span class="h-px w-5 bg-blue-700/70 dark:bg-[#D6A21E]/40 shrink-0"></span>
               </div>
-              <h4 class="text-sm font-extrabold text-blue-900">Bachiller en Ciencia Política</h4>
-              <p class="text-sm text-neutral-500">🇵🇪 Universidad Nacional Mayor de San Marcos | 2016 - 2021</p>
+              <h4 class="text-sm font-extrabold text-blue-900 dark:text-[#D6A21E]">Bachiller en Ciencia Política</h4>
+              <p class="text-sm text-neutral-500 dark:text-neutral-400">🇵🇪 Universidad Nacional Mayor de San Marcos | 2016 - 2021</p>
             </article>
 
-            <article class="relative border-2 border-neutral-900 bg-white p-3 shadow-[4px_4px_0_#111827]">
-              <div class="absolute -top-2.5 -left-2.5 w-4 h-4 bg-neutral-900" />
-              <div class="absolute -top-2.5 -right-2.5 w-4 h-4 bg-neutral-900" />
-              <div class="pointer-events-none absolute inset-1 border border-neutral-900/10" />
+            <article class="relative border border-neutral-800 dark:border-neutral-600 bg-white dark:bg-neutral-900 p-3 shadow-[4px_4px_0_#111827] dark:shadow-none">
+              <div class="absolute -top-2.5 -left-2.5 w-4 h-4 bg-neutral-900 dark:bg-neutral-800" />
+              <div class="absolute -top-2.5 -right-2.5 w-4 h-4 bg-neutral-900 dark:bg-neutral-800" />
+              <div class="pointer-events-none absolute inset-1 border border-neutral-900/10 dark:border-white/10" />
               <div class="flex items-center gap-2 mb-1">
-                <span class="h-px w-5 bg-blue-700/70 shrink-0"></span>
+                <span class="h-px w-5 bg-blue-700/70 dark:bg-[#D6A21E]/40 shrink-0"></span>
               </div>
-              <h4 class="text-sm font-extrabold text-blue-900">Especialización en Derecho Internacional</h4>
-              <p class="text-sm text-neutral-500">🇨🇴 Universidad Simón Bolívar (Colombia) | 2021</p>
+              <h4 class="text-sm font-extrabold text-blue-900 dark:text-[#D6A21E]">Especialización en Derecho Internacional</h4>
+              <p class="text-sm text-neutral-500 dark:text-neutral-400">🇨🇴 Universidad Simón Bolívar (Colombia) | 2021</p>
             </article>
           </div>
         </section>

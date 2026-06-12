@@ -11,10 +11,10 @@ const config = TECNOLOGIAS[tech];
 ---
 
 <span class:list={[
-  "inline-flex shrink-0 items-center border-2 font-bold tracking-wide shadow-[inset_0_-2px_0_rgba(0,0,0,0.15)]",
+  "inline-flex shrink-0 items-center border-2 font-bold tracking-wide shadow-[inset_0_-2px_0_rgba(0,0,0,0.15)] dark:shadow-[inset_0_-2px_0_rgba(255,255,255,0.05)]",
   compact ? "gap-1 px-2 py-0.5 text-[10px]" : "gap-1 px-3 py-1 text-xs",
-  config?.bg ?? "bg-neutral-200 border-neutral-950",
-  config?.text ?? "text-neutral-950"
+  config?.bg ?? "bg-neutral-200 border-neutral-950 dark:bg-neutral-800 dark:border-neutral-600",
+  config?.text ?? "text-neutral-950 dark:text-neutral-200"
 ]}>
   {config?.svgPath
     ? <img src={config.svgPath} alt="" class:list={[compact ? "w-3.5 h-3.5" : "w-4 h-4"]} />

@@ -15,23 +15,23 @@ export interface Props {
 const { id, title, author, description, technologies, status, github, compact = false } = Astro.props;
 
 const statusStyles: Record<string, string> = {
-  "En progreso": "border border-neutral-900 bg-neutral-100 text-neutral-700",
-  "Completado": "border border-green-900 bg-green-100 text-green-700",
-  "Pausado": "border border-red-900 bg-red-100 text-red-700",
+  "En progreso": "border border-neutral-900 bg-neutral-100 text-neutral-700 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-300",
+  "Completado": "border border-green-900 bg-green-100 text-green-700 dark:border-green-700 dark:bg-green-900/40 dark:text-green-300",
+  "Pausado": "border border-red-900 bg-red-100 text-red-700 dark:border-red-700 dark:bg-red-900/40 dark:text-red-300",
 };
 ---
 
 <article
   class:list={[
-    "relative min-h-0 border-2 border-neutral-900 bg-white",
+    "relative min-h-0 border border-neutral-800 dark:border-neutral-600 bg-white dark:bg-neutral-900",
     compact
-      ? "flex flex-col p-2 shadow-[4px_4px_0_#111827]"
-      : "p-4 shadow-[5px_5px_0_#111827]",
+      ? "flex flex-col p-2 shadow-[4px_4px_0_#111827] dark:shadow-none"
+      : "p-4 shadow-[5px_5px_0_#111827] dark:shadow-none",
   ]}
 >
-  <div class:list={["absolute bg-neutral-900", compact ? "-top-2.5 -left-2.5 w-4 h-4" : "-top-3 -left-3 w-5 h-5"]} />
-  <div class:list={["absolute bg-neutral-900", compact ? "-top-2.5 -right-2.5 w-4 h-4" : "-top-3 -right-3 w-5 h-5"]} />
-  <div class="pointer-events-none absolute inset-1 border border-black/10" />
+  <div class:list={["absolute bg-neutral-900 dark:bg-neutral-800", compact ? "-top-2.5 -left-2.5 w-4 h-4" : "-top-3 -left-3 w-5 h-5"]} />
+  <div class:list={["absolute bg-neutral-900 dark:bg-neutral-800", compact ? "-top-2.5 -right-2.5 w-4 h-4" : "-top-3 -right-3 w-5 h-5"]} />
+  <div class="pointer-events-none absolute inset-1 border border-black/10 dark:border-white/10" />
 
   <div class:list={[
     "flex min-h-0 flex-col",
@@ -43,19 +43,19 @@ const statusStyles: Record<string, string> = {
     ]}>
       <div class="flex items-center justify-between gap-2">
         <div class="flex items-center gap-2">
-          <span class:list={["h-px bg-amber-700/70", compact ? "w-5" : "w-6"]}></span>
+          <span class:list={["h-px bg-amber-700/70 dark:bg-[#D6A21E]/50", compact ? "w-5" : "w-6"]}></span>
         </div>
         <div class="flex items-center gap-2">
           {github && !compact && (
-            <a href={github} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 border-2 border-neutral-900 px-2 py-0.5 text-[10px] font-bold tracking-wide text-neutral-900 transition-all hover:bg-neutral-900 hover:text-neutral-50">
-              <img src="/IconsTec/GitHub.svg" alt="" class="w-4 h-4" />
+            <a href={github} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 border-2 border-neutral-900 dark:border-neutral-700 px-2 py-0.5 text-[10px] font-bold tracking-wide text-neutral-900 dark:text-neutral-100 transition-all hover:bg-neutral-900 hover:text-neutral-50 dark:hover:bg-neutral-100 dark:hover:text-neutral-900">
+<img src="/IconsTec/GitHub.svg" alt="" class="w-4 h-4 dark:invert" />
               GitHub
             </a>
           )}
           {status && !compact && (
             <span class:list={[
               "inline-block px-2 py-0.5 text-[10px] font-bold tracking-wider",
-              statusStyles[status] ?? "border border-neutral-900 bg-neutral-100 text-neutral-700",
+              statusStyles[status] ?? "border border-neutral-900 bg-neutral-100 text-neutral-700 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-300",
             ]}>
               {status}
             </span>
@@ -65,7 +65,7 @@ const statusStyles: Record<string, string> = {
 
       <h3
         class:list={[
-          "font-extrabold tracking-tight text-neutral-950 leading-tight",
+          "font-extrabold tracking-tight text-neutral-950 dark:text-neutral-50 leading-tight",
           compact ? "text-sm line-clamp-2" : "text-lg",
         ]}
         transition:name={`post-title-${id}`}
@@ -73,13 +73,13 @@ const statusStyles: Record<string, string> = {
         {title}
       </h3>
 
-      <p class:list={["font-medium italic text-neutral-500", compact ? "text-xs" : "text-xs"]}>
-        Por <span class="text-blue-900">{author}</span>
+      <p class:list={["font-medium italic text-neutral-500 dark:text-neutral-400", compact ? "text-xs" : "text-xs"]}>
+        Por <span class="text-blue-900 dark:text-[#D6A21E]">{author}</span>
       </p>
 
       <p
         class:list={[
-          "leading-relaxed text-neutral-600",
+          "leading-relaxed text-neutral-600 dark:text-neutral-400",
           compact ? "text-sm line-clamp-2" : "text-sm line-clamp-3",
         ]}
       >
@@ -97,15 +97,15 @@ const statusStyles: Record<string, string> = {
 
     <div class:list={["flex items-center gap-2", compact ? "justify-between mt-auto" : ""]}>
       {github && compact && (
-        <a href={github} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 border-2 border-neutral-900 px-2 py-0.5 text-[10px] font-bold tracking-wide text-neutral-900 transition-all hover:bg-neutral-900 hover:text-neutral-50">
-          <img src="/IconsTec/GitHub.svg" alt="" class="w-3.5 h-3.5" />
+        <a href={github} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 border-2 border-neutral-900 dark:border-neutral-700 px-2 py-0.5 text-[10px] font-bold tracking-wide text-neutral-900 dark:text-neutral-100 transition-all hover:bg-neutral-900 hover:text-neutral-50 dark:hover:bg-neutral-100 dark:hover:text-neutral-900">
+          <img src="/IconsTec/GitHub.svg" alt="" class="w-3.5 h-3.5 dark:invert" />
           GitHub
         </a>
       )}
       <a
         href={`/proyecto/${id}`}
         class:list={[
-          "relative z-10 inline-block w-fit shrink-0 border-2 border-neutral-900 font-bold tracking-wide text-neutral-900 transition-all duration-200 hover:-translate-y-0.5 hover:bg-neutral-900 hover:text-neutral-50 hover:shadow-[2px_2px_0_#111827]",
+          "relative z-10 inline-block w-fit shrink-0 border-2 border-neutral-900 dark:border-neutral-700 font-bold tracking-wide text-neutral-900 dark:text-neutral-100 transition-all duration-200 hover:-translate-y-0.5 hover:bg-neutral-900 hover:text-neutral-50 dark:hover:bg-neutral-100 dark:hover:text-neutral-900 hover:shadow-[2px_2px_0_#111827] dark:hover:shadow-none",
           compact ? "self-start px-3 py-1 text-xs" : "px-4 py-1.5 text-xs",
         ]}
       >

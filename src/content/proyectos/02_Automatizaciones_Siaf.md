@@ -65,4 +65,4 @@ En su primera ejecución, el sistema identificó más de **S/ 200,000** en órde
 
 El sistema expuso en un solo reporte lo que antes requería semanas de revisión manual: **S/ 200,761.07** en órdenes de servicio comprometidas y no devengadas que deben pasar a rebajarse para recuperar dicho saldo.
 
-<img src="/images/proyectos/proyecto02/hoja_calculo.png" alt="Reporte Excel con S/ 200,761.07 en saldos detectados" class="w-full h-auto border-2 border-neutral-900" />
+<img src="/images/proyectos/proyecto02/hoja_calculo.png" alt="Reporte Excel con S/ 200,761.07 en saldos detectados" class="w-full h-auto border-2 border-neutral-900 dark:border-neutral-700" />
