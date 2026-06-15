@@ -1,0 +1,71 @@
+---
+export interface Props {
+  title: string;
+  institution: string;
+  image: string;
+  date?: string;
+  credentialUrl?: string;
+}
+
+const { title, institution, image, date, credentialUrl } = Astro.props;
+---
+
+<article
+  class="relative border border-neutral-800 dark:border-neutral-600 bg-white dark:bg-neutral-900 shadow-[4px_4px_0_#111827] dark:shadow-none overflow-hidden"
+>
+  <div class="absolute -top-2.5 -left-2.5 w-4 h-4 bg-neutral-900 dark:bg-neutral-800 z-10" />
+  <div class="absolute -top-2.5 -right-2.5 w-4 h-4 bg-neutral-900 dark:bg-neutral-800 z-10" />
+  <div class="pointer-events-none absolute inset-1 border border-neutral-900/10 dark:border-white/10 z-10" />
+
+  <button
+    type="button"
+    class="cert-lightbox-trigger relative block w-full cursor-pointer border-b-2 border-neutral-900 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 dark:focus-visible:ring-[#D6A21E] focus-visible:ring-offset-2"
+    data-image={image}
+    data-title={title}
+    data-institution={institution}
+    data-credential-url={credentialUrl}
+    aria-label={`Ver certificado: ${title}`}
+  >
+    <div class="aspect-[4/3] w-full overflow-hidden">
+      <img
+        src={image}
+        alt={`Certificado — ${title}`}
+        class="h-full w-full object-cover object-top transition-transform duration-200 hover:scale-[1.02]"
+        loading="lazy"
+      />
+    </div>
+  </button>
+
+  <div class="space-y-1 p-3">
+    <div class="flex items-center gap-2">
+      <span class="h-px w-5 bg-blue-700/70 dark:bg-[#D6A21E]/40 shrink-0"></span>
+    </div>
+    <h3 class="text-sm font-extrabold leading-tight text-blue-900 dark:text-[#D6A21E]">
+      {title}
+    </h3>
+    <p class="text-xs leading-snug text-neutral-500 dark:text-neutral-400">
+      {institution}
+    </p>
+    {
+      date && (
+        <p class="text-xs text-neutral-400 dark:text-neutral-500">{date}</p>
+      )
+    }
+    {
+      credentialUrl && (
+        <div class="pt-1">
+          <a
+            href={credentialUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            title={credentialUrl}
+            class="relative z-10 inline-flex items-center gap-1 border-2 border-neutral-900 dark:border-neutral-700 px-3 py-1 text-[11px] font-bold tracking-wide text-neutral-900 dark:text-neutral-100 transition-all duration-200 hover:-translate-y-0.5 hover:bg-neutral-900 hover:text-neutral-50 dark:hover:bg-neutral-100 dark:hover:text-neutral-900 hover:shadow-[2px_2px_0_#111827] dark:hover:shadow-none"
+          >
+            Ver credencial
+            <span aria-hidden="true" class="text-xs">↗</span>
+          </a>
+        </div>
+      )
+    }
+  </div>
+</article>

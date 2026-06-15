@@ -1,0 +1,167 @@
+<div
+  id="cert-lightbox"
+  class="fixed inset-0 z-50 hidden items-center justify-center overflow-hidden bg-neutral-950/80 p-4 backdrop-blur-sm"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="cert-lightbox-title"
+  aria-hidden="true"
+>
+  <button
+    type="button"
+    id="cert-lightbox-close"
+    class="absolute right-4 top-4 z-10 border-2 border-neutral-700 bg-neutral-900 px-3 py-1 text-sm font-bold text-neutral-100 transition-colors hover:bg-neutral-100 hover:text-neutral-900"
+    aria-label="Cerrar"
+  >
+    ✕
+  </button>
+
+  <div
+    id="cert-lightbox-panel"
+    class="relative flex h-[min(88dvh,820px)] w-full max-w-3xl flex-col overflow-hidden border-2 border-neutral-700 bg-white shadow-[6px_6px_0_#111827] dark:bg-neutral-900 dark:shadow-none"
+  >
+    <div class="absolute -top-2.5 -left-2.5 h-4 w-4 bg-neutral-900 dark:bg-neutral-800" />
+    <div class="absolute -top-2.5 -right-2.5 h-4 w-4 bg-neutral-900 dark:bg-neutral-800" />
+
+    <div
+      id="cert-lightbox-image-panel"
+      class="min-h-0 flex-1 overflow-x-hidden overflow-y-auto overscroll-contain bg-neutral-100 p-3 dark:bg-neutral-800 sm:p-4"
+    >
+      <img
+        id="cert-lightbox-image"
+        src=""
+        alt=""
+        class="mx-auto block h-auto w-auto max-w-full"
+      />
+    </div>
+
+    <div class="shrink-0 space-y-1 border-t-2 border-neutral-900 bg-white px-4 py-3 dark:border-neutral-700 dark:bg-neutral-900">
+      <h2
+        id="cert-lightbox-title"
+        class="text-base font-extrabold text-blue-900 dark:text-[#D6A21E]"
+      ></h2>
+      <p
+        id="cert-lightbox-institution"
+        class="text-sm text-neutral-500 dark:text-neutral-400"
+      ></p>
+      <a
+        id="cert-lightbox-url"
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hidden mt-1 inline-flex items-center gap-1 border-2 border-neutral-900 px-3 py-1 text-xs font-bold tracking-wide text-neutral-900 transition-all duration-200 hover:-translate-y-0.5 hover:bg-neutral-900 hover:text-neutral-50 dark:border-neutral-700 dark:text-neutral-100 dark:hover:bg-neutral-100 dark:hover:text-neutral-900"
+      >
+        Ver credencial
+        <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  #cert-lightbox-image-panel {
+    scrollbar-width: thin;
+    scrollbar-color: #525252 transparent;
+  }
+
+  #cert-lightbox-image-panel::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  #cert-lightbox-image-panel::-webkit-scrollbar-thumb {
+    border-radius: 9999px;
+    background-color: #525252;
+  }
+</style>
+
+<script>
+  let keydownHandler: ((event: KeyboardEvent) => void) | null = null;
+
+  function setupCertLightbox() {
+    const lightbox = document.getElementById("cert-lightbox");
+    const closeBtn = document.getElementById("cert-lightbox-close");
+    const imagePanel = document.getElementById("cert-lightbox-image-panel");
+    const image = document.getElementById("cert-lightbox-image") as HTMLImageElement | null;
+    const title = document.getElementById("cert-lightbox-title");
+    const institution = document.getElementById("cert-lightbox-institution");
+    const credentialUrl = document.getElementById("cert-lightbox-url") as HTMLAnchorElement | null;
+
+    if (!lightbox || !closeBtn || !imagePanel || !image || !title || !institution || !credentialUrl) return;
+
+    let lastFocused: HTMLElement | null = null;
+
+    function resetImageScroll() {
+      imagePanel.scrollTop = 0;
+      imagePanel.scrollLeft = 0;
+    }
+
+    function open(trigger: HTMLButtonElement) {
+      resetImageScroll();
+      image.src = trigger.dataset.image ?? "";
+      image.alt = `Certificado — ${trigger.dataset.title ?? ""}`;
+      title.textContent = trigger.dataset.title ?? "";
+      institution.textContent = trigger.dataset.institution ?? "";
+
+      const url = trigger.dataset.credentialUrl?.trim();
+      if (url) {
+        credentialUrl.href = url;
+        credentialUrl.title = url;
+        credentialUrl.classList.remove("hidden");
+      } else {
+        credentialUrl.href = "#";
+        credentialUrl.title = "";
+        credentialUrl.classList.add("hidden");
+      }
+
+      image.onload = () => resetImageScroll();
+
+      lastFocused = trigger;
+      lightbox.classList.remove("hidden");
+      lightbox.classList.add("flex");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      closeBtn.focus();
+    }
+
+    function close() {
+      lightbox.classList.add("hidden");
+      lightbox.classList.remove("flex");
+      lightbox.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      image.onload = null;
+      image.src = "";
+      resetImageScroll();
+      credentialUrl.classList.add("hidden");
+      lastFocused?.focus();
+      lastFocused = null;
+    }
+
+    document.querySelectorAll(".cert-lightbox-trigger").forEach((trigger) => {
+      const newTrigger = trigger.cloneNode(true) as HTMLButtonElement;
+      trigger.replaceWith(newTrigger);
+      newTrigger.addEventListener("click", () => open(newTrigger));
+    });
+
+    const newCloseBtn = closeBtn.cloneNode(true) as HTMLButtonElement;
+    closeBtn.replaceWith(newCloseBtn);
+    newCloseBtn.addEventListener("click", close);
+
+    lightbox.onclick = (event) => {
+      if (event.target === lightbox) close();
+    };
+
+    if (keydownHandler) {
+      document.removeEventListener("keydown", keydownHandler);
+    }
+
+    keydownHandler = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && !lightbox.classList.contains("hidden")) {
+        close();
+      }
+    };
+
+    document.addEventListener("keydown", keydownHandler);
+  }
+
+  setupCertLightbox();
+  document.addEventListener("astro:page-load", setupCertLightbox);
+</script>

@@ -36,5 +36,21 @@ const proyectos = defineCollection({
     }),
 });
 
+const certificaciones = defineCollection({
+    loader: glob({
+        pattern: '**/[^_]*.md',
+        base: "./src/content/certificaciones"
+    }),
+    schema: z.object({
+        title: z.string(),
+        institution: z.string(),
+        image: z.string(),
+        category: z.enum(["academica", "tecnologica"]),
+        date: z.string().optional(),
+        order: z.number().optional(),
+        credentialUrl: z.url().optional(),
+    }),
+});
+
 // Se registra la colección en astro
-export const collections  = { blogs, proyectos };
+export const collections  = { blogs, proyectos, certificaciones };

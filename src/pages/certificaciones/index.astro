@@ -1,0 +1,97 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import CertificationCard from "../../components/CertificationCard.astro";
+import CertificationLightbox from "../../components/CertificationLightbox.astro";
+
+const all = await getCollection("certificaciones");
+
+const sortByOrder = (
+  a: (typeof all)[number],
+  b: (typeof all)[number],
+) => (a.data.order ?? 99) - (b.data.order ?? 99);
+
+const academicas = all
+  .filter((cert) => cert.data.category === "academica")
+  .sort(sortByOrder);
+
+const tecnologicas = all
+  .filter((cert) => cert.data.category === "tecnologica")
+  .sort(sortByOrder);
+---
+
+<Layout
+  seoTitle="Certificaciones | Alvaro Vidal"
+  seoDescription="Certificaciones académicas y tecnológicas de Alvaro Vidal Velasque: formación en contrataciones públicas, desarrollo de sistemas y más."
+>
+  <div class="max-w-5xl mx-auto space-y-8 pb-12">
+    <div class="flex items-center justify-between gap-4 border-b-2 border-neutral-900 dark:border-neutral-700 pb-2">
+      <h1 class="text-xl font-extrabold tracking-tight text-neutral-900 dark:text-neutral-50">
+        Certificaciones
+      </h1>
+      <span class="text-xs font-medium text-neutral-500 dark:text-neutral-400">
+        {all.length} certificados
+      </span>
+    </div>
+
+    <section class="space-y-4">
+      <div class="flex items-center gap-2 border-b-2 border-neutral-900 dark:border-neutral-700 pb-1.5">
+        <span class="h-px w-5 bg-blue-700/70 dark:bg-[#D6A21E]/40"></span>
+        <h2 class="text-base font-extrabold tracking-wider text-blue-900 dark:text-[#D6A21E] uppercase">
+          Académicas
+        </h2>
+      </div>
+
+      {
+        academicas.length > 0 ? (
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {academicas.map((cert) => (
+              <CertificationCard
+                title={cert.data.title}
+                institution={cert.data.institution}
+                image={cert.data.image}
+                date={cert.data.date}
+                credentialUrl={cert.data.credentialUrl}
+              />
+            ))}
+          </div>
+        ) : (
+          <p class="text-sm text-neutral-500 dark:text-neutral-400">
+            Aún no hay certificaciones académicas publicadas.
+          </p>
+        )
+      }
+    </section>
+
+    <section class="space-y-4">
+      <div class="flex items-center gap-2 border-b-2 border-neutral-900 dark:border-neutral-700 pb-1.5">
+        <span class="h-px w-5 bg-blue-700/70 dark:bg-[#D6A21E]/40"></span>
+        <h2 class="text-base font-extrabold tracking-wider text-blue-900 dark:text-[#D6A21E] uppercase">
+          Tecnológicas
+        </h2>
+      </div>
+
+      {
+        tecnologicas.length > 0 ? (
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {tecnologicas.map((cert) => (
+              <CertificationCard
+                title={cert.data.title}
+                institution={cert.data.institution}
+                image={cert.data.image}
+                date={cert.data.date}
+                credentialUrl={cert.data.credentialUrl}
+              />
+            ))}
+          </div>
+        ) : (
+          <p class="text-sm text-neutral-500 dark:text-neutral-400">
+            Aún no hay certificaciones tecnológicas publicadas.
+          </p>
+        )
+      }
+    </section>
+  </div>
+
+  <CertificationLightbox />
+</Layout>
