@@ -5,5 +5,4 @@ image: /images/certificaciones/EXCEL-UNI.jpg
 category: tecnologica
 date: "2024"
 order: 4
-
 ---
