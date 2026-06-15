@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import { Image, getImage } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import perfil from "../assets/perfil01.jpg";
 import BlogCard from "../components/BlogCard.astro";
@@ -9,14 +10,23 @@ const posts = await getCollection("blogs");
 const proyectos = await getCollection("proyectos");
 const recentPosts = posts.slice(0, 3);
 const featuredProjects = proyectos.slice(0, 3);
+
+const lcpImage = await getImage({
+  src: perfil,
+  width: 600,
+  format: "webp",
+});
 ---
 
 <!-- ╔══════════════════════════════════════════════════╗
      ║   L A Y O U T   P R I N C I P A L             ║
      ╚══════════════════════════════════════════════════╝ -->
-<Layout lockViewport
+<Layout
+  lockViewport
+  preloadImage={lcpImage.src}
   seoTitle="Alvaro Vidal | Politólogo, Analista de Datos & Est. Desarrollo de Sistemas"
-  seoDescription="Portafolio de Alvaro Vidal Velasque, estudiante de Desarrollo de Sistemas en IDAT, politólogo y analista de datos en Lima, Perú. Especialista en presupuesto público, logística pública, ciencia política y derecho internacional.">
+  seoDescription="Portafolio de Alvaro Vidal Velasque, estudiante de Desarrollo de Sistemas en IDAT, politólogo y analista de datos en Lima, Perú. Especialista en presupuesto público, logística pública, ciencia política y derecho internacional."
+>
   <div class="mx-auto flex w-full max-w-6xl flex-col gap-4 md:gap-3 lg:h-full lg:min-h-0 lg:overflow-hidden">
 
     <!-- ╔══════════════════════════════════════════════╗
@@ -37,10 +47,17 @@ const featuredProjects = proyectos.slice(0, 3);
               — 思ったこと、感じたこと —
             </p>
           </div>
-          <!-- ── foto ── -->
-          <img
-            src={perfil.src}
-            alt="Foto de perfil"
+          <!-- ── foto (LCP) ── -->
+          <Image
+            src={perfil}
+            alt="Foto de perfil de Alva Vidal"
+            width={736}
+            height={1104}
+            widths={[320, 400, 600]}
+            sizes="(min-width: 768px) 30vw, 100vw"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
             class="relative min-h-0 w-full flex-1 object-contain"
           />
           <!-- ── tags (sticker) ── -->

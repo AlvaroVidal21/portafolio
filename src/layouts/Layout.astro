@@ -6,12 +6,13 @@ interface Props {
   lockViewport?: boolean;
   seoTitle?: string;
   seoDescription?: string;
+  preloadImage?: string;
 }
 
 const DEFAULT_TITLE = "Alvaro Vidal | Politólogo, Analista de Datos & Est. Desarrollo de Sistemas";
 const DEFAULT_DESC = "Portafolio de Alvaro Vidal Velasque, estudiante de Desarrollo de Sistemas en IDAT, politólogo y analista de datos en Lima, Perú. Especialista en presupuesto público, logística pública, ciencia política y derecho internacional.";
 
-const { lockViewport = false, seoTitle = DEFAULT_TITLE, seoDescription = DEFAULT_DESC } = Astro.props;
+const { lockViewport = false, seoTitle = DEFAULT_TITLE, seoDescription = DEFAULT_DESC, preloadImage } = Astro.props;
 
 const pathname = Astro.url.pathname;
 const siteUrl = "https://alvavidal.dev";
@@ -67,13 +68,25 @@ const currentPage =
       "alumniOf": { "@type": "CollegeOrUniversity", "name": "IDAT" }
     })} />
 
+    {preloadImage && (
+      <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />
+    )}
+
     <ClientRouter />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+JP:wght@400;700&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+JP:wght@400;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
   </head>
     <body
     class:list={[
