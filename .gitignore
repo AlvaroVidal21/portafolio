@@ -36,3 +36,6 @@ repomix-output.md
 
 # local portable skill installed for this portfolio workspace
 .agents/skills/portfolio-research-publisher/
+
+# skill registry auto-generated cache
+.atl/.skill-registry.cache.json
