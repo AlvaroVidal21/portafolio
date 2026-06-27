@@ -33,3 +33,6 @@ repomix-output.md
 # local env overrides
 .env.local
 .env.*.local
+
+# local portable skill installed for this portfolio workspace
+.agents/skills/portfolio-research-publisher/
