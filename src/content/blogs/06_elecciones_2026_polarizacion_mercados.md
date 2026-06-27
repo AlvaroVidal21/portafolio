@@ -6,9 +6,9 @@ description: "La elección más ajustada de la historia peruana revela un país 
 
 ## Un país que se parte en dos
 
-Cuarenta y dos mil setecientos cincuenta y nueve votos. Eso (menos del 0.3% del electorado) separó a Keiko Fujimori de Roberto Sánchez en el balotaje de 2026. El margen es incluso más estrecho que el de 2021, cuando Pedro Castillo superó a Keiko por 44 263 votos. Dos elecciones consecutivas decididas por menos de medio punto porcentual no son un accidente estadístico: son el síntoma de una fractura que la aritmética electoral vuelve visible pero que las ciencias sociales vienen diagnosticando desde hace décadas.
+Cuarenta y dos mil setecientos cincuenta y nueve votos. Eso (menos del 0.3% del electorado) separó a Keiko Fujimori de Roberto Sánchez en el balotaje del **domingo 7 de junio de 2026**. El margen es incluso más estrecho que el de 2021, cuando Pedro Castillo superó a Keiko por 44 263 votos. Dos elecciones consecutivas decididas por menos de medio punto porcentual no son un accidente estadístico: son el síntoma de una fractura que la aritmética electoral vuelve visible pero que las ciencias sociales vienen diagnosticando desde hace décadas.
 
-Este ensayo aborda las elecciones de 2026 desde dos ángulos complementarios. Primero, el mecanismo politológico: qué teorías explican una polarización tan persistente y qué nos dicen los clivajes históricos sobre el Perú de hoy. Segundo, el mecanismo de mercado: cómo reaccionaron el tipo de cambio y el mercado de capitales en tres fases (conteo rápido, ventaja de Keiko y confirmación definitiva) y qué revela esa reacción sobre la racionalidad del inversor en economías emergentes.
+Este ensayo aborda las elecciones de 2026 desde dos ángulos complementarios. Primero, el mecanismo politológico: qué teorías explican una polarización tan persistente y qué nos dicen los clivajes históricos sobre el Perú de hoy. Segundo, el mecanismo de mercado: cómo reaccionaron el tipo de cambio y el mercado de capitales en las tres fases de la semana electoral (conteo rápido con Sánchez primero, reversión del conteo oficial hacia Keiko y confirmación definitiva) y qué revela esa reacción sobre la racionalidad del inversor en economías emergentes.
 
 ## [1] El mecanismo politológico: clivajes que no cicatrizan
 
@@ -28,29 +28,33 @@ Paula Muñoz, analizando la elección de 2021, ya advertía que la debilidad ext
 
 ![Polarización electoral: resultado del balotaje 2026](/images/blogs/06_elecciones_2026_polarizacion_mercados/01_polarizacion_aritmetica.png)
 
-## [2] El mecanismo de mercado: tres actos en el tipo de cambio
+## [2] El mecanismo de mercado: tres actos en una semana
 
-Si el balotaje fue un espejo de la fractura social, el mercado cambiario fue su sismógrafo. El tipo de cambio PEN/USD, la variable más sensible al riesgo político en economías emergentes dolarizadas como la peruana, registró tres fases nítidas entre abril y junio de 2026.
+Si el balotaje fue un espejo de la fractura social, el mercado cambiario fue su sismógrafo. La elección se decidió el **domingo 7 de junio de 2026** y, en menos de 72 horas, el tipo de cambio PEN/USD recorrió las tres fases que el usuario pidió analizar: conteo rápido con Sánchez primero, reversión del conteo oficial hacia Keiko, y confirmación definitiva. Tres movimientos en una sola semana.
 
 Los datos provienen del <a href="https://estadisticas.bcrp.gob.pe/estadisticas/series/diarias/resultados/PD04639PD/html" target="_blank" rel="noopener noreferrer">BCRP</a> (serie PD04639PD, tipo de cambio bancario compra) y de <a href="https://finance.yahoo.com/quote/EPU/" target="_blank" rel="noopener noreferrer">Yahoo Finance</a> (EPU, iShares MSCI Peru ETF, NYSEARCA).
 
-### Fase A: Conteo rápido. Sánchez primero, el sol tiembla (27–29 abr)
+### Fase A: Conteo rápido. Sánchez primero, el sol tiembla (domingo 7 a lunes 8 de junio)
 
-Cuando los primeros resultados a boca de urna y el conteo rápido mostraron a Sánchez en primer lugar, el tipo de cambio saltó de S/ 3.455 (1 de abril) a S/ 3.523 el 29 de abril, su nivel más alto del primer semestre. En paralelo, el EPU (el ETF que agrupa a las principales empresas peruanas que cotizan en Wall Street) cayó de un pico pre-electoral de USD $92.57 (6 de febrero) a aproximadamente USD $77 hacia fines de abril, una pérdida de casi 17%.
+El domingo 7 de junio, apenas cerradas las mesas, las bocas de urna y el conteo rápido de la ONPE mostraron a Roberto Sánchez en primer lugar. El mercado no esperó: el lunes 8 de junio el PEN se depreció a S/ 3.488, su nivel más alto desde finales de marzo. Frente al cierre del viernes 5 (S/ 3.442), el sol peruano perdía 4.6 centavos por dólar en una jornada.
 
-El mercado no estaba reaccionando a Sánchez como individuo sino al proyecto que representaba: una agenda que incluía regulación minera más estricta, renegociación de contratos de explotación de recursos naturales y una política fiscal expansiva. Para un país cuya canasta exportadora depende en más del 60% de la minería y donde el tipo de cambio es el principal mecanismo de transmisión de la incertidumbre política a la economía real, la señal era inequívoca.
+En paralelo, el EPU (el ETF que agrupa a las principales empresas peruanas que cotizan en Wall Street) cayó a USD $79.31 desde los $80.22 del viernes pre-electoral. El mercado no estaba reaccionando a Sánchez como individuo sino al proyecto que representaba: una agenda que incluía regulación minera más estricta, renegociación de contratos de explotación de recursos naturales y una política fiscal expansiva. Para un país cuya canasta exportadora depende en más del 60% de la minería, la señal del conteo rápido era inequívoca.
 
-### Fase B: Keiko favorita. El sol se aprecia (4–14 may)
+Cabe aclarar que la caída fue moderada: el mercado ya había descontado parte del riesgo electoral en abril y mayo, cuando el PEN había tocado S/ 3.523 (29 de abril) y el EPU había caído del orden de USD $87 a USD $77 durante la campaña. La fase A no fue un shock, sino el descuento final del escenario Sánchez.
 
-Conforme el conteo oficial de la ONPE revirtió la ventaja inicial y Keiko pasó al frente, el PEN se apreció de S/ 3.512 (4 de mayo) a S/ 3.413 (14 de mayo), una reducción de 3.1% en diez días. El EPU rebotó de ~USD $77 a ~USD $86. La velocidad de la corrección sugiere que los inversores habían sobre-ponderado el escenario Sánchez y que el retorno a la continuidad pro-mercado fue recibido con alivio.
+### Fase B: Keiko favorita. El sol se aprecia (martes 9 de junio)
 
-Pero hay un matiz importante: el mercado no estaba premiando a Keiko *per se*, sino descontando el riesgo de un giro regulatorio brusco. En economías emergentes con instituciones frágiles, la previsibilidad del *policy mix* importa más que la ideología del gobernante. Keiko, con un historial de dos décadas en la escena pública y un programa económico conocido, ofrecía lo que los mercados más valoran en contextos de incertidumbre: continuidad.
+El martes 9 de junio, conforme el conteo oficial de la ONPE revirtió la ventaja inicial y Keiko Fujimori pasó al frente, el PEN colapsó a S/ 3.372: una apreciación de 3.3% en una sola jornada, el movimiento diario más violento del primer semestre. El EPU saltó de USD $79.31 a USD $82.03, una recuperación de 3.4% en una jornada.
 
-### Fase C: Confirmación. La certeza vale más que la ideología (8–9 jun)
+Es un matiz importante: el mercado no estaba premiando a Keiko *per se*, sino descontando el riesgo de un giro regulatorio brusco. En economías emergentes con instituciones frágiles, la previsibilidad del *policy mix* importa más que la ideología del gobernante. Keiko, con un historial de dos décadas en la escena pública y un programa económico conocido, ofrecía lo que los mercados más valoran en contextos de incertidumbre: continuidad.
 
-El 8 de junio, con la impugnación de Sánchez todavía sin resolverse, el tipo de cambio se disparó a S/ 3.488. Al día siguiente, cuando los organismos electorales confirmaron definitivamente a Keiko, el PEN colapsó a S/ 3.372: una apreciación de 3.3% en una sola jornada, el movimiento diario más violento del semestre. El EPU alcanzó USD $88.88 el 12 de junio, su nivel más alto desde febrero.
+### Fase C: Confirmación. La certeza vale más que la ideología (10 al 22 de junio)
 
-Esta secuencia (spike por incertidumbre institucional, crash por resolución) es quizás la lección más importante del ciclo electoral 2026 para los mercados: **lo que el inversor castiga no es la ideología del ganador sino la ausencia de un ganador claro**. La certeza, incluso cuando confirma a un candidato que no era el favorito del *establishment* financiero, es preferible a la ambigüedad. Ocho días de impugnación le costaron al sol peruano casi cinco centavos.
+Conforme la ventaja de Keiko se consolidó y los organismos electorales confirmaron su victoria, el PEN se estabilizó en el rango más ordenado del semestre: S/ 3.37 a S/ 3.40 entre el 10 y el 25 de junio. El EPU escaló hasta USD $86.18 el 22 de junio, su nivel más alto desde mayo, reflejando el alivio del inversor externo.
+
+Esta secuencia, del spike por incertidumbre institucional al crash por resolución, es quizás la lección más importante de la semana electoral para los mercados: **lo que el inversor castiga no es la ideología del ganador, sino la ausencia de un ganador claro**. La certeza, incluso cuando confirma a un candidato que no era el favorito del *establishment* financiero, es preferible a la ambigüedad.
+
+Quienes esperaron a Sánchez para comprar PEN pagaron S/ 3.488; quienes entraron el 9 de junio, S/ 3.372. La diferencia, 11.6 centavos por dólar en 24 horas, es el costo concreto que la incertidumbre institucional le impuso al sol peruano. Hacia fin de mes, sin embargo, el *relief rally* encontró su techo: el EPU cedió a USD $78.18 el 26 de junio, sugiriendo que el alivio electoral comenzó a desvanecerse ante preocupaciones de gobernabilidad post-electoral.
 
 ![Tipo de cambio PEN/USD en tres actos electorales](/images/blogs/06_elecciones_2026_polarizacion_mercados/02_reaccion_cambiaria.png)
 
@@ -63,7 +67,7 @@ Los mercados financieros son mecanismos eficientes de agregación de informació
 1. **Lo peor es la incertidumbre institucional.** Un resultado impugnado, una transición trabada o un vacío de poder son más costosos que cualquier resultado electoral específico.
 2. **La ideología importa, pero menos que la predictibilidad.** El mercado penalizó más la sorpresa (Sánchez primero en conteo rápido) que la orientación ideológica (Keiko confirmada).
 3. **La minería es la variable sensible.** El clivaje más relevante para los mercados no es izquierda/derecha en abstracto, sino el régimen de explotación de recursos naturales. Cada punto de incertidumbre sobre regulación minera se tradujo en volatilidad cambiaria.
-4. **El inversor externo vota con el pie.** El EPU perdió casi USD $16 por acción (de $92.57 a ~$77) en el *sell-off* pre-electoral. Ese capital no vuelve automáticamente: la recuperación a $83.40 al cierre de junio sugiere que el mercado ya descontó la victoria de Keiko pero todavía no internalizó plenamente la gobernabilidad posterior.
+4. **El inversor externo vota con el pie.** El EPU cayó del orden de USD $87 a USD $77 durante la incertidumbre pre-electoral (abril a mayo), y tocó un piso de USD $79.31 el lunes 8 de junio al abrirse el mercado al conteo rápido. La recuperación tras la confirmación de Keiko no fue lineal: el ETF escaló hasta USD $86.18 el 22 de junio, pero cedió a USD $78.18 hacia fin de mes, sugiriendo que el alivio electoral fue más débil de lo que el movimiento cambiario reflejaba.
 
 Dicho esto, los mercados no miden (ni pretenden medir) la calidad democrática, la cohesión social ni la legitimidad percibida de las instituciones. Una elección que el mercado celebra puede ser, simultáneamente, una elección que profundiza la polarización perniciosa. La discrepancia entre la señal del tipo de cambio (estabilidad) y la señal de las calles (mitad del país que no reconoce al gobierno) es quizás la tensión más delicada del Perú post-2026.
 
@@ -79,7 +83,7 @@ Nada de eso es técnicamente imposible, pero todo es políticamente costoso. Y e
 
 Para el analista financiero, la elección de 2026 deja tres enseñanzas:
 
-- **La cobertura cambiaria no es opcional en años electorales peruanos.** Una volatilidad de 5.1% en el PEN/USD entre el piso de enero (S/ 3.346) y el pico electoral (S/ 3.523) justifica instrumentos de cobertura para cualquier empresa con exposición al tipo de cambio.
+- **La cobertura cambiaria no es opcional en años electorales peruanos.** Durante el primer semestre de 2026 el PEN/USD osciló entre S/ 3.346 (enero) y S/ 3.523 (29 de abril, incertidumbre pre-electoral), con un spike adicional a S/ 3.488 el lunes posterior al balotaje (8 de junio). Esa volatilidad justifica instrumentos de cobertura para cualquier empresa con exposición al tipo de cambio.
 - **El *event-driven trading* en mercados emergentes sigue patrones predecibles.** La secuencia incertidumbre → *sell-off* → resolución → *relief rally* se repitió en 2021 y 2026 con precisión casi mecánica. El inversor que internaliza ese patrón puede posicionarse antes del *relief rally*.
 - **El riesgo político no termina con la elección.** La gobernabilidad post-electoral (mayorías parlamentarias, conflictos sociales, riesgo de *impeachment*) es la variable que los mercados subestiman sistemáticamente y que define la trayectoria de mediano plazo.
 
