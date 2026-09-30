@@ -9,6 +9,48 @@ export interface TechnologyConfig {
 }
 
 export const TECNOLOGIAS: Record<string, TechnologyConfig> = {
+  sql: {
+    bg: "bg-sky-200 border-sky-950 dark:bg-sky-900/30 dark:border-sky-800",
+    text: "text-sky-950 dark:text-sky-400",
+    label: "SQL",
+    svgPath: "/IconsTec/SQL.svg",
+  },
+  excel: {
+    bg: "bg-emerald-200 border-emerald-950 dark:bg-emerald-900/30 dark:border-emerald-800",
+    text: "text-emerald-950 dark:text-emerald-400",
+    label: "Excel",
+    svgPath: "/IconsTec/Excel.svg",
+  },
+  powerbi: {
+    bg: "bg-yellow-200 border-yellow-950 dark:bg-yellow-900/30 dark:border-yellow-800",
+    text: "text-yellow-950 dark:text-yellow-400",
+    label: "Power BI",
+    svgPath: "/IconsTec/PowerBI.svg",
+  },
+  java: {
+    bg: "bg-orange-200 border-orange-950 dark:bg-orange-900/30 dark:border-orange-800",
+    text: "text-orange-950 dark:text-orange-400",
+    label: "Java",
+    svgPath: "/IconsTec/Java.svg",
+  },
+  typescript: {
+    bg: "bg-blue-200 border-blue-950 dark:bg-blue-900/30 dark:border-blue-800",
+    text: "text-blue-950 dark:text-blue-400",
+    label: "TypeScript",
+    svgPath: "/IconsTec/TypeScript.svg",
+  },
+  git: {
+    bg: "bg-orange-200 border-orange-950 dark:bg-orange-900/30 dark:border-orange-800",
+    text: "text-orange-950 dark:text-orange-400",
+    label: "Git",
+    svgPath: "/IconsTec/Git.svg",
+  },
+  docker: {
+    bg: "bg-sky-200 border-sky-950 dark:bg-sky-900/30 dark:border-sky-800",
+    text: "text-sky-950 dark:text-sky-400",
+    label: "Docker",
+    svgPath: "/IconsTec/Docker.svg",
+  },
   springboot: {
     bg: "bg-emerald-200 border-emerald-950 dark:bg-emerald-900/30 dark:border-emerald-800",
     text: "text-emerald-950 dark:text-emerald-400",

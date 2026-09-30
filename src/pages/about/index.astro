@@ -4,6 +4,12 @@ import Layout from '../../layouts/Layout.astro';
 import fotoPerfil from '../../assets/yoLinkedin.jpeg';
 import TechBadge from '../../components/TechBadge.astro';
 
+const technologyGroups = [
+  { title: 'Datos y análisis', technologies: ['python', 'sql', 'postgres', 'pandas', 'excel', 'powerbi'] },
+  { title: 'Desarrollo', technologies: ['java', 'springboot', 'typescript', 'angular', 'fastapi'] },
+  { title: 'Herramientas / infraestructura', technologies: ['git', 'linux', 'docker'] },
+];
+
 const lcpImage = await getImage({
   src: fotoPerfil,
   width: 400,
@@ -13,14 +19,14 @@ const lcpImage = await getImage({
 
 <Layout
   preloadImage={lcpImage.src}
-  seoTitle="Sobre Alvaro Vidal | Politólogo & Analista de Datos en Lima"
-  seoDescription="CV de Alvaro Vidal Velasque. Bachiller en Ciencia Política (UNMSM), especializado en Derecho Internacional (Unisimón) y estudiante de 4to ciclo de Desarrollo de Sistemas en IDAT. Experiencia en presupuesto público y logística pública."
+  seoTitle="Sobre Alvaro Vidal | Politólogo y Analista de Datos, Procesos y Automatización"
+  seoDescription="Politólogo por la UNMSM con especialización en Derecho Internacional y formación tecnológica en IDAT. Análisis de datos, procesos y automatización."
 >
   <div class="max-w-5xl mx-auto pb-12">
     <div class="flex flex-col md:flex-row gap-5 md:items-start">
 
       <!-- ───[ S I D E B A R   —   D A T O S ]────────── -->
-      <aside class="min-w-0 md:w-[30%] md:sticky md:top-4 md:self-start lg:top-8">
+      <aside class="about-sidebar min-w-0 md:w-[30%] md:sticky md:top-4 md:self-start lg:top-8">
         <div class="about-profile-card relative flex flex-col border border-neutral-800 dark:border-neutral-600 bg-white dark:bg-neutral-900 shadow-[5px_5px_0_#111827] dark:shadow-none md:max-h-[calc(100dvh-6.5rem)]">
 
           <!-- ── foto en marco vertical ── -->
@@ -49,25 +55,28 @@ const lcpImage = await getImage({
             <h1 class="text-xl font-extrabold tracking-tight text-blue-900 dark:text-[#D6A21E] md:text-lg lg:text-xl">
               Alva Vidal
             </h1>
-            <p class="mt-0.5 text-neutral-500 dark:text-neutral-400 text-xs tracking-wide">
-              — Desarrollador & Analista —
+            <p class="mt-1 text-neutral-600 dark:text-neutral-300 text-xs leading-relaxed tracking-wide">
+              <span class="block font-semibold text-blue-900 dark:text-[#D6A21E]">Politólogo</span>
+              <span class="block">Analista de Datos, Procesos y Automatización</span>
             </p>
           </div>
 
           <!-- ── tecnologías (más prominente) ── -->
           <div class="shrink-0 border-b-2 border-neutral-900 dark:border-neutral-700 px-4 py-3 md:px-3 md:py-2 lg:px-4 lg:py-3">
-            <h3 class="text-sm font-extrabold tracking-wider text-blue-900 dark:text-[#D6A21E] mb-2 md:mb-1.5 lg:mb-3 uppercase">
+            <h2 class="text-sm font-extrabold tracking-wider text-blue-900 dark:text-[#D6A21E] mb-2 md:mb-1.5 lg:mb-3 uppercase">
               Tecnologías
-            </h3>
-            <div class="grid grid-cols-2 gap-1 md:gap-1 lg:gap-1.5">
-              <TechBadge tech="python" compact />
-              <TechBadge tech="pandas" compact />
-              <TechBadge tech="postgres" compact />
-              <TechBadge tech="sqlite" compact />
-              <TechBadge tech="flask" compact />
-              <TechBadge tech="fastapi" compact />
-              <TechBadge tech="linux" compact />
-              <TechBadge tech="fedora" compact />
+            </h2>
+            <div class="space-y-3 md:space-y-2 lg:space-y-3">
+              {technologyGroups.map((group) => (
+                <section>
+                  <h3 class="mb-1 text-[11px] font-semibold leading-snug text-neutral-600 dark:text-neutral-300">
+                    {group.title}
+                  </h3>
+                  <div class="flex flex-wrap gap-1 lg:gap-1.5">
+                    {group.technologies.map((tech) => <TechBadge tech={tech} compact />)}
+                  </div>
+                </section>
+              ))}
             </div>
           </div>
 
@@ -131,17 +140,17 @@ const lcpImage = await getImage({
               </div>
               <div>
                 <p class="text-sm text-neutral-700 dark:text-neutral-400 leading-relaxed">
-                  <span class="underline decoration-[5px] decoration-yellow-500 dark:decoration-[#D6A21E] underline-offset-4">Bachiller en Ciencia Política</span> (UNMSM), con una especialización en <span class="underline decoration-[5px] decoration-yellow-500 dark:decoration-[#D6A21E] underline-offset-4">Derecho Internacional</span> (Unisimón - Colombia). Estudiante de 4to ciclo de la carrera de <span class="underline decoration-[5px] decoration-yellow-500 dark:decoration-[#D6A21E] underline-offset-4">Desarrollo de Sistemas Frontend y Backend</span> en IDAT. Estoy <span class="underline decoration-[5px] decoration-yellow-500 dark:decoration-[#D6A21E] underline-offset-4">certificado por la OECE</span> (Organismo Especializado para las Contrataciones Públicas Eficientes).
+                  Soy <span class="underline decoration-[5px] decoration-yellow-500 dark:decoration-[#D6A21E] underline-offset-4">politólogo, Bachiller en Ciencia Política por la UNMSM</span>, formado en la Facultad de Derecho y Ciencia Política, con especialización en <span class="underline decoration-[5px] decoration-yellow-500 dark:decoration-[#D6A21E] underline-offset-4">Derecho Internacional</span> por la Universidad Simón Bolívar (Colombia). Mi base combina investigación, análisis político y comprensión de las instituciones y del marco normativo.
                 </p>
               </div>
               <div>
                 <p class="text-sm text-neutral-700 dark:text-neutral-400 leading-relaxed">
-                  Trabajo con datos operativos, conciliación de información, trazabilidad y automatización de reportes.
+                  Tengo experiencia en presupuesto, logística, proveedores y contratos. Trabajo con datos operativos, trazabilidad y seguimiento, utilizando <span class="font-semibold text-neutral-800 dark:text-neutral-200">Python, SQL, Excel y Power BI</span> para analizar información y automatizar tareas.
                 </p>
               </div>
-              <div class="border-l-2 border-blue-900 dark:border-[#D6A21E] pl-3">
-                <p class="text-sm font-semibold text-neutral-800 dark:text-neutral-200 leading-relaxed">
-                  Actualmente estoy buscando oportunidades para crecer y fortalecer mi perfil profesional en el área de datos y/o desarrollo de software.
+              <div>
+                <p class="text-sm text-neutral-700 dark:text-neutral-400 leading-relaxed">
+                  Estudio <span class="underline decoration-[5px] decoration-yellow-500 dark:decoration-[#D6A21E] underline-offset-4">Desarrollo de Sistemas Frontend y Backend en IDAT</span> y desarrollo software a medida como proyecto de emprendimiento. Integro esta formación tecnológica con mi base política y normativa para mejorar procesos y construir soluciones en distintos contextos.
                 </p>
               </div>
             </div>
@@ -360,7 +369,7 @@ const lcpImage = await getImage({
 </Layout>
 
 <style>
-  /* Solo /about — tarjeta lateral visible completa al cargar (md+).
+  /* Solo /about — tarjeta lateral adaptable al contenido y la altura disponible.
      Breakpoints Tailwind del proyecto: sm 640px, md 768px, lg 1024px, xl 1280px */
 
   @media (min-width: 768px) {
@@ -376,20 +385,18 @@ const lcpImage = await getImage({
   }
 
   /* Tablet/desktop con poca altura (landscape o ventana corta) */
-  @media (min-width: 768px) and (max-height: 820px) {
+  @media (min-width: 768px) and (max-height: 959px) {
+    .about-sidebar {
+      position: static;
+    }
+
     .about-profile-card {
-      max-height: calc(100dvh - 5.5rem);
+      max-height: none;
     }
 
     .about-profile-photo {
-      flex: 0 1 auto;
-      max-height: min(28dvh, 11rem);
-    }
-  }
-
-  @media (min-width: 1024px) and (max-height: 820px) {
-    .about-profile-photo {
-      max-height: min(32dvh, 13rem);
+      flex: none;
+      height: min(28dvh, 13rem);
     }
   }
 </style>
