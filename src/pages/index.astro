@@ -9,7 +9,10 @@ import ProjectCard from "../components/ProjectCard.astro";
 const posts = await getCollection("blogs");
 const proyectos = await getCollection("proyectos");
 const recentPosts = posts.slice(0, 3);
-const featuredProjects = proyectos.slice(0, 3);
+const featuredProjectOrder = ["02_automatizaciones_siaf", "03_job_tracker", "01_fiados"];
+const featuredProjects = featuredProjectOrder
+  .map((id) => proyectos.find((project) => project.id.toLowerCase() === id.toLowerCase()))
+  .filter((project) => project !== undefined);
 
 const lcpImage = await getImage({
   src: perfil,
@@ -24,8 +27,8 @@ const lcpImage = await getImage({
 <Layout
   lockViewport
   preloadImage={lcpImage.src}
-  seoTitle="Alvaro Vidal | Politólogo, Analista de Datos & Est. Desarrollo de Sistemas"
-  seoDescription="Portafolio de Alvaro Vidal Velasque, estudiante de Desarrollo de Sistemas en IDAT, politólogo y analista de datos en Lima, Perú. Especialista en presupuesto público, logística pública, ciencia política y derecho internacional."
+  seoTitle="Alva Vidal | Analista de Operaciones y Datos"
+  seoDescription="Politólogo por la UNMSM con experiencia en operaciones, logística, presupuesto y contratos. Uso datos y tecnología para dar seguimiento y mejorar procesos."
 >
   <div class="mx-auto flex w-full max-w-6xl flex-col gap-4 md:gap-3 lg:h-full lg:min-h-0 lg:overflow-hidden">
 
@@ -63,16 +66,16 @@ const lcpImage = await getImage({
           <!-- ── tags (sticker) ── -->
           <div class="flex shrink-0 flex-wrap justify-center gap-1.5 border-t-2 border-neutral-900 dark:border-neutral-700 px-3 py-1.5">
             <span class="inline-block -rotate-2 border-2 border-neutral-900 dark:border-neutral-700 bg-amber-300 dark:bg-[#D6A21E] px-2.5 py-0.5 text-[10px] font-extrabold tracking-wide text-amber-950 dark:text-amber-950 shadow-[3px_3px_0_#111827] dark:shadow-none md:px-3 md:py-1 md:text-xs">
-              Desarrollador
+              Operaciones
             </span>
             <span class="inline-block rotate-1 border-2 border-neutral-900 dark:border-neutral-700 bg-amber-300 dark:bg-[#D6A21E] px-2.5 py-0.5 text-[10px] font-extrabold tracking-wide text-amber-950 dark:text-amber-950 shadow-[3px_3px_0_#111827] dark:shadow-none md:px-3 md:py-1 md:text-xs">
-                Analista
+                Datos
             </span>
           </div>
           <!-- ── descripción ── -->
           <div class="shrink-0 border-t-2 border-neutral-900 dark:border-neutral-700 px-3 py-2">
             <p class="leading-relaxed text-neutral-600 dark:text-neutral-400 text-xs md:text-sm">
-              Bachiller en Ciencia Política (UNMSM). Especializado en Derecho Internacional (Unisimón - Colombia). Estudiante de 4to ciclo de la carrera de Desarrollo de Sistemas en IDAT.
+              Politólogo por la UNMSM con experiencia en logística, presupuesto y seguimiento de operaciones. Organizo datos para coordinar procesos y ampliar su trazabilidad; hoy desarrollo mi base tecnológica en IDAT (4.º ciclo).
             </p>
           </div>
           <!-- ── sobre mí ── -->

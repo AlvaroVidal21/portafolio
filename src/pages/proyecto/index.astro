@@ -5,14 +5,20 @@ import ProjectCard from "../../components/ProjectCard.astro";
 
 const PER_PAGE = 4;
 const proyectos = await getCollection("proyectos");
+const projectOrder = ["02_automatizaciones_siaf", "03_job_tracker", "01_fiados"];
+const orderedProjects = [...proyectos].sort((a, b) => {
+  const aIndex = projectOrder.indexOf(a.id.toLowerCase());
+  const bIndex = projectOrder.indexOf(b.id.toLowerCase());
+  return (aIndex < 0 ? Number.MAX_SAFE_INTEGER : aIndex) - (bIndex < 0 ? Number.MAX_SAFE_INTEGER : bIndex);
+});
 const totalPages = Math.ceil(proyectos.length / PER_PAGE);
 const currentPage = 1;
-const pageProjects = proyectos.slice(0, PER_PAGE);
+const pageProjects = orderedProjects.slice(0, PER_PAGE);
 ---
 
 <Layout
-  seoTitle="Proyectos | Alvaro Vidal – Portafolio"
-  seoDescription="Proyectos de Alvaro Vidal: automatización SIAF, análisis de presupuesto público, desarrollo de software y logística pública.">
+  seoTitle="Proyectos de Operaciones y Datos | Alva Vidal"
+  seoDescription="Casos de análisis de información operativa, seguimiento presupuestal, automatización y herramientas de gestión desarrollados por Alva Vidal.">
   <div class="max-w-5xl mx-auto space-y-4">
     <div class="flex items-center justify-between gap-4 border-b-2 border-neutral-900 dark:border-neutral-700 pb-2">
       <h1 class="text-xl font-extrabold tracking-tight text-neutral-900 dark:text-neutral-50">

@@ -1,15 +1,25 @@
 ---
 title: Fiados
-author: Alva Vidal 
-description: Una solución de software pensando en el usuario que se pide fiados en bodegas y necesita tener una trazabilidad de dichas deudas.
+author: Alva Vidal
+description: Aplicación en desarrollo para registrar las compras fiadas en bodegas y consultar el estado de las deudas.
 technologies: ["springboot", "angular", "postgres"]
-github: "https://github.com/..."
-video: "https://www.youtube.com/embed/..."
 status: "En progreso"
 ---
 
-Una solución de software pensando en el usuario que se pide fiados en bodegas y necesita tener una trazabilidad de dichas deudas.
+# Fiados
 
-# Sobre el proyecto
+## Problema
 
-Este proyecto se sumerge en el análisis detallado de la ejecución presupuestal, transformando datos complejos en insights claros y accionables. Nuestro objetivo es optimizar la toma de decisiones y mejorar la eficiencia en la gestión de recursos.
+En una bodega, las compras fiadas pueden quedar anotadas en distintos registros y ser difíciles de consultar o seguir.
+
+## Proceso y datos
+
+La aplicación organiza los registros de deuda para que el usuario pueda consultar qué compras están pendientes y mantener su trazabilidad.
+
+## Solución
+
+Estoy desarrollando una herramienta que reúne el registro de fiados y facilita su seguimiento.
+
+## Tecnología
+
+Spring Boot, Angular y PostgreSQL.

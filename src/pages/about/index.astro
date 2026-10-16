@@ -3,400 +3,273 @@ import { Image, getImage } from 'astro:assets';
 import Layout from '../../layouts/Layout.astro';
 import fotoPerfil from '../../assets/yoLinkedin.jpeg';
 import TechBadge from '../../components/TechBadge.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import Capability from '../../components/Capability.astro';
 
 const technologyGroups = [
-  { title: 'Datos y análisis', technologies: ['python', 'sql', 'postgres', 'pandas', 'excel', 'powerbi'] },
-  { title: 'Desarrollo', technologies: ['java', 'springboot', 'typescript', 'angular', 'fastapi'] },
-  { title: 'Herramientas / infraestructura', technologies: ['git', 'linux', 'docker'] },
+  { title: 'Análisis y seguimiento', technologies: ['excel', 'powerbi', 'sql'] },
+  { title: 'Automatización de datos', technologies: ['python', 'pandas', 'postgres'] },
 ];
 
-const lcpImage = await getImage({
-  src: fotoPerfil,
-  width: 400,
-  format: 'webp',
-});
+const experience = [
+  {
+    role: 'Auxiliar Logístico',
+    organization: 'Oficina Nacional de Procesos Electorales (ONPE)',
+    period: 'Ago. 2026 – Sep. 2026',
+    details: [
+      'Di seguimiento a requerimientos, órdenes y documentación logística.',
+      'Llevé el control de inventario, movimientos, faltantes y entregas de materiales.',
+    ],
+  },
+  {
+    role: 'Analista de Información',
+    organization: 'Inversiones e Innovaciones Cristhi E.I.R.L.',
+    period: 'Ene. 2026 – May. 2026',
+    details: [
+      'Mi participación se centró en el análisis de datos de procesos de compra pública vinculados a Perú Compras.',
+      'Consolidé y validé órdenes de compra, órdenes de servicio y documentos de sustento.',
+      'Automaticé reportes para el seguimiento de pagos y saldos con información del SIAF.',
+    ],
+  },
+  {
+    role: 'Operador de Centro de Cómputo',
+    organization: 'ONPE · ODPE Huarochirí · Elecciones Generales 2026',
+    period: 'Mar. 2026',
+    details: ['Procesé información y brindé soporte operativo durante el proceso electoral.'],
+  },
+  {
+    role: 'Asistencia Técnica Administrativa',
+    organization: 'Red de Salud de Huarochirí · Planeamiento y Presupuesto',
+    period: 'Sep. 2025 – Oct. 2025',
+    details: [
+      'Di seguimiento presupuestal e identifiqué saldos pendientes.',
+      'Preparé reportes con Excel, Power BI y Python para facilitar el control de la información.',
+    ],
+  },
+  {
+    role: 'Analista / Asistencia Técnica',
+    organization: 'EMAPE S.A. · Gerencia de Logística',
+    period: 'Ene. 2025 – Ago. 2025',
+    details: [
+      'Di seguimiento a órdenes de servicio y pagos pendientes, revisando documentos y saldos.',
+      'Preparé reportes para mejorar la trazabilidad de la información logística.',
+    ],
+  },
+  {
+    role: 'Analista de Datos Junior',
+    organization: 'Back Office · Servicios Legales Vidal & Vidal E.I.R.L.',
+    period: 'Oct. 2024 – Dic. 2024',
+    details: [
+      'Procesé y validé datos; elaboré reportes en Excel y Power BI y apoyé la gestión documental.',
+    ],
+  },
+  {
+    role: 'Analista Administrativo',
+    organization: 'SERPAR · Subgerencia de Concesiones y Eventos',
+    period: 'Jul. 2024 – Sep. 2024',
+    details: [
+      'Administré procesos de concesiones y eventos en parques metropolitanos y di seguimiento a contratos, cobros y obligaciones.',
+      'Analicé ingresos y tarifas y mantuve la trazabilidad de los cobros de concesionarios.',
+    ],
+    parks: [
+      'Club Metropolitano Huáscar · Villa El Salvador',
+      'Club Metropolitano Huayna Cápac · San Juan de Miraflores',
+      'Parque de La Muralla · Cercado de Lima',
+      'Parque Alameda Las Malvinas · Cercado de Lima',
+      'Parque Universitario · Cercado de Lima',
+      'Parque Metropolitano Coronel Miguel Baquero · Cercado de Lima',
+      'Parque de los Anillos · Ate',
+    ],
+  },
+  {
+    role: 'Analista de Gestión Administrativa',
+    organization: 'Grupo V&V Soluciones S.A.C.',
+    period: 'May. 2023 – Jun. 2024',
+    details: [
+      'Organicé expedientes y di seguimiento a órdenes, proveedores y estados de pago.',
+    ],
+  },
+  {
+    role: 'Operador de Centro de Cómputo',
+    organization: 'ONPE · ODPE Huarochirí · SER 2022 y ERM 2022',
+    period: 'Sep. 2022 – Dic. 2022',
+    details: ['Operé el centro de cómputo y procesé información durante dos procesos electorales.'],
+  },
+  {
+    role: 'Analista de Datos',
+    organization: 'Servicios Legales Vidal & Vidal E.I.R.L.',
+    period: 'Ene. 2022 – Jul. 2022',
+    details: ['Organicé y analicé datos para reportes y control de información administrativa.'],
+  },
+  {
+    role: 'Analista de Calidad · Asesor de Cobranzas',
+    organization: 'Grupo V&V Soluciones S.A.C.',
+    period: 'Jul. 2019 – Dic. 2021',
+    details: [
+      'Monitoreé llamadas e indicadores de desempeño; di seguimiento a compromisos de pago y registré gestiones.',
+    ],
+  },
+];
+
+const lcpImage = await getImage({ src: fotoPerfil, width: 400, format: 'webp' });
 ---
 
 <Layout
   preloadImage={lcpImage.src}
-  seoTitle="Sobre Alvaro Vidal | Politólogo y Analista de Datos, Procesos y Automatización"
-  seoDescription="Politólogo por la UNMSM con especialización en Derecho Internacional y formación tecnológica en IDAT. Análisis de datos, procesos y automatización."
+  seoTitle="Analista de Operaciones y Datos | Alva Vidal"
+  seoDescription="Politólogo por la UNMSM con experiencia en operaciones, logística, presupuesto y contratos. Uso datos y tecnología para dar seguimiento y mejorar procesos."
 >
-  <div class="max-w-5xl mx-auto pb-12">
-    <div class="flex flex-col md:flex-row gap-5 md:items-start">
-
-      <!-- ───[ S I D E B A R   —   D A T O S ]────────── -->
-      <aside class="about-sidebar min-w-0 md:w-[30%] md:sticky md:top-4 md:self-start lg:top-8">
-        <div class="about-profile-card relative flex flex-col border border-neutral-800 dark:border-neutral-600 bg-white dark:bg-neutral-900 shadow-[5px_5px_0_#111827] dark:shadow-none md:max-h-[calc(100dvh-6.5rem)]">
-
-          <!-- ── foto en marco vertical ── -->
-          <div class="about-profile-photo relative shrink-0 border-b-2 border-neutral-900 dark:border-neutral-700 overflow-hidden max-w-xs mx-auto w-full md:max-w-none md:mx-0 md:min-h-0 md:flex-1 md:flex md:flex-col">
-            <div class="absolute -top-2.5 -left-2.5 w-4 h-4 bg-neutral-900 dark:bg-neutral-800 z-10" />
-            <div class="absolute -top-2.5 -right-2.5 w-4 h-4 bg-neutral-900 dark:bg-neutral-800 z-10" />
-            <div class="pointer-events-none absolute inset-1 border border-neutral-900/10 dark:border-white/10 z-10" />
-            <div class="aspect-[3/4] w-full bg-white dark:bg-neutral-900 overflow-hidden md:aspect-auto md:min-h-0 md:flex-1">
-              <Image
-                src={fotoPerfil}
-                alt="Alva Vidal"
-                width={400}
-                height={400}
-                widths={[280, 400]}
-                sizes="(min-width: 768px) 30vw, 20rem"
-                loading="eager"
-                fetchpriority="high"
-                decoding="async"
-                class="h-full w-full object-contain md:max-h-full"
-              />
+  <div class="mx-auto max-w-6xl pb-12">
+    <div class="flex flex-col items-start gap-5 md:flex-row">
+      <aside class="about-sidebar min-w-0 md:sticky md:top-4 md:w-[29%] md:self-start lg:top-8">
+        <div class="about-profile-card relative flex flex-col border border-neutral-800 bg-white shadow-[5px_5px_0_#111827] dark:border-neutral-600 dark:bg-neutral-900 dark:shadow-none md:max-h-[calc(100dvh-6.5rem)]">
+          <div class="about-profile-photo relative mx-auto w-full max-w-xs shrink-0 overflow-hidden border-b-2 border-neutral-900 dark:border-neutral-700 md:mx-0 md:max-w-none md:min-h-0 md:flex-1 md:flex md:flex-col">
+            <div class="pointer-events-none absolute inset-1 z-10 border border-neutral-900/10 dark:border-white/10" />
+            <div class="aspect-[3/4] w-full overflow-hidden bg-white dark:bg-neutral-900 md:aspect-auto md:min-h-0 md:flex-1">
+              <Image src={fotoPerfil} alt="Alva Vidal" width={400} height={400} widths={[280, 400]} sizes="(min-width: 768px) 29vw, 20rem" loading="eager" fetchpriority="high" decoding="async" class="h-full w-full object-contain md:max-h-full" />
             </div>
           </div>
 
-          <!-- ── nombre ── -->
-          <div class="shrink-0 px-4 pt-3 pb-2 text-center border-b-2 border-neutral-900 dark:border-neutral-700 md:px-3 md:pt-2 md:pb-1.5 lg:px-4 lg:pt-3 lg:pb-2">
-            <h1 class="text-xl font-extrabold tracking-tight text-blue-900 dark:text-[#D6A21E] md:text-lg lg:text-xl">
-              Alva Vidal
-            </h1>
-            <p class="mt-1 text-neutral-600 dark:text-neutral-300 text-xs leading-relaxed tracking-wide">
-              <span class="block font-semibold text-blue-900 dark:text-[#D6A21E]">Politólogo</span>
-              <span class="block">Analista de Datos, Procesos y Automatización</span>
-            </p>
+          <div class="shrink-0 border-b-2 border-neutral-900 px-4 py-3 text-center dark:border-neutral-700">
+            <h2 class="text-xl font-extrabold tracking-tight text-blue-900 dark:text-[#D6A21E]">Alva Vidal</h2>
+            <p class="mt-1 text-xs font-semibold leading-relaxed tracking-wide text-neutral-600 dark:text-neutral-300">Analista de Operaciones y Datos</p>
           </div>
 
-          <!-- ── tecnologías (más prominente) ── -->
-          <div class="shrink-0 border-b-2 border-neutral-900 dark:border-neutral-700 px-4 py-3 md:px-3 md:py-2 lg:px-4 lg:py-3">
-            <h2 class="text-sm font-extrabold tracking-wider text-blue-900 dark:text-[#D6A21E] mb-2 md:mb-1.5 lg:mb-3 uppercase">
-              Tecnologías
-            </h2>
-            <div class="space-y-3 md:space-y-2 lg:space-y-3">
-              {technologyGroups.map((group) => (
-                <section>
-                  <h3 class="mb-1 text-[11px] font-semibold leading-snug text-neutral-600 dark:text-neutral-300">
-                    {group.title}
-                  </h3>
-                  <div class="flex flex-wrap gap-1 lg:gap-1.5">
-                    {group.technologies.map((tech) => <TechBadge tech={tech} compact />)}
-                  </div>
-                </section>
-              ))}
-            </div>
+          <div class="shrink-0 space-y-3 border-b-2 border-neutral-900 px-4 py-3 dark:border-neutral-700">
+            <h2 class="text-sm font-extrabold uppercase tracking-wider text-blue-900 dark:text-[#D6A21E]">Herramientas</h2>
+            {technologyGroups.map((group) => (
+              <section>
+                <h3 class="mb-1 text-[11px] font-semibold leading-snug text-neutral-600 dark:text-neutral-300">{group.title}</h3>
+                <div class="flex flex-wrap gap-1">{group.technologies.map((tech) => <TechBadge tech={tech} compact />)}</div>
+              </section>
+            ))}
           </div>
 
-          <!-- ── certificaciones ── -->
-          <div class="shrink-0 border-b-2 border-neutral-900 dark:border-neutral-700 px-4 py-3 md:px-3 md:py-2 lg:px-4 lg:py-3">
-            <a
-              href="/certificaciones"
-              class="group relative block w-full -rotate-1 border-2 border-neutral-900 dark:border-neutral-700 bg-amber-300 dark:bg-[#D6A21E] px-3 py-2.5 text-center shadow-[4px_4px_0_#111827] dark:shadow-none transition-all duration-150 hover:translate-x-1 hover:translate-y-1 hover:shadow-none active:translate-x-1.5 active:translate-y-1.5 active:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 dark:focus-visible:ring-[#D6A21E] focus-visible:ring-offset-2 md:py-2 lg:py-2.5"
-            >
-              <span class="pointer-events-none absolute -top-2 -right-1 rotate-6 border-2 border-neutral-900 dark:border-neutral-700 bg-white dark:bg-neutral-900 px-1.5 py-0.5 text-[9px] font-extrabold uppercase tracking-widest text-neutral-900 dark:text-[#D6A21E] shadow-[2px_2px_0_#111827] dark:shadow-none">
-                ¡Clic!
-              </span>
-              <span class="inline-flex w-full items-center justify-center gap-2 text-sm font-extrabold uppercase tracking-wide text-amber-950 md:text-xs lg:text-sm">
-                Certificados
-                <span class="text-base transition-transform duration-150 group-hover:translate-x-0.5 md:text-sm lg:text-base" aria-hidden="true">→</span>
-              </span>
+          <div class="shrink-0 border-b-2 border-neutral-900 px-4 py-3 dark:border-neutral-700">
+            <a href="/certificaciones" class="group relative block w-full -rotate-1 border-2 border-neutral-900 bg-amber-300 px-3 py-2.5 text-center shadow-[4px_4px_0_#111827] transition-all duration-150 hover:translate-x-1 hover:translate-y-1 hover:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-offset-2 dark:border-neutral-700 dark:bg-[#D6A21E] dark:shadow-none dark:focus-visible:ring-[#D6A21E]">
+              <span class="pointer-events-none absolute -right-1 -top-2 rotate-6 border-2 border-neutral-900 bg-white px-1.5 py-0.5 text-[9px] font-extrabold uppercase tracking-widest text-neutral-900 shadow-[2px_2px_0_#111827] dark:border-neutral-700 dark:bg-neutral-900 dark:text-[#D6A21E] dark:shadow-none">¡Clic!</span>
+              <span class="inline-flex w-full items-center justify-center gap-2 text-sm font-extrabold uppercase tracking-wide text-amber-950">Certificados <span aria-hidden="true">→</span></span>
             </a>
           </div>
 
-          <!-- ── contacto ── -->
-          <div class="shrink-0 px-4 py-3 space-y-1 md:px-3 md:py-2 md:space-y-0.5 lg:px-4 lg:py-3 lg:space-y-1">
-            <div class="flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-400 md:text-xs lg:text-sm">
-              <span>📍</span>
-              <span>Lima, Perú</span>
-            </div>
-            <div class="flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-400 md:text-xs lg:text-sm">
-              <span>📞</span>
-              <span>912 720 449</span>
-            </div>
-            <div class="flex items-start gap-2 text-sm text-neutral-600 dark:text-neutral-400 md:text-xs lg:text-sm">
-              <span>✉️</span>
-              <span class="break-all">alvaro.vidal1403@gmail.com</span>
-            </div>
-            <div class="flex items-start gap-2 text-sm text-neutral-600 dark:text-neutral-400 md:text-xs lg:text-sm">
-              <span>✉️</span>
-              <span class="break-all">alvavidal.1403@proton.me</span>
-            </div>
-          </div>
-
+          <address class="shrink-0 space-y-1 px-4 py-3 text-sm not-italic text-neutral-600 dark:text-neutral-400 md:text-xs lg:text-sm">
+            <p>📍 Lima, Perú</p>
+            <p>📞 912 720 449</p>
+            <p class="break-all">✉️ alvaro.vidal1403@gmail.com</p>
+            <p class="break-all">✉️ alvavidal.1403@proton.me</p>
+          </address>
         </div>
       </aside>
 
-      <!-- ───[ M A I N   —   C V ]──────────────────── -->
-      <main class="md:w-[70%] min-w-0 space-y-5">
+      <main class="min-w-0 space-y-6 md:w-[71%]">
+        <header class="relative overflow-hidden border border-neutral-800 bg-white p-5 shadow-[5px_5px_0_#111827] dark:border-neutral-600 dark:bg-neutral-900 dark:shadow-none sm:p-7">
+          <div class="pointer-events-none absolute inset-1 border border-neutral-900/10 dark:border-white/10" />
+          <p class="relative mb-2 text-xs font-bold uppercase tracking-[0.18em] text-blue-900 dark:text-[#D6A21E]">Operaciones · Datos · Procesos · Automatización</p>
+          <h1 class="relative max-w-3xl text-3xl font-black leading-tight tracking-tight text-neutral-950 dark:text-neutral-50 sm:text-4xl">Analista de Operaciones y Datos</h1>
+          <p class="relative mt-4 max-w-3xl text-base leading-relaxed text-neutral-700 dark:text-neutral-300">Organizo y analizo información para dar seguimiento a operaciones, coordinar acciones y mejorar procesos con tecnología.</p>
+          <p class="relative mt-4 max-w-3xl text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">Mi experiencia en logística, presupuesto, contratos y pagos me enseñó a convertir datos dispersos en registros, reportes y mecanismos de seguimiento que ayudan a entender qué ocurre, qué está pendiente y dónde hace falta actuar.</p>
+          <p class="relative mt-3 text-xs font-semibold text-neutral-500 dark:text-neutral-400">Business Operations &amp; Data Analyst</p>
+        </header>
 
-        <!-- ── PERFIL PROFESIONAL ── -->
-        <section>
-          <div class="flex items-center gap-2 border-b-2 border-neutral-900 dark:border-neutral-700 pb-1.5 mb-3">
-            <span class="h-px w-5 bg-blue-700/70 dark:bg-[#D6A21E]/40"></span>
-            <h2 class="text-base font-extrabold tracking-wider text-blue-900 dark:text-[#D6A21E] uppercase">
-              Perfil Profesional
-            </h2>
-          </div>
-          <div class="relative border border-neutral-800 dark:border-neutral-600 bg-white dark:bg-neutral-900 p-4 shadow-[4px_4px_0_#111827] dark:shadow-none">
-            <div class="absolute -top-2.5 -left-2.5 w-4 h-4 bg-neutral-900 dark:bg-neutral-800" />
-            <div class="absolute -top-2.5 -right-2.5 w-4 h-4 bg-neutral-900 dark:bg-neutral-800" />
+        <section aria-labelledby="method-heading">
+          <SectionHeading id="method-heading">Cómo trabajo</SectionHeading>
+          <div class="relative border border-neutral-800 bg-white p-5 shadow-[4px_4px_0_#111827] dark:border-neutral-600 dark:bg-neutral-900 dark:shadow-none">
             <div class="pointer-events-none absolute inset-1 border border-neutral-900/10 dark:border-white/10" />
-            <div class="space-y-3">
-              <div class="flex items-center gap-2 mb-0.5">
-                <span class="h-px w-5 bg-blue-700/70 dark:bg-[#D6A21E]/40 shrink-0"></span>
-              </div>
-              <div>
-                <p class="text-sm text-neutral-700 dark:text-neutral-400 leading-relaxed">
-                  Soy <span class="underline decoration-[5px] decoration-yellow-500 dark:decoration-[#D6A21E] underline-offset-4">politólogo, Bachiller en Ciencia Política por la UNMSM</span>, formado en la Facultad de Derecho y Ciencia Política, con especialización en <span class="underline decoration-[5px] decoration-yellow-500 dark:decoration-[#D6A21E] underline-offset-4">Derecho Internacional</span> por la Universidad Simón Bolívar (Colombia). Mi base combina investigación, análisis político y comprensión de las instituciones y del marco normativo.
-                </p>
-              </div>
-              <div>
-                <p class="text-sm text-neutral-700 dark:text-neutral-400 leading-relaxed">
-                  Tengo experiencia en presupuesto, logística, proveedores y contratos. Trabajo con datos operativos, trazabilidad y seguimiento, utilizando <span class="font-semibold text-neutral-800 dark:text-neutral-200">Python, SQL, Excel y Power BI</span> para analizar información y automatizar tareas.
-                </p>
-              </div>
-              <div>
-                <p class="text-sm text-neutral-700 dark:text-neutral-400 leading-relaxed">
-                  Estudio <span class="underline decoration-[5px] decoration-yellow-500 dark:decoration-[#D6A21E] underline-offset-4">Desarrollo de Sistemas Frontend y Backend en IDAT</span> y desarrollo software a medida como proyecto de emprendimiento. Integro esta formación tecnológica con mi base política y normativa para mejorar procesos y construir soluciones en distintos contextos.
-                </p>
-              </div>
-            </div>
+            <ol class="relative grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {['Entender el proceso y a las personas involucradas', 'Organizar y validar la información operativa', 'Analizar estados, saldos e indicadores', 'Dar seguimiento a pendientes y coordinar acciones', 'Detectar tareas repetitivas y oportunidades de mejora'].map((step, index) => (
+                <li class="flex gap-3 border-l-2 border-amber-500 pl-3 dark:border-[#D6A21E]">
+                  <span class="font-black text-blue-900 dark:text-[#D6A21E]">0{index + 1}</span>
+                  <span class="text-sm leading-relaxed text-neutral-700 dark:text-neutral-300">{step}</span>
+                </li>
+              ))}
+            </ol>
           </div>
         </section>
 
-        <!-- ── EXPERIENCIA LABORAL ── -->
-        <section>
-          <div class="flex items-center gap-2 border-b-2 border-neutral-900 dark:border-neutral-700 pb-1.5 mb-3">
-            <span class="h-px w-5 bg-blue-700/70 dark:bg-[#D6A21E]/40"></span>
-            <h2 class="text-base font-extrabold tracking-wider text-blue-900 dark:text-[#D6A21E] uppercase">
-              Experiencia Laboral
-            </h2>
+        <section aria-labelledby="capabilities-heading">
+          <SectionHeading id="capabilities-heading">Lo que aporto</SectionHeading>
+          <div class="grid gap-3 sm:grid-cols-2">
+            <Capability title="Operaciones y seguimiento" items={['Órdenes, proveedores y logística', 'Contratos, pagos y obligaciones', 'Control documental y trazabilidad']} />
+            <Capability title="Datos para coordinar" items={['Consolidación y validación', 'Indicadores, reportes y dashboards', 'Identificación de pendientes e inconsistencias']} />
+            <Capability title="Procesos y automatización" items={['Comprensión de flujos de trabajo', 'Automatización de reportes y tareas', 'Mejoras apoyadas en herramientas digitales']} />
+            <Capability title="Tecnología con controles" items={['Excel, Power BI, SQL, Python, PostgreSQL y Pandas', 'Flask, FastAPI, APIs, Linux y Git en desarrollo', 'Acceso, integridad y trazabilidad como criterios de diseño']} />
           </div>
+        </section>
 
-          <div class="relative border border-neutral-800 dark:border-neutral-600 bg-white dark:bg-neutral-900 p-5 shadow-[5px_5px_0_#111827] dark:shadow-none">
-            <div class="absolute -top-3 -left-3 w-5 h-5 bg-neutral-900 dark:bg-neutral-800" />
-            <div class="absolute -top-3 -right-3 w-5 h-5 bg-neutral-900 dark:bg-neutral-800" />
+        <section aria-labelledby="experience-heading">
+          <SectionHeading id="experience-heading">Experiencia profesional</SectionHeading>
+          <div class="relative space-y-5 border border-neutral-800 bg-white p-5 shadow-[5px_5px_0_#111827] dark:border-neutral-600 dark:bg-neutral-900 dark:shadow-none sm:p-6">
             <div class="pointer-events-none absolute inset-1 border border-neutral-900/10 dark:border-white/10" />
-
-            <div class="space-y-6">
-
-              <!-- Job 1 -->
-              <article class="space-y-1.5">
-                <div class="flex items-center gap-2 mb-0.5">
-                  <span class="h-px w-5 bg-blue-700/70 dark:bg-[#D6A21E]/40 shrink-0"></span>
+            {experience.map((job, index) => (
+              <article class="relative space-y-2">
+                {index > 0 && <hr class="mb-5 border-t border-neutral-200 dark:border-neutral-700" />}
+                <div class="flex flex-col justify-between gap-1 sm:flex-row sm:items-start">
+                  <h3 class="text-base font-extrabold leading-tight text-blue-900 dark:text-[#D6A21E]">{job.role}</h3>
+                  <time class="shrink-0 text-xs font-semibold text-neutral-500 dark:text-neutral-400">{job.period}</time>
                 </div>
-                <h4 class="text-base font-extrabold text-blue-900 dark:text-[#D6A21E] leading-tight">Analista de información</h4>
-                <p class="text-sm text-neutral-500 dark:text-neutral-400">
-                  🏢 Inversiones e Innovaciones Cristhi E.I.R.L · 📍 Lima, Perú · Ene. 2026 - May. 2026
-                </p>
+                <p class="text-sm text-neutral-500 dark:text-neutral-400">{job.organization}</p>
                 <ul class="space-y-1">
-                  <li class="text-sm font-bold text-neutral-700 dark:text-neutral-400 leading-relaxed flex gap-1.5">
-                    <span class="mt-1 shrink-0 text-neutral-400 dark:text-neutral-500">–</span>
-                    <span>Análisis de información administrativa y presupuestal vinculada a operaciones como proveedor del Estado mediante Perú Compras.</span>
-                  </li>
-                  <li class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed flex gap-1.5">
-                    <span class="mt-1 shrink-0 text-neutral-400 dark:text-neutral-500">–</span>
-                    <span>Consolidación y validación de órdenes de compra, órdenes de servicio y documentación de sustento.</span>
-                  </li>
-                  <li class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed flex gap-1.5">
-                    <span class="mt-1 shrink-0 text-neutral-400 dark:text-neutral-500">–</span>
-                    <span>Automatización de reportes para el seguimiento de contrataciones y pagos, utilizando información pública del SIAF sobre ejecución presupuestal, compromisos y devengados.</span>
-                  </li>
+                  {job.details.map((detail) => <li class="flex gap-2 text-sm leading-relaxed text-neutral-700 dark:text-neutral-300"><span aria-hidden="true" class="text-amber-600 dark:text-[#D6A21E]">–</span><span>{detail}</span></li>)}
                 </ul>
+                {job.parks && (
+                  <div class="border-l-2 border-amber-500 pl-3 dark:border-[#D6A21E]">
+                    <h4 class="mb-1 text-xs font-extrabold uppercase tracking-wide text-neutral-700 dark:text-neutral-300">Parques bajo mi administración</h4>
+                    <ul class="grid gap-x-4 gap-y-1 sm:grid-cols-2">
+                      {job.parks.map((park) => <li class="text-xs leading-relaxed text-neutral-600 dark:text-neutral-400">{park}</li>)}
+                    </ul>
+                  </div>
+                )}
               </article>
-
-              <hr class="border-t border-neutral-200/60 dark:border-neutral-700" />
-
-              <!-- Job 2 -->
-              <article class="space-y-1.5">
-                <div class="flex items-center gap-2 mb-0.5">
-                  <span class="h-px w-5 bg-blue-700/70 dark:bg-[#D6A21E]/40 shrink-0"></span>
-                </div>
-                <h4 class="text-base font-extrabold text-blue-900 dark:text-[#D6A21E] leading-tight">Analista Administrativo en Presupuesto — Oficina de Planeamiento y Presupuesto</h4>
-                <p class="text-sm text-neutral-500 dark:text-neutral-400">
-                  🏢 Red de Salud de Huarochirí · 📍 Lima, Perú · Oct. 2025 - Dic. 2025
-                </p>
-                <ul class="space-y-1">
-                  <li class="text-sm font-bold text-neutral-700 dark:text-neutral-400 leading-relaxed flex gap-1.5">
-                    <span class="mt-1 shrink-0 text-neutral-400 dark:text-neutral-500">–</span>
-                    <span>Identifiqué saldos de más de S/ 3 millones en certificados presupuestales sin compromiso.</span>
-                  </li>
-                  <li class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed flex gap-1.5">
-                    <span class="mt-1 shrink-0 text-neutral-400 dark:text-neutral-500">–</span>
-                    <span>Implementé automatización de reportes en Excel y Power BI mediante macros VBA y Pandas en Python.</span>
-                  </li>
-                  <li class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed flex gap-1.5">
-                    <span class="mt-1 shrink-0 text-neutral-400 dark:text-neutral-500">–</span>
-                    <span>Realicé validación y control de información presupuestal.</span>
-                  </li>
-                </ul>
-              </article>
-
-              <hr class="border-t border-neutral-200/60 dark:border-neutral-700" />
-
-              <!-- Job 3 -->
-              <article class="space-y-1.5">
-                <div class="flex items-center gap-2 mb-0.5">
-                  <span class="h-px w-5 bg-blue-700/70 dark:bg-[#D6A21E]/40 shrink-0"></span>
-                </div>
-                <h4 class="text-base font-extrabold text-blue-900 dark:text-[#D6A21E] leading-tight">Analista administrativo — Gerencia de Logística</h4>
-                <p class="text-sm text-neutral-500 dark:text-neutral-400">
-                  🏢 EMAPE · 📍 Lima, Perú · Ene. 2025 - Ago. 2025
-                </p>
-                <ul class="space-y-1">
-                  <li class="text-sm font-bold text-neutral-700 dark:text-neutral-400 leading-relaxed flex gap-1.5">
-                    <span class="mt-1 shrink-0 text-neutral-400 dark:text-neutral-500">–</span>
-                    <span>Recuperé más de S/ 80,000 en certificados sin rebajar (solo comprometidos y sin devengar).</span>
-                  </li>
-                  <li class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed flex gap-1.5">
-                    <span class="mt-1 shrink-0 text-neutral-400 dark:text-neutral-500">–</span>
-                    <span>Asistí en la ejecución de más de 600 órdenes de servicios mensuales.</span>
-                  </li>
-                  <li class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed flex gap-1.5">
-                    <span class="mt-1 shrink-0 text-neutral-400 dark:text-neutral-500">–</span>
-                    <span>Implementé reportes para mejorar la trazabilidad de los datos logísticos.</span>
-                  </li>
-                </ul>
-              </article>
-
-              <hr class="border-t border-neutral-200/60 dark:border-neutral-700" />
-
-              <!-- Job 4 -->
-              <article class="space-y-1.5">
-                <div class="flex items-center gap-2 mb-0.5">
-                  <span class="h-px w-5 bg-blue-700/70 dark:bg-[#D6A21E]/40 shrink-0"></span>
-                </div>
-                <h4 class="text-base font-extrabold text-blue-900 dark:text-[#D6A21E] leading-tight">Analista Administrativo — Subgerencia de Concesiones y Eventos</h4>
-                <p class="text-sm text-neutral-500 dark:text-neutral-400">
-                  🏢 SERPAR · 📍 Lima, Perú · Jun. 2024 - Oct. 2024
-                </p>
-                <ul class="space-y-1">
-                  <li class="text-sm font-bold text-neutral-700 dark:text-neutral-400 leading-relaxed flex gap-1.5">
-                    <span class="mt-1 shrink-0 text-neutral-400 dark:text-neutral-500">–</span>
-                    <span>Administré concesiones y arrendamientos en parques metropolitanos, desarrollando análisis históricos y modelos de valoración para tarifas comerciales.</span>
-                  </li>
-                  <li class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed flex gap-1.5">
-                    <span class="mt-1 shrink-0 text-neutral-400 dark:text-neutral-500">–</span>
-                    <span>Realice el seguimiento y trazabilidad de los cobros de los concesionarios en los parques bajo mi administración.</span>
-                  </li>
-                </ul>
-                <div class="mt-2 pl-2 space-y-0.5">
-                  <p class="text-xs font-bold text-blue-900 dark:text-[#D6A21E] mb-1">Parques administrados:</p>
-                  <ul class="space-y-0.5">
-                    <li class="text-sm text-neutral-600 dark:text-neutral-400">– Club Metropolitano Huáscar (Villa El Salvador)</li>
-                    <li class="text-sm text-neutral-600 dark:text-neutral-400">– Club Metropolitano Huayna Cápac (San Juan de Miraflores)</li>
-                    <li class="text-sm text-neutral-600 dark:text-neutral-400">– Parque de La Muralla (Cercado de Lima)</li>
-                    <li class="text-sm text-neutral-600 dark:text-neutral-400">– Parque Alameda Las Malvinas (Cercado de Lima)</li>
-                    <li class="text-sm text-neutral-600 dark:text-neutral-400">– Parque Universitario (Cercado de Lima)</li>
-                    <li class="text-sm text-neutral-600 dark:text-neutral-400">– Parque Metropolitano "Coronel Miguel Baquero" (Cercado de Lima)</li>
-                    <li class="text-sm text-neutral-600 dark:text-neutral-400">– Parque de los Anillos (Ate)</li>
-                  </ul>
-                </div>
-              </article>
-
-              <hr class="border-t border-neutral-200/60 dark:border-neutral-700" />
-
-              <!-- Job 5 -->
-              <article class="space-y-1.5">
-                <div class="flex items-center gap-2 mb-0.5">
-                  <span class="h-px w-5 bg-blue-700/70 dark:bg-[#D6A21E]/40 shrink-0"></span>
-                </div>
-                <h4 class="text-base font-extrabold text-blue-900 dark:text-[#D6A21E] leading-tight">Analista de Adquisiciones y Gestión Administrativa</h4>
-                <p class="text-sm text-neutral-500 dark:text-neutral-400">
-                  🏢 V&V Soluciones · 📍 Lima, Perú · May. 2023 - Jun. 2024
-                </p>
-                <ul class="space-y-1">
-                  <li class="text-sm font-bold text-neutral-700 dark:text-neutral-400 leading-relaxed flex gap-1.5">
-                    <span class="mt-1 shrink-0 text-neutral-400 dark:text-neutral-500">–</span>
-                    <span>Validé y controlé información en contratos, órdenes de servicio y registros administrativos.</span>
-                  </li>
-                  <li class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed flex gap-1.5">
-                    <span class="mt-1 shrink-0 text-neutral-400 dark:text-neutral-500">–</span>
-                    <span>Organicé de manera efectiva documentos para mejorar la trazabilidad y seguimiento de procesos.</span>
-                  </li>
-                  <li class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed flex gap-1.5">
-                    <span class="mt-1 shrink-0 text-neutral-400 dark:text-neutral-500">–</span>
-                    <span>Di soporte a cobranza mediante verificación de estados de pago.</span>
-                  </li>
-                </ul>
-              </article>
-
-            </div>
+            ))}
           </div>
         </section>
 
-        <!-- ── EDUCACIÓN ── -->
-        <section>
-          <div class="flex items-center gap-2 border-b-2 border-neutral-900 dark:border-neutral-700 pb-1.5 mb-3">
-            <span class="h-px w-5 bg-blue-700/70 dark:bg-[#D6A21E]/40"></span>
-            <h2 class="text-base font-extrabold tracking-wider text-blue-900 dark:text-[#D6A21E] uppercase">
-              Educación
-            </h2>
-          </div>
-
-          <div class="space-y-3">
-            <article class="relative border border-neutral-800 dark:border-neutral-600 bg-white dark:bg-neutral-900 p-3 shadow-[4px_4px_0_#111827] dark:shadow-none">
-              <div class="absolute -top-2.5 -left-2.5 w-4 h-4 bg-neutral-900 dark:bg-neutral-800" />
-              <div class="absolute -top-2.5 -right-2.5 w-4 h-4 bg-neutral-900 dark:bg-neutral-800" />
-              <div class="pointer-events-none absolute inset-1 border border-neutral-900/10 dark:border-white/10" />
-              <div class="flex items-center gap-2 mb-1">
-                <span class="h-px w-5 bg-blue-700/70 dark:bg-[#D6A21E]/40 shrink-0"></span>
-              </div>
-              <h4 class="text-sm font-extrabold text-blue-900 dark:text-[#D6A21E]">Bachiller en Ciencia Política</h4>
-              <p class="text-sm text-neutral-500 dark:text-neutral-400">🇵🇪 Universidad Nacional Mayor de San Marcos | 2016 - 2021</p>
+        <section aria-labelledby="education-heading">
+          <SectionHeading id="education-heading">Formación e intereses</SectionHeading>
+          <div class="grid gap-3 sm:grid-cols-2">
+            <article class="relative border border-neutral-800 bg-white p-4 shadow-[4px_4px_0_#111827] dark:border-neutral-600 dark:bg-neutral-900 dark:shadow-none">
+              <h3 class="font-extrabold text-blue-900 dark:text-[#D6A21E]">Bachiller en Ciencia Política</h3>
+              <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-400">Universidad Nacional Mayor de San Marcos · 2016–2021</p>
+              <p class="mt-2 text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">Una perspectiva sobre instituciones, organizaciones, gobernanza y regulación.</p>
             </article>
-
-            <article class="relative border border-neutral-800 dark:border-neutral-600 bg-white dark:bg-neutral-900 p-3 shadow-[4px_4px_0_#111827] dark:shadow-none">
-              <div class="absolute -top-2.5 -left-2.5 w-4 h-4 bg-neutral-900 dark:bg-neutral-800" />
-              <div class="absolute -top-2.5 -right-2.5 w-4 h-4 bg-neutral-900 dark:bg-neutral-800" />
-              <div class="pointer-events-none absolute inset-1 border border-neutral-900/10 dark:border-white/10" />
-              <div class="flex items-center gap-2 mb-1">
-                <span class="h-px w-5 bg-blue-700/70 dark:bg-[#D6A21E]/40 shrink-0"></span>
-              </div>
-              <h4 class="text-sm font-extrabold text-blue-900 dark:text-[#D6A21E]">Especialización en Derecho Internacional</h4>
-              <p class="text-sm text-neutral-500 dark:text-neutral-400">🇨🇴 Universidad Simón Bolívar (Colombia) | 2021</p>
+            <article class="relative border border-neutral-800 bg-white p-4 shadow-[4px_4px_0_#111827] dark:border-neutral-600 dark:bg-neutral-900 dark:shadow-none">
+              <h3 class="font-extrabold text-blue-900 dark:text-[#D6A21E]">Formación en Derecho Internacional</h3>
+              <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-400">Universidad Simón Bolívar · Colombia · 2021</p>
+              <p class="mt-2 text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">Una base para comprender las relaciones entre instituciones, normas y actores en distintos contextos.</p>
             </article>
-
-            <article class="relative border border-neutral-800 dark:border-neutral-600 bg-white dark:bg-neutral-900 p-3 shadow-[4px_4px_0_#111827] dark:shadow-none">
-              <div class="absolute -top-2.5 -left-2.5 w-4 h-4 bg-neutral-900 dark:bg-neutral-800" />
-              <div class="absolute -top-2.5 -right-2.5 w-4 h-4 bg-neutral-900 dark:bg-neutral-800" />
-              <div class="pointer-events-none absolute inset-1 border border-neutral-900/10 dark:border-white/10" />
-              <div class="flex items-center gap-2 mb-1">
-                <span class="h-px w-5 bg-blue-700/70 dark:bg-[#D6A21E]/40 shrink-0"></span>
-              </div>
-              <h4 class="text-sm font-extrabold text-blue-900 dark:text-[#D6A21E]">Desarrollo de Sistemas Frontend y Backend</h4>
-              <p class="text-sm text-neutral-500 dark:text-neutral-400">🇵🇪 Instituto Idat | 2025 — En curso (4to Ciclo)</p>
+            <article class="relative border border-neutral-800 bg-white p-4 shadow-[4px_4px_0_#111827] dark:border-neutral-600 dark:bg-neutral-900 dark:shadow-none">
+              <h3 class="font-extrabold text-blue-900 dark:text-[#D6A21E]">Desarrollo de Sistemas Frontend y Backend</h3>
+              <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-400">IDAT · En curso · 4.º ciclo</p>
+              <p class="mt-2 text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">Formación tecnológica para construir herramientas que apoyen procesos y gestión de información.</p>
+            </article>
+            <article class="relative border border-neutral-800 bg-white p-4 shadow-[4px_4px_0_#111827] dark:border-neutral-600 dark:bg-neutral-900 dark:shadow-none">
+              <h3 class="font-extrabold text-blue-900 dark:text-[#D6A21E]">Ciberseguridad · formación complementaria</h3>
+              <p class="mt-2 text-sm text-neutral-700 dark:text-neutral-300"><span class="font-semibold">Ethical Hacking</span> · Cisco · Completado en 2026 · Beca del MTPE</p>
+              <p class="mt-1 text-sm text-neutral-700 dark:text-neutral-300"><span class="font-semibold">Fundamentos de Ciberseguridad</span> · Google / Coursera · 2024</p>
+              <p class="mt-2 text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">Formación complementaria que amplía mi atención a controles, riesgos y protección de información.</p>
+            </article>
+            <article class="relative border border-neutral-800 bg-white p-4 shadow-[4px_4px_0_#111827] dark:border-neutral-600 dark:bg-neutral-900 dark:shadow-none">
+              <h3 class="font-extrabold text-blue-900 dark:text-[#D6A21E]">Intereses en desarrollo</h3>
+              <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-400">Mejora de procesos, automatización y GRC</p>
+              <p class="mt-2 text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">Me interesa explorar cómo convergen tecnología, seguridad, riesgo, cumplimiento y gobernanza.</p>
             </article>
           </div>
         </section>
-
       </main>
     </div>
   </div>
 </Layout>
 
 <style>
-  /* Solo /about — tarjeta lateral adaptable al contenido y la altura disponible.
-     Breakpoints Tailwind del proyecto: sm 640px, md 768px, lg 1024px, xl 1280px */
-
   @media (min-width: 768px) {
-    .about-profile-card {
-      max-height: calc(100dvh - 6.5rem);
-    }
+    .about-profile-card { max-height: calc(100dvh - 6.5rem); }
   }
-
   @media (min-width: 1024px) {
-    .about-profile-card {
-      max-height: calc(100dvh - 7rem);
-    }
+    .about-profile-card { max-height: calc(100dvh - 7rem); }
   }
-
-  /* Tablet/desktop con poca altura (landscape o ventana corta) */
   @media (min-width: 768px) and (max-height: 959px) {
-    .about-sidebar {
-      position: static;
-    }
-
-    .about-profile-card {
-      max-height: none;
-    }
-
-    .about-profile-photo {
-      flex: none;
-      height: min(28dvh, 13rem);
-    }
+    .about-sidebar { position: static; }
+    .about-profile-card { max-height: none; }
+    .about-profile-photo { flex: none; height: min(28dvh, 13rem); }
   }
 </style>

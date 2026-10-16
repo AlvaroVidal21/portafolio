@@ -9,8 +9,8 @@ interface Props {
   preloadImage?: string;
 }
 
-const DEFAULT_TITLE = "Alvaro Vidal | Politólogo, Analista de Datos & Est. Desarrollo de Sistemas";
-const DEFAULT_DESC = "Portafolio de Alvaro Vidal Velasque, estudiante de Desarrollo de Sistemas en IDAT, politólogo y analista de datos en Lima, Perú. Especialista en presupuesto público, logística pública, ciencia política y derecho internacional.";
+const DEFAULT_TITLE = "Alva Vidal | Analista de Operaciones y Datos";
+const DEFAULT_DESC = "Politólogo por la UNMSM con experiencia en operaciones, logística, presupuesto y contratos. Uso datos y tecnología para dar seguimiento y mejorar procesos.";
 
 const { lockViewport = false, seoTitle = DEFAULT_TITLE, seoDescription = DEFAULT_DESC, preloadImage } = Astro.props;
 
@@ -39,7 +39,7 @@ const currentPage =
     <meta name="generator" content={Astro.generator} />
     <title>{seoTitle}</title>
     <meta name="description" content={seoDescription} />
-    <meta name="keywords" content="alvaro vidal velasque, alvaro daniel vidal velasque, politólogo, analista de datos, idat, desarrollo de sistemas, presupuesto público, logística pública, lima, perú, siaf, ciencia política" />
+    <meta name="keywords" content="Alva Vidal, analista de operaciones, analista de datos, procesos, automatización, logística, presupuesto, contratos, Power BI, Excel, SQL, Lima, Perú" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href={canonicalUrl} />
 
@@ -61,11 +61,11 @@ const currentPage =
       "@type": "Person",
       "name": "Alvaro Daniel Vidal Velasque",
       "alternateName": "Alvaro Vidal",
-      "jobTitle": ["Politólogo", "Analista de Datos", "Desarrollador de Sistemas"],
+      "jobTitle": ["Analista de Operaciones y Datos", "Politólogo"],
       "address": { "@type": "PostalAddress", "addressLocality": "Lima, Perú" },
       "url": siteUrl,
-      "knowsAbout": ["Presupuesto Público", "Logística Pública", "Ciencia Política", "Derecho Internacional", "Desarrollo de Sistemas", "Análisis de Datos", "SIAF"],
-      "alumniOf": { "@type": "CollegeOrUniversity", "name": "IDAT" }
+      "knowsAbout": ["Operaciones", "Análisis de Datos", "Gestión de Procesos", "Logística", "Presupuesto", "Contratos", "Automatización", "Ciencia Política", "Desarrollo de Sistemas"],
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Universidad Nacional Mayor de San Marcos" }
     })} />
 
     {preloadImage && (
