@@ -124,6 +124,12 @@ export const TECNOLOGIAS: Record<string, TechnologyConfig> = {
     icon: "🐘",
     svgPath: "/IconsTec/PHP.svg"
   },
+  codex: {
+    bg: "bg-neutral-900 border-neutral-950 dark:bg-neutral-100 dark:border-neutral-200",
+    text: "text-amber-300 dark:text-neutral-900",
+    label: "Codex CLI",
+    icon: "✳",
+  },
   bootstrap: {
     bg: "bg-fuchsia-200 border-fuchsia-950 dark:bg-fuchsia-900/30 dark:border-fuchsia-800",
     text: "text-fuchsia-950 dark:text-fuchsia-400",
