@@ -17,12 +17,15 @@ const { Content } = await render(project);
 ---
 
 <Layout seoTitle={`${title} | Alvaro Vidal`} seoDescription={description}>
-  <article class="max-w-2xl mx-auto">
+  <article class="mx-auto max-w-5xl">
     <h1 class="text-4xl font-extrabold tracking-tight border-b-2 border-neutral-900 dark:border-neutral-700 pb-3 mb-2 dark:text-neutral-50" transition:name={`post-title-${project.id}`}>
       {title}
     </h1>
     <p class="text-neutral-500 dark:text-neutral-400 text-xs mb-4">
       <em class="text-blue-900 dark:text-[#D6A21E]">Por {author}</em>
+    </p>
+    <p class="mb-5 max-w-3xl text-base leading-relaxed text-neutral-600 dark:text-neutral-300">
+      {description}
     </p>
     {github && (
       <a href={github} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 border-2 border-neutral-900 dark:border-neutral-700 px-2.5 py-1 text-xs font-bold tracking-wide text-neutral-900 dark:text-neutral-100 transition-all hover:bg-neutral-900 hover:text-neutral-50 dark:hover:bg-neutral-100 dark:hover:text-neutral-900 mb-4">
@@ -37,7 +40,7 @@ const { Content } = await render(project);
         ))}
       </div>
     )}
-    <div class="prose prose-neutral dark:prose-invert max-w-none text-justify">
+    <div class="prose prose-neutral dark:prose-invert prose-p:max-w-[72ch] prose-headings:max-w-[72ch] prose-headings:text-left prose-p:text-left max-w-none">
       <Content />
     </div>
   </article>
