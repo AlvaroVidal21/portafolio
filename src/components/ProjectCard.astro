@@ -13,6 +13,7 @@ export interface Props {
 }
 
 const { id, title, author, description, technologies, status, github, compact = false } = Astro.props;
+const displayedTechnologies = compact ? technologies?.slice(0, 4) : technologies;
 
 const statusStyles: Record<string, string> = {
   "En progreso": "border border-neutral-900 bg-neutral-100 text-neutral-700 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-300",
@@ -39,6 +40,7 @@ const statusStyles: Record<string, string> = {
   ]}>
     <div class:list={[
       "min-h-0",
+      compact ? "flex-1 overflow-hidden" : "",
       compact ? "space-y-0.5" : "space-y-2",
     ]}>
       <div class="flex items-center justify-between gap-2">
@@ -66,36 +68,38 @@ const statusStyles: Record<string, string> = {
       <h3
         class:list={[
           "font-extrabold tracking-tight text-neutral-950 dark:text-neutral-50 leading-tight",
-          compact ? "text-sm line-clamp-2" : "text-lg",
+          compact ? "text-sm line-clamp-1" : "text-lg",
         ]}
         transition:name={`post-title-${id}`}
       >
         {title}
       </h3>
 
-      <p class:list={["font-medium italic text-neutral-500 dark:text-neutral-400", compact ? "text-xs" : "text-xs"]}>
-        Por <span class="text-blue-900 dark:text-[#D6A21E]">{author}</span>
-      </p>
+      {!compact && (
+        <p class="font-medium italic text-xs text-neutral-500 dark:text-neutral-400">
+          Por <span class="text-blue-900 dark:text-[#D6A21E]">{author}</span>
+        </p>
+      )}
 
       <p
         class:list={[
           "leading-relaxed text-neutral-600 dark:text-neutral-400",
-          compact ? "text-sm line-clamp-2" : "text-sm line-clamp-3",
+          compact ? "text-sm line-clamp-1" : "text-sm line-clamp-3",
         ]}
       >
         {description}
       </p>
 
-      {technologies && technologies.length > 0 && (
-        <div class:list={["flex", compact ? "flex-wrap gap-1 pt-1" : "flex-wrap justify-end gap-1.5 pt-2"]}>
-          {technologies.map((tech) => (
+      {displayedTechnologies && displayedTechnologies.length > 0 && (
+        <div class:list={["flex", compact ? "flex-nowrap gap-1 overflow-hidden pt-1" : "flex-wrap justify-end gap-1.5 pt-2"]}>
+          {displayedTechnologies.map((tech) => (
             <TechBadge tech={tech} compact={compact} />
           ))}
         </div>
       )}
     </div>
 
-    <div class:list={["flex items-center gap-2", compact ? "justify-between mt-auto" : ""]}>
+    <div class:list={["flex shrink-0 items-center gap-2", compact ? "relative z-10 justify-between mt-auto bg-white pt-1 dark:bg-neutral-900" : ""]}>
       {github && compact && (
         <a href={github} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 border-2 border-neutral-900 dark:border-neutral-700 px-2 py-0.5 text-[10px] font-bold tracking-wide text-neutral-900 dark:text-neutral-100 transition-all hover:bg-neutral-900 hover:text-neutral-50 dark:hover:bg-neutral-100 dark:hover:text-neutral-900">
           <img src="/IconsTec/GitHub.svg" alt="" class="w-3.5 h-3.5 dark:invert" />
