@@ -5,7 +5,7 @@ import ProjectCard from "../../../components/ProjectCard.astro";
 
 const PER_PAGE = 4;
 const proyectos = await getCollection("proyectos");
-const projectOrder = ["02_automatizaciones_siaf", "03_job_tracker", "01_fiados"];
+const projectOrder = ["05_bitacora_edo2026", "02_automatizaciones_siaf", "03_job_tracker", "04_gastos_hogar", "01_fiados"];
 const orderedProjects = [...proyectos].sort((a, b) => {
   const aIndex = projectOrder.indexOf(a.id.toLowerCase());
   const bIndex = projectOrder.indexOf(b.id.toLowerCase());

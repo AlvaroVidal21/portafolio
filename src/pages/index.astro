@@ -9,7 +9,7 @@ import ProjectCard from "../components/ProjectCard.astro";
 const posts = await getCollection("blogs");
 const proyectos = await getCollection("proyectos");
 const recentPosts = posts.slice(0, 3);
-const featuredProjectOrder = ["02_automatizaciones_siaf", "03_job_tracker", "01_fiados"];
+const featuredProjectOrder = ["05_bitacora_edo2026", "02_automatizaciones_siaf", "03_job_tracker"];
 const featuredProjects = featuredProjectOrder
   .map((id) => proyectos.find((project) => project.id.toLowerCase() === id.toLowerCase()))
   .filter((project) => project !== undefined);

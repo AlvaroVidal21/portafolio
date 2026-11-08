@@ -79,6 +79,16 @@ export const TECNOLOGIAS: Record<string, TechnologyConfig> = {
     icon: "🐍",
     svgPath: "/IconsTec/Python.svg"
   },
+  django: {
+    bg: "bg-emerald-200 border-emerald-950 dark:bg-emerald-900/30 dark:border-emerald-800",
+    text: "text-emerald-950 dark:text-emerald-400",
+    label: "Django",
+  },
+  htmx: {
+    bg: "bg-indigo-200 border-indigo-950 dark:bg-indigo-900/30 dark:border-indigo-800",
+    text: "text-indigo-950 dark:text-indigo-400",
+    label: "HTMX",
+  },
   pandas: {
     bg: "bg-indigo-200 border-indigo-950 dark:bg-indigo-900/30 dark:border-indigo-800",
     text: "text-indigo-950 dark:text-indigo-400",
