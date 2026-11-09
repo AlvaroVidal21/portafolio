@@ -189,8 +189,8 @@ const lcpImage = await getImage({ src: fotoPerfil, width: 400, format: 'webp' })
                 {job.parks && (
                   <div class="border-l-2 border-amber-500 pl-3 dark:border-[#D6A21E]">
                     <h4 class="mb-1 text-xs font-extrabold uppercase tracking-wide text-neutral-700 dark:text-neutral-300">Parques bajo mi administración</h4>
-                    <ul class="grid gap-x-4 gap-y-1 sm:grid-cols-2">
-                      {job.parks.map((park) => <li class="text-xs leading-relaxed text-neutral-600 dark:text-neutral-400">{park}</li>)}
+                    <ul class="columns-1 gap-x-4 sm:columns-2">
+                      {job.parks.map((park) => <li class="mb-1 break-inside-avoid text-xs leading-relaxed text-neutral-600 dark:text-neutral-400">{park}</li>)}
                     </ul>
                   </div>
                 )}
