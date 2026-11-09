@@ -117,7 +117,7 @@ const lcpImage = await getImage({ src: fotoPerfil, width: 400, format: 'webp' })
 <Layout
   preloadImage={lcpImage.src}
   seoTitle="Analista de Operaciones y Datos | Alva Vidal"
-  seoDescription="Politólogo por la UNMSM con experiencia en operaciones, logística, presupuesto y contratos. Uso datos y tecnología para dar seguimiento y mejorar procesos."
+  seoDescription="Analista de operaciones y datos con experiencia en análisis de información, gestión de procesos, trazabilidad, reporting y automatización. Formación universitaria y técnica, con credenciales de Cisco y UNI."
 >
   <div class="mx-auto max-w-6xl pb-12">
     <div class="flex flex-col items-start gap-5 md:flex-row">
@@ -166,38 +166,13 @@ const lcpImage = await getImage({ src: fotoPerfil, width: 400, format: 'webp' })
           <div class="pointer-events-none absolute inset-1 border border-neutral-900/10 dark:border-white/10" />
           <p class="relative mb-2 text-xs font-bold uppercase tracking-[0.18em] text-blue-900 dark:text-[#D6A21E]">Operaciones · Datos · Procesos · Automatización</p>
           <h1 class="relative max-w-3xl text-3xl font-black leading-tight tracking-tight text-neutral-950 dark:text-neutral-50 sm:text-4xl">Analista de Operaciones y Datos</h1>
-          <p class="relative mt-4 max-w-3xl text-base leading-relaxed text-neutral-700 dark:text-neutral-300">Organizo y analizo información para dar seguimiento a operaciones, coordinar acciones y mejorar procesos con tecnología.</p>
-          <p class="relative mt-4 max-w-3xl text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">Mi experiencia en logística, presupuesto, contratos y pagos me enseñó a convertir datos dispersos en registros, reportes y mecanismos de seguimiento que ayudan a entender qué ocurre, qué está pendiente y dónde hace falta actuar.</p>
+          <p class="relative mt-4 max-w-3xl text-base leading-relaxed text-neutral-700 dark:text-neutral-300">Analizo información y organizo procesos para dar seguimiento a operaciones, pagos, presupuestos y obligaciones. Convierto datos y documentación dispersos en registros claros que ayudan a identificar pendientes y mantener la trazabilidad.</p>
+          <p class="relative mt-4 max-w-3xl text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">En funciones de análisis y gestión administrativa he consolidado y validado información, preparado reportes y automatizado tareas de seguimiento para procesos logísticos, presupuestales y contractuales.</p>
           <p class="relative mt-3 text-xs font-semibold text-neutral-500 dark:text-neutral-400">Business Operations &amp; Data Analyst</p>
         </header>
 
-        <section aria-labelledby="method-heading">
-          <SectionHeading id="method-heading">Cómo trabajo</SectionHeading>
-          <div class="relative border border-neutral-800 bg-white p-5 shadow-[4px_4px_0_#111827] dark:border-neutral-600 dark:bg-neutral-900 dark:shadow-none">
-            <div class="pointer-events-none absolute inset-1 border border-neutral-900/10 dark:border-white/10" />
-            <ol class="relative grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {['Entender el proceso y a las personas involucradas', 'Organizar y validar la información operativa', 'Analizar estados, saldos e indicadores', 'Dar seguimiento a pendientes y coordinar acciones', 'Detectar tareas repetitivas y oportunidades de mejora'].map((step, index) => (
-                <li class="flex gap-3 border-l-2 border-amber-500 pl-3 dark:border-[#D6A21E]">
-                  <span class="font-black text-blue-900 dark:text-[#D6A21E]">0{index + 1}</span>
-                  <span class="text-sm leading-relaxed text-neutral-700 dark:text-neutral-300">{step}</span>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
-
-        <section aria-labelledby="capabilities-heading">
-          <SectionHeading id="capabilities-heading">Lo que aporto</SectionHeading>
-          <div class="grid gap-3 sm:grid-cols-2">
-            <Capability title="Operaciones y seguimiento" items={['Órdenes, proveedores y logística', 'Contratos, pagos y obligaciones', 'Control documental y trazabilidad']} />
-            <Capability title="Datos para coordinar" items={['Consolidación y validación', 'Indicadores, reportes y dashboards', 'Identificación de pendientes e inconsistencias']} />
-            <Capability title="Procesos y automatización" items={['Comprensión de flujos de trabajo', 'Automatización de reportes y tareas', 'Mejoras apoyadas en herramientas digitales']} />
-            <Capability title="Tecnología con controles" items={['Excel, Power BI, SQL, Python, PostgreSQL y Pandas', 'Flask, FastAPI, APIs, Linux y Git en desarrollo', 'Acceso, integridad y trazabilidad como criterios de diseño']} />
-          </div>
-        </section>
-
         <section aria-labelledby="experience-heading">
-          <SectionHeading id="experience-heading">Experiencia profesional</SectionHeading>
+          <SectionHeading id="experience-heading">Trayectoria y aportes</SectionHeading>
           <div class="relative space-y-5 border border-neutral-800 bg-white p-5 shadow-[5px_5px_0_#111827] dark:border-neutral-600 dark:bg-neutral-900 dark:shadow-none sm:p-6">
             <div class="pointer-events-none absolute inset-1 border border-neutral-900/10 dark:border-white/10" />
             {experience.map((job, index) => (
@@ -225,7 +200,7 @@ const lcpImage = await getImage({ src: fotoPerfil, width: 400, format: 'webp' })
         </section>
 
         <section aria-labelledby="education-heading">
-          <SectionHeading id="education-heading">Formación e intereses</SectionHeading>
+          <SectionHeading id="education-heading">Formación y credenciales</SectionHeading>
           <div class="grid gap-3 sm:grid-cols-2">
             <article class="relative border border-neutral-800 bg-white p-4 shadow-[4px_4px_0_#111827] dark:border-neutral-600 dark:bg-neutral-900 dark:shadow-none">
               <h3 class="font-extrabold text-blue-900 dark:text-[#D6A21E]">Bachiller en Ciencia Política</h3>
@@ -242,17 +217,44 @@ const lcpImage = await getImage({ src: fotoPerfil, width: 400, format: 'webp' })
               <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-400">IDAT · En curso · 4.º ciclo</p>
               <p class="mt-2 text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">Formación tecnológica para construir herramientas que apoyen procesos y gestión de información.</p>
             </article>
-            <article class="relative border border-neutral-800 bg-white p-4 shadow-[4px_4px_0_#111827] dark:border-neutral-600 dark:bg-neutral-900 dark:shadow-none">
-              <h3 class="font-extrabold text-blue-900 dark:text-[#D6A21E]">Ciberseguridad · formación complementaria</h3>
-              <p class="mt-2 text-sm text-neutral-700 dark:text-neutral-300"><span class="font-semibold">Ethical Hacking</span> · Cisco · Completado en 2026 · Beca del MTPE</p>
-              <p class="mt-1 text-sm text-neutral-700 dark:text-neutral-300"><span class="font-semibold">Fundamentos de Ciberseguridad</span> · Google / Coursera · 2024</p>
-              <p class="mt-2 text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">Formación complementaria que amplía mi atención a controles, riesgos y protección de información.</p>
+            <article class="relative border border-neutral-800 bg-white p-4 shadow-[4px_4px_0_#111827] dark:border-neutral-600 dark:bg-neutral-900 dark:shadow-none sm:col-span-2">
+              <h3 class="font-extrabold text-blue-900 dark:text-[#D6A21E]">Credenciales tecnológicas verificables</h3>
+              <ul class="mt-2 space-y-1 text-sm text-neutral-700 dark:text-neutral-300">
+                <li><a class="underline decoration-amber-500 underline-offset-2 hover:text-blue-900 dark:hover:text-[#D6A21E]" href="https://www.credly.com/badges/f54c977e-5502-4d52-a100-5e30247a8a07/linked_in_profile" target="_blank" rel="noopener noreferrer">Introducción a la Ciberseguridad · Cisco · 2024 ↗</a></li>
+                <li><a class="underline decoration-amber-500 underline-offset-2 hover:text-blue-900 dark:hover:text-[#D6A21E]" href="https://www.credly.com/badges/eec83e06-7d68-4c48-8acf-c57c15478ca7/linked_in_profile" target="_blank" rel="noopener noreferrer">Ethical Hacker Certification · Cisco · 2026 ↗</a></li>
+                <li><a class="underline decoration-amber-500 underline-offset-2 hover:text-blue-900 dark:hover:text-[#D6A21E]" href="/certificaciones">Análisis de Datos con Excel · Universidad Nacional de Ingeniería · 2024 →</a></li>
+              </ul>
             </article>
-            <article class="relative border border-neutral-800 bg-white p-4 shadow-[4px_4px_0_#111827] dark:border-neutral-600 dark:bg-neutral-900 dark:shadow-none">
-              <h3 class="font-extrabold text-blue-900 dark:text-[#D6A21E]">Intereses en desarrollo</h3>
-              <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-400">Mejora de procesos, automatización y GRC</p>
-              <p class="mt-2 text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">Me interesa explorar cómo convergen tecnología, seguridad, riesgo, cumplimiento y gobernanza.</p>
-            </article>
+          </div>
+        </section>
+
+        <section aria-labelledby="capabilities-heading">
+          <SectionHeading id="capabilities-heading">Capacidades transferibles</SectionHeading>
+          <div class="grid gap-3 sm:grid-cols-2">
+            <Capability title="Pensamiento analítico y resolución" items={['Reviso y valido datos, estados y documentos', 'Identifico pendientes, saldos e inconsistencias', 'Sintetizo hallazgos en reportes para orientar acciones']} />
+            <Capability title="Investigación y documentación" items={['Busco, contrasto y organizo información', 'Mantengo registros y documentación de procesos', 'Cuido la trazabilidad entre información, evidencia y seguimiento']} />
+            <Capability title="Comprensión de procesos y sistemas" items={['Entiendo flujos de trabajo y responsabilidades entre áreas', 'Relaciono registros operativos con controles y resultados', 'Aplico esta mirada a logística, presupuesto, contratos y pagos']} />
+            <Capability title="Reporting y automatización" items={['Excel, Power BI, SQL, Python, PostgreSQL y Pandas', 'Automatización de reportes y tareas de seguimiento', 'Flask, FastAPI, APIs, Linux y Git en desarrollo']} />
+          </div>
+          <div class="relative mt-3 border border-neutral-800 bg-white p-5 shadow-[4px_4px_0_#111827] dark:border-neutral-600 dark:bg-neutral-900 dark:shadow-none">
+            <div class="pointer-events-none absolute inset-1 border border-neutral-900/10 dark:border-white/10" />
+            <h3 class="relative mb-3 text-sm font-extrabold uppercase tracking-wider text-blue-900 dark:text-[#D6A21E]">Cómo aplico estas capacidades</h3>
+            <ol class="relative grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {['Entender el proceso y a las personas involucradas', 'Organizar y validar la información operativa', 'Analizar estados, saldos e indicadores', 'Dar seguimiento a pendientes y coordinar acciones', 'Detectar tareas repetitivas y oportunidades de mejora'].map((step, index) => (
+                <li class="flex gap-3 border-l-2 border-amber-500 pl-3 dark:border-[#D6A21E]">
+                  <span class="font-black text-blue-900 dark:text-[#D6A21E]">0{index + 1}</span>
+                  <span class="text-sm leading-relaxed text-neutral-700 dark:text-neutral-300">{step}</span>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        <section aria-labelledby="direction-heading">
+          <SectionHeading id="direction-heading">Dirección de especialización</SectionHeading>
+          <div class="relative border border-neutral-800 bg-white p-5 shadow-[4px_4px_0_#111827] dark:border-neutral-600 dark:bg-neutral-900 dark:shadow-none">
+            <div class="pointer-events-none absolute inset-1 border border-neutral-900/10 dark:border-white/10" />
+            <p class="relative text-sm leading-relaxed text-neutral-700 dark:text-neutral-300">Estoy orientando mi especialización técnica hacia redes y ciberseguridad defensiva. A largo plazo, busco avanzar hacia Cyber Threat Intelligence (CTI), conectando esa formación con mi experiencia en análisis de información, investigación, documentación y comprensión de procesos.</p>
           </div>
         </section>
       </main>
