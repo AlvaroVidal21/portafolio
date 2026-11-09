@@ -21,8 +21,12 @@ const experience = [
     details: [
       'Di seguimiento a requerimientos, órdenes y documentación logística.',
       'Llevé el control de inventario, movimientos, faltantes y entregas de materiales.',
-      'Mediante investigación y negociación, logré un ahorro aproximado de S/ 19,000 en el servicio de repliegue de actas electorales.',
     ],
+    achievement: {
+      label: 'Ahorro logrado',
+      amount: '≈ S/ 19,000',
+      detail: 'En el servicio de repliegue de actas electorales mediante investigación y negociación.',
+    },
   },
   {
     role: 'Analista de Información',
@@ -45,9 +49,14 @@ const experience = [
     organization: 'Red de Salud de Huarochirí · Planeamiento y Presupuesto',
     period: 'Sep. 2025 – Oct. 2025',
     details: [
-      'Identifiqué más de S/ 3 millones en montos certificados sin comprometer mediante análisis de ejecución presupuestal y coordiné con Logística su regularización.',
+      'Di seguimiento presupuestal e identifiqué saldos pendientes.',
       'Preparé reportes con Excel, Power BI y Python para facilitar el control de la información.',
     ],
+    achievement: {
+      label: 'Montos identificados',
+      amount: 'Más de S/ 3 millones',
+      detail: 'En certificaciones presupuestarias sin compromiso, mediante análisis de ejecución presupuestal y coordinación con Logística para su regularización.',
+    },
   },
   {
     role: 'Analista / Asistencia Técnica',
@@ -55,9 +64,13 @@ const experience = [
     period: 'Ene. 2025 – Ago. 2025',
     details: [
       'Di seguimiento a órdenes de servicio y pagos pendientes, revisando documentos y saldos.',
-      'Identifiqué S/ 80,000 en montos certificados sin compromiso mediante revisión y análisis de información en SIGAM/SIAF; esto permitió liberar los saldos y restituir disponibilidad presupuestal.',
       'Preparé reportes para mejorar la trazabilidad de la información logística.',
     ],
+    achievement: {
+      label: 'Saldos liberados',
+      amount: 'S/ 80,000',
+      detail: 'Montos certificados sin compromiso identificados mediante revisión de SIGAM/SIAF, que permitieron restituir disponibilidad presupuestal.',
+    },
   },
   {
     role: 'Analista de Datos Junior',
@@ -190,6 +203,15 @@ const lcpImage = await getImage({ src: fotoPerfil, width: 400, format: 'webp' })
                 <ul class="space-y-1">
                   {job.details.map((detail) => <li class="flex gap-2 text-sm leading-relaxed text-neutral-700 dark:text-neutral-300"><span aria-hidden="true" class="text-amber-600 dark:text-[#D6A21E]">–</span><span>{detail}</span></li>)}
                 </ul>
+                {job.achievement && (
+                  <div class="mt-3 grid gap-2 border-l-4 border-amber-500 bg-amber-50/80 px-3 py-3 shadow-[3px_3px_0_#111827] dark:border-[#D6A21E] dark:bg-amber-950/20 dark:shadow-none sm:grid-cols-[12rem_minmax(0,1fr)] sm:items-center">
+                    <div>
+                      <p class="text-[10px] font-extrabold uppercase tracking-[0.16em] text-amber-800 dark:text-[#D6A21E]">{job.achievement.label}</p>
+                      <p class="mt-0.5 text-lg font-black leading-tight text-neutral-950 dark:text-neutral-50">{job.achievement.amount}</p>
+                    </div>
+                    <p class="text-sm leading-relaxed text-neutral-700 dark:text-neutral-300">{job.achievement.detail}</p>
+                  </div>
+                )}
                 {job.parks && (
                   <div class="border-l-2 border-amber-500 pl-3 dark:border-[#D6A21E]">
                     <h4 class="mb-1 text-xs font-extrabold uppercase tracking-wide text-neutral-700 dark:text-neutral-300">Parques bajo mi administración</h4>
