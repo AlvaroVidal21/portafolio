@@ -2,13 +2,13 @@
 import { Image, getImage } from 'astro:assets';
 import Layout from '../../layouts/Layout.astro';
 import fotoPerfil from '../../assets/yoLinkedin.jpeg';
-import TechBadge from '../../components/TechBadge.astro';
 import SectionHeading from '../../components/SectionHeading.astro';
 import Capability from '../../components/Capability.astro';
 
-const technologyGroups = [
-  { title: 'Análisis y seguimiento', technologies: ['excel', 'powerbi', 'sql'] },
-  { title: 'Automatización de datos', technologies: ['python', 'pandas', 'postgres'] },
+const contributionAreas = [
+  'Análisis y validación de información',
+  'Seguimiento y trazabilidad de procesos',
+  'Reporting y automatización',
 ];
 
 const experience = [
@@ -137,14 +137,16 @@ const lcpImage = await getImage({ src: fotoPerfil, width: 400, format: 'webp' })
             <p class="mt-1 text-xs font-semibold leading-relaxed tracking-wide text-neutral-600 dark:text-neutral-300">Analista de Operaciones y Datos</p>
           </div>
 
-          <div class="shrink-0 space-y-3 border-b-2 border-neutral-900 px-4 py-3 dark:border-neutral-700">
-            <h2 class="text-sm font-extrabold uppercase tracking-wider text-blue-900 dark:text-[#D6A21E]">Herramientas</h2>
-            {technologyGroups.map((group) => (
-              <section>
-                <h3 class="mb-1 text-[11px] font-semibold leading-snug text-neutral-600 dark:text-neutral-300">{group.title}</h3>
-                <div class="flex flex-wrap gap-1">{group.technologies.map((tech) => <TechBadge tech={tech} compact />)}</div>
-              </section>
-            ))}
+          <div class="shrink-0 space-y-2 border-b-2 border-neutral-900 px-4 py-3 dark:border-neutral-700">
+            <h2 class="text-sm font-extrabold uppercase tracking-wider text-blue-900 dark:text-[#D6A21E]">Áreas de aporte</h2>
+            <ul class="space-y-1.5">
+              {contributionAreas.map((area) => (
+                <li class="flex items-start gap-2 text-xs leading-relaxed text-neutral-700 dark:text-neutral-300">
+                  <span aria-hidden="true" class="mt-1.5 h-1.5 w-1.5 shrink-0 rotate-45 bg-amber-500 dark:bg-[#D6A21E]" />
+                  <span>{area}</span>
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div class="shrink-0 border-b-2 border-neutral-900 px-4 py-3 dark:border-neutral-700">
@@ -236,7 +238,7 @@ const lcpImage = await getImage({ src: fotoPerfil, width: 400, format: 'webp' })
             <Capability title="Pensamiento analítico y resolución" items={['Reviso y valido datos, estados y documentos', 'Identifico pendientes, saldos e inconsistencias', 'Sintetizo hallazgos en reportes para orientar acciones']} />
             <Capability title="Investigación y documentación" items={['Busco, contrasto y organizo información', 'Mantengo registros y documentación de procesos', 'Cuido la trazabilidad entre información, evidencia y seguimiento']} />
             <Capability title="Comprensión de procesos y sistemas" items={['Entiendo flujos de trabajo y responsabilidades entre áreas', 'Relaciono registros operativos con controles y resultados', 'Aplico esta mirada a logística, presupuesto, contratos y pagos']} />
-            <Capability title="Reporting y automatización" items={['Excel, Power BI, SQL, Python, PostgreSQL y Pandas', 'Automatización de reportes y tareas de seguimiento', 'Flask, FastAPI, APIs, Linux y Git en desarrollo']} />
+            <Capability title="Herramientas por aplicación" items={['Reporting y seguimiento: Excel y Power BI', 'Análisis y automatización: Python y Pandas', 'Consulta y almacenamiento de datos: SQL y PostgreSQL', 'En desarrollo: Flask, FastAPI, APIs, Linux y Git']} />
           </div>
           <div class="relative mt-3 border border-neutral-800 bg-white p-5 shadow-[4px_4px_0_#111827] dark:border-neutral-600 dark:bg-neutral-900 dark:shadow-none">
             <div class="pointer-events-none absolute inset-1 border border-neutral-900/10 dark:border-white/10" />
