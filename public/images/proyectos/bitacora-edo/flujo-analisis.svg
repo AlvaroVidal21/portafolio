@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 940" role="img" aria-labelledby="title desc">
+  <title id="title">Del PDF del aplicativo al análisis de la encuesta</title>
+  <desc id="desc">La empresa llena la encuesta en el aplicativo web del ministerio. El PDF que emite se extrae localmente con MarkItDown y el Markdown pasa por una normalización estructural que reconstruye secciones, preguntas, respuestas, tablas y listas. Sobre esa estructura se hace la lectura, con modelo o con un lector determinista de respaldo, y el resultado queda revisable.</desc>
+  <defs>
+    <marker id="arrow2" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#171717"/></marker>
+    <pattern id="grid2" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#111827" stroke-opacity=".045" stroke-width="1"/></pattern>
+  </defs>
+  <rect width="900" height="940" fill="#f8f7f2"/>
+  <rect width="900" height="940" fill="url(#grid2)"/>
+
+  <text x="48" y="58" fill="#171717" font-family="system-ui, sans-serif" font-size="24" font-weight="800">Del PDF del aplicativo al análisis</text>
+  <text x="48" y="88" fill="#5b5b5b" font-family="system-ui, sans-serif" font-size="15">Un PDF de formulario no se lee solo: primero se reconstruye su estructura.</text>
+
+  <rect x="48" y="112" width="804" height="88" rx="3" fill="#fff" stroke="#171717" stroke-width="2"/>
+  <text x="72" y="136" fill="#b45309" font-family="system-ui, sans-serif" font-size="10" font-weight="800" letter-spacing="1">01 · ORIGEN DEL DATO</text>
+  <text x="72" y="160" fill="#171717" font-family="system-ui, sans-serif" font-size="15" font-weight="700">Aplicativo web del Ministerio</text>
+  <text x="72" y="182" fill="#5b5b5b" font-family="system-ui, sans-serif" font-size="12">La empresa llena la Encuesta de Demanda Ocupacional en el sistema del MTPE.</text>
+  <text x="756" y="160" fill="#b45309" font-family="system-ui, sans-serif" font-size="11" font-weight="700">digital</text>
+
+  <line x1="450" y1="200" x2="450" y2="224" stroke="#171717" stroke-width="2" marker-end="url(#arrow2)"/>
+
+  <rect x="48" y="232" width="804" height="88" rx="3" fill="#fff" stroke="#171717" stroke-width="2"/>
+  <text x="72" y="256" fill="#b45309" font-family="system-ui, sans-serif" font-size="10" font-weight="800" letter-spacing="1">02 · SALIDA DEL SISTEMA</text>
+  <text x="72" y="280" fill="#171717" font-family="system-ui, sans-serif" font-size="15" font-weight="700">PDF descargado</text>
+  <text x="72" y="302" fill="#5b5b5b" font-family="system-ui, sans-serif" font-size="12">Un documento extenso: decenas de páginas, tablas y encabezados que se cortan.</text>
+
+  <line x1="450" y1="320" x2="450" y2="344" stroke="#171717" stroke-width="2" marker-end="url(#arrow2)"/>
+
+  <rect x="48" y="352" width="804" height="100" rx="3" fill="#fff" stroke="#171717" stroke-width="2"/>
+  <text x="72" y="376" fill="#b45309" font-family="system-ui, sans-serif" font-size="10" font-weight="800" letter-spacing="1">03 · EXTRACCIÓN</text>
+  <text x="72" y="400" fill="#171717" font-family="system-ui, sans-serif" font-size="15" font-weight="700">MarkItDown 0.1.9 · Microsoft</text>
+  <text x="72" y="422" fill="#5b5b5b" font-family="system-ui, sans-serif" font-size="12">Convierte el PDF a Markdown en el propio equipo. El documento no sale de la máquina.</text>
+  <text x="756" y="400" fill="#b45309" font-family="system-ui, sans-serif" font-size="11" font-weight="700">local</text>
+
+  <line x1="450" y1="452" x2="450" y2="476" stroke="#171717" stroke-width="2" marker-end="url(#arrow2)"/>
+
+  <rect x="48" y="484" width="804" height="124" rx="3" fill="#fff7ed" stroke="#c2410c" stroke-width="2.5"/>
+  <text x="72" y="508" fill="#c2410c" font-family="system-ui, sans-serif" font-size="10" font-weight="800" letter-spacing="1">04 · NORMALIZACIÓN ESTRUCTURAL</text>
+  <text x="72" y="532" fill="#171717" font-family="system-ui, sans-serif" font-size="15" font-weight="700">El paso que hace legible una encuesta</text>
+  <text x="72" y="554" fill="#5b5b5b" font-family="system-ui, sans-serif" font-size="12">Reglas propias ordenan secciones, preguntas, respuestas, tablas y listas, y agrupan la</text>
+  <text x="72" y="572" fill="#5b5b5b" font-family="system-ui, sans-serif" font-size="12">caracterización de la ocupación bajo la pregunta que le corresponde.</text>
+  <text x="72" y="594" fill="#171717" font-family="system-ui, sans-serif" font-size="12" font-weight="700">Si la correspondencia es ambigua, se conserva el contenido tal como vino: no se inventan encabezados.</text>
+
+  <line x1="450" y1="608" x2="450" y2="632" stroke="#171717" stroke-width="2" marker-end="url(#arrow2)"/>
+
+  <rect x="48" y="640" width="390" height="104" rx="3" fill="#fff" stroke="#171717" stroke-width="2"/>
+  <text x="68" y="664" fill="#6b7280" font-family="system-ui, sans-serif" font-size="10" font-weight="800" letter-spacing="1">05A · CON MODELO</text>
+  <text x="68" y="688" fill="#171717" font-family="system-ui, sans-serif" font-size="14" font-weight="700">Ollama local u OpenCode Go</text>
+  <text x="68" y="710" fill="#5b5b5b" font-family="system-ui, sans-serif" font-size="12">Interpreta la estructura ya normalizada y propone</text>
+  <text x="68" y="728" fill="#5b5b5b" font-family="system-ui, sans-serif" font-size="12">qué revisar. No asigna códigos.</text>
+
+  <rect x="462" y="640" width="390" height="104" rx="3" fill="#fff" stroke="#171717" stroke-width="2"/>
+  <text x="482" y="664" fill="#6b7280" font-family="system-ui, sans-serif" font-size="10" font-weight="800" letter-spacing="1">05B · SIN MODELO</text>
+  <text x="482" y="688" fill="#171717" font-family="system-ui, sans-serif" font-size="14" font-weight="700">Lector determinista de respaldo</text>
+  <text x="482" y="710" fill="#5b5b5b" font-family="system-ui, sans-serif" font-size="12">Siempre disponible. El modo y el motivo del respaldo</text>
+  <text x="482" y="728" fill="#5b5b5b" font-family="system-ui, sans-serif" font-size="12">quedan guardados y visibles en la interfaz.</text>
+
+  <line x1="243" y1="744" x2="243" y2="772" stroke="#171717" stroke-width="2"/>
+  <line x1="657" y1="744" x2="657" y2="772" stroke="#171717" stroke-width="2"/>
+  <line x1="243" y1="772" x2="657" y2="772" stroke="#171717" stroke-width="2"/>
+  <line x1="450" y1="772" x2="450" y2="792" stroke="#171717" stroke-width="2" marker-end="url(#arrow2)"/>
+
+  <rect x="48" y="804" width="804" height="110" rx="3" fill="#171717"/>
+  <text x="72" y="828" fill="#f4c430" font-family="system-ui, sans-serif" font-size="10" font-weight="800" letter-spacing="1">06 · RESULTADO REVISABLE</text>
+  <text x="72" y="852" fill="#f5f5f5" font-family="system-ui, sans-serif" font-size="13">Ocupaciones declaradas · Cargos de contacto (2.2 y 2.7)</text>
+  <text x="72" y="876" fill="#f5f5f5" font-family="system-ui, sans-serif" font-size="13">Casos de doble codificación · Alertas de consistencia entre respuestas</text>
+  <text x="72" y="898" fill="#a3a3a3" font-family="system-ui, sans-serif" font-size="12">Nada se modifica solo: cada hallazgo espera revisión y deja su estado.</text>
+</svg>
