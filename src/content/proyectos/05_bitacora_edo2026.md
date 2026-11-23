@@ -162,11 +162,83 @@ Por eso la recuperación entra por cinco puertas y no por una.
   </div>
 </div>
 
-<figure class="my-6 not-prose media-scroll">
-  <img src="/images/proyectos/bitacora-edo/flujo-recodificacion.svg" alt="Diagrama del flujo de recodificación: la frase declarada y su contexto entran a cinco búsquedas sobre el catálogo CNO, tres léxicas y dos vectoriales; los rankings se fusionan, un ordenamiento con siete criterios deja diez candidatos con traza y la decisión humana queda registrada en la crítica." class="w-full h-auto border-2 border-neutral-900 dark:hidden" loading="lazy" />
-  <img src="/images/proyectos/bitacora-edo/flujo-recodificacion-dark.svg" alt="Diagrama del flujo de recodificación: la frase declarada y su contexto entran a cinco búsquedas sobre el catálogo CNO, tres léxicas y dos vectoriales; los rankings se fusionan, un ordenamiento con siete criterios deja diez candidatos con traza y la decisión humana queda registrada en la crítica." class="hidden w-full h-auto border-2 border-neutral-700 dark:block" loading="lazy" />
-  <figcaption class="mt-2 text-left text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">El recorrido completo, de la frase que escribió la empresa al registro que queda en la crítica.<span class="mt-1 block text-xs font-bold uppercase tracking-wider text-orange-800 dark:text-orange-300 md:hidden">Desliza para ver el diagrama completo →</span></figcaption>
-</figure>
+<div class="my-6 not-prose">
+  <p class="text-xs font-bold uppercase tracking-wider text-orange-800 dark:text-orange-300">El recorrido completo</p>
+  <ol class="mt-3 space-y-2">
+    <li class="border-2 border-neutral-900 dark:border-neutral-700 p-4 ">
+      <div class="flex gap-3">
+        <span class="mt-0.5 font-mono text-xs font-bold text-orange-800 dark:text-orange-300">01</span>
+        <div>
+          <p class="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">Entrada</p>
+          <p class="mt-1 text-sm font-bold text-neutral-900 dark:text-neutral-100">La frase de la empresa y su contexto</p>
+          <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-300">«Encargado de aplicar herbicidas en los cultivos», más nivel educativo, actividad CIIU, especialidad y tareas declaradas. Texto libre, sin código y sin sinónimos: así llega siempre.</p>
+        </div>
+      </div>
+    </li>
+    <li class="border-2 border-neutral-900 dark:border-neutral-700 p-4 ">
+      <div class="flex gap-3">
+        <span class="mt-0.5 font-mono text-xs font-bold text-orange-800 dark:text-orange-300">02</span>
+        <div>
+          <p class="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">Recuperación</p>
+          <p class="mt-1 text-sm font-bold text-neutral-900 dark:text-neutral-100">Cinco vías sobre el catálogo CNO</p>
+          <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-300">Tres búsquedas léxicas y dos vectoriales miran el mismo catálogo desde ángulos distintos.</p>
+          <div class="mt-2 flex flex-wrap gap-1.5"><span class="border border-neutral-400 px-2 py-0.5 text-xs text-neutral-700 dark:border-neutral-600 dark:text-neutral-300">Título</span><span class="border border-neutral-400 px-2 py-0.5 text-xs text-neutral-700 dark:border-neutral-600 dark:text-neutral-300">Función derivada</span><span class="border border-neutral-400 px-2 py-0.5 text-xs text-neutral-700 dark:border-neutral-600 dark:text-neutral-300">Tareas y sector</span></div>
+          <div class="mt-2 flex flex-wrap gap-1.5"><span class="border border-orange-700 bg-orange-50 px-2 py-0.5 text-xs font-bold text-orange-900 dark:bg-neutral-800 dark:text-orange-200">Función · 384 dims</span><span class="border border-orange-700 bg-orange-50 px-2 py-0.5 text-xs font-bold text-orange-900 dark:bg-neutral-800 dark:text-orange-200">Contexto completo</span></div>
+        </div>
+      </div>
+    </li>
+    <li class="border-2 border-neutral-900 dark:border-neutral-700 p-4 ">
+      <div class="flex gap-3">
+        <span class="mt-0.5 font-mono text-xs font-bold text-orange-800 dark:text-orange-300">03</span>
+        <div>
+          <p class="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">Fusión</p>
+          <p class="mt-1 text-sm font-bold text-neutral-900 dark:text-neutral-100">BM25 + Reciprocal Rank Fusion</p>
+          <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-300">Los cinco rankings se suman y deduplican: un candidato que aparece por varias vías sube de posición.</p>
+        </div>
+      </div>
+    </li>
+    <li class="border-2 border-neutral-900 dark:border-neutral-700 p-4 ">
+      <div class="flex gap-3">
+        <span class="mt-0.5 font-mono text-xs font-bold text-orange-800 dark:text-orange-300">04</span>
+        <div>
+          <p class="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">Ordenamiento</p>
+          <p class="mt-1 text-sm font-bold text-neutral-900 dark:text-neutral-100">Siete criterios, ninguno oculto</p>
+          <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-300">Función, acción, objeto, categoría, nivel, sector y título, con penalizaciones explícitas cuando solo coincide el sector.</p>
+        </div>
+      </div>
+    </li>
+    <li class="border-2 border-neutral-900 dark:border-neutral-700 p-4 ">
+      <div class="flex gap-3">
+        <span class="mt-0.5 font-mono text-xs font-bold text-orange-800 dark:text-orange-300">05</span>
+        <div>
+          <p class="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">Revisión</p>
+          <p class="mt-1 text-sm font-bold text-neutral-900 dark:text-neutral-100">Diez candidatos, cada uno con su traza</p>
+          <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-300">Qué rama lo trajo, cuánto puntuó en cada componente, qué penalización recibió y por qué quedó en esa posición.</p>
+        </div>
+      </div>
+    </li>
+    <li class="border-2 border-orange-700 p-4 bg-orange-50 dark:bg-neutral-800">
+      <div class="flex gap-3">
+        <span class="mt-0.5 font-mono text-xs font-bold text-orange-800 dark:text-orange-300">06</span>
+        <div>
+          <p class="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">Decisión humana</p>
+          <p class="mt-1 text-sm font-bold text-neutral-900 dark:text-neutral-100">El analista elige y sustenta</p>
+          <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-300">El modelo reordena, nunca asigna. El código final, la evidencia y el sustento los deja la persona que revisa.</p>
+        </div>
+      </div>
+    </li>
+    <li class="border-2 border-neutral-900 dark:border-neutral-700 p-4 ">
+      <div class="flex gap-3">
+        <span class="mt-0.5 font-mono text-xs font-bold text-orange-800 dark:text-orange-300">07</span>
+        <div>
+          <p class="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">Queda registrado</p>
+          <p class="mt-1 text-sm font-bold text-neutral-900 dark:text-neutral-100">La crítica con su evidencia</p>
+          <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-300">Valor original, resultado, método, confianza, evidencia, sustento, autor y fecha, con historial de cambios.</p>
+        </div>
+      </div>
+    </li>
+  </ol>
+</div>
 
 Sobre la parte técnica: los vectores se generan en el propio equipo con un modelo multilingüe pequeño, usan prefijos distintos para la consulta y para el catálogo, se guardan junto a cada fragmento oficial y se comparan con similitud coseno. Todo el cálculo es local. Y como el catálogo no trae descripciones, la aplicación deriva una frase funcional de cada denominación para que el vector tenga algo que comparar.
 
@@ -211,11 +283,74 @@ Ahí aparece el problema real: el PDF de una encuesta extensa no produce un Mark
 
 Sobre esa estructura se hace la lectura: ocupaciones declaradas, cargos de contacto de las preguntas 2.2 y 2.7 —informativos, nunca recodificables—, casos que corresponden a las preguntas de doble codificación y alertas de inconsistencia entre respuestas. Si el modelo no está disponible, la lectura se hace igual con reglas locales, y el sistema guarda el modo junto con el motivo, para que nadie confunda una lectura degradada con una completa.
 
-<figure class="my-6 not-prose media-scroll">
-  <img src="/images/proyectos/bitacora-edo/flujo-analisis.svg" alt="Diagrama del flujo de análisis: la encuesta se llena en el aplicativo web del ministerio, el PDF se extrae localmente con MarkItDown, la normalización estructural reconstruye secciones, preguntas, tablas y listas, y la lectura se hace con modelo o con un lector determinista de respaldo antes de dejar el resultado revisable." class="w-full h-auto border-2 border-neutral-900 dark:hidden" loading="lazy" />
-  <img src="/images/proyectos/bitacora-edo/flujo-analisis-dark.svg" alt="Diagrama del flujo de análisis: la encuesta se llena en el aplicativo web del ministerio, el PDF se extrae localmente con MarkItDown, la normalización estructural reconstruye secciones, preguntas, tablas y listas, y la lectura se hace con modelo o con un lector determinista de respaldo antes de dejar el resultado revisable." class="hidden w-full h-auto border-2 border-neutral-700 dark:block" loading="lazy" />
-  <figcaption class="mt-2 text-left text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">El paso que casi nadie muestra: reconstruir la estructura antes de interpretar, y decirlo cuando no se pudo.<span class="mt-1 block text-xs font-bold uppercase tracking-wider text-orange-800 dark:text-orange-300 md:hidden">Desliza para ver el diagrama completo →</span></figcaption>
-</figure>
+<div class="my-6 not-prose">
+  <p class="text-xs font-bold uppercase tracking-wider text-orange-800 dark:text-orange-300">El recorrido del documento</p>
+  <ol class="mt-3 space-y-2">
+    <li class="border-2 border-neutral-900 dark:border-neutral-700 p-4 ">
+      <div class="flex gap-3">
+        <span class="mt-0.5 font-mono text-xs font-bold text-orange-800 dark:text-orange-300">01</span>
+        <div>
+          <p class="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">Origen del dato</p>
+          <p class="mt-1 text-sm font-bold text-neutral-900 dark:text-neutral-100">Aplicativo web del Ministerio</p>
+          <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-300">La empresa llena la Encuesta de Demanda Ocupacional en el sistema del MTPE. Digital, no en papel.</p>
+          <div class="mt-2 flex flex-wrap gap-1.5"><span class="border border-neutral-400 px-2 py-0.5 text-xs text-neutral-700 dark:border-neutral-600 dark:text-neutral-300">digital</span></div>
+        </div>
+      </div>
+    </li>
+    <li class="border-2 border-neutral-900 dark:border-neutral-700 p-4 ">
+      <div class="flex gap-3">
+        <span class="mt-0.5 font-mono text-xs font-bold text-orange-800 dark:text-orange-300">02</span>
+        <div>
+          <p class="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">Salida del sistema</p>
+          <p class="mt-1 text-sm font-bold text-neutral-900 dark:text-neutral-100">PDF descargado</p>
+          <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-300">Un documento extenso: decenas de páginas, tablas y encabezados que se cortan.</p>
+        </div>
+      </div>
+    </li>
+    <li class="border-2 border-neutral-900 dark:border-neutral-700 p-4 ">
+      <div class="flex gap-3">
+        <span class="mt-0.5 font-mono text-xs font-bold text-orange-800 dark:text-orange-300">03</span>
+        <div>
+          <p class="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">Extracción</p>
+          <p class="mt-1 text-sm font-bold text-neutral-900 dark:text-neutral-100">MarkItDown 0.1.9 · Microsoft</p>
+          <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-300">Convierte el PDF a Markdown en el propio equipo. El documento no sale de la máquina.</p>
+          <div class="mt-2 flex flex-wrap gap-1.5"><span class="border border-neutral-400 px-2 py-0.5 text-xs text-neutral-700 dark:border-neutral-600 dark:text-neutral-300">local</span></div>
+        </div>
+      </div>
+    </li>
+    <li class="border-2 border-orange-700 p-4 bg-orange-50 dark:bg-neutral-800">
+      <div class="flex gap-3">
+        <span class="mt-0.5 font-mono text-xs font-bold text-orange-800 dark:text-orange-300">04</span>
+        <div>
+          <p class="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">Normalización estructural</p>
+          <p class="mt-1 text-sm font-bold text-neutral-900 dark:text-neutral-100">El paso que hace legible una encuesta</p>
+          <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-300">Reglas propias ordenan secciones, preguntas, respuestas, tablas y listas. Si la correspondencia es ambigua, se conserva el contenido tal como vino: no se inventan encabezados.</p>
+        </div>
+      </div>
+    </li>
+    <li class="border-2 border-neutral-900 dark:border-neutral-700 p-4 ">
+      <div class="flex gap-3">
+        <span class="mt-0.5 font-mono text-xs font-bold text-orange-800 dark:text-orange-300">05</span>
+        <div>
+          <p class="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">Lectura</p>
+          <p class="mt-1 text-sm font-bold text-neutral-900 dark:text-neutral-100">Con modelo o con reglas fijas</p>
+          <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-300">Ollama local u OpenCode Go interpretan la estructura ya normalizada; si el modelo no está, el lector determinista hace la lectura igual.</p>
+          <div class="mt-2 flex flex-wrap gap-1.5"><span class="border border-neutral-400 px-2 py-0.5 text-xs text-neutral-700 dark:border-neutral-600 dark:text-neutral-300">Ollama local</span><span class="border border-neutral-400 px-2 py-0.5 text-xs text-neutral-700 dark:border-neutral-600 dark:text-neutral-300">OpenCode Go</span><span class="border border-neutral-400 px-2 py-0.5 text-xs text-neutral-700 dark:border-neutral-600 dark:text-neutral-300">lector determinista</span></div>
+        </div>
+      </div>
+    </li>
+    <li class="border-2 border-neutral-900 dark:border-neutral-700 p-4 ">
+      <div class="flex gap-3">
+        <span class="mt-0.5 font-mono text-xs font-bold text-orange-800 dark:text-orange-300">06</span>
+        <div>
+          <p class="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">Resultado revisable</p>
+          <p class="mt-1 text-sm font-bold text-neutral-900 dark:text-neutral-100">Nada se modifica solo</p>
+          <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-300">Ocupaciones declaradas, cargos de contacto de 2.2 y 2.7, casos de doble codificación y alertas de consistencia. Cada hallazgo espera revisión y deja su estado.</p>
+        </div>
+      </div>
+    </li>
+  </ol>
+</div>
 
 ## Trazabilidad del contacto
 
