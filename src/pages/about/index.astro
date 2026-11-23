@@ -13,7 +13,40 @@ const technologyGroups = [
   { title: 'En desarrollo', technologies: ['flask', 'fastapi', 'APIs', 'linux', 'git'] },
 ];
 
-const experience = [
+type ExperienceEntry = {
+  role: string;
+  organization: string;
+  period: string;
+  details: string[];
+  achievement?: {
+    label: string;
+    amount: string;
+    detail: string;
+    href?: string;
+    linkLabel?: string;
+  };
+  parks?: string[];
+};
+
+const experience: ExperienceEntry[] = [
+  {
+    role: 'Analista de Información · EDO 2026',
+    organization: 'Ministerio de Trabajo y Promoción del Empleo (MTPE) · DISEL',
+    period: 'Oct. 2026 – Actualidad',
+    details: [
+      'Monitoreo y doy asistencia técnica a la totalidad de mi carga asignada —181 empresas de cuatro actividades económicas— para que registren la Encuesta de Demanda Ocupacional (EDO 2026) en el aplicativo del Ministerio.',
+      'Absuelvo consultas sobre el ingreso y registro de la encuesta, y sigo el procesamiento de consistencia y corrección de la información en el aplicativo.',
+      'Controlo la calidad de lo registrado —integridad y consistencia— y hago seguimiento a las empresas que todavía no registran información.',
+      'Reviso las ocupaciones que las empresas declaran en texto libre contra el CNO 2015 y el CIIU revisión 4, y elaboro el reporte de toma y procesamiento de encuestas.',
+    ],
+    achievement: {
+      label: 'Software desarrollado',
+      amount: 'Bitácora EDO 2026',
+      detail: 'Herramienta propia que ordena la trazabilidad de la gestión con cada empresa y sustenta la recodificación de las ocupaciones declaradas en texto libre, con embeddings, búsqueda vectorial y apoyo de IA local sobre el CNO 2015 y el CIIU revisión 4.',
+      href: '/proyecto/05_bitacora_edo2026',
+      linkLabel: 'Ver el proyecto',
+    },
+  },
   {
     role: 'Auxiliar Logístico',
     organization: 'Oficina Nacional de Procesos Electorales (ONPE)',
@@ -209,7 +242,15 @@ const lcpImage = await getImage({ src: fotoPerfil, width: 400, format: 'webp' })
                       <p class="text-[10px] font-extrabold uppercase tracking-[0.16em] text-amber-800 dark:text-[#D6A21E]">{job.achievement.label}</p>
                       <p class="mt-0.5 text-lg font-black leading-tight text-neutral-950 dark:text-neutral-50">{job.achievement.amount}</p>
                     </div>
-                    <p class="text-sm leading-relaxed text-neutral-700 dark:text-neutral-300">{job.achievement.detail}</p>
+                    <div class="space-y-2">
+                      <p class="text-sm leading-relaxed text-neutral-700 dark:text-neutral-300">{job.achievement.detail}</p>
+                      {job.achievement.href && (
+                        <a href={job.achievement.href} class="relative mt-3 inline-block -rotate-1 whitespace-nowrap border-2 border-neutral-900 bg-amber-300 py-1 pl-2.5 pr-9 text-[11px] font-extrabold uppercase tracking-wide text-amber-950 shadow-[3px_3px_0_#111827] transition-transform hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-offset-2 dark:border-neutral-700 dark:bg-[#D6A21E] dark:text-amber-950 dark:shadow-none dark:focus-visible:ring-[#D6A21E]">
+                          <span class="pointer-events-none absolute -right-2 -top-2.5 rotate-6 border-2 border-neutral-900 bg-white px-1 py-0.5 text-[8px] font-extrabold uppercase tracking-widest text-neutral-900 shadow-[2px_2px_0_#111827] dark:border-neutral-700 dark:bg-neutral-900 dark:text-[#D6A21E] dark:shadow-none">¡Clic!</span>
+                          {job.achievement.linkLabel ?? 'Ver proyecto'} <span aria-hidden="true">→</span>
+                        </a>
+                      )}
+                    </div>
                   </div>
                 )}
                 {job.parks && (
