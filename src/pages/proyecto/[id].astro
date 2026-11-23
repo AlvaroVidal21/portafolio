@@ -34,7 +34,7 @@ const { Content } = await render(project);
       </a>
     )}
     {technologies && (
-      <div class="flex flex-wrap justify-end gap-2 mb-6">
+      <div class="flex flex-wrap justify-start gap-2 mb-6 sm:justify-end">
         {technologies.map((tech) => (
           <TechBadge tech={tech} />
         ))}

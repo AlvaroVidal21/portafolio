@@ -48,7 +48,7 @@ Las capturas muestran el panel de postulaciones, el formulario e historial de b�
   <figcaption class="mt-2 text-center text-sm text-neutral-500 dark:text-neutral-400">Dashboard de seguimiento de postulaciones · datos ficticios</figcaption>
 </figure>
 
-![Flujo de seguimiento y búsqueda de vacantes: la aplicación registra postulaciones y ejecuta una búsqueda con Codex, valida los resultados y actualiza el historial y Excel.](/images/proyectos/proyecto03/flujo.svg)
+<div class="not-prose my-6 media-scroll"><img src="/images/proyectos/proyecto03/flujo.svg" alt="Flujo de seguimiento y búsqueda de vacantes: la aplicación registra postulaciones y ejecuta una búsqueda con Codex, valida los resultados y actualiza el historial y Excel." class="w-full h-auto dark:hidden" loading="lazy" /><img src="/images/proyectos/proyecto03/flujo-dark.svg" alt="Flujo de seguimiento y búsqueda de vacantes: la aplicación registra postulaciones y ejecuta una búsqueda con Codex, valida los resultados y actualiza el historial y Excel." class="hidden w-full h-auto dark:block" loading="lazy" /></div>
 
 ## Datos y control
 

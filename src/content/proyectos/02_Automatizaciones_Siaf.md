@@ -23,7 +23,10 @@ El reporte organiza las órdenes en cinco estados operativos —concluida, rebaj
 
 En una ejecución, el reporte identificó **S/ 200,761.07** en saldos comprometidos sin devengar. Es un hallazgo para revisión y validación administrativa; no representa dinero recuperado.
 
-<img src="/images/proyectos/proyecto02/mermaid01.svg" alt="Flujo de clasificación de estados de órdenes de servicio" class="w-full h-auto" />
+<div class="not-prose my-6 media-scroll">
+<img src="/images/proyectos/proyecto02/mermaid01.svg" alt="Flujo de clasificación de estados de órdenes de servicio" class="w-full h-auto dark:hidden" loading="lazy" />
+<img src="/images/proyectos/proyecto02/mermaid01-dark.svg" alt="Flujo de clasificación de estados de órdenes de servicio" class="hidden w-full h-auto dark:block" loading="lazy" />
+</div>
 
 <img src="/images/proyectos/proyecto02/hoja_calculo.png" alt="Reporte de órdenes de servicio con saldos comprometidos sin devengar" class="w-full h-auto border-2 border-neutral-900 dark:border-neutral-700" />
 

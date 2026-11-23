@@ -44,3 +44,19 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+## Diagramas SVG y tema oscuro
+
+Cada diagrama vive en dos archivos: `nombre.svg` para el tema claro y
+`nombre-dark.svg` para el oscuro. Los SVG se cargan con `<img>`, así que no
+pueden leer la clase `.dark` del documento: el cambio se resuelve en el HTML.
+
+```html
+<img src="/ruta/diagrama.svg" alt="..." class="w-full h-auto dark:hidden" />
+<img src="/ruta/diagrama-dark.svg" alt="..." class="hidden w-full h-auto dark:block" />
+```
+
+Al crear o editar un diagrama, regenerá la variante oscura con
+`python3 scripts/dark-diagrams.py [archivo.svg ...]` y revisá el resultado: un
+diagrama claro sobre una página oscura se lee mal, y el texto desbordado no lo
+detecta el build.

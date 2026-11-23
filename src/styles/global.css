@@ -4,3 +4,26 @@
 
 html { transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease; }
 html.transitioning * { transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; }
+/* Diagramas y capturas anchas: en pantallas pequeñas se desplazan en
+   horizontal en lugar de encogerse hasta quedar ilegibles. */
+.media-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.media-scroll img {
+  width: 44rem;
+  max-width: none;
+  height: auto;
+}
+
+@media (min-width: 768px) {
+  .media-scroll {
+    overflow-x: visible;
+  }
+
+  .media-scroll img {
+    width: 100%;
+    max-width: 100%;
+  }
+}
