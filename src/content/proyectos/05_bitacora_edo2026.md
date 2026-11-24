@@ -74,16 +74,20 @@ Una consulta se arma con lo que declaró la empresa y con el contexto de la encu
 
 <figure class="my-6 not-prose">
   <a href="/images/proyectos/bitacora-edo/04-consulta.png" target="_blank" rel="noopener noreferrer" class="block">
-    <img src="/images/proyectos/bitacora-edo/04-consulta-movil.png" alt="Formulario de recodificación con una consulta demostrativa de fumigación agrícola, contexto de tareas y actividad económica CIIU" class="w-full h-auto border-2 border-neutral-900 dark:border-neutral-700 md:hidden" loading="lazy" />
-    <img src="/images/proyectos/bitacora-edo/04-consulta.png" alt="Formulario de recodificación con una consulta demostrativa de fumigación agrícola, contexto de tareas y actividad económica CIIU" class="hidden w-full h-auto border-2 border-neutral-900 dark:border-neutral-700 md:block" loading="lazy" />
+    <img src="/images/proyectos/bitacora-edo/04-consulta-movil.png" alt="Formulario de recodificación con una consulta demostrativa de fumigación agrícola, contexto de tareas y actividad económica CIIU" class="w-full h-auto border-2 border-neutral-900 dark:border-neutral-700 md:hidden dark:hidden" loading="lazy" />
+    <img src="/images/proyectos/bitacora-edo/04-consulta-movil-dark.png" alt="Formulario de recodificación con una consulta demostrativa de fumigación agrícola, contexto de tareas y actividad económica CIIU" class="hidden w-full h-auto border-2 border-neutral-700 max-md:dark:block" loading="lazy" />
+    <img src="/images/proyectos/bitacora-edo/04-consulta.png" alt="Formulario de recodificación con una consulta demostrativa de fumigación agrícola, contexto de tareas y actividad económica CIIU" class="hidden w-full h-auto border-2 border-neutral-900 dark:border-neutral-700 md:block dark:md:hidden" loading="lazy" />
+    <img src="/images/proyectos/bitacora-edo/04-consulta-dark.png" alt="Formulario de recodificación con una consulta demostrativa de fumigación agrícola, contexto de tareas y actividad económica CIIU" class="hidden w-full h-auto border-2 border-neutral-700 md:dark:block" loading="lazy" />
   </a>
   <figcaption class="mt-2 text-left text-xs leading-relaxed text-neutral-500 dark:text-neutral-400"><span class="font-bold uppercase tracking-wider text-orange-800 dark:text-orange-300">Entrada</span> · El nombre declarado, las tareas, la actividad CIIU y el contexto del formulario EDO.</figcaption>
 </figure>
 
 <figure class="my-6 not-prose">
   <a href="/images/proyectos/bitacora-edo/06-resultado.png" target="_blank" rel="noopener noreferrer" class="block">
-    <img src="/images/proyectos/bitacora-edo/06-resultado-movil.png" alt="Resultado real: diez candidatos encontrados y el primero con su detalle de recuperación abierto, con orígenes, puntaje por componente, penalización, similitud vectorial y motivo" class="w-full h-auto border-2 border-neutral-900 dark:border-neutral-700 md:hidden" loading="lazy" />
-    <img src="/images/proyectos/bitacora-edo/06-resultado.png" alt="Resultado real: diez candidatos encontrados y el primero con su detalle de recuperación abierto, con orígenes, puntaje por componente, penalización, similitud vectorial y motivo" class="hidden w-full h-auto border-2 border-neutral-900 dark:border-neutral-700 md:block" loading="lazy" />
+    <img src="/images/proyectos/bitacora-edo/06-resultado-movil.png" alt="Resultado real: candidatos encontrados y el primero con su detalle de recuperación abierto, con orígenes, puntaje por componente, penalización, similitud vectorial y motivo" class="w-full h-auto border-2 border-neutral-900 dark:border-neutral-700 md:hidden dark:hidden" loading="lazy" />
+    <img src="/images/proyectos/bitacora-edo/06-resultado-movil-dark.png" alt="Resultado real: candidatos encontrados y el primero con su detalle de recuperación abierto, con orígenes, puntaje por componente, penalización, similitud vectorial y motivo" class="hidden w-full h-auto border-2 border-neutral-700 max-md:dark:block" loading="lazy" />
+    <img src="/images/proyectos/bitacora-edo/06-resultado.png" alt="Resultado real: candidatos encontrados y el primero con su detalle de recuperación abierto, con orígenes, puntaje por componente, penalización, similitud vectorial y motivo" class="hidden w-full h-auto border-2 border-neutral-900 dark:border-neutral-700 md:block dark:md:hidden" loading="lazy" />
+    <img src="/images/proyectos/bitacora-edo/06-resultado-dark.png" alt="Resultado real: candidatos encontrados y el primero con su detalle de recuperación abierto, con orígenes, puntaje por componente, penalización, similitud vectorial y motivo" class="hidden w-full h-auto border-2 border-neutral-700 md:dark:block" loading="lazy" />
   </a>
   <figcaption class="mt-2 text-left text-xs leading-relaxed text-neutral-500 dark:text-neutral-400"><span class="font-bold uppercase tracking-wider text-orange-800 dark:text-orange-300">Salida</span> · Los diez candidatos y, desplegado, el detalle del primero: de dónde vino, cómo puntuó y por qué quedó ahí.</figcaption>
 </figure>
@@ -385,15 +389,19 @@ El informe respeta la fecha de corte: reconstruye el estado que la empresa tení
 <div>
   <figure class="my-6 not-prose md:col-span-2">
   <a href="/images/proyectos/bitacora-edo/01-dashboard.png" target="_blank" rel="noopener noreferrer" class="block">
-    <img src="/images/proyectos/bitacora-edo/01-dashboard-movil.png" alt="Dashboard de la aplicación con avance de encuestas, estado de crítica y casos pendientes" class="w-full h-auto border-2 border-neutral-900 dark:border-neutral-700 md:hidden" loading="lazy" />
-    <img src="/images/proyectos/bitacora-edo/01-dashboard.png" alt="Dashboard de la aplicación con avance de encuestas, estado de crítica y casos pendientes" class="hidden w-full h-auto border-2 border-neutral-900 dark:border-neutral-700 md:block" loading="lazy" />
+    <img src="/images/proyectos/bitacora-edo/01-dashboard-movil.png" alt="Dashboard de la aplicación con avance de encuestas, estado de crítica y casos pendientes" class="w-full h-auto border-2 border-neutral-900 dark:border-neutral-700 md:hidden dark:hidden" loading="lazy" />
+    <img src="/images/proyectos/bitacora-edo/01-dashboard-movil-dark.png" alt="Dashboard de la aplicación con avance de encuestas, estado de crítica y casos pendientes" class="hidden w-full h-auto border-2 border-neutral-700 max-md:dark:block" loading="lazy" />
+    <img src="/images/proyectos/bitacora-edo/01-dashboard.png" alt="Dashboard de la aplicación con avance de encuestas, estado de crítica y casos pendientes" class="hidden w-full h-auto border-2 border-neutral-900 dark:border-neutral-700 md:block dark:md:hidden" loading="lazy" />
+    <img src="/images/proyectos/bitacora-edo/01-dashboard-dark.png" alt="Dashboard de la aplicación con avance de encuestas, estado de crítica y casos pendientes" class="hidden w-full h-auto border-2 border-neutral-700 md:dark:block" loading="lazy" />
   </a>
   <figcaption class="mt-2 text-left text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">Resumen de avance y revisiones que necesitan seguimiento.</figcaption>
 </figure>
   <figure class="my-6 not-prose md:col-span-2">
   <a href="/images/proyectos/bitacora-edo/02-directorio.png" target="_blank" rel="noopener noreferrer" class="block">
-    <img src="/images/proyectos/bitacora-edo/02-directorio-movil.png" alt="Directorio de la aplicación con filtros y estados de encuesta y crítica" class="w-full h-auto border-2 border-neutral-900 dark:border-neutral-700 md:hidden" loading="lazy" />
-    <img src="/images/proyectos/bitacora-edo/02-directorio.png" alt="Directorio de la aplicación con filtros y estados de encuesta y crítica" class="hidden w-full h-auto border-2 border-neutral-900 dark:border-neutral-700 md:block" loading="lazy" />
+    <img src="/images/proyectos/bitacora-edo/02-directorio-movil.png" alt="Directorio de la aplicación con filtros y estados de encuesta y crítica" class="w-full h-auto border-2 border-neutral-900 dark:border-neutral-700 md:hidden dark:hidden" loading="lazy" />
+    <img src="/images/proyectos/bitacora-edo/02-directorio-movil-dark.png" alt="Directorio de la aplicación con filtros y estados de encuesta y crítica" class="hidden w-full h-auto border-2 border-neutral-700 max-md:dark:block" loading="lazy" />
+    <img src="/images/proyectos/bitacora-edo/02-directorio.png" alt="Directorio de la aplicación con filtros y estados de encuesta y crítica" class="hidden w-full h-auto border-2 border-neutral-900 dark:border-neutral-700 md:block dark:md:hidden" loading="lazy" />
+    <img src="/images/proyectos/bitacora-edo/02-directorio-dark.png" alt="Directorio de la aplicación con filtros y estados de encuesta y crítica" class="hidden w-full h-auto border-2 border-neutral-700 md:dark:block" loading="lazy" />
   </a>
   <figcaption class="mt-2 text-left text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">Vista de empresas, contacto y estado operativo.</figcaption>
 </figure>
