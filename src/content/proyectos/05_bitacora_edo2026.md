@@ -72,18 +72,20 @@ El problema práctico es que la empresa nunca escribe como escribe el catálogo.
 
 Una consulta se arma con lo que declaró la empresa y con el contexto de la encuesta. Lo que devuelve no es una lista de códigos: es un conjunto acotado de candidatos oficiales, cada uno con su explicación abierta.
 
-<figure class="my-6 not-prose media-scroll">
-  <a href="/images/proyectos/bitacora-edo/04-consulta-recodificacion.png" target="_blank" rel="noopener noreferrer" aria-label="Ampliar captura del formulario de recodificación">
-    <img src="/images/proyectos/bitacora-edo/04-consulta-recodificacion.png" alt="Formulario de recodificación con una consulta demostrativa de fumigación agrícola, contexto de tareas y actividad económica CIIU" class="w-full h-auto border-2 border-neutral-900 dark:border-neutral-700" loading="lazy" />
+<figure class="my-6 not-prose">
+  <a href="/images/proyectos/bitacora-edo/04-consulta.png" target="_blank" rel="noopener noreferrer" class="block">
+    <img src="/images/proyectos/bitacora-edo/04-consulta-movil.png" alt="Formulario de recodificación con una consulta demostrativa de fumigación agrícola, contexto de tareas y actividad económica CIIU" class="w-full h-auto border-2 border-neutral-900 dark:border-neutral-700 md:hidden" loading="lazy" />
+    <img src="/images/proyectos/bitacora-edo/04-consulta.png" alt="Formulario de recodificación con una consulta demostrativa de fumigación agrícola, contexto de tareas y actividad económica CIIU" class="hidden w-full h-auto border-2 border-neutral-900 dark:border-neutral-700 md:block" loading="lazy" />
   </a>
-  <figcaption class="mt-2 text-left text-xs leading-relaxed text-neutral-500 dark:text-neutral-400"><span class="font-bold uppercase tracking-wider text-orange-800 dark:text-orange-300">Entrada</span> · El nombre declarado, las tareas, la actividad CIIU y el contexto del formulario EDO.<span class="mt-1 block text-xs font-bold uppercase tracking-wider text-orange-800 dark:text-orange-300 md:hidden">Desliza para ver la captura completa →</span></figcaption>
+  <figcaption class="mt-2 text-left text-xs leading-relaxed text-neutral-500 dark:text-neutral-400"><span class="font-bold uppercase tracking-wider text-orange-800 dark:text-orange-300">Entrada</span> · El nombre declarado, las tareas, la actividad CIIU y el contexto del formulario EDO.</figcaption>
 </figure>
 
-<figure class="my-6 not-prose media-scroll">
-  <a href="/images/proyectos/bitacora-edo/06-resultado-candidato.png" target="_blank" rel="noopener noreferrer" aria-label="Ampliar captura del resultado de la recodificación">
-    <img src="/images/proyectos/bitacora-edo/06-resultado-candidato.png" alt="Resultado real de demostración: diez candidatos encontrados y el primero con su detalle de recuperación abierto, con orígenes, puntaje por componente, penalización, similitud vectorial y motivo" class="w-full h-auto border-2 border-neutral-900 dark:border-neutral-700" loading="lazy" />
+<figure class="my-6 not-prose">
+  <a href="/images/proyectos/bitacora-edo/06-resultado.png" target="_blank" rel="noopener noreferrer" class="block">
+    <img src="/images/proyectos/bitacora-edo/06-resultado-movil.png" alt="Resultado real: diez candidatos encontrados y el primero con su detalle de recuperación abierto, con orígenes, puntaje por componente, penalización, similitud vectorial y motivo" class="w-full h-auto border-2 border-neutral-900 dark:border-neutral-700 md:hidden" loading="lazy" />
+    <img src="/images/proyectos/bitacora-edo/06-resultado.png" alt="Resultado real: diez candidatos encontrados y el primero con su detalle de recuperación abierto, con orígenes, puntaje por componente, penalización, similitud vectorial y motivo" class="hidden w-full h-auto border-2 border-neutral-900 dark:border-neutral-700 md:block" loading="lazy" />
   </a>
-  <figcaption class="mt-2 text-left text-xs leading-relaxed text-neutral-500 dark:text-neutral-400"><span class="font-bold uppercase tracking-wider text-orange-800 dark:text-orange-300">Salida</span> · Los diez candidatos y, desplegado, el detalle del primero: de dónde vino, cómo puntuó y por qué quedó ahí.<span class="mt-1 block text-xs font-bold uppercase tracking-wider text-orange-800 dark:text-orange-300 md:hidden">Desliza para ver la captura completa →</span></figcaption>
+  <figcaption class="mt-2 text-left text-xs leading-relaxed text-neutral-500 dark:text-neutral-400"><span class="font-bold uppercase tracking-wider text-orange-800 dark:text-orange-300">Salida</span> · Los diez candidatos y, desplegado, el detalle del primero: de dónde vino, cómo puntuó y por qué quedó ahí.</figcaption>
 </figure>
 
 ### Qué estás viendo en ese resultado
@@ -380,31 +382,26 @@ Los casos concretos están modelados, no anotados en un campo libre:
 
 El informe respeta la fecha de corte: reconstruye el estado que la empresa tenía al final del período consultado, no el de hoy. Es el detalle que separa un reporte de gestión de un reporte que aguanta una auditoría.
 
-<div class="grid gap-6 md:grid-cols-2">
-  <figure class="my-6 not-prose media-scroll">
-    <a href="/images/proyectos/bitacora-edo/01-dashboard.png" target="_blank" rel="noopener noreferrer" aria-label="Ampliar captura del dashboard de Bitácora EDO">
-      <img src="/images/proyectos/bitacora-edo/01-dashboard.png" alt="Dashboard de demostración con avance de encuestas, estado de crítica y casos pendientes" class="w-full h-auto border-2 border-neutral-900 dark:border-neutral-700" loading="lazy" />
-    </a>
-    <figcaption class="mt-2 text-left text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">Resumen de avance y revisiones que necesitan seguimiento.</figcaption>
-  </figure>
-  <figure class="my-6 not-prose media-scroll">
-    <a href="/images/proyectos/bitacora-edo/02-directorio.png" target="_blank" rel="noopener noreferrer" aria-label="Ampliar captura del directorio de empresas">
-      <img src="/images/proyectos/bitacora-edo/02-directorio.png" alt="Directorio de demostración con filtros y estados de encuesta y crítica" class="w-full h-auto border-2 border-neutral-900 dark:border-neutral-700" loading="lazy" />
-    </a>
-    <figcaption class="mt-2 text-left text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">Vista de empresas, contacto y estado operativo.</figcaption>
-  </figure>
+<div>
+  <figure class="my-6 not-prose md:col-span-2">
+  <a href="/images/proyectos/bitacora-edo/01-dashboard.png" target="_blank" rel="noopener noreferrer" class="block">
+    <img src="/images/proyectos/bitacora-edo/01-dashboard-movil.png" alt="Dashboard de la aplicación con avance de encuestas, estado de crítica y casos pendientes" class="w-full h-auto border-2 border-neutral-900 dark:border-neutral-700 md:hidden" loading="lazy" />
+    <img src="/images/proyectos/bitacora-edo/01-dashboard.png" alt="Dashboard de la aplicación con avance de encuestas, estado de crítica y casos pendientes" class="hidden w-full h-auto border-2 border-neutral-900 dark:border-neutral-700 md:block" loading="lazy" />
+  </a>
+  <figcaption class="mt-2 text-left text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">Resumen de avance y revisiones que necesitan seguimiento.</figcaption>
+</figure>
+  <figure class="my-6 not-prose md:col-span-2">
+  <a href="/images/proyectos/bitacora-edo/02-directorio.png" target="_blank" rel="noopener noreferrer" class="block">
+    <img src="/images/proyectos/bitacora-edo/02-directorio-movil.png" alt="Directorio de la aplicación con filtros y estados de encuesta y crítica" class="w-full h-auto border-2 border-neutral-900 dark:border-neutral-700 md:hidden" loading="lazy" />
+    <img src="/images/proyectos/bitacora-edo/02-directorio.png" alt="Directorio de la aplicación con filtros y estados de encuesta y crítica" class="hidden w-full h-auto border-2 border-neutral-900 dark:border-neutral-700 md:block" loading="lazy" />
+  </a>
+  <figcaption class="mt-2 text-left text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">Vista de empresas, contacto y estado operativo.</figcaption>
+</figure>
 </div>
 
 ## Trazabilidad de la decisión
 
 Cada crítica queda vinculada a la empresa, la variable y el registro exacto de la encuesta. Conserva el valor original junto con el resultado propuesto, la evidencia, el sustento, el método, la confianza y la revisión humana; el historial registra quién cambió qué y cuándo. La recodificación no borra el dato declarado ni convierte una sugerencia en decisión automática. Cuando una empresa o un análisis se archivan, se guarda un respaldo completo —incluidos los adjuntos— antes de eliminarse.
-
-<figure class="my-6 not-prose media-scroll">
-  <a href="/images/proyectos/bitacora-edo/03-sustento-critica.png" target="_blank" rel="noopener noreferrer" aria-label="Ampliar captura del seguimiento de críticas">
-    <img src="/images/proyectos/bitacora-edo/03-sustento-critica.png" alt="Vista de demostración del seguimiento de críticas y revisiones pendientes" class="w-full h-auto border-2 border-neutral-900 dark:border-neutral-700" loading="lazy" />
-  </a>
-  <figcaption class="mt-2 text-left text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">La revisión mantiene los casos y sus estados visibles para dar seguimiento al sustento.</figcaption>
-</figure>
 
 ## Cómo lo construí
 
